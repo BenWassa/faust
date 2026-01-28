@@ -100,7 +100,7 @@
                     </div>
                     <h1 class="font-display font-bold text-5xl md:text-7xl lg:text-8xl mb-6 tracking-tighter leading-[0.9] text-surveillance animate-slide-up">THE ARCHITECTURE<br>OF AMBITION</h1>
                     <p class="font-body text-xl md:text-2xl text-surveillance/70 max-w-2xl mx-auto mb-12 animate-slide-up" style="animation-delay: 0.2s;">How career became identity, why it's breaking us, and the structural flaws in the "rational" pursuit of success.</p>
-                    <button onclick="navigateTo('system')" class="px-8 py-4 bg-surveillance text-cream font-mono uppercase tracking-widest hover:bg-rust transition-colors animate-slide-up" style="animation-delay: 0.4s;">Enter The Structure</button>
+                    <button onclick="navigateTo('system')" class="px-8 py-4 bg-surveillance text-cream font-mono uppercase tracking-widest hover:bg-rust transition-colors animate-slide-up" style="animation-delay: 0.4s;">Enter System</button>
                 </div>
             </section>
             <section class="py-24 px-6 max-w-6xl mx-auto">
@@ -229,7 +229,7 @@
                     </div>
                     <h1 class="font-display font-bold text-5xl md:text-7xl lg:text-8xl mb-6 tracking-tighter leading-[0.9] text-surveillance animate-slide-up">THE ARCHITECTURE<br>OF AMBITION</h1>
                     <p class="font-body text-xl md:text-2xl text-surveillance/70 max-w-2xl mx-auto mb-12 animate-slide-up" style="animation-delay: 0.2s;">How career became identity, why it's breaking us, and the structural flaws in the "rational" pursuit of success.</p>
-                    <button onclick="navigateTo('system')" class="px-8 py-4 bg-surveillance text-cream font-mono uppercase tracking-widest hover:bg-rust transition-colors animate-slide-up" style="animation-delay: 0.4s;">Enter The Structure</button>
+                    <button onclick="navigateTo('system')" class="px-8 py-4 bg-surveillance text-cream font-mono uppercase tracking-widest hover:bg-rust transition-colors animate-slide-up" style="animation-delay: 0.4s;">Enter System</button>
                 </div>
             </section>
             <section class="py-24 px-6 max-w-6xl mx-auto">
@@ -246,6 +246,14 @@
 
         const Card = (num, title, desc, link, icon) => `
             <div onclick="navigateTo('${link}')" class="group border border-surveillance/20 p-8 hover:bg-surveillance hover:text-cream transition-all duration-300 cursor-pointer h-full flex flex-col justify-between relative overflow-hidden bg-white">
+                <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20"><span class="material-symbols-outlined text-6xl">${icon}</span></div>
+                <div><span class="font-mono text-rust text-sm mb-2 block group-hover:text-soft-green">${num}</span><h3 class="font-display font-bold text-2xl mb-4">${title}</h3><p class="font-body text-lg opacity-70">${desc}</p></div>
+                <div class="mt-8 flex items-center gap-2 font-mono text-xs uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">Explore <span class="material-symbols-outlined text-sm">arrow_forward</span></div>
+            </div>
+        `;
+
+        const ArchetypeCard = (num, title, desc, file, icon) => `
+            <div onclick="window.open('archetypes/archetype_pages_v2/${file}.html', '_blank')" class="group border border-surveillance/20 p-8 hover:bg-surveillance hover:text-cream transition-all duration-300 cursor-pointer h-full flex flex-col justify-between relative overflow-hidden bg-white">
                 <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20"><span class="material-symbols-outlined text-6xl">${icon}</span></div>
                 <div><span class="font-mono text-rust text-sm mb-2 block group-hover:text-soft-green">${num}</span><h3 class="font-display font-bold text-2xl mb-4">${title}</h3><p class="font-body text-lg opacity-70">${desc}</p></div>
                 <div class="mt-8 flex items-center gap-2 font-mono text-xs uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">Explore <span class="material-symbols-outlined text-sm">arrow_forward</span></div>
@@ -366,7 +374,17 @@
             const views = {
                 'home': Hero, 'system': SystemView, 'cities': CitiesView, 
                 'machines': MachinesView, 'exits': ExitsView, 'resources': ResourcesView,
-                'casualties': () => Header('04', 'The Casualties', 'Under Construction', 'casualties') + '<div class="p-12 text-center">Coming Soon</div>'
+                'casualties': () => Header('04', 'The Casualties', 'Psychological Archetypes', 'casualties') + `
+                    <section class="py-16 px-6 max-w-6xl mx-auto">
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            ${ArchetypeCard('01', 'The Watchman', 'Vigilant defense against uncertainty', 'watchman', 'visibility')}
+                            ${ArchetypeCard('02', 'The Visible', 'Performance as identity', 'visible', 'person')}
+                            ${ArchetypeCard('03', 'The Faithful', 'Work as calling', 'faithful', 'church')}
+                            ${ArchetypeCard('04', 'The Departed', 'Quiet withdrawal', 'departed', 'person_off')}
+                            ${ArchetypeCard('05', 'The Architect', 'Strategic detachment', 'architect', 'architecture')}
+                        </div>
+                    </section>
+                `
             };
             app.style.opacity = '0';
             setTimeout(() => {
