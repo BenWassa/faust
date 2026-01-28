@@ -69,9 +69,6 @@
                 <button class="hover:text-rust transition-colors" onclick="navigateTo('cities')">The Cities</button>
                 <button class="hover:text-rust transition-colors" onclick="navigateTo('machines')">The Machines</button>
                 <button class="hover:text-rust transition-colors" onclick="navigateTo('exits')">The Exits</button>
-                <button onclick="exportSite()" class="ml-4 px-4 py-2 border border-surveillance text-surveillance hover:bg-surveillance hover:text-cream transition-colors flex items-center gap-2">
-                    <span class="material-symbols-outlined text-sm">download</span> Code
-                </button>
             </div>
             <!-- Mobile Menu Button -->
             <button class="md:hidden text-surveillance" onclick="toggleMobileMenu()">
@@ -84,7 +81,6 @@
             <button class="text-left font-display text-xl hover:text-rust" onclick="navigateTo('cities'); toggleMobileMenu()">02. The Cities</button>
             <button class="text-left font-display text-xl hover:text-rust" onclick="navigateTo('machines'); toggleMobileMenu()">03. The Machines</button>
             <button class="text-left font-display text-xl hover:text-rust" onclick="navigateTo('exits'); toggleMobileMenu()">04. The Exits</button>
-            <button onclick="exportSite()" class="mt-4 px-4 py-3 bg-surveillance text-cream font-mono uppercase w-full text-center">Download Code</button>
         </div>
     </nav>
 
@@ -170,12 +166,7 @@
                     <li><button class="hover:text-white" onclick="navigateTo('exits')">IV. The Exits</button></li>
                 </ul>
             </div>
-            <div>
-                <h5 class="font-mono uppercase text-rust mb-4 text-sm">Actions</h5>
-                <button onclick="exportSite()" class="text-cream/60 hover:text-white flex items-center gap-2 font-mono text-sm">
-                    <span class="material-symbols-outlined text-sm">code</span> Export HTML
-                </button>
-            </div>
+
         </div>
     </footer>
 
@@ -202,19 +193,6 @@
             const menu = document.getElementById('mobile-menu');
             menu.classList.toggle('hidden');
             menu.classList.toggle('flex');
-        }
-
-        function exportSite() {
-            const htmlContent = document.documentElement.outerHTML;
-            const blob = new Blob([htmlContent], { type: 'text/html' });
-            const url = URL.createObjectURL(blob);
-            const a = document.createElement('a');
-            a.href = url;
-            a.download = 'architecture_of_ambition.html';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
         }
 
         /* Views */
