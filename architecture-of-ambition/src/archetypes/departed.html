@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>The Faithful | Archetype Analysis</title>
+    <title>The Departed | Archetype Analysis</title>
 
-    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -17,36 +16,8 @@
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
     />
 
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              cream: "#FDFBF7",
-              surveillance: "#1A202C",
-              rust: "#C05640",
-              "soft-green": "#7A9A84",
-            },
-            fontFamily: {
-              display: ["Syne", "sans-serif"],
-              body: ["Crimson Pro", "serif"],
-              mono: ["JetBrains Mono", "monospace"],
-            },
-            animation: {
-              "fade-in": "fadeIn 1s ease-out forwards",
-              "slide-up": "slideUp 0.8s ease-out forwards",
-            },
-            keyframes: {
-              fadeIn: { "0%": { opacity: "0" }, "100%": { opacity: "1" } },
-              slideUp: {
-                "0%": { transform: "translateY(20px)", opacity: "0" },
-                "100%": { transform: "translateY(0)", opacity: "1" },
-              },
-            },
-          },
-        },
-      };
-    </script>
+        <!-- Local Tailwind CSS build -->
+        <link rel="stylesheet" href="/style.css">
 
     <style>
       body {
@@ -79,7 +50,7 @@
                 ← Return to System
             </a>
             <div class="font-mono text-xs uppercase tracking-widest text-surveillance/50">
-                File: FAI-01
+                File: DEP-04
             </div>
         </div>
     </nav>
@@ -90,17 +61,17 @@
             <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-8">
                 <div>
                     <span class="font-mono text-rust text-sm uppercase tracking-widest mb-4 block animate-fade-in">
-                        Archetype Analysis 01
+                        Archetype Analysis 04
                     </span>
                     <h1 class="font-display font-bold text-6xl md:text-8xl text-surveillance tracking-tighter leading-[0.9] animate-slide-up">
-                        THE<br>FAITHFUL
+                        THE<br>DEPARTED
                     </h1>
                 </div>
                 <div class="max-w-md animate-slide-up" style="animation-delay: 0.2s">
                     <div class="border-l-2 border-rust pl-6 py-1">
                         <p class="font-mono text-xs text-rust uppercase tracking-widest mb-2">Subject Status</p>
                         <p class="font-body text-xl italic text-surveillance/80 leading-relaxed">
-                            "You don't just name your job. You become it."
+                            "You haven't quit your job. You've quit the belief that the job will reward your effort."
                         </p>
                     </div>
                 </div>
@@ -117,16 +88,16 @@
                 <h2 class="font-display font-bold text-3xl text-surveillance">The Pattern Recognition</h2>
                 <div class="prose prose-lg text-surveillance/80 font-body">
                     <p>
-                        When people ask what you do, you answer with a title, not a task. The occupation isn't a role; it's a container for the self. It gives you coherence, a community, and a sense of purpose that nothing else in modern life seems to provide.
+                        You used to care. You optimized your resume. You stayed late. Then something shifted, not dramatically but structurally. You realized the math didn't work.
                     </p>
                     <p>
-                        You are not chasing status for its own sake. You are trying to live inside a structure that feels meaningful. Work is the cathedral. Without it, you would be unplaced.
+                        Now you do exactly what's required and nothing more. People think you're lazy. You're not. You're protecting yourself from a system that proved it doesn't protect you.
                     </p>
                 </div>
                 <div class="bg-surveillance text-cream p-6 mt-8">
                     <span class="font-mono text-rust text-xs uppercase tracking-widest block mb-3">Core Logic</span>
                     <p class="font-display text-2xl leading-tight">
-                        Work is the architecture of meaning. Without it, I am unstructured.
+                        If the system is broken, participation is self-harm.
                     </p>
                 </div>
             </div>
@@ -135,7 +106,7 @@
             <div class="lg:col-span-7">
                 <div class="bg-white border border-surveillance/20 p-8 shadow-sm relative">
                     <div class="absolute top-0 right-0 p-4 opacity-10">
-                        <span class="material-symbols-outlined text-8xl">account_balance</span>
+                        <span class="material-symbols-outlined text-8xl">visibility_off</span>
                     </div>
                     
                     <h3 class="font-mono text-sm uppercase tracking-widest text-surveillance/50 mb-8 border-b border-surveillance/10 pb-2">Behavioral Diagnostics</h3>
@@ -145,31 +116,31 @@
                             <span class="w-6 h-6 border border-rust/40 text-rust flex items-center justify-center mr-4 group-hover:bg-rust group-hover:text-cream transition-colors">
                                 <span class="material-symbols-outlined text-sm">check</span>
                             </span>
-                            <span class="font-mono text-sm text-surveillance/80 uppercase tracking-wide">Introductions lead with title, not role</span>
+                            <span class="font-mono text-sm text-surveillance/80 uppercase tracking-wide">Volunteering for projects ceased</span>
                         </li>
                         <li class="flex items-center group">
                             <span class="w-6 h-6 border border-rust/40 text-rust flex items-center justify-center mr-4 group-hover:bg-rust group-hover:text-cream transition-colors">
                                 <span class="material-symbols-outlined text-sm">check</span>
                             </span>
-                            <span class="font-mono text-sm text-surveillance/80 uppercase tracking-wide">Social life centers on colleagues and projects</span>
+                            <span class="font-mono text-sm text-surveillance/80 uppercase tracking-wide">Notifications muted indefinitely</span>
                         </li>
                         <li class="flex items-center group">
                             <span class="w-6 h-6 border border-rust/40 text-rust flex items-center justify-center mr-4 group-hover:bg-rust group-hover:text-cream transition-colors">
                                 <span class="material-symbols-outlined text-sm">check</span>
                             </span>
-                            <span class="font-mono text-sm text-surveillance/80 uppercase tracking-wide">Performance cycles map directly to self-worth</span>
+                            <span class="font-mono text-sm text-surveillance/80 uppercase tracking-wide">Metrics ignored; only output maintained</span>
                         </li>
                         <li class="flex items-center group">
                             <span class="w-6 h-6 border border-rust/40 text-rust flex items-center justify-center mr-4 group-hover:bg-rust group-hover:text-cream transition-colors">
                                 <span class="material-symbols-outlined text-sm">check</span>
                             </span>
-                            <span class="font-mono text-sm text-surveillance/80 uppercase tracking-wide">Non-work roles quietly atrophy over time</span>
+                            <span class="font-mono text-sm text-surveillance/80 uppercase tracking-wide">Disengagement framed as survival</span>
                         </li>
                     </ul>
 
                     <div class="mt-8 pt-6 border-t border-surveillance/10">
                          <p class="font-body text-sm italic text-surveillance/60">
-                             "It isn't just a job. It's the structure that holds the rest of life together."
+                             "This isn't cynicism. It's the result of watching loyalty get rewarded with layoffs and 2% raises."
                          </p>
                     </div>
                 </div>
@@ -190,21 +161,21 @@
                 
                 <div class="space-y-8">
                     <div>
-                        <h4 class="font-display font-bold text-xl mb-2 text-surveillance">Meaning Architecture</h4>
+                        <h4 class="font-display font-bold text-xl mb-2 text-surveillance">Psychological Protection</h4>
                         <p class="font-body text-lg text-surveillance/70">
-                            Work provides coherence when other institutions do not. It gives a reason to move, build, and measure progress.
-                        </p>
-                    </div>
-                    <div>
-                        <h4 class="font-display font-bold text-xl mb-2 text-surveillance">Belonging Structure</h4>
-                        <p class="font-body text-lg text-surveillance/70">
-                            Colleagues become a stable social system. The workplace offers a durable community in a transient world.
+                            Withdrawal limits exposure to systems designed to measure you as inadequate.
                         </p>
                     </div>
                     <div>
                         <h4 class="font-display font-bold text-xl mb-2 text-surveillance">Moral Clarity</h4>
                         <p class="font-body text-lg text-surveillance/70">
-                            Metrics and standards make life legible. The scoreboard reduces ambiguity and replaces drift with direction.
+                            You stop pretending the meritocracy works. Refusal becomes integrity.
+                        </p>
+                    </div>
+                    <div>
+                        <h4 class="font-display font-bold text-xl mb-2 text-surveillance">Energy Conservation</h4>
+                        <p class="font-body text-lg text-surveillance/70">
+                            Effort is withdrawn from the system and available elsewhere, even if only for rest.
                         </p>
                     </div>
                 </div>
@@ -219,21 +190,21 @@
 
                 <div class="space-y-8 relative z-10">
                     <div>
-                        <h4 class="font-display font-bold text-xl mb-2 text-surveillance">A Cathedral You Don't Own</h4>
+                        <h4 class="font-display font-bold text-xl mb-2 text-surveillance">The Atrophy Problem</h4>
                         <p class="font-body text-lg text-surveillance/70">
-                            The institution can withdraw your place at any time. Your devotion is real, the contract is conditional.
+                            Relief becomes stagnation. The market doesn't pause while you recover.
                         </p>
                     </div>
                     <div>
-                        <h4 class="font-display font-bold text-xl mb-2 text-surveillance">Identity Brittleness</h4>
+                        <h4 class="font-display font-bold text-xl mb-2 text-surveillance">The Meaning Void</h4>
                         <p class="font-body text-lg text-surveillance/70">
-                            When one role holds the entire self, any disruption becomes collapse rather than change.
+                            Absence of exploitation doesn't automatically produce presence of meaning.
                         </p>
                     </div>
                     <div>
-                        <h4 class="font-display font-bold text-xl mb-2 text-surveillance">Merit as Moral Test</h4>
+                        <h4 class="font-display font-bold text-xl mb-2 text-surveillance">The Bitterness Trap</h4>
                         <p class="font-body text-lg text-surveillance/70">
-                            Performance becomes goodness. Setbacks feel like personal failure, not situational variance.
+                            Withdrawal can corrode into contempt for anyone who still tries.
                         </p>
                     </div>
                 </div>
@@ -248,27 +219,27 @@
     <section class="max-w-4xl mx-auto px-6 py-24 text-center">
         <span class="font-mono text-rust text-xs uppercase tracking-widest mb-4 block">Structural Analysis</span>
         <h2 class="font-display font-bold text-4xl md:text-5xl text-surveillance mb-8">
-            You built a cathedral<br>that can evict you.
+            You are in a temporary shelter<br>mistaken for a destination.
         </h2>
         <p class="font-body text-xl text-surveillance/70 max-w-2xl mx-auto leading-relaxed">
-            The structure gives meaning, but it is not yours. The more of yourself you place inside it, the less of yourself survives outside it. Devotion becomes exposure.
+            You think you've opted out, but you cannot leave your job, you cannot move, and you have stopped building the skills to pivot. That's not freedom. That's managed captivity.
         </p>
 
         <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 text-left">
             <div class="border border-surveillance/10 p-6 bg-white hover:border-rust transition-colors duration-300">
                 <p class="font-mono text-xs text-surveillance/50 uppercase mb-2">Symptom 01</p>
-                <h3 class="font-display font-bold text-lg text-surveillance">Collapse on Disruption</h3>
-                <p class="font-body text-sm text-surveillance/70 mt-2">Layoffs or plateaus trigger identity freefall.</p>
+                <h3 class="font-display font-bold text-lg text-surveillance">Learned Helplessness</h3>
+                <p class="font-body text-sm text-surveillance/70 mt-2">Belief that effort doesn't matter becomes internalized.</p>
             </div>
             <div class="border border-surveillance/10 p-6 bg-white hover:border-rust transition-colors duration-300">
                 <p class="font-mono text-xs text-surveillance/50 uppercase mb-2">Symptom 02</p>
-                <h3 class="font-display font-bold text-lg text-surveillance">Fear of Ordinariness</h3>
-                <p class="font-body text-sm text-surveillance/70 mt-2">Anything outside work feels like erosion, not relief.</p>
+                <h3 class="font-display font-bold text-lg text-surveillance">Identity Erosion</h3>
+                <p class="font-body text-sm text-surveillance/70 mt-2">"I used to be someone who..." becomes the main narrative.</p>
             </div>
             <div class="border border-surveillance/10 p-6 bg-white hover:border-rust transition-colors duration-300">
                 <p class="font-mono text-xs text-surveillance/50 uppercase mb-2">Symptom 03</p>
-                <h3 class="font-display font-bold text-lg text-surveillance">Role Monoculture</h3>
-                <p class="font-body text-sm text-surveillance/70 mt-2">Other identities remain underbuilt and untested.</p>
+                <h3 class="font-display font-bold text-lg text-surveillance">Anhedonia</h3>
+                <p class="font-body text-sm text-surveillance/70 mt-2">Motivation fades even for things that matter.</p>
             </div>
         </div>
     </section>
@@ -282,21 +253,21 @@
         <div class="max-w-3xl mx-auto relative z-10">
             <div class="flex items-baseline justify-between border-b border-cream/20 pb-4 mb-12">
                 <h2 class="font-mono text-xl uppercase tracking-widest text-rust">Self-Interrogation Protocol</h2>
-                <span class="font-mono text-xs text-cream/50">REF: DEVOTION</span>
+                <span class="font-mono text-xs text-cream/50">REF: WITHDRAWAL</span>
             </div>
 
             <div class="space-y-10">
                 <div class="group border-b border-cream/10 pb-6">
-                    <p class="font-display text-2xl text-cream/90 group-hover:text-white transition-colors">1. What is sacred about this work, specifically?</p>
+                    <p class="font-display text-2xl text-cream/90 group-hover:text-white transition-colors">1. What are you protecting, specifically?</p>
                 </div>
                 <div class="group border-b border-cream/10 pb-6">
-                    <p class="font-display text-2xl text-cream/90 group-hover:text-white transition-colors">2. Who are you when no one is measuring?</p>
+                    <p class="font-display text-2xl text-cream/90 group-hover:text-white transition-colors">2. Is this a recovery position or a permanent position?</p>
                 </div>
                 <div class="group border-b border-cream/10 pb-6">
-                    <p class="font-display text-2xl text-cream/90 group-hover:text-white transition-colors">3. Would you still do this if it were invisible?</p>
+                    <p class="font-display text-2xl text-cream/90 group-hover:text-white transition-colors">3. What are you building while you are withdrawn?</p>
                 </div>
                 <div class="group">
-                    <p class="font-display text-2xl text-cream/90 group-hover:text-white transition-colors">4. Which relationships have thinned while the work expanded?</p>
+                    <p class="font-display text-2xl text-cream/90 group-hover:text-white transition-colors">4. What would re-engagement require in concrete terms?</p>
                 </div>
             </div>
         </div>
@@ -306,23 +277,23 @@
     <section class="max-w-6xl mx-auto px-6 py-24">
         <div class="text-center mb-16">
             <h2 class="font-display font-bold text-4xl text-surveillance">Typical Transitions</h2>
-            <p class="font-body text-xl text-surveillance/60 mt-4">Devotion holds until the structure stops holding you.</p>
+            <p class="font-body text-xl text-surveillance/60 mt-4">The Departed either finds a way forward or calcifies.</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <div class="group relative bg-white border border-surveillance/10 hover:border-rust hover:-translate-y-1 transition-all duration-300 p-6">
                 <div class="absolute top-4 right-4 text-rust opacity-50 font-mono text-xs">01</div>
-                <h3 class="font-display font-bold text-lg text-surveillance mb-3 group-hover:text-rust">Betrayal Event</h3>
-                <p class="font-body text-sm text-surveillance/70">Layoff or cancellation fractures trust and removes the altar.</p>
+                <h3 class="font-display font-bold text-lg text-surveillance mb-3 group-hover:text-rust">Forced Re-Engagement</h3>
+                <p class="font-body text-sm text-surveillance/70">External pressure forces a return before recovery is complete.</p>
                 <div class="mt-4 pt-4 border-t border-surveillance/10">
-                    <span class="font-mono text-xs text-surveillance/50">Result: The Departed</span>
+                    <span class="font-mono text-xs text-surveillance/50">Result: The Watchman</span>
                 </div>
             </div>
 
             <div class="group relative bg-white border border-surveillance/10 hover:border-rust hover:-translate-y-1 transition-all duration-300 p-6">
                 <div class="absolute top-4 right-4 text-soft-green opacity-100 font-mono text-xs">02</div>
-                <h3 class="font-display font-bold text-lg text-surveillance mb-3 group-hover:text-soft-green">Rebuilt Meaning</h3>
-                <p class="font-body text-sm text-surveillance/70">Purpose shifts into multiple domains, not just the job.</p>
+                <h3 class="font-display font-bold text-lg text-surveillance mb-3 group-hover:text-soft-green">Gradual Rebuild</h3>
+                <p class="font-body text-sm text-surveillance/70">Small projects rebuild agency outside the broken system.</p>
                 <div class="mt-4 pt-4 border-t border-surveillance/10">
                     <span class="font-mono text-xs text-surveillance/50">Result: The Architect</span>
                 </div>
@@ -330,19 +301,19 @@
 
             <div class="group relative bg-white border border-surveillance/10 hover:border-rust hover:-translate-y-1 transition-all duration-300 p-6">
                 <div class="absolute top-4 right-4 text-rust opacity-50 font-mono text-xs">03</div>
-                <h3 class="font-display font-bold text-lg text-surveillance mb-3 group-hover:text-rust">Signal Dependence</h3>
-                <p class="font-body text-sm text-surveillance/70">Recognition becomes the new proof of worth.</p>
+                <h3 class="font-display font-bold text-lg text-surveillance mb-3 group-hover:text-rust">Radicalization</h3>
+                <p class="font-body text-sm text-surveillance/70">Withdrawal turns into refusal and organizing energy.</p>
                 <div class="mt-4 pt-4 border-t border-surveillance/10">
-                    <span class="font-mono text-xs text-surveillance/50">Result: The Visible</span>
+                    <span class="font-mono text-xs text-surveillance/50">Result: Collective Action</span>
                 </div>
             </div>
 
             <div class="group relative bg-surveillance border border-surveillance hover:border-rust hover:-translate-y-1 transition-all duration-300 p-6">
                 <div class="absolute top-4 right-4 text-cream opacity-50 font-mono text-xs">04</div>
-                <h3 class="font-display font-bold text-lg text-cream mb-3">Escalated Vigilance</h3>
-                <p class="font-body text-sm text-cream/70">Fear of loss turns devotion into constant defense.</p>
+                <h3 class="font-display font-bold text-lg text-cream mb-3">Calcification</h3>
+                <p class="font-body text-sm text-cream/70">The shelter becomes the prison. Movement stops.</p>
                 <div class="mt-4 pt-4 border-t border-cream/20">
-                    <span class="font-mono text-xs text-cream/50">Result: The Watchman</span>
+                    <span class="font-mono text-xs text-cream/50">Result: Permanent Stasis</span>
                 </div>
             </div>
 
@@ -355,13 +326,13 @@
             <div>
                 <h4 class="font-mono text-rust text-sm uppercase tracking-widest mb-6">Closing Provocation</h4>
                 <p class="font-display text-2xl md:text-3xl leading-tight mb-6">
-                    If the cathedral closed tomorrow, what part of you would remain standing?
+                    "The wound isn't what's keeping you withdrawn anymore. It's the fear of re-injury."
                 </p>
                 <p class="font-body text-cream/60 max-w-md mb-6">
-                    Devotion is powerful. It is not the same as ownership.
+                    Protection can become a horizon. The system has already taught you that lesson.
                 </p>
-                <a href="departed.html" class="font-mono text-xs uppercase tracking-widest text-rust hover:text-cream transition-colors">
-                    Next File: The Departed →
+                <a href="architect.html" class="font-mono text-xs uppercase tracking-widest text-rust hover:text-cream transition-colors">
+                    Next File: The Architect →
                 </a>
             </div>
             
@@ -370,14 +341,14 @@
                 <ul class="space-y-6">
                     <li>
                         <a href="#" class="group block">
-                            <span class="font-display font-bold text-lg group-hover:text-rust transition-colors">The Protestant Ethic</span>
-                            <span class="block font-body text-cream/50 text-sm">Max Weber  -  on work as moral structure.</span>
+                            <span class="font-display font-bold text-lg group-hover:text-rust transition-colors">Capitalist Realism</span>
+                            <span class="block font-body text-cream/50 text-sm">Mark Fisher  -  on the exhaustion of alternatives.</span>
                         </a>
                     </li>
                     <li>
                         <a href="#" class="group block">
-                            <span class="font-display font-bold text-lg group-hover:text-rust transition-colors">Bullshit Jobs</span>
-                            <span class="block font-body text-cream/50 text-sm">David Graeber  -  on meaning and modern labor.</span>
+                            <span class="font-display font-bold text-lg group-hover:text-rust transition-colors">The Burnout Society</span>
+                            <span class="block font-body text-cream/50 text-sm">Byung-Chul Han  -  on withdrawal as structural response.</span>
                         </a>
                     </li>
                 </ul>
