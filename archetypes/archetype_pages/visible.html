@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Visible | Archetype Analysis</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Importing Syne (Display), Crimson Pro (Body), JetBrains Mono (Technical) -->
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,400&family=JetBrains+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        cream: "#FDFBF7",
+                        surveillance: "#1A202C",
+                        rust: "#C05640",
+                        "soft-green": "#7A9A84",
+                    },
+                    fontFamily: {
+                        display: ["Syne", "sans-serif"],
+                        body: ["Crimson Pro", "serif"],
+                        mono: ["JetBrains Mono", "monospace"],
+                    },
+                    animation: {
+                        "fade-in": "fadeIn 1s ease-out forwards",
+                        "slide-up": "slideUp 0.8s ease-out forwards",
+                    },
+                    keyframes: {
+                        fadeIn: { "0%": { opacity: "0" }, "100%": { opacity: "1" } },
+                        slideUp: {
+                            "0%": { transform: "translateY(20px)", opacity: "0" },
+                            "100%": { transform: "translateY(0)", opacity: "1" },
+                        },
+                    },
+                },
+            },
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #FDFBF7;
+            color: #1A202C;
+            overflow-x: hidden;
+        }
+
+        /* Blueprint grid pattern */
+        .bg-blueprint {
+            background-image: linear-gradient(#E2E8F0 1px, transparent 1px),
+                              linear-gradient(90deg, #E2E8F0 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+
+        /* Image treatment for documentation style */
+        .img-blueprint {
+            filter: grayscale(100%) contrast(120%) brightness(0.9);
+            transition: filter 0.5s ease;
+        }
+        .img-blueprint:hover {
+            filter: grayscale(0%) contrast(100%) brightness(100%);
+        }
+
+        /* Custom progress bar */
+        #progress-bar {
+            width: 0%;
+            transition: width 0.1s linear;
+        }
+
+        /* Drop cap for essays */
+        .drop-cap::first-letter {
+            float: left;
+            font-family: 'Syne', sans-serif;
+            font-weight: 700;
+            font-size: 3.5rem;
+            line-height: 0.8;
+            margin-right: 0.75rem;
+            margin-top: 0.25rem;
+            color: #C05640; /* Rust */
+        }
+    </style>
+</head>
+<body class="font-body selection:bg-rust selection:text-white antialiased bg-cream">
+
+    <!-- NAVIGATION (Fixed Header) -->
+    <nav class="fixed top-0 left-0 w-full z-50 bg-cream/95 backdrop-blur-sm border-b border-surveillance/10">
+        <div id="progress-bar" class="h-1 bg-rust absolute top-0 left-0"></div>
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <span class="font-mono text-xs uppercase tracking-widest text-rust">
+                    Figure 04
+                </span>
+                <span class="h-4 w-px bg-surveillance/20"></span>
+                <span class="font-mono text-sm uppercase tracking-widest text-surveillance/70">
+                    The Visible
+                </span>
+            </div>
+            <div class="hidden md:flex gap-8 font-mono text-xs uppercase tracking-widest text-surveillance/50">
+                <span>Status: Active</span>
+                <span>Clearance: Public</span>
+                <span>Ref: ARC-04</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="min-h-screen flex flex-col justify-center bg-blueprint relative pt-20 border-b border-surveillance/10">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-cream/80 pointer-events-none"></div>
+        
+        <div class="max-w-5xl mx-auto px-6 relative z-10 w-full">
+            <div class="inline-block border border-rust px-3 py-1 mb-8 animate-fade-in">
+                <span class="font-mono text-rust text-xs uppercase tracking-widest">
+                    Social Architecture Analysis
+                </span>
+            </div>
+            
+            <h1 class="font-display font-bold text-6xl md:text-8xl lg:text-9xl text-surveillance mb-8 leading-[0.9] tracking-tighter animate-slide-up">
+                THE<br>VISIBLE
+            </h1>
+            
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-12 mt-12 animate-slide-up" style="animation-delay: 200ms;">
+                <div class="md:col-span-4 border-t border-rust pt-4">
+                    <span class="font-mono text-xs uppercase tracking-widest text-surveillance/60 block mb-2">Core Logic</span>
+                    <p class="font-body text-lg italic text-surveillance">
+                        "If I'm not visible, I don't exist professionally. And if I don't exist professionally, I don't exist."
+                    </p>
+                </div>
+                <div class="md:col-span-8">
+                    <p class="font-body text-2xl md:text-3xl text-surveillance/80 leading-snug">
+                        You're not building a career. You're building a broadcast. And the signal has to stay strong, because the moment you go dark, you're not sure anyone would notice you exist.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="absolute bottom-12 w-full text-center animate-fade-in" style="animation-delay: 500ms;">
+            <span class="font-mono text-xs text-surveillance/40 uppercase tracking-widest">Scroll to Inspect Dossier</span>
+            <div class="w-px h-12 bg-rust mx-auto mt-4"></div>
+        </div>
+    </header>
+
+    <main>
+        <!-- CHAPTER 1: RECOGNITION (Reading Article) -->
+        <section class="max-w-3xl mx-auto px-6 py-24">
+            <span class="font-mono text-rust text-sm uppercase tracking-widest mb-6 block">01 — Recognition</span>
+            <h2 class="font-display font-bold text-4xl md:text-5xl text-surveillance mb-12">
+                Strategic Vulnerability
+            </h2>
+            
+            <div class="prose prose-lg font-body text-surveillance/80">
+                <p class="drop-cap text-xl leading-relaxed mb-8">
+                    Your LinkedIn profile is better than your resume. Your Instagram story is better than your day. You know which accomplishments get engagement. You know which struggles get sympathy. You know the exact tone for "authentic vulnerability" that converts to social capital without making you seem weak.
+                </p>
+                
+                <p class="text-xl leading-relaxed mb-8">
+                    You update your status when you get promoted, when you launch something, when you hit a milestone—but you frame it carefully. Humble enough to avoid resentment, ambitious enough to signal trajectory. You've learned: <strong>visibility is the price of relevance.</strong>
+                </p>
+
+                <div class="pl-8 border-l-4 border-rust my-12 py-2">
+                    <p class="font-display font-bold text-2xl text-surveillance mb-2">
+                        "You're not fake. You're strategic. There's a difference."
+                    </p>
+                    <span class="font-mono text-xs uppercase tracking-widest text-rust">
+                        Internal Monologue // Fig. 1.2
+                    </span>
+                </div>
+
+                <p class="text-xl leading-relaxed">
+                    Your friends think you're doing great. Your followers definitely do. You might be, but honestly, you've been performing so long you're not entirely sure what "doing great" would feel like if no one was watching.
+                </p>
+            </div>
+        </section>
+
+        <!-- DIAGNOSTIC: THE CORE LOGIC (Dark Panel) -->
+        <section class="bg-surveillance text-cream py-24">
+            <div class="max-w-5xl mx-auto px-6">
+                <div class="flex flex-col md:flex-row gap-12">
+                    <div class="md:w-1/3">
+                        <span class="font-mono text-rust text-sm uppercase tracking-widest mb-4 block">
+                            Diagnostic 02
+                        </span>
+                        <h3 class="font-display font-bold text-4xl mb-6">The Attention Economy</h3>
+                        <p class="font-body text-lg text-cream/70">
+                            This is not vanity. This is survival. The Visible understands what others misread as narcissism.
+                        </p>
+                    </div>
+                    
+                    <div class="md:w-2/3 border-t border-rust/30 pt-8 md:pt-0 md:border-t-0 md:border-l md:pl-12">
+                        <ul class="space-y-8">
+                            <li class="group">
+                                <span class="font-mono text-xs text-rust uppercase tracking-widest mb-2 block group-hover:text-soft-green transition-colors">Risk Factor A</span>
+                                <p class="font-body text-xl">They get skipped for opportunities because "I haven't seen what they're working on lately."</p>
+                            </li>
+                            <li class="group">
+                                <span class="font-mono text-xs text-rust uppercase tracking-widest mb-2 block group-hover:text-soft-green transition-colors">Risk Factor B</span>
+                                <p class="font-body text-xl">They lose relevance in industries where networks equal currency.</p>
+                            </li>
+                            <li class="group">
+                                <span class="font-mono text-xs text-rust uppercase tracking-widest mb-2 block group-hover:text-soft-green transition-colors">Risk Factor C</span>
+                                <p class="font-body text-xl">They get forgotten—literally—because the algorithm prioritizes recency over quality.</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CHAPTER 3: WHAT IT SOLVES (Index Cards Grid) -->
+        <section class="py-24 bg-blueprint">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="mb-16 border-b border-surveillance/10 pb-8">
+                    <span class="font-mono text-rust text-sm uppercase tracking-widest mb-2 block">03 — Utility Analysis</span>
+                    <h2 class="font-display font-bold text-4xl text-surveillance">The Structural Function</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <!-- Card 1 -->
+                    <div class="bg-white border border-surveillance/20 p-8 group hover:bg-surveillance hover:text-cream transition-all duration-300 cursor-default">
+                        <div class="flex justify-between items-start mb-12">
+                            <span class="font-mono text-rust group-hover:text-soft-green transition-colors">01</span>
+                            <span class="material-symbols-outlined text-4xl opacity-10 group-hover:opacity-20">visibility</span>
+                        </div>
+                        <h3 class="font-display font-bold text-2xl mb-4">Algorithmic Visibility</h3>
+                        <p class="font-body text-lg opacity-80">
+                            Post regularly or disappear. You didn't design the game. You're just playing it competently.
+                        </p>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="bg-white border border-surveillance/20 p-8 group hover:bg-surveillance hover:text-cream transition-all duration-300 cursor-default">
+                        <div class="flex justify-between items-start mb-12">
+                            <span class="font-mono text-rust group-hover:text-soft-green transition-colors">02</span>
+                            <span class="material-symbols-outlined text-4xl opacity-10 group-hover:opacity-20">inventory_2</span>
+                        </div>
+                        <h3 class="font-display font-bold text-2xl mb-4">Market Legibility</h3>
+                        <p class="font-body text-lg opacity-80">
+                            Competence without visibility is unemployment. The market doesn't reward "the best." It rewards "the best people know about."
+                        </p>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="bg-white border border-surveillance/20 p-8 group hover:bg-surveillance hover:text-cream transition-all duration-300 cursor-default">
+                        <div class="flex justify-between items-start mb-12">
+                            <span class="font-mono text-rust group-hover:text-soft-green transition-colors">03</span>
+                            <span class="material-symbols-outlined text-4xl opacity-10 group-hover:opacity-20">stairs</span>
+                        </div>
+                        <h3 class="font-display font-bold text-2xl mb-4">Status Positioning</h3>
+                        <p class="font-body text-lg opacity-80">
+                            Every post is a micro-signal. Where you are, who you're with. This isn't status anxiety; it's status management.
+                        </p>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="bg-white border border-surveillance/20 p-8 group hover:bg-surveillance hover:text-cream transition-all duration-300 cursor-default">
+                        <div class="flex justify-between items-start mb-12">
+                            <span class="font-mono text-rust group-hover:text-soft-green transition-colors">04</span>
+                            <span class="material-symbols-outlined text-4xl opacity-10 group-hover:opacity-20">groups</span>
+                        </div>
+                        <h3 class="font-display font-bold text-2xl mb-4">The Community Illusion</h3>
+                        <p class="font-body text-lg opacity-80">
+                            The performance isn't replacing relationships. It's medicating their absence. Something feels better than silence.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CHAPTER 4: HIDDEN COSTS (Article with Sidebar) -->
+        <section class="max-w-5xl mx-auto px-6 py-24">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
+                
+                <!-- Main Content -->
+                <div class="lg:col-span-8">
+                    <span class="font-mono text-rust text-sm uppercase tracking-widest mb-6 block">04 — System Failures</span>
+                    <h2 class="font-display font-bold text-4xl text-surveillance mb-12">The Dissociation Tax</h2>
+                    
+                    <div class="prose prose-lg font-body text-surveillance/80">
+                        <p class="mb-8">
+                            When was the last time you did something just for yourself? Not "self-care" that you photographed. Not "downtime" you mentioned in a post. Something actually private. If the answer is "I'm not sure," you've stopped having experiences. You're having content opportunities.
+                        </p>
+                        
+                        <h4 class="font-display font-bold text-2xl text-surveillance mt-12 mb-4">Self-Objectification</h4>
+                        <p class="mb-8">
+                            Even in the moment, part of you is standing outside, watching, evaluating: "Is this post-worthy?" "How should I frame this?" You've lost access to the interior. The part that feels instead of performs.
+                        </p>
+
+                        <h4 class="font-display font-bold text-2xl text-surveillance mt-12 mb-4">The Authenticity Paradox</h4>
+                        <p class="mb-8">
+                            You're being "real." But strategically real. You share the struggle only after the win. You share the doubt only when it's relatable, never weak. You're training yourself to only feel feelings that can be monetized for engagement.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Sidebar Diagnostic -->
+                <div class="lg:col-span-4 space-y-8">
+                    <div class="bg-cream border border-surveillance/10 p-6 sticky top-24">
+                        <span class="font-mono text-xs uppercase tracking-widest text-surveillance/50 block mb-4 border-b border-surveillance/10 pb-2">
+                            Maintenance Cost Analysis
+                        </span>
+                        <ul class="space-y-4 font-mono text-xs text-surveillance/80">
+                            <li class="flex justify-between">
+                                <span>GENERATE CONTENT</span>
+                                <span class="text-rust">WEEKLY</span>
+                            </li>
+                            <li class="flex justify-between">
+                                <span>MAINTAIN NARRATIVE</span>
+                                <span class="text-rust">DAILY</span>
+                            </li>
+                            <li class="flex justify-between">
+                                <span>PLATFORM NORMS</span>
+                                <span class="text-rust">CONSTANT</span>
+                            </li>
+                            <li class="flex justify-between">
+                                <span>SELF-WORTH</span>
+                                <span class="text-rust">VOLATILE</span>
+                            </li>
+                        </ul>
+                        <div class="mt-8 pt-4 border-t border-surveillance/10">
+                            <p class="font-body text-sm italic text-surveillance/60">
+                                "This isn't a job. It's a second job you're not paid for. And you can't quit."
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CHAPTER 5: INTERROGATION (Forms/Interactive feel) -->
+        <section class="bg-surveillance text-cream py-24">
+            <div class="max-w-4xl mx-auto px-6">
+                <span class="font-mono text-rust text-sm uppercase tracking-widest mb-8 block text-center">
+                    05 — Interrogation Protocol
+                </span>
+                <h2 class="font-display font-bold text-4xl md:text-5xl text-center mb-16">
+                    The Confrontation
+                </h2>
+
+                <div class="space-y-2">
+                    <!-- Question 1 -->
+                    <div class="group border border-cream/10 hover:border-rust transition-colors p-8 bg-surveillance">
+                        <h3 class="font-mono text-rust text-xs uppercase tracking-widest mb-2">Query 001</h3>
+                        <p class="font-display text-2xl mb-4">What would you do if it couldn't be posted?</p>
+                        <p class="font-body text-cream/60 h-0 overflow-hidden group-hover:h-auto group-hover:mt-4 transition-all duration-300">
+                            Name something you'd do for its own sake. If you can't name anything, you've become your own surveillance system.
+                        </p>
+                    </div>
+
+                    <!-- Question 2 -->
+                    <div class="group border border-cream/10 hover:border-rust transition-colors p-8 bg-surveillance">
+                        <h3 class="font-mono text-rust text-xs uppercase tracking-widest mb-2">Query 002</h3>
+                        <p class="font-display text-2xl mb-4">Who knows the real you?</p>
+                        <p class="font-body text-cream/60 h-0 overflow-hidden group-hover:h-auto group-hover:mt-4 transition-all duration-300">
+                            Not the curated you. The you that's confused, petty, boring. If the answer is "no one," you've replaced personhood with performance.
+                        </p>
+                    </div>
+
+                    <!-- Question 3 -->
+                    <div class="group border border-cream/10 hover:border-rust transition-colors p-8 bg-surveillance">
+                        <h3 class="font-mono text-rust text-xs uppercase tracking-widest mb-2">Query 003</h3>
+                        <p class="font-display text-2xl mb-4">Could you go dark for a month?</p>
+                        <p class="font-body text-cream/60 h-0 overflow-hidden group-hover:h-auto group-hover:mt-4 transition-all duration-300">
+                            Not a "digital detox" for content. Actually dark. If the thought creates panic, visibility is managing you.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CHAPTER 6: NEEDS & EXITS (Blueprint Layout) -->
+        <section class="bg-blueprint py-24 border-t border-surveillance/10">
+            <div class="max-w-6xl mx-auto px-6">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+                    <!-- Needs -->
+                    <div>
+                        <span class="font-mono text-rust text-sm uppercase tracking-widest mb-6 block">Requirements</span>
+                        <h3 class="font-display font-bold text-3xl text-surveillance mb-8">What This Archetype Needs</h3>
+                        <ul class="space-y-6">
+                            <li class="flex items-start">
+                                <span class="text-rust mr-4 mt-1 font-mono">01</span>
+                                <div>
+                                    <strong class="block font-display text-lg">Permission to Be Unseen</strong>
+                                    <p class="font-body text-surveillance/70">Do something you're bad at and tell no one. Privacy isn't hiding. It's dignity.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-rust mr-4 mt-1 font-mono">02</span>
+                                <div>
+                                    <strong class="block font-display text-lg">Real Relationships</strong>
+                                    <p class="font-body text-surveillance/70">Friendship requires vulnerability that doesn't perform well. You need spaces where you're not "on."</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-rust mr-4 mt-1 font-mono">03</span>
+                                <div>
+                                    <strong class="block font-display text-lg">The Courage to Be Boring</strong>
+                                    <p class="font-body text-surveillance/70">The curated life is the highlights without the substance. Embrace the ordinary.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Transitions -->
+                    <div>
+                        <span class="font-mono text-rust text-sm uppercase tracking-widest mb-6 block">Transitions</span>
+                        <h3 class="font-display font-bold text-3xl text-surveillance mb-8">Typical Exits</h3>
+                        
+                        <div class="space-y-4">
+                            <div class="bg-white border border-surveillance/20 p-6">
+                                <span class="font-mono text-xs text-surveillance/40 mb-2 block">Scenario A</span>
+                                <h4 class="font-display font-bold text-xl mb-2">The Algorithm Betrays You</h4>
+                                <p class="font-body text-sm text-surveillance/70">The god you served abandons you. You withdraw in exhaustion.</p>
+                                <div class="mt-4 pt-4 border-t border-surveillance/10 flex justify-between items-center">
+                                    <span class="font-mono text-xs">→ To: The Departed</span>
+                                </div>
+                            </div>
+                            
+                            <div class="bg-white border border-surveillance/20 p-6">
+                                <span class="font-mono text-xs text-surveillance/40 mb-2 block">Scenario B</span>
+                                <h4 class="font-display font-bold text-xl mb-2">Burnout Collapse</h4>
+                                <p class="font-body text-sm text-surveillance/70">The curation becomes unbearable. You go dark to recover identity.</p>
+                                <div class="mt-4 pt-4 border-t border-surveillance/10 flex justify-between items-center">
+                                    <span class="font-mono text-xs">→ To: The Architect</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONCLUSION (Centered Text) -->
+        <section class="py-32 px-6 max-w-3xl mx-auto text-center">
+            <div class="w-12 h-1 bg-rust mx-auto mb-12"></div>
+            <h2 class="font-display font-bold text-4xl md:text-5xl text-surveillance mb-8">
+                The Prison of Mirrors
+            </h2>
+            <p class="font-body text-xl md:text-2xl text-surveillance/80 leading-relaxed mb-12">
+                The performance will never satisfy the need it's medicating. Because you're not craving visibility. You're craving to be known. And you can't be known by strangers who only see your highlight reel.
+            </p>
+            <a href="#" class="inline-block border border-rust text-rust px-8 py-4 font-mono text-sm uppercase tracking-widest hover:bg-rust hover:text-white transition-all duration-300">
+                Begin Deconstruction
+            </a>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-surveillance text-cream pt-24 pb-12 border-t border-rust/30">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                <div class="md:col-span-2">
+                    <h3 class="font-display font-bold text-3xl mb-4">Architecture of Ambition</h3>
+                    <p class="font-body text-cream/60 max-w-md">
+                        A digital research initiative mapping the structural deformities of modern professional identity.
+                    </p>
+                </div>
+                <div>
+                    <span class="font-mono text-rust text-xs uppercase tracking-widest mb-4 block">Index</span>
+                    <ul class="space-y-2 font-mono text-sm text-cream/60">
+                        <li><a href="#" class="hover:text-cream transition-colors">01. The Architect</a></li>
+                        <li><a href="#" class="hover:text-cream transition-colors">02. The Machine</a></li>
+                        <li><a href="#" class="hover:text-cream transition-colors">03. The Ghost</a></li>
+                        <li><span class="text-rust">04. The Visible</span></li>
+                    </ul>
+                </div>
+                <div>
+                    <span class="font-mono text-rust text-xs uppercase tracking-widest mb-4 block">Data</span>
+                    <ul class="space-y-2 font-mono text-sm text-cream/60">
+                        <li><a href="#" class="hover:text-cream transition-colors">Methodology</a></li>
+                        <li><a href="#" class="hover:text-cream transition-colors">Field Notes</a></li>
+                        <li><a href="#" class="hover:text-cream transition-colors">Diagnostics</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-cream/10 pt-8 flex justify-between items-center font-mono text-xs text-cream/40 uppercase tracking-widest">
+                <span>© 2024 Research Division</span>
+                <span>System Status: Stable</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Scroll Progress Bar Logic
+        window.addEventListener('scroll', () => {
+            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (scrollTop / scrollHeight) * 100;
+            document.getElementById('progress-bar').style.width = scrolled + "%";
+        });
+    </script>
+</body>
+</html>

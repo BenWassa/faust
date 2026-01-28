@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Architect | Architecture of Ambition</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              cream: "#FDFBF7",
+              surveillance: "#1A202C",
+              rust: "#C05640",
+              "soft-green": "#7A9A84",
+            },
+            fontFamily: {
+              display: ["Syne", "sans-serif"],
+              body: ["Crimson Pro", "serif"],
+              mono: ["JetBrains Mono", "monospace"],
+            },
+            animation: {
+              "fade-in": "fadeIn 1s ease-out forwards",
+              "slide-up": "slideUp 0.8s ease-out forwards",
+            },
+            keyframes: {
+              fadeIn: { "0%": { opacity: "0" }, "100%": { opacity: "1" } },
+              slideUp: {
+                "0%": { transform: "translateY(20px)", opacity: "0" },
+                "100%": { transform: "translateY(0)", opacity: "1" },
+              },
+            },
+          },
+        },
+      };
+    </script>
+
+    <style>
+      body {
+        background-color: #fdfbf7;
+        color: #1a202c;
+        overflow-x: hidden;
+      }
+      /* Blueprint Grid Pattern */
+      .bg-blueprint {
+        background-image: linear-gradient(#e2e8f0 1px, transparent 1px),
+          linear-gradient(90deg, #e2e8f0 1px, transparent 1px);
+        background-size: 40px 40px;
+      }
+      
+      /* Progress bar animation */
+      #progress-bar {
+        width: 0%;
+        transition: width 0.1s;
+      }
+
+      /* Custom selection style */
+      ::selection {
+        background-color: #C05640; /* rust */
+        color: #FDFBF7; /* cream */
+      }
+    </style>
+  </head>
+
+  <body class="font-body antialiased relative selection:bg-rust selection:text-white">
+    
+    <!-- FIXED NAV -->
+    <nav class="fixed top-0 w-full z-50 bg-cream/95 backdrop-blur-sm border-b border-surveillance/10">
+      <div id="progress-container" class="absolute top-0 left-0 w-full h-1 bg-surveillance/5">
+        <div id="progress-bar" class="h-full bg-rust"></div>
+      </div>
+      <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+        <div class="flex items-center gap-4">
+          <span class="font-display font-bold text-lg tracking-tight uppercase">Architecture of Ambition</span>
+          <span class="hidden md:inline-block h-4 w-px bg-surveillance/20"></span>
+          <span class="hidden md:inline-block font-mono text-xs uppercase tracking-widest text-surveillance/60">Dossier #05: The Architect</span>
+        </div>
+        <div class="flex items-center gap-6">
+          <a href="#" class="font-mono text-xs uppercase tracking-widest text-surveillance/70 hover:text-rust transition-colors">Index</a>
+          <a href="#" class="font-mono text-xs uppercase tracking-widest text-surveillance/70 hover:text-rust transition-colors">About</a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="bg-blueprint pt-32 pb-24 px-6 border-b border-surveillance/10 relative overflow-hidden min-h-[70vh] flex flex-col justify-center">
+      <div class="max-w-7xl mx-auto relative z-10 w-full">
+        <div class="mb-6 animate-fade-in">
+          <span class="inline-block border border-rust text-rust px-3 py-1 font-mono text-xs uppercase tracking-[0.2em]">
+            Archetype 05
+          </span>
+        </div>
+        
+        <h1 class="font-display font-bold text-6xl md:text-8xl text-surveillance mb-8 leading-[0.9] tracking-tighter max-w-4xl animate-slide-up">
+          THE ARCHITECT
+        </h1>
+        
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-12 animate-slide-up" style="animation-delay: 0.2s;">
+          <div class="md:col-span-8">
+            <p class="font-body text-2xl md:text-3xl text-surveillance/80 leading-snug">
+              Recognition: You've done the work the others haven't. You've diversified your life. But you're exhausted from holding the structure together.
+            </p>
+          </div>
+          <div class="md:col-span-4 border-l border-surveillance/20 pl-6 flex flex-col justify-end">
+            <div class="font-mono text-xs uppercase tracking-widest text-surveillance/50 mb-2">Current Status</div>
+            <div class="font-display font-bold text-xl text-rust">Operational but Fatigued</div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Decorative Grid Overlay (Subtle) -->
+      <div class="absolute bottom-0 right-0 w-64 h-64 border-l border-t border-surveillance/10 p-4 hidden md:block opacity-30 pointer-events-none">
+        <div class="w-full h-full bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGRlZnM+PHBhdHRlcm4gaWQ9ImdyaWQiIHdpZHRoPSI0MCIgaGVpZ2h0PSI0MCIgcGF0dGVyblVuaXRzPSJ1c2VyU3BhY2VPblVzZSI+PHBhdGggZD0iTTAgNDBMMDQwIDAiIHN0cm9rZT0iIzFBMjAyQyIgc3Ryb2tlLXdpZHRoPSIxIiBmaWxsPSJub25lIi8+PC9wYXR0ZXJuPjwvZGVmcz48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSJ1cmwoI2dyaWQpIiAvPjwvc3ZnPg==')]"></div>
+      </div>
+    </header>
+
+    <!-- MAIN CONTENT -->
+    <main class="max-w-3xl mx-auto px-6 py-16 md:py-24">
+      
+      <!-- Intro Article -->
+      <article class="prose prose-lg max-w-none prose-headings:font-display prose-headings:text-surveillance prose-p:font-body prose-p:text-lg prose-p:leading-relaxed prose-p:text-surveillance/90 mb-20">
+        <!-- Style Guide: Drop cap text-5xl -->
+        <p class="first-letter:text-5xl first-letter:font-bold first-letter:mr-3 first-letter:float-left first-letter:text-surveillance first-letter:font-display">
+          You've read the books. You understand that career isn't identity, that busyness isn't virtue, that the hustle is a trap. You've built boundaries. You've diversified your life—work is one domain, not the only one.
+        </p>
+        <p>
+          You have hobbies that aren't monetizable. Friendships outside your industry. A spiritual or philosophical framework that gives you meaning independent of productivity. A deliberate relationship to work that others admire (or resent).
+        </p>
+        <p>
+          You're not avoiding the game. You're playing it on your terms. You work hard, but you've defined "enough." You're ambitious, but not at the cost of your sanity. You've opted out of the race without dropping out of society.
+        </p>
+        
+        <!-- Style Guide: Left rust rule quote -->
+        <div class="my-12 pl-6 border-l-4 border-rust">
+          <p class="font-display text-2xl italic text-surveillance mb-2 leading-tight">
+            "People ask how you do it. You've become the person others come to for advice about 'work-life balance,' 'finding meaning,' 'not burning out.'"
+          </p>
+          <span class="font-mono text-xs uppercase tracking-widest text-rust block mt-4">— Diagnosis: The Architect</span>
+        </div>
+
+        <p>
+          And you're genuinely trying to help. Because you remember what it was like before you figured this out. But here's the part you're not saying: <strong>You're exhausted from holding the architecture together.</strong>
+        </p>
+      </article>
+
+      <!-- The Core Logic (Diagnostic Panel) -->
+      <section class="mb-24">
+        <div class="flex items-center gap-4 mb-8">
+          <span class="w-12 h-px bg-rust"></span>
+          <h2 class="font-mono text-sm uppercase tracking-widest text-rust">01 // The Schematic</h2>
+        </div>
+        
+        <!-- Style Guide: Dark panel, Mono label in rust, list in body serif -->
+        <div class="bg-surveillance text-cream p-8 md:p-12 relative overflow-hidden group shadow-lg">
+          <!-- Decorative BG Watermark -->
+          <div class="absolute -top-6 -right-6 text-[12rem] font-mono text-white opacity-[0.03] select-none pointer-events-none group-hover:opacity-[0.05] transition-opacity">
+            01
+          </div>
+          
+          <h3 class="font-display text-3xl mb-2 relative z-10">The Core Logic</h3>
+          <p class="font-body text-xl text-white/70 mb-10 italic relative z-10">Work is one domain of a larger life, not the measure of it.</p>
+          
+          <div class="space-y-6 relative z-10">
+            <div class="flex gap-6 items-baseline">
+              <span class="font-mono text-rust text-sm">01</span>
+              <p class="font-body text-lg leading-relaxed">Identity needs diversification (low self-complexity = brittleness).</p>
+            </div>
+            <div class="flex gap-6 items-baseline">
+              <span class="font-mono text-rust text-sm">02</span>
+              <p class="font-body text-lg leading-relaxed">Meaning can't be outsourced to employers.</p>
+            </div>
+            <div class="flex gap-6 items-baseline">
+              <span class="font-mono text-rust text-sm">03</span>
+              <p class="font-body text-lg leading-relaxed">Status games are optional, not compulsory.</p>
+            </div>
+            <div class="flex gap-6 items-baseline">
+              <span class="font-mono text-rust text-sm">04</span>
+              <p class="font-body text-lg leading-relaxed">"Enough" is a real number, not an infinite horizon.</p>
+            </div>
+          </div>
+          
+          <div class="mt-10 pt-8 border-t border-white/10 relative z-10">
+             <p class="text-xs font-mono tracking-[0.15em] text-soft-green uppercase">
+               Result: A self-authored life in a world designed to author you.
+             </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- What It Solves -->
+      <section class="mb-24">
+        <div class="flex items-center gap-4 mb-8">
+          <span class="w-12 h-px bg-rust"></span>
+          <h2 class="font-mono text-sm uppercase tracking-widest text-rust">02 // Structural Integrity</h2>
+        </div>
+
+        <div class="grid gap-16">
+          <div class="border-b border-surveillance/10 pb-12">
+            <h3 class="font-display text-2xl font-bold mb-4">Identity Resilience</h3>
+            <p class="font-body text-lg leading-relaxed text-surveillance/80">
+              When The Faithful gets laid off, they collapse. When you get laid off, you're still a parent, an artist, a volunteer, a friend. You have multiple rooms in the house. If one floods, you don't lose everything. This is structural wisdom.
+            </p>
+          </div>
+
+          <div class="border-b border-surveillance/10 pb-12">
+            <h3 class="font-display text-2xl font-bold mb-4">Meaning Without Escalation</h3>
+            <p class="font-body text-lg leading-relaxed text-surveillance/80">
+              The Watchman needs the next milestone to feel safe. The Visible needs the next post to feel relevant. You've broken the equation that says "worth = productivity." You experience mastery without needing the corner office.
+            </p>
+          </div>
+
+          <div>
+            <h3 class="font-display text-2xl font-bold mb-4">Escape From the Tyranny of More</h3>
+            <p class="font-body text-lg leading-relaxed text-surveillance/80">
+              You've answered the question: "What is enough?" Enough money to live well, enough status to have options, enough ambition to grow. You've opted out of the infinite game. And that's given you something the others don't have: <span class="font-bold text-rust bg-rust/10 px-1">time.</span>
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- The Hidden Costs (Data Panel Style) -->
+      <!-- Style Guide: Blueprint container, cream panel overlays -->
+      <section class="mb-24 bg-blueprint -mx-6 px-6 py-24 border-y border-surveillance/10 relative">
+        <div class="max-w-3xl mx-auto relative z-10">
+          <div class="flex items-center gap-2 mb-12">
+             <div class="w-2 h-2 bg-rust animate-pulse"></div>
+             <span class="font-mono text-xs uppercase tracking-widest text-rust">Diagnostic Warning</span>
+          </div>
+          
+          <h2 class="font-display text-4xl mb-16 text-surveillance">The Hidden Costs of Continuous Construction</h2>
+
+          <div class="space-y-8">
+            <!-- Panel 1 -->
+            <div class="bg-cream/95 backdrop-blur-sm p-8 border border-surveillance/10 shadow-sm transition-all hover:border-rust/30">
+              <h4 class="font-mono text-rust text-xs uppercase tracking-widest mb-3">Maintenance Load</h4>
+              <h3 class="font-display text-xl font-bold mb-4">The Architecture requires you to be "On"</h3>
+              <p class="font-body text-lg mb-4 text-surveillance/80">
+                The default is the system. You have to actively resist it. Your boundaries require constant defense (every request is a negotiation). Your frameworks need maintenance.
+              </p>
+              <p class="font-body text-lg text-surveillance/80 border-t border-surveillance/5 pt-4">
+                Some days, you're tired of being the architect. You just want the building to stand on its own.
+              </p>
+            </div>
+
+            <!-- Panel 2 -->
+            <div class="bg-cream/95 backdrop-blur-sm p-8 border border-surveillance/10 shadow-sm transition-all hover:border-rust/30">
+              <h4 class="font-mono text-rust text-xs uppercase tracking-widest mb-3">Social Friction</h4>
+              <h3 class="font-display text-xl font-bold mb-4">Your life is a confrontation</h3>
+              <p class="font-body text-lg text-surveillance/80">
+                People judge you for "settling." They resent you for leaving at 5pm. They misread your boundaries as lack of ambition. Your life is a confrontation to theirs, even when you're not trying to confront them. It's tiring to constantly explain yourself.
+              </p>
+            </div>
+            
+            <!-- Panel 3 -->
+            <div class="bg-cream/95 backdrop-blur-sm p-8 border border-surveillance/10 shadow-sm transition-all hover:border-rust/30">
+               <h4 class="font-mono text-rust text-xs uppercase tracking-widest mb-3">Economic Reality</h4>
+               <h3 class="font-display text-xl font-bold mb-4">The Trade-offs are Real</h3>
+               <p class="font-body text-lg text-surveillance/80">
+                 You've chosen "time wealth" over "money wealth." But you're unlikely to accumulate significant capital. When economic conditions shift, the foundation you built might not be weight-bearing.
+               </p>
+             </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- The Question You're Avoiding -->
+      <section class="mb-24">
+        <article class="prose prose-lg max-w-none prose-headings:font-display prose-headings:text-surveillance prose-p:font-body prose-p:text-lg prose-p:leading-relaxed prose-p:text-surveillance/90">
+          <h2>The Question You're Avoiding</h2>
+          <p>
+            You've built something beautiful. An integrated life. Values-aligned work. Diversified identity. Time for what matters.
+          </p>
+          <p>
+            But here's what you're not asking:
+            <strong>Is this working, or are you just working harder to make it look like it's working?</strong>
+          </p>
+          <ul class="list-none pl-0 space-y-4 font-body text-lg border-l-2 border-surveillance/10 ml-6 pl-6">
+            <li class="pl-2">Are your boundaries actually holding, or are you constantly re-negotiating them?</li>
+            <li class="pl-2">Is your "enough" stable, or does it keep needing recalibration?</li>
+            <li class="pl-2">Is this a life, or is this a <em class="text-rust">performance</em> of having figured out how to have a life?</li>
+          </ul>
+
+          <h3 class="mt-12">You're Still Reacting, Just More Elegantly</h3>
+          <p>
+            You think you've transcended the system. But look closely. Your voluntary simplicity is a response to consumerism. Your identity diversification is a defense against career collapse. You've built an entire architecture in reaction to the thing you're trying to escape.
+          </p>
+          <p>
+            That's not freedom. That's sophisticated resistance.
+          </p>
+          
+          <h3 class="mt-12">The System Doesn't Care That You Opted Out</h3>
+          <p>
+             The companies still extract. The platforms still manipulate. The housing market still inflates. You've built a lifeboat. That's wise. But the ship is still sinking. And your lifeboat only has room for you.
+          </p>
+          <p>
+             At some point, you have to ask: Is personal integrity enough? Or does the structural problem require structural solutions?
+          </p>
+        </article>
+      </section>
+
+      <!-- Confrontation Questions (Index Card Style) -->
+      <section class="mb-24">
+        <div class="flex items-center justify-between mb-12 border-b border-surveillance/20 pb-6">
+           <h2 class="font-display text-3xl font-bold">The Confrontation Questions</h2>
+           <span class="font-mono text-xs uppercase text-rust tracking-widest">Required Input</span>
+        </div>
+
+        <div class="grid gap-6">
+          <!-- Style Guide: Index Cards - White surface, thin border, Hover inverts, Watermark icon -->
+          <!-- Q1 -->
+          <div class="group relative bg-white border border-surveillance/20 p-8 hover:bg-surveillance hover:text-cream transition-all duration-300 overflow-hidden">
+             <!-- Watermark Icon -->
+             <span class="material-symbols-outlined absolute top-4 right-4 text-6xl opacity-5 group-hover:opacity-10 transition-opacity">
+               construction
+             </span>
+             
+             <span class="font-mono text-rust text-xs uppercase tracking-widest block mb-4 group-hover:text-soft-green transition-colors">Query 01</span>
+             <h3 class="font-display text-xl font-bold mb-2 relative z-10">What would collapse if you stopped maintaining it?</h3>
+             <p class="font-body text-lg opacity-80 group-hover:opacity-90 relative z-10 leading-relaxed">
+                If you couldn't maintain your practices and boundaries for six months (illness, crisis), what would still be standing? If the answer is "not much," you haven't built a sustainable structure. You've built a performance.
+             </p>
+          </div>
+
+          <!-- Q2 -->
+          <div class="group relative bg-white border border-surveillance/20 p-8 hover:bg-surveillance hover:text-cream transition-all duration-300 overflow-hidden">
+             <!-- Watermark Icon -->
+             <span class="material-symbols-outlined absolute top-4 right-4 text-6xl opacity-5 group-hover:opacity-10 transition-opacity">
+               balance
+             </span>
+
+             <span class="font-mono text-rust text-xs uppercase tracking-widest block mb-4 group-hover:text-soft-green transition-colors">Query 02</span>
+             <h3 class="font-display text-xl font-bold mb-2 relative z-10">Are you integrated, or just better at managing contradictions?</h3>
+             <p class="font-body text-lg opacity-80 group-hover:opacity-90 relative z-10 leading-relaxed">
+                Have you resolved the tensions between economic necessity and values, or just gotten better at living with them? One is wisdom. The other is high-functioning compromise.
+             </p>
+          </div>
+
+          <!-- Q3 -->
+          <div class="group relative bg-white border border-surveillance/20 p-8 hover:bg-surveillance hover:text-cream transition-all duration-300 overflow-hidden">
+             <!-- Watermark Icon -->
+             <span class="material-symbols-outlined absolute top-4 right-4 text-6xl opacity-5 group-hover:opacity-10 transition-opacity">
+               visibility
+             </span>
+
+             <span class="font-mono text-rust text-xs uppercase tracking-widest block mb-4 group-hover:text-soft-green transition-colors">Query 03</span>
+             <h3 class="font-display text-xl font-bold mb-2 relative z-10">Who is this architecture for?</h3>
+             <p class="font-body text-lg opacity-80 group-hover:opacity-90 relative z-10 leading-relaxed">
+                Is it for you? Or for the people who look to you as proof? Or your own identity as "the person who figured it out"?
+             </p>
+          </div>
+          
+           <!-- Q4 -->
+           <div class="group relative bg-white border border-surveillance/20 p-8 hover:bg-surveillance hover:text-cream transition-all duration-300 overflow-hidden">
+              <!-- Watermark Icon -->
+              <span class="material-symbols-outlined absolute top-4 right-4 text-6xl opacity-5 group-hover:opacity-10 transition-opacity">
+                lock
+              </span>
+
+              <span class="font-mono text-rust text-xs uppercase tracking-widest block mb-4 group-hover:text-soft-green transition-colors">Query 04</span>
+              <h3 class="font-display text-xl font-bold mb-2 relative z-10">What's the thing you can't say?</h3>
+              <p class="font-body text-lg opacity-80 group-hover:opacity-90 relative z-10 leading-relaxed">
+                 "I'm not sure this is sustainable." "I'm lonely." "I'm scared I've just built a more sophisticated trap." Whatever you just thought—that's the thing you need to confront.
+              </p>
+           </div>
+        </div>
+      </section>
+      
+      <!-- What This Archetype Needs -->
+      <section class="mb-24">
+        <div class="flex items-center gap-4 mb-8">
+           <span class="w-12 h-px bg-rust"></span>
+           <h2 class="font-mono text-sm uppercase tracking-widest text-rust">Corrective Measures</h2>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-8">
+           <!-- Card 1 -->
+           <div class="bg-white p-8 border border-surveillance/10 shadow-sm">
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-2 h-2 rounded-full bg-rust"></div>
+                <h3 class="font-display font-bold text-lg">Permission to Not Have It Figured Out</h3>
+              </div>
+              <p class="font-body text-lg text-surveillance/80 leading-relaxed">
+                You don't have to be proof of concept. You're allowed to be a person. Admitting uncertainty is more helpful than performing certainty.
+              </p>
+           </div>
+           
+           <!-- Card 2 -->
+           <div class="bg-white p-8 border border-surveillance/10 shadow-sm">
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-2 h-2 rounded-full bg-rust"></div>
+                <h3 class="font-display font-bold text-lg">Recognition of Limits</h3>
+              </div>
+              <p class="font-body text-lg text-surveillance/80 leading-relaxed">
+                You can't personal-development your way out of structural problems. At some point, the architect has to become an organizer.
+              </p>
+           </div>
+
+           <!-- Card 3 -->
+           <div class="bg-white p-8 border border-surveillance/10 shadow-sm">
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-2 h-2 rounded-full bg-rust"></div>
+                <h3 class="font-display font-bold text-lg">The Courage to Let Things Be Messy</h3>
+              </div>
+              <p class="font-body text-lg text-surveillance/80 leading-relaxed">
+                What if you stopped maintaining the architecture so precisely? What if "good enough" replaced "intentional"?
+              </p>
+           </div>
+
+           <!-- Card 4 -->
+           <div class="bg-white p-8 border border-surveillance/10 shadow-sm">
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-2 h-2 rounded-full bg-rust"></div>
+                <h3 class="font-display font-bold text-lg">A Community, Not a Position</h3>
+              </div>
+              <p class="font-body text-lg text-surveillance/80 leading-relaxed">
+                You won't find fellow travelers by being the person with answers. You'll find them by admitting you're still figuring it out.
+              </p>
+           </div>
+        </div>
+      </section>
+
+      <!-- Typical Transitions -->
+      <section class="mb-24">
+        <h2 class="font-mono text-sm uppercase tracking-widest text-rust mb-12 border-b border-surveillance/10 pb-4">Future Trajectories</h2>
+        
+        <div class="space-y-12 pl-8 border-l border-surveillance/10 relative">
+          
+          <div class="relative">
+             <!-- Schematic marker -->
+             <div class="absolute -left-[39px] top-2 w-5 h-5 bg-cream border border-rust flex items-center justify-center">
+                <div class="w-1.5 h-1.5 bg-rust"></div>
+             </div>
+             <h3 class="font-display font-bold text-2xl mb-2 text-surveillance">1. The Architecture Collapses</h3>
+             <p class="font-body text-lg text-surveillance/70 leading-relaxed max-w-2xl">Life overwhelms maintenance capacity. You cycle back or rebuild with more humility.</p>
+          </div>
+          
+          <div class="relative">
+             <div class="absolute -left-[37px] top-3 w-4 h-4 bg-surveillance/20 rounded-full"></div>
+             <h3 class="font-display font-bold text-2xl mb-2 text-surveillance">2. From Individual to Collective</h3>
+             <p class="font-body text-lg text-surveillance/70 leading-relaxed max-w-2xl">You stop being an architect of your own life and start being an architect of new structures (mutual aid, advocacy).</p>
+          </div>
+          
+          <div class="relative">
+             <div class="absolute -left-[37px] top-3 w-4 h-4 bg-surveillance/20 rounded-full"></div>
+             <h3 class="font-display font-bold text-2xl mb-2 text-surveillance">3. The Simplification</h3>
+             <p class="font-body text-lg text-surveillance/70 leading-relaxed max-w-2xl">You realize the architecture was over-engineered. You let go of the rigid frameworks.</p>
+          </div>
+          
+          <div class="relative">
+             <div class="absolute -left-[37px] top-3 w-4 h-4 bg-surveillance/20 rounded-full"></div>
+             <h3 class="font-display font-bold text-2xl mb-2 text-surveillance">4. The Disillusionment</h3>
+             <p class="font-body text-lg text-surveillance/70 leading-relaxed max-w-2xl">You confront the truth: this isn't better, just different. You stop pretending you have "the answer."</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Closing Provocation -->
+      <section class="mb-24 bg-surveillance text-cream p-8 md:p-16 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-64 h-64 bg-rust rounded-full blur-[120px] opacity-20 pointer-events-none"></div>
+        <div class="absolute bottom-0 left-0 w-64 h-64 bg-soft-green rounded-full blur-[120px] opacity-10 pointer-events-none"></div>
+        
+        <h2 class="font-display text-3xl font-bold mb-8 relative z-10">A Closing Provocation</h2>
+        <div class="prose prose-xl prose-invert font-body text-cream/90 relative z-10 leading-relaxed">
+          <p class="mb-6">
+            You thought integration would be a destination. It's not. It's a practice. And practices require effort. Forever.
+          </p>
+          <p class="mb-8">
+            What if the exhaustion you're feeling isn't a sign that you're doing it wrong? What if it's a sign that there is no individual solution to a structural problem?
+          </p>
+          <p class="text-white font-bold text-2xl not-italic border-l-4 border-rust pl-6 py-2">
+            The most radical thing you can do right now is stop performing integration and start admitting that you're still building.
+          </p>
+        </div>
+      </section>
+      
+      <!-- Exit Cards (Resources) -->
+      <!-- Style Guide: Exit Cards - White surface, thin border. Icon chip: bg-rust/10 text-rust, hover becomes bg-rust text-white. -->
+      <section class="mb-12">
+        <div class="flex items-center gap-4 mb-8">
+           <span class="w-12 h-px bg-rust"></span>
+           <h2 class="font-mono text-sm uppercase tracking-widest text-rust">Reference Materials</h2>
+         </div>
+         
+         <div class="grid md:grid-cols-2 gap-6">
+           <a href="#" class="group block bg-white border border-surveillance/20 p-8 hover:border-rust transition-colors">
+             <div class="flex justify-between items-start mb-6">
+               <h3 class="font-display font-bold text-2xl group-hover:text-rust transition-colors">All About Love</h3>
+               <!-- Icon Chip -->
+               <div class="bg-rust/10 text-rust p-2 rounded flex items-center justify-center group-hover:bg-rust group-hover:text-white transition-colors">
+                 <span class="material-symbols-outlined text-lg">menu_book</span>
+               </div>
+             </div>
+             <p class="font-mono text-xs uppercase tracking-widest text-surveillance/50 mb-3">bell hooks</p>
+             <p class="font-body text-base text-surveillance/80 leading-relaxed">On the difference between individual solutions and collective liberation.</p>
+           </a>
+
+           <a href="#" class="group block bg-white border border-surveillance/20 p-8 hover:border-rust transition-colors">
+             <div class="flex justify-between items-start mb-6">
+               <h3 class="font-display font-bold text-2xl group-hover:text-rust transition-colors">Mutual Aid</h3>
+               <!-- Icon Chip -->
+               <div class="bg-rust/10 text-rust p-2 rounded flex items-center justify-center group-hover:bg-rust group-hover:text-white transition-colors">
+                 <span class="material-symbols-outlined text-lg">build</span>
+               </div>
+             </div>
+             <p class="font-mono text-xs uppercase tracking-widest text-surveillance/50 mb-3">Dean Spade</p>
+             <p class="font-body text-base text-surveillance/80 leading-relaxed">On building infrastructure that doesn't depend on individual heroism.</p>
+           </a>
+         </div>
+      </section>
+
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-surveillance text-cream pt-20 pb-12 border-t border-rust/30">
+      <div class="max-w-7xl mx-auto px-6">
+        <div class="grid md:grid-cols-4 gap-12 mb-16">
+          <div class="col-span-2">
+            <h4 class="font-display font-bold text-2xl mb-6">Architecture of Ambition</h4>
+            <p class="font-body text-cream/60 max-w-sm text-lg">
+              Mapping the structural traps of modern work and the exit strategies that actually exist.
+            </p>
+          </div>
+          <div>
+            <h5 class="font-mono text-rust text-xs uppercase tracking-widest mb-6">The Index</h5>
+            <ul class="space-y-3 font-mono text-sm text-cream/60">
+              <li><a href="#" class="hover:text-cream transition-colors block">01. The Faithful</a></li>
+              <li><a href="#" class="hover:text-cream transition-colors block">02. The Watchman</a></li>
+              <li><a href="#" class="hover:text-cream transition-colors block">03. The Visible</a></li>
+              <li><a href="#" class="hover:text-cream transition-colors block">05. The Architect</a></li>
+            </ul>
+          </div>
+          <div>
+            <h5 class="font-mono text-rust text-xs uppercase tracking-widest mb-6">Operations</h5>
+            <ul class="space-y-3 font-mono text-sm text-cream/60">
+              <li><a href="#" class="hover:text-cream transition-colors block">About</a></li>
+              <li><a href="#" class="hover:text-cream transition-colors block">Newsletter</a></li>
+              <li><a href="#" class="hover:text-cream transition-colors block">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="pt-8 border-t border-cream/10 flex flex-col md:flex-row justify-between items-center gap-4">
+          <p class="font-mono text-xs text-cream/40">© 2024 Architecture of Ambition. All rights reserved.</p>
+          <div class="font-mono text-xs text-cream/40 flex items-center gap-2">
+             <div class="w-1.5 h-1.5 rounded-full bg-soft-green animate-pulse"></div>
+             System Status: Online
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Simple scroll progress bar
+      window.onscroll = function() {
+        var winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+        var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        var scrolled = (winScroll / height) * 100;
+        document.getElementById("progress-bar").style.width = scrolled + "%";
+      };
+    </script>
+  </body>
+</html>

@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Faithful // Architecture of Ambition</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,500;0,600;1,400&family=JetBrains+Mono:wght@300;400;500&family=Syne:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              cream: "#FDFBF7",
+              surveillance: "#1A202C",
+              rust: "#C05640",
+              "soft-green": "#7A9A84",
+            },
+            fontFamily: {
+              display: ["Syne", "sans-serif"],
+              body: ["Crimson Pro", "serif"],
+              mono: ["JetBrains Mono", "monospace"],
+            },
+            animation: {
+              "fade-in": "fadeIn 1s ease-out forwards",
+              "slide-up": "slideUp 0.8s ease-out forwards",
+            },
+            keyframes: {
+              fadeIn: { "0%": { opacity: "0" }, "100%": { opacity: "1" } },
+              slideUp: {
+                "0%": { transform: "translateY(20px)", opacity: "0" },
+                "100%": { transform: "translateY(0)", opacity: "1" },
+              },
+            },
+            spacing: {
+                '128': '32rem',
+            }
+          },
+        },
+      };
+    </script>
+
+    <style>
+      body {
+        background-color: #fdfbf7;
+        color: #1a202c;
+        overflow-x: hidden;
+      }
+      
+      /* Blueprint Grid Texture */
+      .bg-blueprint {
+        background-image: linear-gradient(#e2e8f0 1px, transparent 1px),
+          linear-gradient(90deg, #e2e8f0 1px, transparent 1px);
+        background-size: 40px 40px;
+        background-position: center top;
+      }
+
+      /* Custom Utilities */
+      .text-justify-interword {
+          text-align: justify;
+          text-justify: inter-word;
+      }
+
+      /* Selection Color */
+      ::selection {
+          background-color: #C05640;
+          color: #FDFBF7;
+      }
+    </style>
+</head>
+
+<body class="font-body antialiased bg-cream text-surveillance">
+
+    <!-- NAVIGATION (Fixed Header) -->
+    <header class="fixed top-0 left-0 w-full z-50 bg-cream/95 backdrop-blur-sm border-b border-surveillance/10">
+        <!-- Progress Bar -->
+        <div id="progress-bar" class="h-[2px] bg-rust w-0 transition-all duration-300"></div>
+        
+        <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
+            <div class="flex items-center gap-4">
+                <span class="w-3 h-3 bg-surveillance block"></span>
+                <span class="font-mono text-xs md:text-sm uppercase tracking-[0.2em] text-surveillance">
+                    Architecture of Ambition
+                </span>
+            </div>
+            <div class="hidden md:flex gap-8">
+                <a href="#" class="font-mono text-xs uppercase tracking-widest text-rust hover:text-surveillance transition-colors">01. Identification</a>
+                <a href="#" class="font-mono text-xs uppercase tracking-widest text-surveillance/50 hover:text-surveillance transition-colors">02. Diagnostics</a>
+                <a href="#" class="font-mono text-xs uppercase tracking-widest text-surveillance/50 hover:text-surveillance transition-colors">03. Prognosis</a>
+            </div>
+            <div class="font-mono text-xs text-surveillance/50">
+                DOC_REF_2024_TF
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="min-h-screen bg-blueprint pt-32 pb-20 px-6 flex flex-col justify-center relative border-b border-surveillance/10">
+        <div class="max-w-6xl mx-auto w-full relative z-10">
+            <!-- Label -->
+            <div class="inline-flex items-center gap-3 mb-8 border border-rust px-4 py-2 bg-cream animate-fade-in">
+                <span class="w-2 h-2 rounded-full bg-rust animate-pulse"></span>
+                <span class="font-mono text-xs uppercase tracking-widest text-rust">Archetype Analysis 04</span>
+            </div>
+
+            <!-- Title -->
+            <h1 class="font-display font-bold text-7xl md:text-9xl tracking-tighter leading-[0.9] text-surveillance mb-8 animate-slide-up">
+                THE<br />FAITHFUL
+            </h1>
+
+            <!-- Subtitle/Thesis -->
+            <div class="grid md:grid-cols-12 gap-12 mt-12 animate-slide-up" style="animation-delay: 0.2s;">
+                <div class="md:col-span-7">
+                    <p class="font-display text-2xl md:text-4xl leading-tight border-l-4 border-rust pl-6 mb-8">
+                        "You don't just name your job. You become it."
+                    </p>
+                    <p class="font-body text-xl leading-relaxed text-surveillance/80 max-w-2xl">
+                        The occupation is the identity. The title isn't what you do. It's who you are. The Faithful understands what others misread as workaholism: Work is the last remaining structure that offers coherence, community, and cosmic significance.
+                    </p>
+                </div>
+                
+                <!-- Diagnostic Panel Hero -->
+                <div class="md:col-span-5 self-end">
+                    <div class="bg-surveillance text-cream p-6 border border-surveillance/10">
+                        <div class="flex justify-between items-center border-b border-cream/20 pb-4 mb-4">
+                            <span class="font-mono text-xs uppercase tracking-widest text-rust">Subject Profile</span>
+                            <span class="material-symbols-outlined text-rust text-lg">id_card</span>
+                        </div>
+                        <ul class="font-mono text-sm space-y-3 text-cream/80">
+                            <li class="flex justify-between">
+                                <span>PRIMARY DRIVE:</span>
+                                <span class="text-white">Transcendence</span>
+                            </li>
+                            <li class="flex justify-between">
+                                <span>FEAR:</span>
+                                <span class="text-white">Ordinariness</span>
+                            </li>
+                            <li class="flex justify-between">
+                                <span>RISK FACTOR:</span>
+                                <span class="text-rust">Identity Collapse</span>
+                            </li>
+                            <li class="flex justify-between">
+                                <span>STATUS:</span>
+                                <span class="text-white animate-pulse">ACTIVE</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Decoration Grid -->
+        <div class="absolute bottom-0 right-0 p-6 opacity-20 hidden md:block">
+            <svg width="200" height="200" viewBox="0 0 100 100">
+                <defs>
+                    <pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse">
+                        <path d="M 10 0 L 0 0 0 10" fill="none" stroke="currentColor" stroke-width="0.5"/>
+                    </pattern>
+                </defs>
+                <rect width="100" height="100" fill="url(#grid)" />
+            </svg>
+        </div>
+    </section>
+
+    <!-- SECTION 1: THE CORE LOGIC -->
+    <section class="py-24 px-6 border-b border-surveillance/10">
+        <div class="max-w-5xl mx-auto">
+            <div class="flex flex-col md:flex-row gap-16">
+                <!-- Left: Narrative -->
+                <div class="md:w-1/2">
+                    <span class="font-mono text-rust text-xs uppercase tracking-widest mb-4 block">01 // The Mechanism</span>
+                    <h2 class="font-display font-bold text-4xl mb-8 leading-tight">Work is the architecture of meaning. Without it, I'm just... here.</h2>
+                    <div class="prose prose-lg font-body text-surveillance/80">
+                        <p class="first-letter:text-5xl first-letter:font-bold first-letter:mr-2 first-letter:float-left first-letter:text-surveillance">
+                            This is not shallow careerism. This is existential. You’ve seen the alternative: People who "just have jobs" and spend their evenings watching Netflix, waiting for the weekend. Colleagues who clock out at 5pm and seem... empty.
+                        </p>
+                        <p class="mt-6">
+                            You refuse that. You refuse to be just a person who exists. You want your life to mean something.
+                        </p>
+                        <p class="mt-6">
+                            You don't go to work. You live there. And when someone asks if you're "too focused on your career," you genuinely don't understand the question. This isn't focus. This is faith.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Right: Structural Diagram -->
+                <div class="md:w-1/2 bg-white border border-surveillance/10 p-8 relative">
+                    <div class="absolute top-0 left-0 bg-rust text-white px-2 py-1 font-mono text-xs uppercase">Fig 1.1</div>
+                    
+                    <h3 class="font-display font-bold text-2xl mb-6 mt-4">The Cathedral Structure</h3>
+                    <p class="font-body italic text-surveillance/60 mb-8">The job isn't just a job. It's the cathedral you're building.</p>
+
+                    <div class="grid grid-cols-1 gap-4">
+                        <div class="border border-surveillance/20 p-4 hover:border-rust transition-colors cursor-crosshair group">
+                            <span class="font-mono text-xs text-rust block mb-1">PILLAR A</span>
+                            <span class="font-bold font-display uppercase group-hover:text-rust transition-colors">A Community</span>
+                            <p class="text-sm font-body mt-1 text-surveillance/70">Your colleagues are your friends. The office is your village.</p>
+                        </div>
+                        <div class="border border-surveillance/20 p-4 hover:border-rust transition-colors cursor-crosshair group">
+                            <span class="font-mono text-xs text-rust block mb-1">PILLAR B</span>
+                            <span class="font-bold font-display uppercase group-hover:text-rust transition-colors">Moral Framework</span>
+                            <p class="text-sm font-body mt-1 text-surveillance/70">Productivity = Goodness. The scoreboard offers integrity.</p>
+                        </div>
+                        <div class="border border-surveillance/20 p-4 hover:border-rust transition-colors cursor-crosshair group">
+                            <span class="font-mono text-xs text-rust block mb-1">PILLAR C</span>
+                            <span class="font-bold font-display uppercase group-hover:text-rust transition-colors">Transcendence</span>
+                            <p class="text-sm font-body mt-1 text-surveillance/70">Building something that outlasts you. Solving the meaning crisis.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 2: WHAT IT SOLVES (Grid System) -->
+    <section class="py-24 px-6 bg-blueprint border-b border-surveillance/10">
+        <div class="max-w-6xl mx-auto">
+            <div class="mb-16 border-b border-surveillance/10 pb-6 flex justify-between items-end">
+                <div>
+                    <span class="font-mono text-rust text-xs uppercase tracking-widest mb-2 block">02 // Structural Analysis</span>
+                    <h2 class="font-display font-bold text-4xl">What It Solves</h2>
+                </div>
+                <div class="hidden md:block font-mono text-xs text-surveillance/50 max-w-xs text-right">
+                    In the absence of inherited frameworks, work provides the necessary illusion of stability.
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Card 1 -->
+                <div class="bg-white p-8 border border-surveillance/10 hover:border-rust transition-all group h-full">
+                    <div class="flex justify-between items-start mb-6">
+                        <h3 class="font-display font-bold text-2xl group-hover:text-rust transition-colors">The Meaning Crisis</h3>
+                        <span class="font-mono text-surveillance/20 text-4xl font-bold group-hover:text-surveillance/10">01</span>
+                    </div>
+                    <p class="font-body text-lg leading-relaxed text-surveillance/80">
+                        Your parents had church, union halls, civic organizations. You have LinkedIn and the office. You're solving the oldest human question: "What should I do with my finite time?" Your answer: Build something that outlasts you.
+                    </p>
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-white p-8 border border-surveillance/10 hover:border-rust transition-all group h-full">
+                    <div class="flex justify-between items-start mb-6">
+                        <h3 class="font-display font-bold text-2xl group-hover:text-rust transition-colors">The Community Void</h3>
+                        <span class="font-mono text-surveillance/20 text-4xl font-bold group-hover:text-surveillance/10">02</span>
+                    </div>
+                    <p class="font-body text-lg leading-relaxed text-surveillance/80">
+                        Work isn't just where you find meaning. It's where you find belonging. The Faithful knows: in atomized, transient cities where people move every 3-5 years, the office is the most stable social structure you have.
+                    </p>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-white p-8 border border-surveillance/10 hover:border-rust transition-all group h-full">
+                    <div class="flex justify-between items-start mb-6">
+                        <h3 class="font-display font-bold text-2xl group-hover:text-rust transition-colors">Moral Clarity</h3>
+                        <span class="font-mono text-surveillance/20 text-4xl font-bold group-hover:text-surveillance/10">03</span>
+                    </div>
+                    <p class="font-body text-lg leading-relaxed text-surveillance/80">
+                        Work offers what modern life denies: a scoreboard. You know your rank, your trajectory, your value. You're not measuring yourself against others out of insecurity. You're measuring yourself against standards.
+                    </p>
+                </div>
+
+                <!-- Card 4 -->
+                <div class="bg-white p-8 border border-surveillance/10 hover:border-rust transition-all group h-full">
+                    <div class="flex justify-between items-start mb-6">
+                        <h3 class="font-display font-bold text-2xl group-hover:text-rust transition-colors">Identity Stability</h3>
+                        <span class="font-mono text-surveillance/20 text-4xl font-bold group-hover:text-surveillance/10">04</span>
+                    </div>
+                    <p class="font-body text-lg leading-relaxed text-surveillance/80">
+                        "Who are you?" is an impossible question. But you have an answer. One that fits on a business card. The role is a container for the self—it gives you shape, limits, definition. Without it, you'd be formless.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 3: THE HIDDEN COSTS (Dark Mode) -->
+    <section class="py-24 px-6 bg-surveillance text-cream border-b border-rust">
+        <div class="max-w-4xl mx-auto">
+            <span class="font-mono text-rust text-xs uppercase tracking-widest mb-4 block">03 // System Failure</span>
+            <h2 class="font-display font-bold text-5xl md:text-6xl mb-12 tracking-tight">The Cathedral You're Building Belongs to Someone Else.</h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div>
+                    <p class="font-body text-xl leading-relaxed text-cream/80 mb-8">
+                        Here's the thing about secular faith: the god you're serving has a profit motive. You tell yourself the work matters. And maybe it does. But to whom?
+                    </p>
+                    <ul class="space-y-4 font-mono text-sm text-rust">
+                        <li class="flex items-start gap-3">
+                            <span class="mt-1">×</span>
+                            <span class="text-cream/70">The company will lay you off when the margin call comes.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="mt-1">×</span>
+                            <span class="text-cream/70">Your "transformative project" will be cancelled when priorities shift.</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <span class="mt-1">×</span>
+                            <span class="text-cream/70">The colleagues you've built your community around will leave for better offers.</span>
+                        </li>
+                    </ul>
+                    <div class="mt-8 border-l-2 border-rust pl-4">
+                        <p class="font-body italic text-lg text-cream">"You're building the cathedral. But you don't own the land. And the bishop can evict you."</p>
+                    </div>
+                </div>
+
+                <!-- Cost Diagnostic -->
+                <div class="space-y-6">
+                    <div class="bg-white/5 border border-white/10 p-6 backdrop-blur-sm">
+                        <h4 class="font-mono text-rust uppercase tracking-widest text-xs mb-3">Vulnerability: Identity Brittleness</h4>
+                        <p class="font-body text-cream/80">You've organized your entire self around one thing. That's not strength. That's fragility disguised as commitment. You don't have an identity crisis. You have an identity collapse.</p>
+                    </div>
+
+                    <div class="bg-white/5 border border-white/10 p-6 backdrop-blur-sm">
+                        <h4 class="font-mono text-rust uppercase tracking-widest text-xs mb-3">Vulnerability: The Tyranny of Merit</h4>
+                        <p class="font-body text-cream/80">If productivity = goodness, then failure = moral deficiency. You don't just fail at work. You fail at being good enough to exist.</p>
+                    </div>
+
+                    <div class="bg-white/5 border border-white/10 p-6 backdrop-blur-sm">
+                        <h4 class="font-mono text-rust uppercase tracking-widest text-xs mb-3">Vulnerability: Substitution</h4>
+                        <p class="font-body text-cream/80">Work isn't your answer to the meaning crisis. It's your avoidance of it. As long as you're busy, you don't have to ask whether you're building the right cathedral.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: THE CONFRONTATION (Interrogation Form) -->
+    <section class="py-24 px-6 bg-cream">
+        <div class="max-w-3xl mx-auto">
+            <div class="text-center mb-16">
+                <span class="font-mono text-rust text-xs uppercase tracking-widest mb-2 block">04 // Diagnostic Questions</span>
+                <h2 class="font-display font-bold text-4xl text-surveillance">The Confrontation</h2>
+                <p class="font-body text-lg text-surveillance/60 mt-4 italic">Not rhetorical. Actual answers required.</p>
+            </div>
+
+            <div class="space-y-12">
+                <!-- Q1 -->
+                <div class="relative pl-12 border-l border-surveillance/20 pb-8">
+                    <span class="absolute -left-3 top-0 bg-cream text-rust font-mono text-lg font-bold border border-rust w-6 h-6 flex items-center justify-center rounded-full text-xs">1</span>
+                    <h3 class="font-display font-bold text-xl mb-3">What is sacred about this work, specifically?</h3>
+                    <p class="font-body text-surveillance/80">
+                        Not "making an impact" in the abstract. What is sacred about your specific Tuesday? If you can't name it without using corporate jargon, you're not serving something sacred.
+                    </p>
+                </div>
+
+                <!-- Q2 -->
+                <div class="relative pl-12 border-l border-surveillance/20 pb-8">
+                    <span class="absolute -left-3 top-0 bg-cream text-rust font-mono text-lg font-bold border border-rust w-6 h-6 flex items-center justify-center rounded-full text-xs">2</span>
+                    <h3 class="font-display font-bold text-xl mb-3">Who are you when no one's measuring?</h3>
+                    <p class="font-body text-surveillance/80">
+                        In the hours when you're alone and there's no output to produce—who shows up? If the answer is "I don't know," you've built an identity that only exists in relation to external validation.
+                    </p>
+                </div>
+
+                <!-- Q3 -->
+                <div class="relative pl-12 border-l border-surveillance/20 pb-8">
+                    <span class="absolute -left-3 top-0 bg-cream text-rust font-mono text-lg font-bold border border-rust w-6 h-6 flex items-center justify-center rounded-full text-xs">3</span>
+                    <h3 class="font-display font-bold text-xl mb-3">Would you do this work if it were invisible?</h3>
+                    <p class="font-body text-surveillance/80">
+                        If the work had no title, no salary, no status, no recognition—would you still do it? If no: you're not devoted to the work. You're devoted to what the work gives you.
+                    </p>
+                </div>
+
+                <!-- Q4 -->
+                <div class="relative pl-12 border-l border-surveillance/20 pb-8">
+                    <span class="absolute -left-3 top-0 bg-cream text-rust font-mono text-lg font-bold border border-rust w-6 h-6 flex items-center justify-center rounded-full text-xs">4</span>
+                    <h3 class="font-display font-bold text-xl mb-3">What relationships have you let atrophy?</h3>
+                    <p class="font-body text-surveillance/80">
+                        You didn't mean to let them go. You just had "more important things." But what if they were the important things, and you've been worshipping the wrong god?
+                    </p>
+                </div>
+            </div>
+            
+            <div class="mt-16 bg-surveillance/5 p-8 border border-surveillance/10">
+                <h3 class="font-display font-bold text-2xl mb-4 text-center">A Closing Provocation</h3>
+                <p class="font-body text-xl text-center leading-relaxed">
+                    "You think you're building a cathedral. But cathedrals take generations. What you're building is a monument to your own anxiety about whether your life matters."
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 5: NEXT STEPS (Blueprint Style) -->
+    <section class="py-24 px-6 bg-blueprint border-t border-surveillance/10">
+        <div class="max-w-6xl mx-auto">
+            <span class="font-mono text-rust text-xs uppercase tracking-widest mb-6 block">05 // Protocol For Transition</span>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Step 1 -->
+                <div class="bg-cream/90 backdrop-blur-sm border border-surveillance/10 p-6">
+                    <h3 class="font-display font-bold text-lg mb-2">Permission to Be Ordinary</h3>
+                    <p class="font-body text-sm text-surveillance/70 mb-4">
+                        What if you don't need a cathedral? What if you just need a life? "Ordinary" doesn't mean insignificant. It means unchained from the performance of significance.
+                    </p>
+                    <div class="w-full h-1 bg-surveillance/10 mt-auto"></div>
+                </div>
+
+                <!-- Step 2 -->
+                <div class="bg-cream/90 backdrop-blur-sm border border-surveillance/10 p-6">
+                    <h3 class="font-display font-bold text-lg mb-2">Grief for the God That Failed</h3>
+                    <p class="font-body text-sm text-surveillance/70 mb-4">
+                        The promise that devotion would be rewarded with security was a lie. You're not bitter for noticing. You're awake. Mourn the years you gave that weren't reciprocated.
+                    </p>
+                    <div class="w-full h-1 bg-surveillance/10 mt-auto"></div>
+                </div>
+
+                <!-- Step 3 -->
+                <div class="bg-cream/90 backdrop-blur-sm border border-surveillance/10 p-6">
+                    <h3 class="font-display font-bold text-lg mb-2">Identity Diversification</h3>
+                    <p class="font-body text-sm text-surveillance/70 mb-4">
+                        You need other rooms in the house. Friendships outside industry. Hobbies that produce nothing. Roles that can't be outsourced. This is resilience.
+                    </p>
+                    <div class="w-full h-1 bg-surveillance/10 mt-auto"></div>
+                </div>
+            </div>
+
+            <!-- Transition Matrix -->
+            <div class="mt-16 border-t border-surveillance/10 pt-16">
+                <h3 class="font-display font-bold text-2xl mb-8">Typical Transition Vectors</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                    <div class="border border-surveillance/20 p-4 hover:bg-white transition-colors">
+                        <span class="font-mono text-xs text-rust block mb-2">TYPE A</span>
+                        <strong class="block font-display mb-2">The Layoff</strong>
+                        <p class="text-xs font-mono text-surveillance/60">Shock > Shame > Identity Collapse. Must rebuild via diversification.</p>
+                    </div>
+                    <div class="border border-surveillance/20 p-4 hover:bg-white transition-colors">
+                        <span class="font-mono text-xs text-rust block mb-2">TYPE B</span>
+                        <strong class="block font-display mb-2">Burnout</strong>
+                        <p class="text-xs font-mono text-surveillance/60">Body force-quits the identity. Often leads to "The Architect" archetype.</p>
+                    </div>
+                    <div class="border border-surveillance/20 p-4 hover:bg-white transition-colors">
+                        <span class="font-mono text-xs text-rust block mb-2">TYPE C</span>
+                        <strong class="block font-display mb-2">The Plateau</strong>
+                        <p class="text-xs font-mono text-surveillance/60">The ceiling is hit. Disillusionment follows. Success must be redefined.</p>
+                    </div>
+                    <div class="border border-surveillance/20 p-4 hover:bg-white transition-colors">
+                        <span class="font-mono text-xs text-rust block mb-2">TYPE D</span>
+                        <strong class="block font-display mb-2">The Awakening</strong>
+                        <p class="text-xs font-mono text-surveillance/60">Voluntary dismantling. Triggered by mortality or relational cost.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-surveillance text-cream pt-24 pb-12 px-6 border-t border-rust/30">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+                <div class="col-span-1 md:col-span-2">
+                    <h2 class="font-display font-bold text-3xl mb-6">Architecture of Ambition</h2>
+                    <p class="font-body text-cream/60 max-w-sm">
+                        A digital research project documenting the structural flaws of modern work and the search for durable meaning.
+                    </p>
+                </div>
+                <div>
+                    <h4 class="font-mono text-rust text-xs uppercase tracking-widest mb-6">Cross-Reference</h4>
+                    <ul class="space-y-4 font-mono text-sm text-cream/70">
+                        <li><a href="#" class="hover:text-white transition-colors">The System →</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">The Exits →</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">The Practice →</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-mono text-rust text-xs uppercase tracking-widest mb-6">Resources</h4>
+                    <ul class="space-y-4 font-mono text-sm text-cream/70">
+                        <li><a href="#" class="hover:text-white transition-colors">The Religion of Workism</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Bullshit Jobs</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Identity Audit Tool</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-cream/10 pt-8 flex flex-col md:flex-row justify-between items-center font-mono text-xs text-cream/40 uppercase tracking-widest">
+                <span>© 2024 Architecture of Ambition</span>
+                <span class="mt-4 md:mt-0">System Status: Optimal</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Simple Scroll Progress Script -->
+    <script>
+        window.onscroll = function() {
+            let winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            let height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            let scrolled = (winScroll / height) * 100;
+            document.getElementById("progress-bar").style.width = scrolled + "%";
+        };
+    </script>
+</body>
+</html>
