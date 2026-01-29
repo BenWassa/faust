@@ -461,6 +461,25 @@
         menu.classList.toggle('flex')
       }
 
+      function showAnalysis(id, title, text) {
+        const panel = document.getElementById('analysis-panel')
+        const titleEl = document.getElementById('analysis-title')
+        const textEl = document.getElementById('analysis-text')
+        
+        if (panel && titleEl && textEl) {
+          titleEl.innerText = title
+          textEl.innerText = text
+          panel.classList.remove('hidden')
+          
+          // Smooth scroll to panel on mobile
+          if (window.innerWidth < 768) {
+            setTimeout(() => {
+              panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+            }, 100)
+          }
+        }
+      }
+
       /* Views */
       const Hero = () => `
             <section class="relative min-h-screen flex items-center justify-center overflow-hidden bg-blueprint">
@@ -536,13 +555,25 @@
                     </div>
                     <div class="bg-blueprint p-8 border border-surveillance/20 relative min-h-[500px] flex flex-col justify-end">
                         <img id="city-img" src="" class="absolute inset-0 w-full h-full object-cover opacity-20 img-blueprint mix-blend-multiply">
-                        <div class="relative z-10 w-full bg-cream/90 p-6 backdrop-blur-sm border border-surveillance/10">
-                            <h5 class="font-mono text-xs uppercase mb-4 text-center">Economic Viability</h5>
-                            <div class="flex justify-around items-end h-40 gap-8 mb-4">
-                                <div class="w-16 bg-surveillance flex flex-col justify-end items-center" style="height: 30%"><span class="text-xs font-mono mb-1">Income</span></div>
-                                <div id="bar-cost" class="w-16 bg-rust flex flex-col justify-end items-center transition-all duration-500" style="height: 80%"><span class="text-xs font-mono mb-1 text-white">Cost</span></div>
+                        <div class="relative z-10 w-full bg-cream/90 p-8 backdrop-blur-sm border border-surveillance/10">
+                            <h5 class="font-mono text-xs uppercase mb-8 text-center font-bold tracking-widest">Economic Viability</h5>
+                            <div class="flex justify-center items-end gap-16 mb-8" style="height: 280px">
+                                <div class="flex flex-col items-center gap-4">
+                                    <div class="w-20 bg-surveillance transition-all duration-500" id="bar-income" style="height: 120px"></div>
+                                    <div class="text-center">
+                                        <span class="text-sm font-mono font-bold text-surveillance mb-1 block" id="income-value">$99K</span>
+                                        <span class="text-xs font-mono text-surveillance/60 uppercase">Income</span>
+                                    </div>
+                                </div>
+                                <div class="flex flex-col items-center gap-4">
+                                    <div class="w-20 bg-rust transition-all duration-500" id="bar-cost" style="height: 240px"></div>
+                                    <div class="text-center">
+                                        <span class="text-sm font-mono font-bold text-rust mb-1 block" id="cost-value">$1.07M</span>
+                                        <span class="text-xs font-mono text-surveillance/60 uppercase">Cost</span>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="text-center"><span class="block font-mono text-xs text-surveillance/50 uppercase">Key Stat</span><span class="block font-display font-bold text-2xl text-rust" id="stat-main">${state.cityData[state.currentCity].stats}</span></div>
+                            <div class="text-center pt-6 border-t border-surveillance/10"><span class="block font-mono text-xs text-surveillance/50 uppercase mb-2">Key Stat</span><span class="block font-display font-bold text-2xl text-rust" id="stat-main">${state.cityData[state.currentCity].stats}</span></div>
                         </div>
                     </div>
                 </div>
@@ -561,14 +592,38 @@
                             <li class="flex items-center gap-3"><span class="material-symbols-outlined text-rust">visibility</span> Performative Gratitude</li>
                             <li class="flex items-center gap-3"><span class="material-symbols-outlined text-rust">compare_arrows</span> Upward Comparison</li>
                         </ul>
+                        <div id="analysis-panel" class="hidden mt-8 bg-rust/5 border-l-4 border-rust p-6 animate-fade-in">
+                            <h4 class="font-display font-bold text-lg mb-2" id="analysis-title"></h4>
+                            <p class="font-body text-sm text-surveillance/80" id="analysis-text"></p>
+                        </div>
                     </div>
                     <div class="bg-white shadow-xl border p-6 relative">
-                        <div class="flex items-center gap-3 mb-4"><div class="w-12 h-12 bg-gray-200 rounded-full"></div><div><div class="h-4 w-32 bg-gray-200 mb-1"></div><div class="h-3 w-24 bg-gray-100"></div></div></div>
-                        <div class="space-y-2 font-body text-gray-800">
-                            <p class="cursor-pointer hover:bg-rust/10 p-1 rounded" onclick="alert('False Modesty: Preempts envy by feigning unworthiness.')">I am <strong class="text-blue-600">humbled and honored</strong> to announce...</p>
-                            <p class="cursor-pointer hover:bg-rust/10 p-1 rounded" onclick="alert('Martyrdom Trap: Validates exploitation.')">After <strong class="text-blue-600">countless late nights</strong>...</p>
+                        <div class="flex items-center gap-3 mb-4">
+                            <div class="w-12 h-12 bg-gray-200 rounded-full"></div>
+                            <div>
+                                <div class="h-4 w-32 bg-gray-200 mb-1 rounded"></div>
+                                <div class="h-3 w-24 bg-gray-100 rounded"></div>
+                            </div>
                         </div>
-                        <p class="mt-4 text-xs text-center text-gray-400 font-mono uppercase">Click highlighted text for analysis</p>
+                        <div class="space-y-3 font-body text-gray-800">
+                            <p class="cursor-pointer hover:bg-rust/10 p-2 rounded transition-colors" onclick="showAnalysis('humble', 'False Modesty', 'Preempts envy by feigning unworthiness. The phrase signals success while performing humility—a defensive linguistic move that acknowledges the surveillance while pretending not to participate in it.')">
+                                I am <strong class="text-blue-600 border-b-2 border-blue-200">humbled and honored</strong> to announce...
+                            </p>
+                            <p class="cursor-pointer hover:bg-rust/10 p-2 rounded transition-colors" onclick="showAnalysis('nights', 'Martyrdom Trap', 'Validates exploitation by framing overwork as noble sacrifice. This language normalizes unhealthy work boundaries and signals to others that suffering is the price of success.')">
+                                After <strong class="text-blue-600 border-b-2 border-blue-200">countless late nights</strong>...
+                            </p>
+                            <p class="cursor-pointer hover:bg-rust/10 p-2 rounded transition-colors" onclick="showAnalysis('journey', 'The Journey Metaphor', 'Reframes precarity as adventure. Work becomes a personal quest narrative rather than a structural economic relationship, obscuring power dynamics and material conditions.')">
+                                Excited to share my <strong class="text-blue-600 border-b-2 border-blue-200">journey</strong> with...
+                            </p>
+                        </div>
+                        <div class="mt-6 pt-4 border-t border-gray-100 flex items-center justify-between text-gray-400">
+                            <div class="flex gap-4 text-xs font-mono">
+                                <span>👍 127</span>
+                                <span>💬 23</span>
+                                <span>🔄 8</span>
+                            </div>
+                        </div>
+                        <p class="mt-4 text-xs text-center text-gray-400 font-mono uppercase tracking-wide">Click highlighted phrases for analysis</p>
                     </div>
                 </div>
                 <div class="flex justify-end mt-16"><button onclick="navigateTo('exits')" class="text-rust font-bold flex items-center gap-2">Next: The Exits <span class="material-symbols-outlined">arrow_forward</span></button></div>
@@ -773,15 +828,36 @@
           img.alt = images[state.currentCity].alt
         }
 
-        // Bar animation
-        const bar = document.getElementById('bar-cost')
-        if (bar) {
-          let h = 30 // base
-          if (state.currentCity === 'toronto' || state.currentCity === 'vancouver')
-            h = (data.ratio / 3) * 20
-          else h = (data.ratio / 2) * 20 // approximation for non-ratio stats
-          bar.style.height = Math.min(h, 90) + '%'
+        // Update income and cost values with proper calculations
+        const incomeValue = document.getElementById('income-value')
+        const costValue = document.getElementById('cost-value')
+        const incomeBar = document.getElementById('bar-income')
+        const costBar = document.getElementById('bar-cost')
+
+        // Income bar (always ~120px)
+        if (incomeValue) incomeValue.innerText = '$' + (data.income / 1000).toFixed(0) + 'K'
+        if (incomeBar) incomeBar.style.height = '120px'
+
+        // Cost bar and value - scale based on ratio
+        let costDisplay = ''
+        let costHeightPercent = 240
+        
+        if (state.currentCity === 'toronto') {
+          costDisplay = '$1.07M'
+          costHeightPercent = 240
+        } else if (state.currentCity === 'vancouver') {
+          costDisplay = '$1.27M'
+          costHeightPercent = 254
+        } else if (state.currentCity === 'london') {
+          costDisplay = '£221K'
+          costHeightPercent = 190
+        } else if (state.currentCity === 'nyc') {
+          costDisplay = '$600K'
+          costHeightPercent = 200
         }
+
+        if (costValue) costValue.innerText = costDisplay
+        if (costBar) costBar.style.height = costHeightPercent + 'px'
       }
 
       document.addEventListener('DOMContentLoaded', () => {
