@@ -2,6 +2,18 @@
 <html lang="en" class="scroll-smooth"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A digital essay exploring how career became identity in modern cities, why extreme ambition is rational yet destructive, and what alternative frameworks offer.">
+    <meta property="og:title" content="The Architecture of Ambition">
+    <meta property="og:description" content="Exploring career-centric identity, housing precarity, and platform-amplified status anxiety among young professionals in global cities.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://benwassa.github.io/faust/">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="The Architecture of Ambition">
+    <meta name="twitter:description" content="Exploring career-centric identity, housing precarity, and platform-amplified status anxiety among young professionals.">
+    <link rel="canonical" href="https://benwassa.github.io/faust/">
+    <link rel="icon" type="image/svg+xml" href="/faust/favicon.svg">
+    <link rel="apple-touch-icon" href="/faust/apple-touch-icon.png">
+    <link rel="manifest" href="/faust/manifest.json">
     <title>The Architecture of Ambition</title>
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -17,34 +29,41 @@
         ::-webkit-scrollbar { width: 8px; }
         ::-webkit-scrollbar-track { background: #FDFBF7; }
         ::-webkit-scrollbar-thumb { background: #1A202C; }
+        .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0; }
+        .sr-only.focus\:not-sr-only:focus { position: static; width: auto; height: auto; padding: inherit; margin: inherit; overflow: visible; clip: auto; white-space: normal; }
         .bg-blueprint {
             background-image: linear-gradient(#E2E8F0 1px, transparent 1px), linear-gradient(90deg, #E2E8F0 1px, transparent 1px);
             background-size: 40px 40px;
         }
         .img-blueprint { filter: grayscale(100%) contrast(120%) brightness(0.9); transition: filter 0.5s ease; }
         .img-blueprint:hover { filter: grayscale(0%) contrast(100%) brightness(100%); }
+        button:focus-visible { outline: 2px solid #C05640; outline-offset: 2px; }
+        [role="button"]:focus-visible { outline: 2px solid #C05640; outline-offset: 2px; }
     </style>
 
 <body class="font-body selection:bg-rust selection:text-white antialiased">
+
+    <!-- Skip to content link for accessibility -->
+    <a href="#main-content" class="sr-only focus:not-sr-only absolute top-2 left-2 bg-rust text-cream px-3 py-2 rounded z-50">Skip to main content</a>
 
     <!-- Navigation -->
     <nav id="navbar" class="fixed top-0 left-0 w-full z-50 bg-cream/95 backdrop-blur-sm border-b border-surveillance/10 transition-all duration-300 shadow-md py-2">
         <div id="progress-bar" class="h-1 bg-surveillance w-0 absolute top-0 left-0 transition-all duration-300" style="width: 0%;"></div>
         <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
-            <div class="flex items-center gap-3 cursor-pointer" onclick="navigateTo('home')">
-                <span class="material-symbols-outlined text-surveillance">grid_4x4</span>
+            <button class="flex items-center gap-3 cursor-pointer p-2 rounded -m-2" onclick="navigateTo('home')" aria-label="Navigate to home">
+                <span class="material-symbols-outlined text-surveillance" aria-hidden="true">grid_4x4</span>
                 <span class="font-display font-bold text-lg tracking-tight uppercase">Architecture of Ambition</span>
-            </div>
+            </button>
             <!-- Desktop Nav -->
             <div class="hidden md:flex items-center gap-8 font-mono text-sm uppercase tracking-widest text-surveillance/70">
-                <button class="hover:text-rust transition-colors" onclick="navigateTo('system')">The System</button>
-                <button class="hover:text-rust transition-colors" onclick="navigateTo('cities')">The Cities</button>
-                <button class="hover:text-rust transition-colors" onclick="navigateTo('machines')">The Machines</button>
-                <button class="hover:text-rust transition-colors" onclick="navigateTo('exits')">The Exits</button>
+                <button class="hover:text-rust transition-colors p-2 rounded -m-2" onclick="navigateTo('system')">The System</button>
+                <button class="hover:text-rust transition-colors p-2 rounded -m-2" onclick="navigateTo('cities')">The Cities</button>
+                <button class="hover:text-rust transition-colors p-2 rounded -m-2" onclick="navigateTo('machines')">The Machines</button>
+                <button class="hover:text-rust transition-colors p-2 rounded -m-2" onclick="navigateTo('exits')">The Exits</button>
             </div>
             <!-- Mobile Menu Button -->
-            <button class="md:hidden text-surveillance" onclick="toggleMobileMenu()">
-                <span class="material-symbols-outlined">menu</span>
+            <button class="md:hidden text-surveillance p-2 rounded -m-2" onclick="toggleMobileMenu()" aria-label="Toggle mobile menu">
+                <span class="material-symbols-outlined" aria-hidden="true">menu</span>
             </button>
         </div>
         <!-- Mobile Menu -->
