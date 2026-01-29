@@ -8,7 +8,10 @@
     "preview": "vite preview",
     "lint": "eslint \"src/**/*.js\"",
     "format": "prettier --write \"src/**/*.{html,js,css}\"",
-    "format:check": "prettier --check \"src/**/*.{html,js,css}\""
+    "format:check": "prettier --check \"src/**/*.{html,js,css}\"",
+    "release:major": "bash scripts/release.sh major",
+    "release:minor": "bash scripts/release.sh minor",
+    "release:patch": "bash scripts/release.sh patch"
   },
   "devDependencies": {
     "@vitest/coverage-v8": "^4.0.18",

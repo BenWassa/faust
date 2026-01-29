@@ -641,7 +641,7 @@
                         <p class="mt-4 text-xs text-center text-gray-400 font-mono uppercase tracking-wide">Click highlighted phrases for analysis</p>
                     </div>
                 </div>
-                <div class="flex justify-end mt-16"><button onclick="navigateTo('exits')" class="text-rust font-bold flex items-center gap-2">Next: The Exits <span class="material-symbols-outlined">arrow_forward</span></button></div>
+                <div class="flex justify-end mt-16"><button onclick="navigateTo('casualties')" class="text-rust font-bold flex items-center gap-2">Next: The Casualties <span class="material-symbols-outlined">arrow_forward</span></button></div>
             </section>
         `
 
@@ -795,6 +795,11 @@
                             ${ArchetypeCard('04', 'The Departed', 'Quiet withdrawal', 'departed', 'person_off')}
                             ${ArchetypeCard('05', 'The Architect', 'Strategic detachment', 'architect', 'architecture')}
                         </div>
+                        <div class="flex justify-end mt-16">
+                            <button onclick="navigateTo('exits')" class="text-rust font-bold flex items-center gap-2">
+                                Next: The Exits <span class="material-symbols-outlined">arrow_forward</span>
+                            </button>
+                        </div>
                     </section>
                 `,
         }
@@ -809,7 +814,7 @@
             system: '16%',
             cities: '32%',
             machines: '48%',
-            casualties: '64%',
+            casualties: '16%',
             exits: '80%',
             resources: '100%',
           }
