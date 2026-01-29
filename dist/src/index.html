@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Architecture of Ambition</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,400&amp;family=JetBrains+Mono:wght@300;400;500&amp;family=Syne:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+    <!-- Material Symbols -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+
+    <!-- Local Tailwind CSS build -->
+    <style>
+        body { background-color: #FDFBF7; color: #1A202C; overflow-x: hidden; }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #FDFBF7; }
+        ::-webkit-scrollbar-thumb { background: #1A202C; }
+        .bg-blueprint {
+            background-image: linear-gradient(#E2E8F0 1px, transparent 1px), linear-gradient(90deg, #E2E8F0 1px, transparent 1px);
+            background-size: 40px 40px;
+        }
+        .img-blueprint { filter: grayscale(100%) contrast(120%) brightness(0.9); transition: filter 0.5s ease; }
+        .img-blueprint:hover { filter: grayscale(0%) contrast(100%) brightness(100%); }
+    </style>
+
+<link rel="stylesheet" crossorigin href="/assets/style-vVvu3Hxa.css">
+
+<body class="font-body selection:bg-rust selection:text-white antialiased">
+
+    <!-- Navigation -->
+    <nav id="navbar" class="fixed top-0 left-0 w-full z-50 bg-cream/95 backdrop-blur-sm border-b border-surveillance/10 transition-all duration-300 shadow-md py-2">
+        <div id="progress-bar" class="h-1 bg-surveillance w-0 absolute top-0 left-0 transition-all duration-300" style="width: 0%;"></div>
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <div class="flex items-center gap-3 cursor-pointer" onclick="navigateTo('home')">
+                <span class="material-symbols-outlined text-surveillance">grid_4x4</span>
+                <span class="font-display font-bold text-lg tracking-tight uppercase">Architecture of Ambition</span>
+            </div>
+            <!-- Desktop Nav -->
+            <div class="hidden md:flex items-center gap-8 font-mono text-sm uppercase tracking-widest text-surveillance/70">
+                <button class="hover:text-rust transition-colors" onclick="navigateTo('system')">The System</button>
+                <button class="hover:text-rust transition-colors" onclick="navigateTo('cities')">The Cities</button>
+                <button class="hover:text-rust transition-colors" onclick="navigateTo('machines')">The Machines</button>
+                <button class="hover:text-rust transition-colors" onclick="navigateTo('exits')">The Exits</button>
+            </div>
+            <!-- Mobile Menu Button -->
+            <button class="md:hidden text-surveillance" onclick="toggleMobileMenu()">
+                <span class="material-symbols-outlined">menu</span>
+            </button>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-cream border-b border-surveillance p-6 flex-col gap-4 shadow-lg md:hidden">
+            <button class="text-left font-display text-xl hover:text-rust" onclick="navigateTo('system'); toggleMobileMenu()">01. The System</button>
+            <button class="text-left font-display text-xl hover:text-rust" onclick="navigateTo('cities'); toggleMobileMenu()">02. The Cities</button>
+            <button class="text-left font-display text-xl hover:text-rust" onclick="navigateTo('machines'); toggleMobileMenu()">03. The Machines</button>
+            <button class="text-left font-display text-xl hover:text-rust" onclick="navigateTo('exits'); toggleMobileMenu()">04. The Exits</button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main id="app" class="pt-16 min-h-screen relative transition-opacity duration-300" style="opacity: 1;">
+            <section class="relative min-h-screen flex items-center justify-center overflow-hidden bg-blueprint">
+                <div class="absolute inset-0 opacity-10 pointer-events-none">
+                     <!-- Placeholder for abstract architectural grid wireframe distortion panopticon style minimalist cream background blue lines -->
+                </div>
+                <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
+                    <div class="mb-6 inline-block animate-fade-in">
+                        <span class="font-mono text-rust uppercase tracking-[0.2em] text-sm border border-rust px-3 py-1">Research Document 2026</span>
+                    </div>
+                    <h1 class="font-display font-bold text-5xl md:text-7xl lg:text-8xl mb-6 tracking-tighter leading-[0.9] text-surveillance animate-slide-up">THE ARCHITECTURE<br>OF AMBITION</h1>
+                    <p class="font-body text-xl md:text-2xl text-surveillance/70 max-w-2xl mx-auto mb-12 animate-slide-up" style="animation-delay: 0.2s;">How career became identity, why it's breaking us, and the structural flaws in the "rational" pursuit of success.</p>
+                    <button onclick="navigateTo('system')" class="px-8 py-4 bg-surveillance text-cream font-mono uppercase tracking-widest hover:bg-rust transition-colors animate-slide-up" style="animation-delay: 0.4s;">Enter System</button>
+                </div>
+            </section>
+            <section class="py-24 px-6 max-w-6xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+            <div onclick="navigateTo('system')" class="group border border-surveillance/20 p-8 hover:bg-surveillance hover:text-cream transition-all duration-300 cursor-pointer h-full flex flex-col justify-between relative overflow-hidden bg-white">
+                <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20"><span class="material-symbols-outlined text-6xl">grid_view</span></div>
+                <div><span class="font-mono text-rust text-sm mb-2 block group-hover:text-soft-green">01</span><h3 class="font-display font-bold text-2xl mb-4">The System</h3><p class="font-body text-lg opacity-70">The Tyranny of Merit</p></div>
+                <div class="mt-8 flex items-center gap-2 font-mono text-xs uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">Explore <span class="material-symbols-outlined text-sm">arrow_forward</span></div>
+            </div>
+        
+                    
+            <div onclick="navigateTo('cities')" class="group border border-surveillance/20 p-8 hover:bg-surveillance hover:text-cream transition-all duration-300 cursor-pointer h-full flex flex-col justify-between relative overflow-hidden bg-white">
+                <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20"><span class="material-symbols-outlined text-6xl">location_city</span></div>
+                <div><span class="font-mono text-rust text-sm mb-2 block group-hover:text-soft-green">02</span><h3 class="font-display font-bold text-2xl mb-4">The Cities</h3><p class="font-body text-lg opacity-70">Toronto, London, NYC</p></div>
+                <div class="mt-8 flex items-center gap-2 font-mono text-xs uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">Explore <span class="material-symbols-outlined text-sm">arrow_forward</span></div>
+            </div>
+        
+                    
+            <div onclick="navigateTo('machines')" class="group border border-surveillance/20 p-8 hover:bg-surveillance hover:text-cream transition-all duration-300 cursor-pointer h-full flex flex-col justify-between relative overflow-hidden bg-white">
+                <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20"><span class="material-symbols-outlined text-6xl">devices</span></div>
+                <div><span class="font-mono text-rust text-sm mb-2 block group-hover:text-soft-green">03</span><h3 class="font-display font-bold text-2xl mb-4">The Machines</h3><p class="font-body text-lg opacity-70">LinkedIn Panopticon</p></div>
+                <div class="mt-8 flex items-center gap-2 font-mono text-xs uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">Explore <span class="material-symbols-outlined text-sm">arrow_forward</span></div>
+            </div>
+        
+                    
+            <div onclick="navigateTo('casualties')" class="group border border-surveillance/20 p-8 hover:bg-surveillance hover:text-cream transition-all duration-300 cursor-pointer h-full flex flex-col justify-between relative overflow-hidden bg-white">
+                <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20"><span class="material-symbols-outlined text-6xl">psychology</span></div>
+                <div><span class="font-mono text-rust text-sm mb-2 block group-hover:text-soft-green">04</span><h3 class="font-display font-bold text-2xl mb-4">The Casualties</h3><p class="font-body text-lg opacity-70">Burnout &amp; Anxiety</p></div>
+                <div class="mt-8 flex items-center gap-2 font-mono text-xs uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">Explore <span class="material-symbols-outlined text-sm">arrow_forward</span></div>
+            </div>
+        
+                    
+            <div onclick="navigateTo('exits')" class="group border border-surveillance/20 p-8 hover:bg-surveillance hover:text-cream transition-all duration-300 cursor-pointer h-full flex flex-col justify-between relative overflow-hidden bg-white">
+                <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20"><span class="material-symbols-outlined text-6xl">door_open</span></div>
+                <div><span class="font-mono text-rust text-sm mb-2 block group-hover:text-soft-green">05</span><h3 class="font-display font-bold text-2xl mb-4">The Exits</h3><p class="font-body text-lg opacity-70">Alternative Frameworks</p></div>
+                <div class="mt-8 flex items-center gap-2 font-mono text-xs uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">Explore <span class="material-symbols-outlined text-sm">arrow_forward</span></div>
+            </div>
+        
+                    
+            <div onclick="navigateTo('resources')" class="group border border-surveillance/20 p-8 hover:bg-surveillance hover:text-cream transition-all duration-300 cursor-pointer h-full flex flex-col justify-between relative overflow-hidden bg-white">
+                <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20"><span class="material-symbols-outlined text-6xl">library_books</span></div>
+                <div><span class="font-mono text-rust text-sm mb-2 block group-hover:text-soft-green">06</span><h3 class="font-display font-bold text-2xl mb-4">Resources</h3><p class="font-body text-lg opacity-70">Practical Tools</p></div>
+                <div class="mt-8 flex items-center gap-2 font-mono text-xs uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">Explore <span class="material-symbols-outlined text-sm">arrow_forward</span></div>
+            </div>
+        
+                </div>
+            </section>
+        </main>
+
+    <!-- Footer -->
+    <footer class="bg-surveillance text-cream py-12 border-t border-rust/30">
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12">
+            <div class="col-span-1 md:col-span-2">
+                <h4 class="font-display font-bold text-2xl mb-4">Architecture of Ambition</h4>
+                <p class="font-body text-cream/70 max-w-md">
+                    A digital research project examining extreme career ambition as a "rational maladaptation". 
+                    Data sourced from RBC, WOWA, ONS, and academic research on workism.
+                </p>
+            </div>
+            <div>
+                <h5 class="font-mono uppercase text-rust mb-4 text-sm">Navigation</h5>
+                <ul class="space-y-2 font-mono text-sm text-cream/60">
+                    <li><button class="hover:text-white" onclick="navigateTo('system')">I. The System</button></li>
+                    <li><button class="hover:text-white" onclick="navigateTo('cities')">II. The Cities</button></li>
+                    <li><button class="hover:text-white" onclick="navigateTo('machines')">III. The Machines</button></li>
+                    <li><button class="hover:text-white" onclick="navigateTo('exits')">IV. The Exits</button></li>
+                </ul>
+            </div>
+
+        </div>
+    </footer>
+
+    <!-- Logic -->
+    <script>
+        const state = {
+            currentView: 'home',
+            cityData: {
+                toronto: { ratio: 10.7, income: 99000, desc: "The Trap of Good Intentions", stats: "77% income for ownership" },
+                vancouver: { ratio: 12.7, income: 92000, desc: "Immobility by Design", stats: "12.7 Price-to-Income Ratio" },
+                london: { ratio: 9.8, income: 45000, desc: "The Feudal Rental Market", stats: "52% income on rent" },
+                nyc: { ratio: 7.5, income: 80000, desc: "The Velocity Machine", stats: "53% Rent Burdened" }
+            },
+            currentCity: 'toronto'
+        };
+
+        function navigateTo(viewId) {
+            state.currentView = viewId;
+            render();
+            window.scrollTo(0, 0);
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+            menu.classList.toggle('flex');
+        }
+
+        /* Views */
+        const Hero = () => `
+            <section class="relative min-h-screen flex items-center justify-center overflow-hidden bg-blueprint">
+                <div class="absolute inset-0 opacity-10 pointer-events-none">
+                     <!-- Placeholder for abstract architectural grid wireframe distortion panopticon style minimalist cream background blue lines -->
+                </div>
+                <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
+                    <div class="mb-6 inline-block animate-fade-in">
+                        <span class="font-mono text-rust uppercase tracking-[0.2em] text-sm border border-rust px-3 py-1">Research Document 2026</span>
+                    </div>
+                    <h1 class="font-display font-bold text-5xl md:text-7xl lg:text-8xl mb-6 tracking-tighter leading-[0.9] text-surveillance animate-slide-up">THE ARCHITECTURE<br>OF AMBITION</h1>
+                    <p class="font-body text-xl md:text-2xl text-surveillance/70 max-w-2xl mx-auto mb-12 animate-slide-up" style="animation-delay: 0.2s;">How career became identity, why it's breaking us, and the structural flaws in the "rational" pursuit of success.</p>
+                    <button onclick="navigateTo('system')" class="px-8 py-4 bg-surveillance text-cream font-mono uppercase tracking-widest hover:bg-rust transition-colors animate-slide-up" style="animation-delay: 0.4s;">Enter System</button>
+                </div>
+            </section>
+            <section class="py-24 px-6 max-w-6xl mx-auto">
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    ${Card('01', 'The System', 'The Tyranny of Merit', 'system', 'grid_view')}
+                    ${Card('02', 'The Cities', 'Toronto, London, NYC', 'cities', 'location_city')}
+                    ${Card('03', 'The Machines', 'LinkedIn Panopticon', 'machines', 'devices')}
+                    ${Card('04', 'The Casualties', 'Burnout & Anxiety', 'casualties', 'psychology')}
+                    ${Card('05', 'The Exits', 'Alternative Frameworks', 'exits', 'door_open')}
+                    ${Card('06', 'Resources', 'Practical Tools', 'resources', 'library_books')}
+                </div>
+            </section>
+        `;
+
+        const Card = (num, title, desc, link, icon) => `
+            <div onclick="navigateTo('${link}')" class="group border border-surveillance/20 p-8 hover:bg-surveillance hover:text-cream transition-all duration-300 cursor-pointer h-full flex flex-col justify-between relative overflow-hidden bg-white">
+                <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20"><span class="material-symbols-outlined text-6xl">${icon}</span></div>
+                <div><span class="font-mono text-rust text-sm mb-2 block group-hover:text-soft-green">${num}</span><h3 class="font-display font-bold text-2xl mb-4">${title}</h3><p class="font-body text-lg opacity-70">${desc}</p></div>
+                <div class="mt-8 flex items-center gap-2 font-mono text-xs uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">Explore <span class="material-symbols-outlined text-sm">arrow_forward</span></div>
+            </div>
+        `;
+
+        const ArchetypeCard = (num, title, desc, file, icon) => `
+            <div onclick="window.open('archetypes/${file}.html', '_blank')" class="group border border-surveillance/20 p-8 hover:bg-surveillance hover:text-cream transition-all duration-300 cursor-pointer h-full flex flex-col justify-between relative overflow-hidden bg-white">
+                <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20"><span class="material-symbols-outlined text-6xl">${icon}</span></div>
+                <div><span class="font-mono text-rust text-sm mb-2 block group-hover:text-soft-green">${num}</span><h3 class="font-display font-bold text-2xl mb-4">${title}</h3><p class="font-body text-lg opacity-70">${desc}</p></div>
+                <div class="mt-8 flex items-center gap-2 font-mono text-xs uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">Explore <span class="material-symbols-outlined text-sm">arrow_forward</span></div>
+            </div>
+        `;
+
+        const SystemView = () => `
+            ${Header('01', 'The System', 'The theological intensity of modern work.', 'system')}
+            <article class="max-w-3xl mx-auto px-6 py-16">
+                <p class="font-body text-2xl leading-relaxed text-surveillance/80 mb-12 first-letter:text-5xl first-letter:font-bold first-letter:mr-2 first-letter:float-left">We have replaced the worship of gods with the worship of potential. Derek Thompson calls it "Workism"—the belief that work is not only necessary to economic production, but also the centerpiece of one’s identity.</p>
+                <div class="my-12 border-l-4 border-rust pl-8 py-2"><blockquote class="font-display font-bold text-2xl text-surveillance italic">"The achievement-subject exploits itself. It means that exploitation is possible even without domination."</blockquote><cite class="block mt-4 font-mono text-sm text-rust uppercase">— Byung-Chul Han</cite></div>
+                <h3 class="font-display font-bold text-3xl mb-6">The Tyranny of Merit</h3>
+                <p class="font-body text-lg leading-relaxed mb-8">Michael Sandel argues that the rhetoric of "rising" creates a hubristic meritocracy. If you believe success is your own doing, failure must be your own fault.</p>
+                <div class="bg-surveillance text-cream p-8 my-12 relative"><h4 class="font-mono text-rust uppercase tracking-widest mb-4">Diagnostic</h4><ul class="space-y-4 font-body text-lg"><li>Do you introduce yourself by job title?</li><li>Do you feel guilty when unproductive?</li><li>Is work your primary community?</li></ul></div>
+                <div class="flex justify-between items-center mt-16 pt-8 border-t border-surveillance/10"><button onclick="navigateTo('home')" class="text-surveillance/50 hover:text-surveillance flex items-center gap-2"><span class="material-symbols-outlined">arrow_back</span> Home</button><button onclick="navigateTo('cities')" class="text-rust font-bold hover:text-surveillance flex items-center gap-2">Next: The Cities <span class="material-symbols-outlined">arrow_forward</span></button></div>
+            </article>
+        `;
+
+        const CitiesView = () => `
+            ${Header('02', 'The Cities', 'Where ambition goes to pay rent.', 'cities')}
+            <section class="max-w-6xl mx-auto px-6 py-12">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+                    <div>
+                        <h3 class="font-display font-bold text-3xl mb-6">Select Pressure Point</h3>
+                        <div class="flex flex-wrap gap-4 mb-8">${Object.keys(state.cityData).map(k => `<button onclick="selectCity('${k}')" class="px-6 py-3 border border-surveillance font-mono text-sm uppercase transition-all ${k === state.currentCity ? 'bg-surveillance text-cream' : 'hover:bg-surveillance/10'}">${k}</button>`).join('')}</div>
+                        <div id="city-details" class="bg-white p-8 border border-surveillance/10 shadow-sm animate-fade-in">
+                            <h4 class="font-display font-bold text-4xl mb-2 text-surveillance capitalize">${state.currentCity}</h4>
+                            <p class="font-mono text-rust text-sm uppercase tracking-widest mb-6">${state.cityData[state.currentCity].desc}</p>
+                            <p class="font-body text-lg" id="city-narrative"></p>
+                        </div>
+                    </div>
+                    <div class="bg-blueprint p-8 border border-surveillance/20 relative min-h-[500px] flex flex-col justify-end">
+                        <img id="city-img" src="" class="absolute inset-0 w-full h-full object-cover opacity-20 img-blueprint mix-blend-multiply">
+                        <div class="relative z-10 w-full bg-cream/90 p-6 backdrop-blur-sm border border-surveillance/10">
+                            <h5 class="font-mono text-xs uppercase mb-4 text-center">Economic Viability</h5>
+                            <div class="flex justify-around items-end h-40 gap-8 mb-4">
+                                <div class="w-16 bg-surveillance flex flex-col justify-end items-center" style="height: 30%"><span class="text-xs font-mono mb-1">Income</span></div>
+                                <div id="bar-cost" class="w-16 bg-rust flex flex-col justify-end items-center transition-all duration-500" style="height: 80%"><span class="text-xs font-mono mb-1 text-white">Cost</span></div>
+                            </div>
+                            <div class="text-center"><span class="block font-mono text-xs text-surveillance/50 uppercase">Key Stat</span><span class="block font-display font-bold text-2xl text-rust" id="stat-main">${state.cityData[state.currentCity].stats}</span></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-end mt-8"><button onclick="navigateTo('machines')" class="text-rust font-bold flex items-center gap-2">Next: The Machines <span class="material-symbols-outlined">arrow_forward</span></button></div>
+            </section>
+        `;
+
+        const MachinesView = () => `
+            ${Header('03', 'The Machines', 'Engines of Envy.', 'machines')}
+            <section class="max-w-5xl mx-auto px-6 py-12">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
+                    <div>
+                        <h3 class="font-display font-bold text-3xl mb-4">The Panopticon</h3>
+                        <p class="font-body text-lg mb-6">LinkedIn is a surveillance mechanism where we police success. Frequent users have <strong class="text-rust">2.1x higher odds of depression</strong>.</p>
+                        <ul class="space-y-4 font-mono text-sm border-t border-surveillance/20 pt-6">
+                            <li class="flex items-center gap-3"><span class="material-symbols-outlined text-rust">visibility</span> Performative Gratitude</li>
+                            <li class="flex items-center gap-3"><span class="material-symbols-outlined text-rust">compare_arrows</span> Upward Comparison</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white shadow-xl border p-6 relative">
+                        <div class="flex items-center gap-3 mb-4"><div class="w-12 h-12 bg-gray-200 rounded-full"></div><div><div class="h-4 w-32 bg-gray-200 mb-1"></div><div class="h-3 w-24 bg-gray-100"></div></div></div>
+                        <div class="space-y-2 font-body text-gray-800">
+                            <p class="cursor-pointer hover:bg-rust/10 p-1 rounded" onclick="alert('False Modesty: Preempts envy by feigning unworthiness.')">I am <strong class="text-blue-600">humbled and honored</strong> to announce...</p>
+                            <p class="cursor-pointer hover:bg-rust/10 p-1 rounded" onclick="alert('Martyrdom Trap: Validates exploitation.')">After <strong class="text-blue-600">countless late nights</strong>...</p>
+                        </div>
+                        <p class="mt-4 text-xs text-center text-gray-400 font-mono uppercase">Click highlighted text for analysis</p>
+                    </div>
+                </div>
+                <div class="flex justify-end mt-16"><button onclick="navigateTo('exits')" class="text-rust font-bold flex items-center gap-2">Next: The Exits <span class="material-symbols-outlined">arrow_forward</span></button></div>
+            </section>
+        `;
+
+        const ExitsView = () => `
+            ${Header('05', 'The Exits', 'Doors out of the burning building.', 'exits')}
+            <section class="max-w-6xl mx-auto px-6 py-12">
+                <div class="mb-16 max-w-3xl mx-auto bg-surveillance/5 p-8 border-l-4 border-rust">
+                    <p class="font-body text-lg text-surveillance/80 mb-4">
+                        <strong>The Architect</strong> (Chapter 04) is the practical application of these exits. It is what happens when you deliberately construct a life where work is not identity, where productivity is bounded, where success is redefined.
+                    </p>
+                    <p class="font-body text-lg text-surveillance/80">
+                        The Exits are frameworks. The Architect is proof it is possible.
+                    </p>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    ${ExitCard('church', 'Vocation', 'Christian Exit', 'Work is not a ladder, but a station to serve. Value is conferred by origin (Imago Dei), not utility.')}
+                    ${ExitCard('balance', 'Eudaimonia', 'Aristotelian Exit', 'Happiness is not a dopamine spike, but the steady practice of virtue over a complete life.')}
+                    ${ExitCard('self_improvement', 'Transcendence', 'Humanistic Exit', 'The self is not a project to be optimized, but a vessel to be emptied into something larger.')}
+                </div>
+                <div class="mt-16 text-center"><button onclick="navigateTo('resources')" class="px-8 py-3 bg-surveillance text-cream font-mono uppercase hover:bg-rust transition-colors">View Resources</button></div>
+            </section>
+        `;
+
+        const ExitCard = (icon, title, sub, text) => `
+            <div class="bg-white border border-surveillance/10 p-8 hover:shadow-lg transition-all group">
+                <div class="h-12 w-12 bg-rust/10 text-rust flex items-center justify-center mb-6 group-hover:bg-rust group-hover:text-white transition-colors"><span class="material-symbols-outlined">${icon}</span></div>
+                <h3 class="font-display font-bold text-2xl mb-2">${title}</h3><span class="font-mono text-xs uppercase tracking-widest text-surveillance/50 mb-4 block">${sub}</span>
+                <p class="font-body text-lg">${text}</p>
+            </div>
+        `;
+
+        const ResourcesView = () => `
+            ${Header('06', 'Resources', 'Tools for resistance.', 'resources')}
+            <section class="max-w-4xl mx-auto px-6 py-12 space-y-12">
+                <div>
+                    <h3 class="font-display font-bold text-2xl border-b border-surveillance mb-6 pb-2">Essential Reading</h3>
+                    <ul class="space-y-6">
+                        <li>
+                            <h4 class="font-display font-bold text-lg">The Burnout Society</h4>
+                            <p class="text-sm font-mono text-rust mb-2">Byung-Chul Han</p>
+                            <p class="font-body text-surveillance/70">Stanford University Press. On the self-exploitation of the achievement society and how burnout is not pathological but structural.</p>
+                        </li>
+                        <li>
+                            <h4 class="font-display font-bold text-lg">The Tyranny of Merit</h4>
+                            <p class="text-sm font-mono text-rust mb-2">Michael J. Sandel</p>
+                            <p class="font-body text-surveillance/70">Penguin Books. On how meritocratic rhetoric masks structural inequality and creates hubristic moral judgment.</p>
+                        </li>
+                        <li>
+                            <h4 class="font-display font-bold text-lg">The Price of Inequality</h4>
+                            <p class="text-sm font-mono text-rust mb-2">Joseph Stiglitz</p>
+                            <p class="font-body text-surveillance/70">W.W. Norton & Company. On structural precarity and the economic mechanisms that force defensive adaptation.</p>
+                        </li>
+                        <li>
+                            <h4 class="font-display font-bold text-lg">Scarcity</h4>
+                            <p class="text-sm font-mono text-rust mb-2">Sendhil Mullainathan & Eldar Shafir</p>
+                            <p class="font-body text-surveillance/70">Simon & Schuster. On how threat narrows cognition and choice—the psychology of precarity.</p>
+                        </li>
+                        <li>
+                            <h4 class="font-display font-bold text-lg">Bullshit Jobs</h4>
+                            <p class="text-sm font-mono text-rust mb-2">David Graeber</p>
+                            <p class="font-body text-surveillance/70">Simon & Schuster. On the structural absurdity of modern work and its psychological toll.</p>
+                        </li>
+                        <li>
+                            <h4 class="font-display font-bold text-lg">Capitalist Realism</h4>
+                            <p class="text-sm font-mono text-rust mb-2">Mark Fisher</p>
+                            <p class="font-body text-surveillance/70">Simon & Schuster. On the collapse of alternatives and why "there is no alternative" becomes a psychological trap.</p>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-display font-bold text-2xl border-b border-surveillance mb-6 pb-2">Exits & Architecture</h3>
+                    <ul class="space-y-6">
+                        <li>
+                            <h4 class="font-display font-bold text-lg">How to Do Nothing</h4>
+                            <p class="text-sm font-mono text-rust mb-2">Jenny Odell</p>
+                            <p class="font-body text-surveillance/70">Penguin Random House. On refusal as resistance and the construction of alternative values outside market logic.</p>
+                        </li>
+                        <li>
+                            <h4 class="font-display font-bold text-lg">The Craftsman</h4>
+                            <p class="text-sm font-mono text-rust mb-2">Richard Sennett</p>
+                            <p class="font-body text-surveillance/70">Yale University Press. On skill, autonomy, and meaning in work—an alternative to optimization.</p>
+                        </li>
+                        <li>
+                            <h4 class="font-display font-bold text-lg">Alone Together</h4>
+                            <p class="text-sm font-mono text-rust mb-2">Sherry Turkle</p>
+                            <p class="font-body text-surveillance/70">MIT Press. On identity, connection, and the difference between being seen and being known.</p>
+                        </li>
+                        <li>
+                            <h4 class="font-display font-bold text-lg">The Presentation of Self in Everyday Life</h4>
+                            <p class="text-sm font-mono text-rust mb-2">Erving Goffman</p>
+                            <p class="font-body text-surveillance/70">Penguin Classics. On performance, persona, and the construction of identity through social interaction.</p>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-display font-bold text-2xl border-b border-surveillance mb-6 pb-2">Classics</h3>
+                    <ul class="space-y-6">
+                        <li>
+                            <h4 class="font-display font-bold text-lg">The Protestant Ethic and the Spirit of Capitalism</h4>
+                            <p class="text-sm font-mono text-rust mb-2">Max Weber</p>
+                            <p class="font-body text-surveillance/70">Penguin Classics. The genealogy of the belief that work is a moral calling—where this all began.</p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="bg-surveillance/5 border border-surveillance/20 p-8 rounded">
+                    <h3 class="font-display font-bold text-lg mb-4">In Crisis</h3>
+                    <p class="font-body text-surveillance/70 mb-4">If you are in acute distress or having thoughts of self-harm, please reach out:</p>
+                    <ul class="space-y-2 font-mono text-sm font-bold text-rust">
+                        <li>🇺🇸 / 🇨🇦 National Crisis Line: 988</li>
+                        <li>🇬🇧 Samaritans: 116 123</li>
+                        <li>🇪🇺 Telefonseelsorge (DE): 0800 1110111 or 0800 1110222</li>
+                    </ul>
+                </div>
+            </section>
+        `;
+
+        const Header = (num, title, sub, view) => `
+            <header class="bg-cream pt-12 pb-12 px-6 border-b border-surveillance/10 relative overflow-hidden">
+                <div class="max-w-7xl mx-auto relative z-10"><span class="font-mono text-rust text-sm uppercase tracking-widest mb-2 block animate-fade-in">Chapter ${num}</span><h2 class="font-display font-bold text-5xl md:text-6xl text-surveillance mb-4 animate-slide-up">${title}</h2><p class="font-body text-xl md:text-2xl text-surveillance/60 max-w-2xl animate-slide-up">${sub}</p></div>
+            </header>
+        `;
+
+        /* Logic */
+        function selectCity(cityKey) {
+            state.currentCity = cityKey;
+            render(); 
+        }
+
+        function render() {
+            const app = document.getElementById('app');
+            const views = {
+                'home': Hero, 'system': SystemView, 'cities': CitiesView, 
+                'machines': MachinesView, 'exits': ExitsView, 'resources': ResourcesView,
+                'casualties': () => Header('04', 'The Casualties', 'Psychological Archetypes', 'casualties') + `
+                    <section class="py-16 px-6 max-w-6xl mx-auto">
+                        <div class="mb-16 max-w-3xl mx-auto">
+                            <p class="font-body text-xl leading-relaxed text-surveillance/70">
+                                The economic pressures of the City (Chapter 02) force the self into specific shapes for survival. These are not personality types; they are defense mechanisms. Each archetype represents a different adaptation to the same systemic pressure: the demand to be perpetually useful, perpetually productive, perpetually visible.
+                            </p>
+                        </div>
+                        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                            ${ArchetypeCard('01', 'The Watchman', 'Vigilant defense against uncertainty', 'watchman', 'visibility')}
+                            ${ArchetypeCard('02', 'The Visible', 'Performance as identity', 'visible', 'person')}
+                            ${ArchetypeCard('03', 'The Faithful', 'Work as calling', 'faithful', 'church')}
+                            ${ArchetypeCard('04', 'The Departed', 'Quiet withdrawal', 'departed', 'person_off')}
+                            ${ArchetypeCard('05', 'The Architect', 'Strategic detachment', 'architect', 'architecture')}
+                        </div>
+                    </section>
+                `
+            };
+            app.style.opacity = '0';
+            setTimeout(() => {
+                app.innerHTML = views[state.currentView]();
+                if(state.currentView === 'cities') updateCityView();
+                app.style.opacity = '1';
+                // Progress bar
+                const progress = {'home': '0%', 'system': '16%', 'cities': '32%', 'machines': '48%', 'casualties': '64%', 'exits': '80%', 'resources': '100%'};
+                document.getElementById('progress-bar').style.width = progress[state.currentView];
+            }, 300);
+        }
+
+        function updateCityView() {
+            const narrative = document.getElementById('city-narrative');
+            const img = document.getElementById('city-img');
+            const data = state.cityData[state.currentCity];
+            
+            const texts = {
+                'toronto': 'With a Price-to-Income ratio of 10.7, home ownership is mathematically impossible for the 90th percentile.',
+                'vancouver': 'The most beautiful trap. A 12.7 Price-to-Income ratio means only inheritance matters.',
+                'london': 'Feudalism reinvented. Spending 52% of pre-tax income on rent is "normal".',
+                'nyc': 'The velocity machine. 53% are rent-burdened, yet cultural narrative says you are lucky.'
+            };
+            const images = {
+                'toronto': {src: '', alt: 'CN Tower Toronto skyline black and white'},
+                'vancouver': {src: '', alt: 'Lions Gate Bridge Vancouver black and white'},
+                'london': {src: '', alt: 'St Pauls Cathedral London skyline black and white'},
+                'nyc': {src: '', alt: 'Empire State Building NYC black and white'}
+            };
+            
+            if(narrative) narrative.innerText = texts[state.currentCity];
+            if(img) { img.src = images[state.currentCity].src; img.alt = images[state.currentCity].alt; }
+            
+            // Bar animation
+            const bar = document.getElementById('bar-cost');
+            if(bar) {
+                let h = 30; // base
+                if(state.currentCity === 'toronto' || state.currentCity === 'vancouver') h = (data.ratio / 3) * 20;
+                else h = (data.ratio / 2) * 20; // approximation for non-ratio stats
+                bar.style.height = Math.min(h, 90) + '%';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            render();
+            window.addEventListener('scroll', () => {
+               const nav = document.getElementById('navbar');
+               if(window.scrollY > 50) { nav.classList.add('shadow-md', 'py-2'); nav.classList.remove('py-4'); }
+               else { nav.classList.remove('shadow-md', 'py-2'); nav.classList.add('py-4'); }
+            });
+        });
+    </script>
+</body></html>
