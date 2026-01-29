@@ -153,6 +153,12 @@
           </button>
           <button
             class="hover:text-rust transition-colors p-2 rounded -m-2"
+            onclick="navigateTo('casualties')"
+          >
+            The Casualties
+          </button>
+          <button
+            class="hover:text-rust transition-colors p-2 rounded -m-2"
             onclick="navigateTo('exits')"
           >
             The Exits
@@ -202,11 +208,20 @@
         <button
           class="text-left font-display text-xl hover:text-rust"
           onclick="
+            navigateTo('casualties')
+            toggleMobileMenu()
+          "
+        >
+          04. The Casualties
+        </button>
+        <button
+          class="text-left font-display text-xl hover:text-rust"
+          onclick="
             navigateTo('exits')
             toggleMobileMenu()
           "
         >
-          04. The Exits
+          05. The Exits
         </button>
       </div>
     </nav>
