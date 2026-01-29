@@ -1,3 +1,25 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Custom Styles */
+@layer base {
+  body {
+    @apply bg-cream text-surveillance overflow-x-hidden;
+  }
+
+  .bg-blueprint {
+    background-image:
+      linear-gradient(#e2e8f0 1px, transparent 1px),
+      linear-gradient(90deg, #e2e8f0 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .img-blueprint {
+    @apply filter grayscale contrast-125 brightness-90 transition-all duration-500;
+  }
+
+  .img-blueprint:hover {
+    @apply grayscale-0 contrast-100 brightness-100;
+  }
+}

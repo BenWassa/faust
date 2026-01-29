@@ -1,191 +1,468 @@
-<!DOCTYPE html>
-<html lang="en" class="scroll-smooth"><head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="A digital essay exploring how career became identity in modern cities, why extreme ambition is rational yet destructive, and what alternative frameworks offer.">
-    <meta property="og:title" content="The Architecture of Ambition">
-    <meta property="og:description" content="Exploring career-centric identity, housing precarity, and platform-amplified status anxiety among young professionals in global cities.">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://benwassa.github.io/faust/">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="The Architecture of Ambition">
-    <meta name="twitter:description" content="Exploring career-centric identity, housing precarity, and platform-amplified status anxiety among young professionals.">
-    <link rel="canonical" href="https://benwassa.github.io/faust/">
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="apple-touch-icon" href="apple-touch-icon.svg">
-    <link rel="manifest" href="manifest.json">
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="A digital essay exploring how career became identity in modern cities, why extreme ambition is rational yet destructive, and what alternative frameworks offer."
+    />
+    <meta property="og:title" content="The Architecture of Ambition" />
+    <meta
+      property="og:description"
+      content="Exploring career-centric identity, housing precarity, and platform-amplified status anxiety among young professionals in global cities."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://benwassa.github.io/faust/" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="The Architecture of Ambition" />
+    <meta
+      name="twitter:description"
+      content="Exploring career-centric identity, housing precarity, and platform-amplified status anxiety among young professionals."
+    />
+    <link rel="canonical" href="https://benwassa.github.io/faust/" />
+    <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.svg" />
+    <link rel="manifest" href="manifest.json" />
+    <link rel="stylesheet" href="/style.css" />
     <title>The Architecture of Ambition</title>
     <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,400&amp;family=JetBrains+Mono:wght@300;400;500&amp;family=Syne:wght@400;600;700;800&amp;display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,400&amp;family=JetBrains+Mono:wght@300;400;500&amp;family=Syne:wght@400;600;700;800&amp;display=swap"
+      rel="stylesheet"
+    />
     <!-- Material Symbols -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0">
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
 
     <style>
-        body { background-color: #FDFBF7; color: #1A202C; overflow-x: hidden; }
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #FDFBF7; }
-        ::-webkit-scrollbar-thumb { background: #1A202C; }
-        .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border-width: 0; }
-        .sr-only.focus\:not-sr-only:focus { position: static; width: auto; height: auto; padding: inherit; margin: inherit; overflow: visible; clip: auto; white-space: normal; }
-        .bg-blueprint {
-            background-image: linear-gradient(#E2E8F0 1px, transparent 1px), linear-gradient(90deg, #E2E8F0 1px, transparent 1px);
-            background-size: 40px 40px;
-        }
-        .img-blueprint { filter: grayscale(100%) contrast(120%) brightness(0.9); transition: filter 0.5s ease; }
-        .img-blueprint:hover { filter: grayscale(0%) contrast(100%) brightness(100%); }
-        button:focus-visible { outline: 2px solid #C05640; outline-offset: 2px; }
-        [role="button"]:focus-visible { outline: 2px solid #C05640; outline-offset: 2px; }
+      body {
+        background-color: #fdfbf7;
+        color: #1a202c;
+        overflow-x: hidden;
+      }
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #fdfbf7;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #1a202c;
+      }
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border-width: 0;
+      }
+      .sr-only.focus\:not-sr-only:focus {
+        position: static;
+        width: auto;
+        height: auto;
+        padding: inherit;
+        margin: inherit;
+        overflow: visible;
+        clip: auto;
+        white-space: normal;
+      }
+      .bg-blueprint {
+        background-image:
+          linear-gradient(#e2e8f0 1px, transparent 1px),
+          linear-gradient(90deg, #e2e8f0 1px, transparent 1px);
+        background-size: 40px 40px;
+      }
+      .img-blueprint {
+        filter: grayscale(100%) contrast(120%) brightness(0.9);
+        transition: filter 0.5s ease;
+      }
+      .img-blueprint:hover {
+        filter: grayscale(0%) contrast(100%) brightness(100%);
+      }
+      button:focus-visible {
+        outline: 2px solid #c05640;
+        outline-offset: 2px;
+      }
+      [role='button']:focus-visible {
+        outline: 2px solid #c05640;
+        outline-offset: 2px;
+      }
     </style>
-
-<body class="font-body selection:bg-rust selection:text-white antialiased">
-
+  </head>
+  <body class="font-body selection:bg-rust selection:text-white antialiased">
     <!-- Skip to content link for accessibility -->
-    <a href="#main-content" class="sr-only focus:not-sr-only absolute top-2 left-2 bg-rust text-cream px-3 py-2 rounded z-50">Skip to main content</a>
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only absolute top-2 left-2 bg-rust text-cream px-3 py-2 rounded z-50"
+      >Skip to main content</a
+    >
 
     <!-- Navigation -->
-    <nav id="navbar" class="fixed top-0 left-0 w-full z-50 bg-cream/95 backdrop-blur-sm border-b border-surveillance/10 transition-all duration-300 shadow-md py-2">
-        <div id="progress-bar" class="h-1 bg-surveillance w-0 absolute top-0 left-0 transition-all duration-300" style="width: 0%;"></div>
-        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
-            <button class="flex items-center gap-3 cursor-pointer p-2 rounded -m-2" onclick="navigateTo('home')" aria-label="Navigate to home">
-                <span class="material-symbols-outlined text-surveillance" aria-hidden="true">grid_4x4</span>
-                <span class="font-display font-bold text-lg tracking-tight uppercase">Architecture of Ambition</span>
-            </button>
-            <!-- Desktop Nav -->
-            <div class="hidden md:flex items-center gap-8 font-mono text-sm uppercase tracking-widest text-surveillance/70">
-                <button class="hover:text-rust transition-colors p-2 rounded -m-2" onclick="navigateTo('system')">The System</button>
-                <button class="hover:text-rust transition-colors p-2 rounded -m-2" onclick="navigateTo('cities')">The Cities</button>
-                <button class="hover:text-rust transition-colors p-2 rounded -m-2" onclick="navigateTo('machines')">The Machines</button>
-                <button class="hover:text-rust transition-colors p-2 rounded -m-2" onclick="navigateTo('exits')">The Exits</button>
-            </div>
-            <!-- Mobile Menu Button -->
-            <button class="md:hidden text-surveillance p-2 rounded -m-2" onclick="toggleMobileMenu()" aria-label="Toggle mobile menu">
-                <span class="material-symbols-outlined" aria-hidden="true">menu</span>
-            </button>
+    <nav
+      id="navbar"
+      class="fixed top-0 left-0 w-full z-50 bg-cream/95 backdrop-blur-sm border-b border-surveillance/10 transition-all duration-300 shadow-md py-2"
+    >
+      <div
+        id="progress-bar"
+        class="h-1 bg-surveillance w-0 absolute top-0 left-0 transition-all duration-300"
+        style="width: 0%"
+      ></div>
+      <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+        <button
+          class="flex items-center gap-3 cursor-pointer p-2 rounded -m-2"
+          onclick="navigateTo('home')"
+          aria-label="Navigate to home"
+        >
+          <span class="material-symbols-outlined text-surveillance" aria-hidden="true"
+            >grid_4x4</span
+          >
+          <span class="font-display font-bold text-lg tracking-tight uppercase"
+            >Architecture of Ambition</span
+          >
+        </button>
+        <!-- Desktop Nav -->
+        <div
+          class="hidden md:flex items-center gap-8 font-mono text-sm uppercase tracking-widest text-surveillance/70"
+        >
+          <button
+            class="hover:text-rust transition-colors p-2 rounded -m-2"
+            onclick="navigateTo('system')"
+          >
+            The System
+          </button>
+          <button
+            class="hover:text-rust transition-colors p-2 rounded -m-2"
+            onclick="navigateTo('cities')"
+          >
+            The Cities
+          </button>
+          <button
+            class="hover:text-rust transition-colors p-2 rounded -m-2"
+            onclick="navigateTo('machines')"
+          >
+            The Machines
+          </button>
+          <button
+            class="hover:text-rust transition-colors p-2 rounded -m-2"
+            onclick="navigateTo('exits')"
+          >
+            The Exits
+          </button>
         </div>
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden absolute top-full left-0 w-full bg-cream border-b border-surveillance p-6 flex-col gap-4 shadow-lg md:hidden">
-            <button class="text-left font-display text-xl hover:text-rust" onclick="navigateTo('system'); toggleMobileMenu()">01. The System</button>
-            <button class="text-left font-display text-xl hover:text-rust" onclick="navigateTo('cities'); toggleMobileMenu()">02. The Cities</button>
-            <button class="text-left font-display text-xl hover:text-rust" onclick="navigateTo('machines'); toggleMobileMenu()">03. The Machines</button>
-            <button class="text-left font-display text-xl hover:text-rust" onclick="navigateTo('exits'); toggleMobileMenu()">04. The Exits</button>
-        </div>
+        <!-- Mobile Menu Button -->
+        <button
+          class="md:hidden text-surveillance p-2 rounded -m-2"
+          onclick="toggleMobileMenu()"
+          aria-label="Toggle mobile menu"
+        >
+          <span class="material-symbols-outlined" aria-hidden="true">menu</span>
+        </button>
+      </div>
+      <!-- Mobile Menu -->
+      <div
+        id="mobile-menu"
+        class="hidden absolute top-full left-0 w-full bg-cream border-b border-surveillance p-6 flex-col gap-4 shadow-lg md:hidden"
+      >
+        <button
+          class="text-left font-display text-xl hover:text-rust"
+          onclick="
+            navigateTo('system')
+            toggleMobileMenu()
+          "
+        >
+          01. The System
+        </button>
+        <button
+          class="text-left font-display text-xl hover:text-rust"
+          onclick="
+            navigateTo('cities')
+            toggleMobileMenu()
+          "
+        >
+          02. The Cities
+        </button>
+        <button
+          class="text-left font-display text-xl hover:text-rust"
+          onclick="
+            navigateTo('machines')
+            toggleMobileMenu()
+          "
+        >
+          03. The Machines
+        </button>
+        <button
+          class="text-left font-display text-xl hover:text-rust"
+          onclick="
+            navigateTo('exits')
+            toggleMobileMenu()
+          "
+        >
+          04. The Exits
+        </button>
+      </div>
     </nav>
 
     <!-- Main Content -->
-    <main id="app" class="pt-16 min-h-screen relative transition-opacity duration-300" style="opacity: 1;">
-            <section class="relative min-h-screen flex items-center justify-center overflow-hidden bg-blueprint">
-                <div class="absolute inset-0 opacity-10 pointer-events-none">
-                     <!-- Placeholder for abstract architectural grid wireframe distortion panopticon style minimalist cream background blue lines -->
-                </div>
-                <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
-                    <div class="mb-6 inline-block animate-fade-in">
-                        <span class="font-mono text-rust uppercase tracking-[0.2em] text-sm border border-rust px-3 py-1">Research Document 2026</span>
-                    </div>
-                    <h1 class="font-display font-bold text-5xl md:text-7xl lg:text-8xl mb-6 tracking-tighter leading-[0.9] text-surveillance animate-slide-up">THE ARCHITECTURE<br>OF AMBITION</h1>
-                    <p class="font-body text-xl md:text-2xl text-surveillance/70 max-w-2xl mx-auto mb-12 animate-slide-up" style="animation-delay: 0.2s;">How career became identity, why it's breaking us, and the structural flaws in the "rational" pursuit of success.</p>
-                    <button onclick="navigateTo('system')" class="px-8 py-4 bg-surveillance text-cream font-mono uppercase tracking-widest hover:bg-rust transition-colors animate-slide-up" style="animation-delay: 0.4s;">Enter System</button>
-                </div>
-            </section>
-            <section class="py-24 px-6 max-w-6xl mx-auto">
-                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    
-            <div onclick="navigateTo('system')" class="group border border-surveillance/20 p-8 hover:bg-surveillance hover:text-cream transition-all duration-300 cursor-pointer h-full flex flex-col justify-between relative overflow-hidden bg-white">
-                <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20"><span class="material-symbols-outlined text-6xl">grid_view</span></div>
-                <div><span class="font-mono text-rust text-sm mb-2 block group-hover:text-soft-green">01</span><h3 class="font-display font-bold text-2xl mb-4">The System</h3><p class="font-body text-lg opacity-70">The Tyranny of Merit</p></div>
-                <div class="mt-8 flex items-center gap-2 font-mono text-xs uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">Explore <span class="material-symbols-outlined text-sm">arrow_forward</span></div>
+    <main
+      id="app"
+      class="pt-16 min-h-screen relative transition-opacity duration-300"
+      style="opacity: 1"
+    >
+      <section
+        class="relative min-h-screen flex items-center justify-center overflow-hidden bg-blueprint"
+      >
+        <div class="absolute inset-0 opacity-10 pointer-events-none">
+          <!-- Placeholder for abstract architectural grid wireframe distortion panopticon style minimalist cream background blue lines -->
+        </div>
+        <div class="relative z-10 max-w-4xl mx-auto px-6 text-center">
+          <div class="mb-6 inline-block animate-fade-in">
+            <span
+              class="font-mono text-rust uppercase tracking-[0.2em] text-sm border border-rust px-3 py-1"
+              >Research Document 2026</span
+            >
+          </div>
+          <h1
+            class="font-display font-bold text-5xl md:text-7xl lg:text-8xl mb-6 tracking-tighter leading-[0.9] text-surveillance animate-slide-up"
+          >
+            THE ARCHITECTURE<br />OF AMBITION
+          </h1>
+          <p
+            class="font-body text-xl md:text-2xl text-surveillance/70 max-w-2xl mx-auto mb-12 animate-slide-up"
+            style="animation-delay: 0.2s"
+          >
+            How career became identity, why it's breaking us, and the structural flaws in the
+            "rational" pursuit of success.
+          </p>
+          <button
+            onclick="navigateTo('system')"
+            class="px-8 py-4 bg-surveillance text-cream font-mono uppercase tracking-widest hover:bg-rust transition-colors animate-slide-up"
+            style="animation-delay: 0.4s"
+          >
+            Enter System
+          </button>
+        </div>
+      </section>
+      <section class="py-24 px-6 max-w-6xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div
+            onclick="navigateTo('system')"
+            class="group border border-surveillance/20 p-8 hover:bg-surveillance hover:text-cream transition-all duration-300 cursor-pointer h-full flex flex-col justify-between relative overflow-hidden bg-white"
+          >
+            <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20">
+              <span class="material-symbols-outlined text-6xl">grid_view</span>
             </div>
-        
-                    
-            <div onclick="navigateTo('cities')" class="group border border-surveillance/20 p-8 hover:bg-surveillance hover:text-cream transition-all duration-300 cursor-pointer h-full flex flex-col justify-between relative overflow-hidden bg-white">
-                <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20"><span class="material-symbols-outlined text-6xl">location_city</span></div>
-                <div><span class="font-mono text-rust text-sm mb-2 block group-hover:text-soft-green">02</span><h3 class="font-display font-bold text-2xl mb-4">The Cities</h3><p class="font-body text-lg opacity-70">Toronto, London, NYC</p></div>
-                <div class="mt-8 flex items-center gap-2 font-mono text-xs uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">Explore <span class="material-symbols-outlined text-sm">arrow_forward</span></div>
+            <div>
+              <span class="font-mono text-rust text-sm mb-2 block group-hover:text-soft-green"
+                >01</span
+              >
+              <h3 class="font-display font-bold text-2xl mb-4">The System</h3>
+              <p class="font-body text-lg opacity-70">The Tyranny of Merit</p>
             </div>
-        
-                    
-            <div onclick="navigateTo('machines')" class="group border border-surveillance/20 p-8 hover:bg-surveillance hover:text-cream transition-all duration-300 cursor-pointer h-full flex flex-col justify-between relative overflow-hidden bg-white">
-                <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20"><span class="material-symbols-outlined text-6xl">devices</span></div>
-                <div><span class="font-mono text-rust text-sm mb-2 block group-hover:text-soft-green">03</span><h3 class="font-display font-bold text-2xl mb-4">The Machines</h3><p class="font-body text-lg opacity-70">LinkedIn Panopticon</p></div>
-                <div class="mt-8 flex items-center gap-2 font-mono text-xs uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">Explore <span class="material-symbols-outlined text-sm">arrow_forward</span></div>
+            <div
+              class="mt-8 flex items-center gap-2 font-mono text-xs uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0"
+            >
+              Explore <span class="material-symbols-outlined text-sm">arrow_forward</span>
             </div>
-        
-                    
-            <div onclick="navigateTo('casualties')" class="group border border-surveillance/20 p-8 hover:bg-surveillance hover:text-cream transition-all duration-300 cursor-pointer h-full flex flex-col justify-between relative overflow-hidden bg-white">
-                <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20"><span class="material-symbols-outlined text-6xl">psychology</span></div>
-                <div><span class="font-mono text-rust text-sm mb-2 block group-hover:text-soft-green">04</span><h3 class="font-display font-bold text-2xl mb-4">The Casualties</h3><p class="font-body text-lg opacity-70">Burnout &amp; Anxiety</p></div>
-                <div class="mt-8 flex items-center gap-2 font-mono text-xs uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">Explore <span class="material-symbols-outlined text-sm">arrow_forward</span></div>
+          </div>
+
+          <div
+            onclick="navigateTo('cities')"
+            class="group border border-surveillance/20 p-8 hover:bg-surveillance hover:text-cream transition-all duration-300 cursor-pointer h-full flex flex-col justify-between relative overflow-hidden bg-white"
+          >
+            <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20">
+              <span class="material-symbols-outlined text-6xl">location_city</span>
             </div>
-        
-                    
-            <div onclick="navigateTo('exits')" class="group border border-surveillance/20 p-8 hover:bg-surveillance hover:text-cream transition-all duration-300 cursor-pointer h-full flex flex-col justify-between relative overflow-hidden bg-white">
-                <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20"><span class="material-symbols-outlined text-6xl">door_open</span></div>
-                <div><span class="font-mono text-rust text-sm mb-2 block group-hover:text-soft-green">05</span><h3 class="font-display font-bold text-2xl mb-4">The Exits</h3><p class="font-body text-lg opacity-70">Alternative Frameworks</p></div>
-                <div class="mt-8 flex items-center gap-2 font-mono text-xs uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">Explore <span class="material-symbols-outlined text-sm">arrow_forward</span></div>
+            <div>
+              <span class="font-mono text-rust text-sm mb-2 block group-hover:text-soft-green"
+                >02</span
+              >
+              <h3 class="font-display font-bold text-2xl mb-4">The Cities</h3>
+              <p class="font-body text-lg opacity-70">Toronto, London, NYC</p>
             </div>
-        
-                    
-            <div onclick="navigateTo('resources')" class="group border border-surveillance/20 p-8 hover:bg-surveillance hover:text-cream transition-all duration-300 cursor-pointer h-full flex flex-col justify-between relative overflow-hidden bg-white">
-                <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20"><span class="material-symbols-outlined text-6xl">library_books</span></div>
-                <div><span class="font-mono text-rust text-sm mb-2 block group-hover:text-soft-green">06</span><h3 class="font-display font-bold text-2xl mb-4">Resources</h3><p class="font-body text-lg opacity-70">Practical Tools</p></div>
-                <div class="mt-8 flex items-center gap-2 font-mono text-xs uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">Explore <span class="material-symbols-outlined text-sm">arrow_forward</span></div>
+            <div
+              class="mt-8 flex items-center gap-2 font-mono text-xs uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0"
+            >
+              Explore <span class="material-symbols-outlined text-sm">arrow_forward</span>
             </div>
-        
-                </div>
-            </section>
-        </main>
+          </div>
+
+          <div
+            onclick="navigateTo('machines')"
+            class="group border border-surveillance/20 p-8 hover:bg-surveillance hover:text-cream transition-all duration-300 cursor-pointer h-full flex flex-col justify-between relative overflow-hidden bg-white"
+          >
+            <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20">
+              <span class="material-symbols-outlined text-6xl">devices</span>
+            </div>
+            <div>
+              <span class="font-mono text-rust text-sm mb-2 block group-hover:text-soft-green"
+                >03</span
+              >
+              <h3 class="font-display font-bold text-2xl mb-4">The Machines</h3>
+              <p class="font-body text-lg opacity-70">LinkedIn Panopticon</p>
+            </div>
+            <div
+              class="mt-8 flex items-center gap-2 font-mono text-xs uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0"
+            >
+              Explore <span class="material-symbols-outlined text-sm">arrow_forward</span>
+            </div>
+          </div>
+
+          <div
+            onclick="navigateTo('casualties')"
+            class="group border border-surveillance/20 p-8 hover:bg-surveillance hover:text-cream transition-all duration-300 cursor-pointer h-full flex flex-col justify-between relative overflow-hidden bg-white"
+          >
+            <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20">
+              <span class="material-symbols-outlined text-6xl">psychology</span>
+            </div>
+            <div>
+              <span class="font-mono text-rust text-sm mb-2 block group-hover:text-soft-green"
+                >04</span
+              >
+              <h3 class="font-display font-bold text-2xl mb-4">The Casualties</h3>
+              <p class="font-body text-lg opacity-70">Burnout &amp; Anxiety</p>
+            </div>
+            <div
+              class="mt-8 flex items-center gap-2 font-mono text-xs uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0"
+            >
+              Explore <span class="material-symbols-outlined text-sm">arrow_forward</span>
+            </div>
+          </div>
+
+          <div
+            onclick="navigateTo('exits')"
+            class="group border border-surveillance/20 p-8 hover:bg-surveillance hover:text-cream transition-all duration-300 cursor-pointer h-full flex flex-col justify-between relative overflow-hidden bg-white"
+          >
+            <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20">
+              <span class="material-symbols-outlined text-6xl">door_open</span>
+            </div>
+            <div>
+              <span class="font-mono text-rust text-sm mb-2 block group-hover:text-soft-green"
+                >05</span
+              >
+              <h3 class="font-display font-bold text-2xl mb-4">The Exits</h3>
+              <p class="font-body text-lg opacity-70">Alternative Frameworks</p>
+            </div>
+            <div
+              class="mt-8 flex items-center gap-2 font-mono text-xs uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0"
+            >
+              Explore <span class="material-symbols-outlined text-sm">arrow_forward</span>
+            </div>
+          </div>
+
+          <div
+            onclick="navigateTo('resources')"
+            class="group border border-surveillance/20 p-8 hover:bg-surveillance hover:text-cream transition-all duration-300 cursor-pointer h-full flex flex-col justify-between relative overflow-hidden bg-white"
+          >
+            <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20">
+              <span class="material-symbols-outlined text-6xl">library_books</span>
+            </div>
+            <div>
+              <span class="font-mono text-rust text-sm mb-2 block group-hover:text-soft-green"
+                >06</span
+              >
+              <h3 class="font-display font-bold text-2xl mb-4">Resources</h3>
+              <p class="font-body text-lg opacity-70">Practical Tools</p>
+            </div>
+            <div
+              class="mt-8 flex items-center gap-2 font-mono text-xs uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0"
+            >
+              Explore <span class="material-symbols-outlined text-sm">arrow_forward</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
 
     <!-- Footer -->
     <footer class="bg-surveillance text-cream py-12 border-t border-rust/30">
-        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12">
-            <div class="col-span-1 md:col-span-2">
-                <h4 class="font-display font-bold text-2xl mb-4">Architecture of Ambition</h4>
-                <p class="font-body text-cream/70 max-w-md">
-                    A digital research project examining extreme career ambition as a "rational maladaptation". 
-                    Data sourced from RBC, WOWA, ONS, and academic research on workism.
-                </p>
-            </div>
-            <div>
-                <h5 class="font-mono uppercase text-rust mb-4 text-sm">Navigation</h5>
-                <ul class="space-y-2 font-mono text-sm text-cream/60">
-                    <li><button class="hover:text-white" onclick="navigateTo('system')">I. The System</button></li>
-                    <li><button class="hover:text-white" onclick="navigateTo('cities')">II. The Cities</button></li>
-                    <li><button class="hover:text-white" onclick="navigateTo('machines')">III. The Machines</button></li>
-                    <li><button class="hover:text-white" onclick="navigateTo('exits')">IV. The Exits</button></li>
-                </ul>
-            </div>
-
+      <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12">
+        <div class="col-span-1 md:col-span-2">
+          <h4 class="font-display font-bold text-2xl mb-4">Architecture of Ambition</h4>
+          <p class="font-body text-cream/70 max-w-md">
+            A digital research project examining extreme career ambition as a "rational
+            maladaptation". Data sourced from RBC, WOWA, ONS, and academic research on workism.
+          </p>
         </div>
+        <div>
+          <h5 class="font-mono uppercase text-rust mb-4 text-sm">Navigation</h5>
+          <ul class="space-y-2 font-mono text-sm text-cream/60">
+            <li>
+              <button class="hover:text-white" onclick="navigateTo('system')">I. The System</button>
+            </li>
+            <li>
+              <button class="hover:text-white" onclick="navigateTo('cities')">
+                II. The Cities
+              </button>
+            </li>
+            <li>
+              <button class="hover:text-white" onclick="navigateTo('machines')">
+                III. The Machines
+              </button>
+            </li>
+            <li>
+              <button class="hover:text-white" onclick="navigateTo('exits')">IV. The Exits</button>
+            </li>
+          </ul>
+        </div>
+      </div>
     </footer>
 
     <!-- Logic -->
     <script>
-        const state = {
-            currentView: 'home',
-            cityData: {
-                toronto: { ratio: 10.7, income: 99000, desc: "The Trap of Good Intentions", stats: "77% income for ownership" },
-                vancouver: { ratio: 12.7, income: 92000, desc: "Immobility by Design", stats: "12.7 Price-to-Income Ratio" },
-                london: { ratio: 9.8, income: 45000, desc: "The Feudal Rental Market", stats: "52% income on rent" },
-                nyc: { ratio: 7.5, income: 80000, desc: "The Velocity Machine", stats: "53% Rent Burdened" }
-            },
-            currentCity: 'toronto'
-        };
+      const state = {
+        currentView: 'home',
+        cityData: {
+          toronto: {
+            ratio: 10.7,
+            income: 99000,
+            desc: 'The Trap of Good Intentions',
+            stats: '77% income for ownership',
+          },
+          vancouver: {
+            ratio: 12.7,
+            income: 92000,
+            desc: 'Immobility by Design',
+            stats: '12.7 Price-to-Income Ratio',
+          },
+          london: {
+            ratio: 9.8,
+            income: 45000,
+            desc: 'The Feudal Rental Market',
+            stats: '52% income on rent',
+          },
+          nyc: {
+            ratio: 7.5,
+            income: 80000,
+            desc: 'The Velocity Machine',
+            stats: '53% Rent Burdened',
+          },
+        },
+        currentCity: 'toronto',
+      }
 
-        function navigateTo(viewId) {
-            state.currentView = viewId;
-            render();
-            window.scrollTo(0, 0);
-        }
+      function navigateTo(viewId) {
+        state.currentView = viewId
+        render()
+        window.scrollTo(0, 0)
+      }
 
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-            menu.classList.toggle('flex');
-        }
+      function toggleMobileMenu() {
+        const menu = document.getElementById('mobile-menu')
+        menu.classList.toggle('hidden')
+        menu.classList.toggle('flex')
+      }
 
-        /* Views */
-        const Hero = () => `
+      /* Views */
+      const Hero = () => `
             <section class="relative min-h-screen flex items-center justify-center overflow-hidden bg-blueprint">
                 <div class="absolute inset-0 opacity-10 pointer-events-none">
                      <!-- Placeholder for abstract architectural grid wireframe distortion panopticon style minimalist cream background blue lines -->
@@ -209,25 +486,25 @@
                     ${Card('06', 'Resources', 'Practical Tools', 'resources', 'library_books')}
                 </div>
             </section>
-        `;
+        `
 
-        const Card = (num, title, desc, link, icon) => `
+      const Card = (num, title, desc, link, icon) => `
             <div onclick="navigateTo('${link}')" class="group border border-surveillance/20 p-8 hover:bg-surveillance hover:text-cream transition-all duration-300 cursor-pointer h-full flex flex-col justify-between relative overflow-hidden bg-white">
                 <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20"><span class="material-symbols-outlined text-6xl">${icon}</span></div>
                 <div><span class="font-mono text-rust text-sm mb-2 block group-hover:text-soft-green">${num}</span><h3 class="font-display font-bold text-2xl mb-4">${title}</h3><p class="font-body text-lg opacity-70">${desc}</p></div>
                 <div class="mt-8 flex items-center gap-2 font-mono text-xs uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">Explore <span class="material-symbols-outlined text-sm">arrow_forward</span></div>
             </div>
-        `;
+        `
 
-        const ArchetypeCard = (num, title, desc, file, icon) => `
+      const ArchetypeCard = (num, title, desc, file, icon) => `
             <div onclick="window.open('archetypes/${file}.html', '_blank')" class="group border border-surveillance/20 p-8 hover:bg-surveillance hover:text-cream transition-all duration-300 cursor-pointer h-full flex flex-col justify-between relative overflow-hidden bg-white">
                 <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20"><span class="material-symbols-outlined text-6xl">${icon}</span></div>
                 <div><span class="font-mono text-rust text-sm mb-2 block group-hover:text-soft-green">${num}</span><h3 class="font-display font-bold text-2xl mb-4">${title}</h3><p class="font-body text-lg opacity-70">${desc}</p></div>
                 <div class="mt-8 flex items-center gap-2 font-mono text-xs uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">Explore <span class="material-symbols-outlined text-sm">arrow_forward</span></div>
             </div>
-        `;
+        `
 
-        const SystemView = () => `
+      const SystemView = () => `
             ${Header('01', 'The System', 'The theological intensity of modern work.', 'system')}
             <article class="max-w-3xl mx-auto px-6 py-16">
                 <p class="font-body text-2xl leading-relaxed text-surveillance/80 mb-12 first-letter:text-5xl first-letter:font-bold first-letter:mr-2 first-letter:float-left">We have replaced the worship of gods with the worship of potential. Derek Thompson calls it "Workism"—the belief that work is not only necessary to economic production, but also the centerpiece of one’s identity.</p>
@@ -237,15 +514,20 @@
                 <div class="bg-surveillance text-cream p-8 my-12 relative"><h4 class="font-mono text-rust uppercase tracking-widest mb-4">Diagnostic</h4><ul class="space-y-4 font-body text-lg"><li>Do you introduce yourself by job title?</li><li>Do you feel guilty when unproductive?</li><li>Is work your primary community?</li></ul></div>
                 <div class="flex justify-between items-center mt-16 pt-8 border-t border-surveillance/10"><button onclick="navigateTo('home')" class="text-surveillance/50 hover:text-surveillance flex items-center gap-2"><span class="material-symbols-outlined">arrow_back</span> Home</button><button onclick="navigateTo('cities')" class="text-rust font-bold hover:text-surveillance flex items-center gap-2">Next: The Cities <span class="material-symbols-outlined">arrow_forward</span></button></div>
             </article>
-        `;
+        `
 
-        const CitiesView = () => `
+      const CitiesView = () => `
             ${Header('02', 'The Cities', 'Where ambition goes to pay rent.', 'cities')}
             <section class="max-w-6xl mx-auto px-6 py-12">
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
                     <div>
                         <h3 class="font-display font-bold text-3xl mb-6">Select Pressure Point</h3>
-                        <div class="flex flex-wrap gap-4 mb-8">${Object.keys(state.cityData).map(k => `<button onclick="selectCity('${k}')" class="px-6 py-3 border border-surveillance font-mono text-sm uppercase transition-all ${k === state.currentCity ? 'bg-surveillance text-cream' : 'hover:bg-surveillance/10'}">${k}</button>`).join('')}</div>
+                        <div class="flex flex-wrap gap-4 mb-8">${Object.keys(state.cityData)
+                          .map(
+                            (k) =>
+                              `<button onclick="selectCity('${k}')" class="px-6 py-3 border border-surveillance font-mono text-sm uppercase transition-all ${k === state.currentCity ? 'bg-surveillance text-cream' : 'hover:bg-surveillance/10'}">${k}</button>`
+                          )
+                          .join('')}</div>
                         <div id="city-details" class="bg-white p-8 border border-surveillance/10 shadow-sm animate-fade-in">
                             <h4 class="font-display font-bold text-4xl mb-2 text-surveillance capitalize">${state.currentCity}</h4>
                             <p class="font-mono text-rust text-sm uppercase tracking-widest mb-6">${state.cityData[state.currentCity].desc}</p>
@@ -266,9 +548,9 @@
                 </div>
                 <div class="flex justify-end mt-8"><button onclick="navigateTo('machines')" class="text-rust font-bold flex items-center gap-2">Next: The Machines <span class="material-symbols-outlined">arrow_forward</span></button></div>
             </section>
-        `;
+        `
 
-        const MachinesView = () => `
+      const MachinesView = () => `
             ${Header('03', 'The Machines', 'Engines of Envy.', 'machines')}
             <section class="max-w-5xl mx-auto px-6 py-12">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
@@ -291,9 +573,9 @@
                 </div>
                 <div class="flex justify-end mt-16"><button onclick="navigateTo('exits')" class="text-rust font-bold flex items-center gap-2">Next: The Exits <span class="material-symbols-outlined">arrow_forward</span></button></div>
             </section>
-        `;
+        `
 
-        const ExitsView = () => `
+      const ExitsView = () => `
             ${Header('05', 'The Exits', 'Doors out of the burning building.', 'exits')}
             <section class="max-w-6xl mx-auto px-6 py-12">
                 <div class="mb-16 max-w-3xl mx-auto bg-surveillance/5 p-8 border-l-4 border-rust">
@@ -311,17 +593,17 @@
                 </div>
                 <div class="mt-16 text-center"><button onclick="navigateTo('resources')" class="px-8 py-3 bg-surveillance text-cream font-mono uppercase hover:bg-rust transition-colors">View Resources</button></div>
             </section>
-        `;
+        `
 
-        const ExitCard = (icon, title, sub, text) => `
+      const ExitCard = (icon, title, sub, text) => `
             <div class="bg-white border border-surveillance/10 p-8 hover:shadow-lg transition-all group">
                 <div class="h-12 w-12 bg-rust/10 text-rust flex items-center justify-center mb-6 group-hover:bg-rust group-hover:text-white transition-colors"><span class="material-symbols-outlined">${icon}</span></div>
                 <h3 class="font-display font-bold text-2xl mb-2">${title}</h3><span class="font-mono text-xs uppercase tracking-widest text-surveillance/50 mb-4 block">${sub}</span>
                 <p class="font-body text-lg">${text}</p>
             </div>
-        `;
+        `
 
-        const ResourcesView = () => `
+      const ResourcesView = () => `
             ${Header('06', 'Resources', 'Tools for resistance.', 'resources')}
             <section class="max-w-4xl mx-auto px-6 py-12 space-y-12">
                 <div>
@@ -404,26 +686,32 @@
                     </ul>
                 </div>
             </section>
-        `;
+        `
 
-        const Header = (num, title, sub, view) => `
+      const Header = (num, title, sub, view) => `
             <header class="bg-cream pt-12 pb-12 px-6 border-b border-surveillance/10 relative overflow-hidden">
                 <div class="max-w-7xl mx-auto relative z-10"><span class="font-mono text-rust text-sm uppercase tracking-widest mb-2 block animate-fade-in">Chapter ${num}</span><h2 class="font-display font-bold text-5xl md:text-6xl text-surveillance mb-4 animate-slide-up">${title}</h2><p class="font-body text-xl md:text-2xl text-surveillance/60 max-w-2xl animate-slide-up">${sub}</p></div>
             </header>
-        `;
+        `
 
-        /* Logic */
-        function selectCity(cityKey) {
-            state.currentCity = cityKey;
-            render(); 
-        }
+      /* Logic */
+      function selectCity(cityKey) {
+        state.currentCity = cityKey
+        render()
+      }
 
-        function render() {
-            const app = document.getElementById('app');
-            const views = {
-                'home': Hero, 'system': SystemView, 'cities': CitiesView, 
-                'machines': MachinesView, 'exits': ExitsView, 'resources': ResourcesView,
-                'casualties': () => Header('04', 'The Casualties', 'Psychological Archetypes', 'casualties') + `
+      function render() {
+        const app = document.getElementById('app')
+        const views = {
+          home: Hero,
+          system: SystemView,
+          cities: CitiesView,
+          machines: MachinesView,
+          exits: ExitsView,
+          resources: ResourcesView,
+          casualties: () =>
+            Header('04', 'The Casualties', 'Psychological Archetypes', 'casualties') +
+            `
                     <section class="py-16 px-6 max-w-6xl mx-auto">
                         <div class="mb-16 max-w-3xl mx-auto">
                             <p class="font-body text-xl leading-relaxed text-surveillance/70">
@@ -438,58 +726,78 @@
                             ${ArchetypeCard('05', 'The Architect', 'Strategic detachment', 'architect', 'architecture')}
                         </div>
                     </section>
-                `
-            };
-            app.style.opacity = '0';
-            setTimeout(() => {
-                app.innerHTML = views[state.currentView]();
-                if(state.currentView === 'cities') updateCityView();
-                app.style.opacity = '1';
-                // Progress bar
-                const progress = {'home': '0%', 'system': '16%', 'cities': '32%', 'machines': '48%', 'casualties': '64%', 'exits': '80%', 'resources': '100%'};
-                document.getElementById('progress-bar').style.width = progress[state.currentView];
-            }, 300);
+                `,
+        }
+        app.style.opacity = '0'
+        setTimeout(() => {
+          app.innerHTML = views[state.currentView]()
+          if (state.currentView === 'cities') updateCityView()
+          app.style.opacity = '1'
+          // Progress bar
+          const progress = {
+            home: '0%',
+            system: '16%',
+            cities: '32%',
+            machines: '48%',
+            casualties: '64%',
+            exits: '80%',
+            resources: '100%',
+          }
+          document.getElementById('progress-bar').style.width = progress[state.currentView]
+        }, 300)
+      }
+
+      function updateCityView() {
+        const narrative = document.getElementById('city-narrative')
+        const img = document.getElementById('city-img')
+        const data = state.cityData[state.currentCity]
+
+        const texts = {
+          toronto:
+            'With a Price-to-Income ratio of 10.7, home ownership is mathematically impossible for the 90th percentile.',
+          vancouver:
+            'The most beautiful trap. A 12.7 Price-to-Income ratio means only inheritance matters.',
+          london: 'Feudalism reinvented. Spending 52% of pre-tax income on rent is "normal".',
+          nyc: 'The velocity machine. 53% are rent-burdened, yet cultural narrative says you are lucky.',
+        }
+        const images = {
+          toronto: { src: '', alt: 'CN Tower Toronto skyline black and white' },
+          vancouver: { src: '', alt: 'Lions Gate Bridge Vancouver black and white' },
+          london: { src: '', alt: 'St Pauls Cathedral London skyline black and white' },
+          nyc: { src: '', alt: 'Empire State Building NYC black and white' },
         }
 
-        function updateCityView() {
-            const narrative = document.getElementById('city-narrative');
-            const img = document.getElementById('city-img');
-            const data = state.cityData[state.currentCity];
-            
-            const texts = {
-                'toronto': 'With a Price-to-Income ratio of 10.7, home ownership is mathematically impossible for the 90th percentile.',
-                'vancouver': 'The most beautiful trap. A 12.7 Price-to-Income ratio means only inheritance matters.',
-                'london': 'Feudalism reinvented. Spending 52% of pre-tax income on rent is "normal".',
-                'nyc': 'The velocity machine. 53% are rent-burdened, yet cultural narrative says you are lucky.'
-            };
-            const images = {
-                'toronto': {src: '', alt: 'CN Tower Toronto skyline black and white'},
-                'vancouver': {src: '', alt: 'Lions Gate Bridge Vancouver black and white'},
-                'london': {src: '', alt: 'St Pauls Cathedral London skyline black and white'},
-                'nyc': {src: '', alt: 'Empire State Building NYC black and white'}
-            };
-            
-            if(narrative) narrative.innerText = texts[state.currentCity];
-            if(img) { img.src = images[state.currentCity].src; img.alt = images[state.currentCity].alt; }
-            
-            // Bar animation
-            const bar = document.getElementById('bar-cost');
-            if(bar) {
-                let h = 30; // base
-                if(state.currentCity === 'toronto' || state.currentCity === 'vancouver') h = (data.ratio / 3) * 20;
-                else h = (data.ratio / 2) * 20; // approximation for non-ratio stats
-                bar.style.height = Math.min(h, 90) + '%';
-            }
+        if (narrative) narrative.innerText = texts[state.currentCity]
+        if (img) {
+          img.src = images[state.currentCity].src
+          img.alt = images[state.currentCity].alt
         }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            render();
-            window.addEventListener('scroll', () => {
-               const nav = document.getElementById('navbar');
-               if(window.scrollY > 50) { nav.classList.add('shadow-md', 'py-2'); nav.classList.remove('py-4'); }
-               else { nav.classList.remove('shadow-md', 'py-2'); nav.classList.add('py-4'); }
-            });
-        });
+        // Bar animation
+        const bar = document.getElementById('bar-cost')
+        if (bar) {
+          let h = 30 // base
+          if (state.currentCity === 'toronto' || state.currentCity === 'vancouver')
+            h = (data.ratio / 3) * 20
+          else h = (data.ratio / 2) * 20 // approximation for non-ratio stats
+          bar.style.height = Math.min(h, 90) + '%'
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+        render()
+        window.addEventListener('scroll', () => {
+          const nav = document.getElementById('navbar')
+          if (window.scrollY > 50) {
+            nav.classList.add('shadow-md', 'py-2')
+            nav.classList.remove('py-4')
+          } else {
+            nav.classList.remove('shadow-md', 'py-2')
+            nav.classList.add('py-4')
+          }
+        })
+      })
     </script>
     <script type="module" src="./main.js"></script>
-</body></html>
+  </body>
+</html>
