@@ -21,23 +21,63 @@ Extreme career ambition is a "rational maladaptation"—economically logical in 
 
 ## Tech Stack
 
-- React (scroll-based navigation, smooth transitions)
-- CSS custom properties (design system)
-- Recharts / D3 (data visualization)
-- Framer Motion (animations)
+- **Build Tool**: Vite (fast development and optimized production builds)
+- **Styling**: Tailwind CSS (utility-first CSS framework with custom theme)
+- **Architecture**: Multi-page static site with HTML entry points
+- **Deployment**: Static files ready for any hosting service
+
+## Development
+
+### Prerequisites
+- Node.js (v16 or higher)
+- npm or yarn
+
+### Installation
+```bash
+npm install
+```
+
+### Development Server
+```bash
+npm run dev
+```
+Starts the Vite development server with hot reload at `http://localhost:5173`.
+
+### Build for Production
+```bash
+npm run build
+```
+Generates optimized static files in the `dist/` directory.
+
+### Preview Production Build
+```bash
+npm run preview
+```
+Serves the built files locally for testing.
+
+## Project Structure
+
+```
+faust/
+├── src/
+│   ├── index.html              # Main homepage
+│   ├── archetypes/
+│   │   ├── architect.html      # Architect archetype page
+│   │   ├── departed.html       # Departed archetype page
+│   │   ├── faithful.html       # Faithful archetype page
+│   │   ├── visible.html        # Visible archetype page
+│   │   └── watchman.html       # Watchman archetype page
+│   ├── style.css               # Tailwind CSS entry point
+│   └── main.js                 # JavaScript entry (currently empty)
+├── vite.config.js              # Vite configuration
+├── tailwind.config.js          # Tailwind CSS configuration
+├── postcss.config.js           # PostCSS configuration
+└── package.json                # Project dependencies and scripts
+```
 
 ## Design Direction
 
 **Aesthetic**: "The Panopticon Revealed" - Editorial magazine meets data visualization meets architectural blueprint. Clean, intentional, generous spacing that respects reader attention.
-
-## Development Phases
-
-1. Foundation & core components
-2. Homepage + Chapter 1 template
-3. City comparisons + data visualizations
-4. Platform analysis + interactivity
-5. Alternative frameworks + resources
-6. Polish + accessibility audit
 
 ## Contributing
 
