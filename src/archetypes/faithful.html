@@ -98,7 +98,7 @@
                 Back to Casualties
             </a>
             <div class="font-mono text-xs uppercase tracking-widest text-rust">
-                Ref: FAI-01
+                Ref: Fig.03
             </div>
         </div>
         <!-- Progress Bar -->
@@ -116,11 +116,11 @@
                 <div>
                     <span class="mono-label text-rust text-xs block mb-2 animate-fade-in">Archetype Analysis</span>
                     <h1 class="font-display font-bold text-6xl md:text-8xl text-surveillance leading-[0.9] tracking-tighter animate-slide-up">
-                        THE<br />FAITHFUL
+                        The Faithful
                     </h1>
                 </div>
                 <div class="hidden md:block border border-surveillance text-surveillance px-4 py-2 font-mono text-xs uppercase tracking-widest">
-                    Status: Operational
+                    Status: Active
                 </div>
             </div>
 
@@ -168,11 +168,11 @@
                         <div class="flex gap-4">
                             <div class="bg-surveillance/5 p-4 border border-surveillance/10 w-full">
                                 <span class="block font-mono text-xs text-rust mb-1">Observation A</span>
-                                <span class="block font-display text-lg leading-none">Demonstrated competence should create opportunities.</span>
+                                <span class="block font-display text-lg leading-none">The expertise gap</span>
                             </div>
                             <div class="bg-surveillance/5 p-4 border border-surveillance/10 w-full">
                                 <span class="block font-mono text-xs text-rust mb-1">Observation B</span>
-                                <span class="block font-display text-lg leading-none">It's about being undeniable.</span>
+                                <span class="block font-display text-lg leading-none">The visibility gap</span>
                             </div>
                         </div>
                     </div>
@@ -229,13 +229,16 @@
                             <li>
                                 <p>The Faithful strategy provides clear psychological returns:</p>
                             </li>
-                            <li>
+                            <li class="group">
+                                <span class="mono-label text-xs text-surveillance/40 mb-1 block group-hover:text-soft-green transition-colors">Goal 01</span>
                                 <p><strong>Certainty in chaos.</strong> When organizations make decisions that appear arbitrary or political, you have a framework that makes sense: keep improving, and eventually the noise will resolve into signal.</p>
                             </li>
-                            <li>
+                            <li class="group">
+                                <span class="mono-label text-xs text-surveillance/40 mb-1 block group-hover:text-soft-green transition-colors">Goal 02</span>
                                 <p><strong>Protection from exploitation.</strong> If you're always developing real skills, no one can accuse you of coasting. Your leverage comes from being technically irreplaceable, not politically connected.</p>
                             </li>
-                            <li>
+                            <li class="group">
+                                <span class="mono-label text-xs text-surveillance/40 mb-1 block group-hover:text-soft-green transition-colors">Goal 03</span>
                                 <p><strong>Narrative coherence.</strong> Your career has a clean story. You're not gaming the system. You're not cutting corners. If advancement is slow, it's because you're building something solid.</p>
                             </li>
                             <li>
@@ -256,7 +259,8 @@
                             </div>
 
                             <ul class="space-y-8">
-                                <li>
+                                <li class="group">
+                                    <span class="mono-label text-xs text-rust/60 mb-1 block">Cost 01</span>
                                     <h4>The Recognition Bottleneck</h4>
                                     <p>In systems where advancement depends on visibility rather than output, mastery becomes a handicap.</p>
                                     <p>The person who quietly solves complex problems is less legible than the person who announces simple problems loudly. The person who ships reliable work is less memorable than the person who ships inconsistent work with compelling narratives. Deep expertise in a narrow domain makes you valuable to your current team and illegible to everyone else.</p>
@@ -264,14 +268,16 @@
                                     <p>Hiring managers allocate attention in thirty-second increments. Promotion committees evaluate portfolios they don't have the technical background to assess. The person who can translate competence into slides wins. The person who can only demonstrate competence through work does not.</p>
                                     <p>You've optimized for the wrong evaluator.</p>
                                 </li>
-                                <li>
+                                <li class="group">
+                                    <span class="mono-label text-xs text-rust/60 mb-1 block">Cost 02</span>
                                     <h4>The Lag Problem</h4>
                                     <p>Even when competence is eventually recognized, the delay creates compound losses.</p>
                                     <p>The median time from demonstrating readiness for promotion to receiving that promotion is 18 months in large organizations. The lifetime earnings impact of a two-year delay in a single promotion ranges from $150,000 to $300,000 depending on compounding assumptions and career length.</p>
                                     <p>You cannot recover this time. The person who was promoted early continues to accumulate seniority advantages, network advantages, and decision-making authority you will spend years catching up to&mdash;if the gap ever closes.</p>
                                     <p>Meanwhile, you continue to deliver excellent work at the previous compensation tier. The system does not retroactively pay you for the value you already created.</p>
                                 </li>
-                                <li>
+                                <li class="group">
+                                    <span class="mono-label text-xs text-rust/60 mb-1 block">Cost 03</span>
                                     <h4>The Specialization Trap</h4>
                                     <p>Deep expertise makes you harder to replace in your current role and harder to move from it.</p>
                                     <p>A mechanical engineer who becomes the organization's expert in thermal management systems has built genuine leverage&mdash;but only within the scope of problems that require thermal management expertise. When budget cuts come, the question isn't "how much value does this person create," it's "can we function without this particular specialty."</p>
@@ -332,18 +338,44 @@
                 </div>
 
                 <div class="space-y-4">
-                    <div class="bg-white/80 border border-surveillance/10 p-6 hover:border-rust/40 hover:bg-white/90 transition-colors cursor-pointer">
-                        <h3>The system continues to underprice you.</h3>
-                        <p>The gap between your output and your title is measurable.</p>
-                    </div>
-                    <div class="bg-white/80 border border-surveillance/10 p-6 hover:border-rust/40 hover:bg-white/90 transition-colors cursor-pointer">
-                        <h3>You've optimized for the wrong evaluator.</h3>
-                        <p>The person who can translate competence into slides wins. The person who can only demonstrate competence through work does not.</p>
-                    </div>
-                    <div class="bg-white/80 border border-surveillance/10 p-6 hover:border-rust/40 hover:bg-white/90 transition-colors cursor-pointer">
-                        <h3>Your excellent work is absorbed into this gap.</h3>
-                        <p>This is not a problem you can skill your way out of.</p>
-                    </div>
+                    <details class="group bg-white border border-surveillance/10 open:border-rust transition-colors">
+                        <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+                            <div class="flex items-center gap-4">
+                                <span class="font-mono text-rust text-xl">01</span>
+                                <span class="font-display font-bold text-xl text-surveillance group-hover:text-rust transition-colors">The system continues to underprice you.</span>
+                            </div>
+                            <span class="material-symbols-outlined text-surveillance/30 group-open:rotate-180 transition-transform">expand_more</span>
+                        </summary>
+                        <div class="px-6 pb-6 pl-14 text-surveillance/80 text-lg leading-relaxed border-t border-surveillance/5 pt-4">
+                            The gap between your output and your title is measurable.
+                        </div>
+                    </details>
+
+                    <details class="group bg-white border border-surveillance/10 open:border-rust transition-colors">
+                        <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+                            <div class="flex items-center gap-4">
+                                <span class="font-mono text-rust text-xl">02</span>
+                                <span class="font-display font-bold text-xl text-surveillance group-hover:text-rust transition-colors">You've optimized for the wrong evaluator.</span>
+                            </div>
+                            <span class="material-symbols-outlined text-surveillance/30 group-open:rotate-180 transition-transform">expand_more</span>
+                        </summary>
+                        <div class="px-6 pb-6 pl-14 text-surveillance/80 text-lg leading-relaxed border-t border-surveillance/5 pt-4">
+                            The person who can translate competence into slides wins. The person who can only demonstrate competence through work does not.
+                        </div>
+                    </details>
+
+                    <details class="group bg-white border border-surveillance/10 open:border-rust transition-colors">
+                        <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+                            <div class="flex items-center gap-4">
+                                <span class="font-mono text-rust text-xl">03</span>
+                                <span class="font-display font-bold text-xl text-surveillance group-hover:text-rust transition-colors">Your excellent work is absorbed.</span>
+                            </div>
+                            <span class="material-symbols-outlined text-surveillance/30 group-open:rotate-180 transition-transform">expand_more</span>
+                        </summary>
+                        <div class="px-6 pb-6 pl-14 text-surveillance/80 text-lg leading-relaxed border-t border-surveillance/5 pt-4">
+                            This is not a problem you can skill your way out of.
+                        </div>
+                    </details>
                 </div>
             </div>
         </section>
@@ -354,7 +386,7 @@
                 <!-- Closing Provocation -->
                 <div>
                     <span class="mono-label text-surveillance/50 text-xs block mb-6">05 // Closing Provocation</span>
-                    <h3 class="font-display font-bold text-3xl mb-6">What Remains</h3>
+                    <h3 class="font-display font-bold text-3xl mb-6">Only recognition.</h3>
                     <!-- Replaced P1/P2 with a single block placeholder. Inject <p> tags here. -->
                     <div class="text-xl leading-relaxed text-surveillance/80 space-y-6">
                         <p>You've built something real. The skills are not fake. The expertise is not imaginary. The work is not worthless.</p>
@@ -417,9 +449,9 @@
             <div>
                  <h5 class="font-mono text-rust text-xs uppercase tracking-widest mb-4">Data</h5>
                  <p class="font-mono text-xs text-cream/50">
-                    Fig. FAI-01: THE<br />FAITHFUL<br>
-                    Status: Operational<br>
-                    ID: FAI-01
+                    Fig. 03: The Faithful<br>
+                    Status: Active<br>
+                    ID: #ARCH-03
                  </p>
             </div>
         </div>

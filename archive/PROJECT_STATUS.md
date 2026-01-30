@@ -1,6 +1,6 @@
 # Project Status: Faust - The Architecture of Ambition
 
-**Last Updated:** January 29, 2026  
+**Last Updated:** January 30, 2026  
 **Version:** 1.0.0  
 **Status:** ✅ Released / 🚧 Development Active
 
@@ -37,7 +37,29 @@ Project Faust is a digital essay and diagnostic tool exploring how career became
 - ✅ Added bridge paragraph connecting Cities to Casualties sections
 - ✅ Linked The Exits section to Architect archetype page
 
-#### Sprint 4: Final Polish & "The Exits" 🔄 IN PROGRESS
+#### Sprint 2: The "Spokes" (Archetype Integration) ✅ COMPLETE
+- ✅ Added "← Return to System" links in all archetype pages
+- ✅ Implemented cross-linking between archetype pages
+
+#### Sprint 3: Narrative & Data Polish ✅ COMPLETE
+- ✅ Added bridge paragraph connecting Cities to Casualties sections
+- ✅ Linked The Exits section to Architect archetype page
+
+#### Sprint 4: Archetype UI Upgrade — Template First ✅ COMPLETE
+- ✅ Audited archive/archetype_pages/watchman.html for design patterns
+- ✅ Verified canonical template (src/archetypes/archetype.html) implements all patterns
+- ✅ Template ready for per-page archetype updates in Sprint 5
+
+#### Sprint 5: Archetype UI Upgrade — Per Page ✅ COMPLETE
+- ✅ Applied updated template to watchman.html (Fig. 01)
+- ✅ Applied updated template to visible.html (Fig. 02)
+- ✅ Applied updated template to faithful.html (Fig. 03)
+- ✅ Applied updated template to departed.html (Fig. 04)
+- ✅ Applied updated template to architect.html (Fig. 05)
+- ✅ All archetype pages now have: interactive diagnostic details/summary, proper ledger labels, compact stat boxes
+- ✅ All metadata references updated to match archive format
+
+#### Sprint 6: Final Polish & "The Exits" ⏸️ PENDING
 - ✅ Resources section populated with curated book recommendations
 - 🔄 Visual consistency check for font weights (pending final review)
 

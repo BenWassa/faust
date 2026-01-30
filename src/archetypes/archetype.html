@@ -218,6 +218,12 @@
                         </div>
                         
                         <ul class="space-y-8">
+                            <!-- Use this structure for each asset: -->
+                            <!-- <li class="group"> -->
+                            <!--     <span class="mono-label text-xs text-surveillance/40 mb-1 block group-hover:text-soft-green transition-colors">Goal 01</span> -->
+                            <!--     <strong class="block font-display text-xl mb-2">Title</strong> -->
+                            <!--     <p class="text-surveillance/70 text-base leading-relaxed">Description</p> -->
+                            <!-- </li> -->
                             {{LEDGER_ASSETS_HTML}}
                         </ul>
                     </div>
@@ -251,6 +257,12 @@
 
                 <!-- Optional: omit this grid if no quantitative stats apply -->
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                    <!-- Use this structure for each stat: -->
+                    <!-- <div class="border-t border-rust pt-4"> -->
+                    <!--     <span class="block text-4xl font-mono mb-2 text-rust">1,000</span> -->
+                    <!--     <p class="font-mono text-xs uppercase tracking-widest text-cream/60">Label</p> -->
+                    <!--     <p class="mt-4 text-sm text-cream/80">Description text.</p> -->
+                    <!-- </div> -->
                     {{FAILURE_STATS_HTML}}
                 </div>
 
@@ -272,6 +284,19 @@
                 </div>
 
                 <div class="space-y-4">
+                    <!-- Use this structure for each diagnostic question: -->
+                    <!-- <details class="group bg-white border border-surveillance/10 open:border-rust transition-colors"> -->
+                    <!--     <summary class="flex items-center justify-between p-6 cursor-pointer list-none"> -->
+                    <!--         <div class="flex items-center gap-4"> -->
+                    <!--             <span class="font-mono text-rust text-xl">01</span> -->
+                    <!--             <span class="font-display font-bold text-xl text-surveillance group-hover:text-rust transition-colors">Question text?</span> -->
+                    <!--         </div> -->
+                    <!--         <span class="material-symbols-outlined text-surveillance/30 group-open:rotate-180 transition-transform">expand_more</span> -->
+                    <!--     </summary> -->
+                    <!--     <div class="px-6 pb-6 pl-14 text-surveillance/80 text-lg leading-relaxed border-t border-surveillance/5 pt-4"> -->
+                    <!--         Answer text here. -->
+                    <!--     </div> -->
+                    <!-- </details> -->
                     {{DIAGNOSTIC_BLOCKS_HTML}}
                 </div>
             </div>
