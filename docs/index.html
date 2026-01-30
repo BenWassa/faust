@@ -500,22 +500,28 @@
         menu.classList.toggle('flex')
       }
 
-      function showAnalysis(id, title, text) {
-        const panel = document.getElementById('analysis-panel')
-        const titleEl = document.getElementById('analysis-title')
-        const textEl = document.getElementById('analysis-text')
+      function openTrap(trapId) {
+        const items = document.querySelectorAll('[data-trap]')
+        items.forEach((item) => {
+          item.classList.remove('border-rust', 'border-l-rust', 'bg-rust/5')
+          const detail = item.querySelector('[data-trap-detail]')
+          const icon = item.querySelector('[data-trap-icon]')
+          if (detail) detail.classList.add('hidden')
+          if (icon) icon.classList.remove('rotate-180')
+        })
 
-        if (panel && titleEl && textEl) {
-          titleEl.innerText = title
-          textEl.innerText = text
-          panel.classList.remove('hidden')
+        const target = document.querySelector(`[data-trap="${trapId}"]`)
+        if (!target) return
+        const detail = target.querySelector('[data-trap-detail]')
+        const icon = target.querySelector('[data-trap-icon]')
+        target.classList.add('border-rust', 'border-l-rust', 'bg-rust/5')
+        if (detail) detail.classList.remove('hidden')
+        if (icon) icon.classList.add('rotate-180')
 
-          // Smooth scroll to panel on mobile
-          if (window.innerWidth < 768) {
-            setTimeout(() => {
-              panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
-            }, 100)
-          }
+        if (window.innerWidth < 768) {
+          setTimeout(() => {
+            target.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
+          }, 100)
         }
       }
 
@@ -624,17 +630,98 @@
             ${Header('03', 'The Machines', 'Engines of Envy.', 'machines')}
             <section class="max-w-5xl mx-auto px-6 py-12">
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
-                    <div>
-                        <h3 class="font-display font-bold text-3xl mb-4">The Panopticon</h3>
-                        <p class="font-body text-lg mb-6">LinkedIn is a surveillance mechanism where we police success. Frequent users have <strong class="text-rust">2.1x higher odds of depression</strong>.</p>
-                        <ul class="space-y-4 font-mono text-sm border-t border-surveillance/20 pt-6">
-                            <li class="flex items-center gap-3"><span class="material-symbols-outlined text-rust">visibility</span> Performative Gratitude</li>
-                            <li class="flex items-center gap-3"><span class="material-symbols-outlined text-rust">compare_arrows</span> Upward Comparison</li>
-                        </ul>
-                        <div id="analysis-panel" class="hidden mt-8 bg-rust/5 border-l-4 border-rust p-6 animate-fade-in">
-                            <h4 class="font-display font-bold text-lg mb-2" id="analysis-title"></h4>
-                            <p class="font-body text-sm text-surveillance/80" id="analysis-text"></p>
+                    <div class="md:sticky md:top-24 self-start">
+                        <div class="flex items-center gap-3 mb-4">
+                            <span class="material-symbols-outlined text-rust">visibility</span>
+                            <h3 class="font-display font-bold text-3xl">The Panopticon</h3>
                         </div>
+                        <p class="font-body text-lg mb-6 text-surveillance/80">LinkedIn is a surveillance mechanism where we police success. Frequent users have <strong class="text-rust">2.1x higher odds of depression</strong>.</p>
+                        <div class="flex items-center justify-between text-xs font-mono uppercase tracking-widest text-surveillance/50 border-y border-surveillance/10 py-3 mb-4">
+                            <span>Trap Index</span>
+                            <span>Tap to expand</span>
+                        </div>
+                        <ol class="space-y-3">
+                            <li data-trap="future-audience" class="border border-surveillance/10 border-l-4 border-l-transparent bg-white rounded-lg transition-all hover:border-rust/40 hover:shadow-sm">
+                                <button class="w-full flex items-center justify-between gap-4 p-4 text-left" onclick="openTrap('future-audience')">
+                                    <span class="font-mono text-xs text-rust">01</span>
+                                    <span class="font-display font-bold text-lg text-surveillance flex-1">The Future Audience</span>
+                                    <span class="material-symbols-outlined text-surveillance/40 transition-transform" data-trap-icon>expand_more</span>
+                                </button>
+                                <div class="hidden px-4 pb-4 text-sm text-surveillance/70 leading-relaxed" data-trap-detail>
+                                    Every action is treated as future recruiter content; the present is performance and authenticity gets deferred to a future viewer.
+                                </div>
+                            </li>
+                            <li data-trap="success-theater" class="border border-surveillance/10 border-l-4 border-l-transparent bg-white rounded-lg transition-all hover:border-rust/40 hover:shadow-sm">
+                                <button class="w-full flex items-center justify-between gap-4 p-4 text-left" onclick="openTrap('success-theater')">
+                                    <span class="font-mono text-xs text-rust">02</span>
+                                    <span class="font-display font-bold text-lg text-surveillance flex-1">Success Theater</span>
+                                    <span class="material-symbols-outlined text-surveillance/40 transition-transform" data-trap-icon>expand_more</span>
+                                </button>
+                                <div class="hidden px-4 pb-4 text-sm text-surveillance/70 leading-relaxed" data-trap-detail>
+                                    Career platforms become highlight reels; curated wins signal perfectionism and make real life look inadequate.
+                                </div>
+                            </li>
+                            <li data-trap="performative-vulnerability" class="border border-surveillance/10 border-l-4 border-l-transparent bg-white rounded-lg transition-all hover:border-rust/40 hover:shadow-sm">
+                                <button class="w-full flex items-center justify-between gap-4 p-4 text-left" onclick="openTrap('performative-vulnerability')">
+                                    <span class="font-mono text-xs text-rust">03</span>
+                                    <span class="font-display font-bold text-lg text-surveillance flex-1">Performative Vulnerability</span>
+                                    <span class="material-symbols-outlined text-surveillance/40 transition-transform" data-trap-icon>expand_more</span>
+                                </button>
+                                <div class="hidden px-4 pb-4 text-sm text-surveillance/70 leading-relaxed" data-trap-detail>
+                                    Failures and layoffs are repackaged as brand assets to signal resilience, excluding losses you cannot monetize.
+                                </div>
+                            </li>
+                            <li data-trap="infinite-comparison" class="border border-surveillance/10 border-l-4 border-l-transparent bg-white rounded-lg transition-all hover:border-rust/40 hover:shadow-sm">
+                                <button class="w-full flex items-center justify-between gap-4 p-4 text-left" onclick="openTrap('infinite-comparison')">
+                                    <span class="font-mono text-xs text-rust">04</span>
+                                    <span class="font-display font-bold text-lg text-surveillance flex-1">Infinite Comparison</span>
+                                    <span class="material-symbols-outlined text-surveillance/40 transition-transform" data-trap-icon>expand_more</span>
+                                </button>
+                                <div class="hidden px-4 pb-4 text-sm text-surveillance/70 leading-relaxed" data-trap-detail>
+                                    Your peers are now an algorithmic feed of global outliers; ordinary progress starts to feel like failure.
+                                </div>
+                            </li>
+                            <li data-trap="extremity-bias" class="border border-surveillance/10 border-l-4 border-l-transparent bg-white rounded-lg transition-all hover:border-rust/40 hover:shadow-sm">
+                                <button class="w-full flex items-center justify-between gap-4 p-4 text-left" onclick="openTrap('extremity-bias')">
+                                    <span class="font-mono text-xs text-rust">05</span>
+                                    <span class="font-display font-bold text-lg text-surveillance flex-1">Extremity Bias</span>
+                                    <span class="material-symbols-outlined text-surveillance/40 transition-transform" data-trap-icon>expand_more</span>
+                                </button>
+                                <div class="hidden px-4 pb-4 text-sm text-surveillance/70 leading-relaxed" data-trap-detail>
+                                    Platforms disproportionately surface unicorn founders, creating a skewed reference point and hiding average success.
+                                </div>
+                            </li>
+                            <li data-trap="work-esteem" class="border border-surveillance/10 border-l-4 border-l-transparent bg-white rounded-lg transition-all hover:border-rust/40 hover:shadow-sm">
+                                <button class="w-full flex items-center justify-between gap-4 p-4 text-left" onclick="openTrap('work-esteem')">
+                                    <span class="font-mono text-xs text-rust">06</span>
+                                    <span class="font-display font-bold text-lg text-surveillance flex-1">Work-Contingent Self-Esteem</span>
+                                    <span class="material-symbols-outlined text-surveillance/40 transition-transform" data-trap-icon>expand_more</span>
+                                </button>
+                                <div class="hidden px-4 pb-4 text-sm text-surveillance/70 leading-relaxed" data-trap-detail>
+                                    Self-worth now updates in real time with likes and reviews, producing chronic emotional volatility.
+                                </div>
+                            </li>
+                            <li data-trap="veblen-inversion" class="border border-surveillance/10 border-l-4 border-l-transparent bg-white rounded-lg transition-all hover:border-rust/40 hover:shadow-sm">
+                                <button class="w-full flex items-center justify-between gap-4 p-4 text-left" onclick="openTrap('veblen-inversion')">
+                                    <span class="font-mono text-xs text-rust">07</span>
+                                    <span class="font-display font-bold text-lg text-surveillance flex-1">The Veblen Inversion</span>
+                                    <span class="material-symbols-outlined text-surveillance/40 transition-transform" data-trap-icon>expand_more</span>
+                                </button>
+                                <div class="hidden px-4 pb-4 text-sm text-surveillance/70 leading-relaxed" data-trap-detail>
+                                    Exhaustion becomes the new flex; lack of leisure signals scarce human capital and high demand.
+                                </div>
+                            </li>
+                            <li data-trap="defensive-ambition" class="border border-surveillance/10 border-l-4 border-l-transparent bg-white rounded-lg transition-all hover:border-rust/40 hover:shadow-sm">
+                                <button class="w-full flex items-center justify-between gap-4 p-4 text-left" onclick="openTrap('defensive-ambition')">
+                                    <span class="font-mono text-xs text-rust">08</span>
+                                    <span class="font-display font-bold text-lg text-surveillance flex-1">Defensive Ambition</span>
+                                    <span class="material-symbols-outlined text-surveillance/40 transition-transform" data-trap-icon>expand_more</span>
+                                </button>
+                                <div class="hidden px-4 pb-4 text-sm text-surveillance/70 leading-relaxed" data-trap-detail>
+                                    Effort is driven by fear of dropping into precarity rather than desire to ascend.
+                                </div>
+                            </li>
+                        </ol>
                     </div>
                     <div class="bg-white shadow-xl border p-6 relative">
                         <div class="flex items-center gap-3 mb-4">
@@ -644,31 +731,36 @@
                                 <p class="text-sm font-display text-surveillance">Live sentiment</p>
                             </div>
                         </div>
-                        <div class="space-y-3 font-body text-gray-800">
-                            <p class="cursor-pointer hover:bg-rust/10 p-2 rounded transition-colors" onclick="showAnalysis('future-audience', 'The Future Audience', 'Every action is treated as future recruiter content; the present is performance and authenticity gets deferred to a future viewer.')">
-                                Who are you performing for <strong class="text-blue-600 border-b-2 border-blue-200">right now</strong>?
-                            </p>
-                            <p class="cursor-pointer hover:bg-rust/10 p-2 rounded transition-colors" onclick="showAnalysis('success-theater', 'Success Theater', 'Career platforms become highlight reels; curated wins signal perfectionism and make real life look inadequate.')">
-                                Why does everyone else’s life look <strong class="text-blue-600 border-b-2 border-blue-200">so polished</strong>?
-                            </p>
-                            <p class="cursor-pointer hover:bg-rust/10 p-2 rounded transition-colors" onclick="showAnalysis('performative-vulnerability', 'Performative Vulnerability', 'Failures and layoffs are repackaged as brand assets to signal resilience, excluding losses you cannot monetize.')">
-                                When did pain become a <strong class="text-blue-600 border-b-2 border-blue-200">portfolio item</strong>?
-                            </p>
-                            <p class="cursor-pointer hover:bg-rust/10 p-2 rounded transition-colors" onclick="showAnalysis('infinite-comparison', 'Infinite Comparison', 'Your peers are now an algorithmic feed of global outliers; ordinary progress starts to feel like failure.')">
-                                Why does normal feel like <strong class="text-blue-600 border-b-2 border-blue-200">failure</strong>?
-                            </p>
-                            <p class="cursor-pointer hover:bg-rust/10 p-2 rounded transition-colors" onclick="showAnalysis('extremity-bias', 'Extremity Bias', 'Platforms disproportionately surface unicorn founders, creating a skewed reference point and hiding average success.')">
-                                Why are all your reference points so <strong class="text-blue-600 border-b-2 border-blue-200">exceptional</strong>?
-                            </p>
-                            <p class="cursor-pointer hover:bg-rust/10 p-2 rounded transition-colors" onclick="showAnalysis('work-esteem', 'Work-Contingent Self-Esteem', 'Self-worth now updates in real time with likes and reviews, producing chronic emotional volatility.')">
-                                When did metrics matter more than <strong class="text-blue-600 border-b-2 border-blue-200">you</strong>?
-                            </p>
-                            <p class="cursor-pointer hover:bg-rust/10 p-2 rounded transition-colors" onclick="showAnalysis('veblen-inversion', 'The Veblen Inversion', 'Exhaustion becomes the new flex; lack of leisure signals scarce human capital and high demand.')">
-                                Why is everyone proud to be <strong class="text-blue-600 border-b-2 border-blue-200">tired</strong>?
-                            </p>
-                            <p class="cursor-pointer hover:bg-rust/10 p-2 rounded transition-colors" onclick="showAnalysis('defensive-ambition', 'Defensive Ambition', 'Effort is driven by fear of dropping into precarity rather than desire to ascend.')">
-                                Are you climbing toward something or running from <strong class="text-blue-600 border-b-2 border-blue-200">something</strong>?
-                            </p>
+                        <div class="space-y-4 font-body text-surveillance/80">
+                            <div class="border border-surveillance/10 rounded-lg p-4 bg-cream/60">
+                                <p class="text-xs font-mono text-gray-400 uppercase mb-2">Post 01</p>
+                                <p>
+                                    Excited to share my <span class="cursor-pointer text-rust border-b-2 border-rust/30 hover:border-rust hover:bg-rust/10 transition-colors px-0.5 rounded-sm" onclick="openTrap('success-theater')">journey</span> and grateful for the
+                                    <span class="cursor-pointer text-rust border-b-2 border-rust/30 hover:border-rust hover:bg-rust/10 transition-colors px-0.5 rounded-sm" onclick="openTrap('future-audience')">future audience</span> cheering me on—my
+                                    <span class="cursor-pointer text-rust border-b-2 border-rust/30 hover:border-rust hover:bg-rust/10 transition-colors px-0.5 rounded-sm" onclick="openTrap('work-esteem')">confidence now updates in real time</span>.
+                                </p>
+                            </div>
+                            <div class="border border-surveillance/10 rounded-lg p-4 bg-cream/60">
+                                <p class="text-xs font-mono text-gray-400 uppercase mb-2">Post 02</p>
+                                <p>
+                                    After the layoff, I’m sharing the <span class="cursor-pointer text-rust border-b-2 border-rust/30 hover:border-rust hover:bg-rust/10 transition-colors px-0.5 rounded-sm" onclick="openTrap('performative-vulnerability')">lessons learned</span> and why it made me stronger.
+                                </p>
+                            </div>
+                            <div class="border border-surveillance/10 rounded-lg p-4 bg-cream/60">
+                                <p class="text-xs font-mono text-gray-400 uppercase mb-2">Post 03</p>
+                                <p>
+                                    Watching founders hit new highs every week makes normal feel like
+                                    <span class="cursor-pointer text-rust border-b-2 border-rust/30 hover:border-rust hover:bg-rust/10 transition-colors px-0.5 rounded-sm" onclick="openTrap('infinite-comparison')">failure</span>. The feed is optimized for
+                                    <span class="cursor-pointer text-rust border-b-2 border-rust/30 hover:border-rust hover:bg-rust/10 transition-colors px-0.5 rounded-sm" onclick="openTrap('extremity-bias')">extremes</span>.
+                                </p>
+                            </div>
+                            <div class="border border-surveillance/10 rounded-lg p-4 bg-cream/60">
+                                <p class="text-xs font-mono text-gray-400 uppercase mb-2">Post 04</p>
+                                <p>
+                                    I’m exhausted but proud—<span class="cursor-pointer text-rust border-b-2 border-rust/30 hover:border-rust hover:bg-rust/10 transition-colors px-0.5 rounded-sm" onclick="openTrap('veblen-inversion')">tired is the flex</span>—and I can’t slow down because
+                                    <span class="cursor-pointer text-rust border-b-2 border-rust/30 hover:border-rust hover:bg-rust/10 transition-colors px-0.5 rounded-sm" onclick="openTrap('defensive-ambition')">falling behind feels fatal</span>.
+                                </p>
+                            </div>
                         </div>
                         <div class="mt-6 pt-4 border-t border-gray-100 flex items-center justify-between text-gray-400">
                             <div class="flex gap-4 text-xs font-mono">
@@ -677,7 +769,7 @@
                                 <span>🔄 8</span>
                             </div>
                         </div>
-                        <p class="mt-4 text-xs text-center text-gray-400 font-mono uppercase tracking-wide">Click highlighted phrases for analysis</p>
+                        <p class="mt-4 text-xs text-center text-gray-400 font-mono uppercase tracking-wide">Click highlighted phrases to expand the left list</p>
                     </div>
                 </div>
                 <div class="flex justify-end mt-16"><button onclick="navigateTo('casualties')" class="text-rust font-bold flex items-center gap-2">Next: The Casualties <span class="material-symbols-outlined">arrow_forward</span></button></div>

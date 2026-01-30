@@ -1,4 +1,4 @@
-# Sprint Board
+# Sprint 1
 
 ## Opportunity: Link left / right panes on the interactive narrative page
 
