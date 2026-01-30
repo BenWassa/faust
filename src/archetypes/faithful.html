@@ -1,32 +1,11 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
-  <head>
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="Analysis of The Faithful archetype: those who believe in the narrative of meritocratic mobility. Examining the faith in systems and the psychological mechanisms that sustain extreme ambition."
-    />
-    <meta property="og:title" content="The Faithful | Project Faust Archetype Analysis" />
-    <meta
-      property="og:description"
-      content="Understanding The Faithful archetype: belief in meritocracy and the psychological foundations of sustained ambition."
-    />
-    <meta property="og:type" content="article" />
-    <meta property="og:url" content="https://benwassa.github.io/faust/archetypes/faithful.html" />
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="The Faithful | Project Faust" />
-    <meta
-      name="twitter:description"
-      content="Understanding The Faithful archetype: belief in meritocracy and sustained ambition."
-    />
-    <link rel="canonical" href="https://benwassa.github.io/faust/archetypes/faithful.html" />
-    <link rel="icon" type="image/svg+xml" href="../favicon.svg" />
-    <link rel="apple-touch-icon" href="../apple-touch-icon.svg" />
-    <link rel="manifest" href="../manifest.json" />
-    <link rel="stylesheet" href="../style.css" />
-    <title>The Faithful | Archetype Analysis</title>
+    <title>The Faithful | Architecture of Ambition</title>
 
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -38,156 +17,412 @@
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
     />
 
+    <!-- SYSTEM CONFIGURATION: DO NOT MODIFY -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              cream: "#FDFBF7",
+              surveillance: "#1A202C",
+              rust: "#C05640",
+              "soft-green": "#7A9A84",
+            },
+            fontFamily: {
+              display: ["Syne", "sans-serif"],
+              body: ["Crimson Pro", "serif"],
+              mono: ["JetBrains Mono", "monospace"],
+            },
+            animation: {
+              "fade-in": "fadeIn 1s ease-out forwards",
+              "slide-up": "slideUp 0.8s ease-out forwards",
+            },
+            keyframes: {
+              fadeIn: { "0%": { opacity: "0" }, "100%": { opacity: "1" } },
+              slideUp: {
+                "0%": { transform: "translateY(20px)", opacity: "0" },
+                "100%": { transform: "translateY(0)", opacity: "1" },
+              },
+            },
+            backgroundImage: {
+              'blueprint': "linear-gradient(#e2e8f0 1px, transparent 1px), linear-gradient(90deg, #e2e8f0 1px, transparent 1px)",
+            }
+          },
+        },
+      };
+    </script>
+
     <style>
       body {
         background-color: #fdfbf7;
         color: #1a202c;
         overflow-x: hidden;
       }
-      .bg-blueprint {
-        background-image:
-          linear-gradient(#e2e8f0 1px, transparent 1px),
-          linear-gradient(90deg, #e2e8f0 1px, transparent 1px);
+      .bg-blueprint-pattern {
         background-size: 40px 40px;
       }
-      ::selection {
-        background-color: #c05640;
-        color: #fdfbf7;
+      .mono-label {
+        font-family: 'JetBrains Mono', monospace;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
       }
-      .border-thin {
-        border-width: 1px;
+      /* Custom scrollbar for that technical feel */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #FDFBF7; 
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #1A202C; 
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #C05640; 
       }
     </style>
-  </head>
+</head>
 
-  <body class="font-body antialiased bg-cream">
-    <!-- NAVIGATION (Simulated Fixed Header) -->
-    <nav
-      class="fixed top-0 w-full z-50 bg-cream/95 backdrop-blur-sm border-b border-surveillance/10"
-    >
-      <div
-        id="progress-bar"
-        class="h-0.5 bg-rust w-full origin-left transform scale-x-0 transition-transform duration-300"
-      ></div>
-      <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-        <a
-          href="../index.html"
-          class="font-mono text-xs uppercase tracking-[0.2em] text-surveillance/70 hover:text-rust transition-colors"
-        >
-          ← Return to System
-        </a>
-        <div class="font-mono text-xs uppercase tracking-widest text-surveillance/50">
-          File: FAI-01
+<body class="font-body selection:bg-rust selection:text-white antialiased bg-cream">
+    <!--
+    TEMPLATE RULES:
+    - Do not edit layout, classes, or structure
+    - Only replace {{PLACEHOLDERS}}
+    - Inject valid HTML into block placeholders
+    -->
+
+    <!-- NAVIGATION STUB -->
+    <nav class="fixed top-0 w-full z-50 bg-cream/95 backdrop-blur-sm border-b border-surveillance/10">
+        <div class="max-w-7xl mx-auto px-6 h-12 flex items-center justify-between">
+            <div class="font-mono text-xs uppercase tracking-widest text-surveillance/70">
+                Architecture of Ambition
+            </div>
+            <div class="font-mono text-xs uppercase tracking-widest text-rust">
+                Ref: FAI-01
+            </div>
         </div>
-      </div>
+        <!-- Progress Bar -->
+        <div class="h-[1px] bg-surveillance/10 w-full">
+            <div class="h-full bg-rust w-[15%]" id="progress-bar"></div>
+        </div>
     </nav>
 
-    <!-- HEADER / HERO -->
-    <header
-      class="pt-32 pb-16 px-6 border-b border-surveillance/10 relative overflow-hidden bg-blueprint"
-    >
-      <div class="max-w-6xl mx-auto relative z-10">
-        <div class="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-8">
-          <div>
-            <span
-              class="font-mono text-rust text-sm uppercase tracking-widest mb-4 block animate-fade-in"
-            >
-              Archetype Analysis 01
-            </span>
-            <h1
-              class="font-display font-bold text-6xl md:text-8xl text-surveillance tracking-tighter leading-[0.9] animate-slide-up"
-            >
-              THE<br />FAITHFUL
-            </h1>
-          </div>
-          <div class="max-w-md animate-slide-up" style="animation-delay: 0.2s">
-            <div class="border-l-2 border-rust pl-6 py-1">
-              <p class="font-mono text-xs text-rust uppercase tracking-widest mb-2">
-                Subject Status
-              </p>
-              <p class="font-body text-xl italic text-surveillance/80 leading-relaxed">
-                "You believe competence is rewarded."
-              </p>
+    <!-- HEADER / SUBJECT PROFILE -->
+    <header class="relative pt-32 pb-24 px-6 border-b border-surveillance/10 bg-blueprint-pattern bg-blueprint">
+        <div class="absolute inset-0 bg-gradient-to-b from-cream/50 to-cream pointer-events-none"></div>
+        
+        <div class="max-w-5xl mx-auto relative z-10">
+            <div class="flex items-start justify-between mb-8 border-b border-surveillance/20 pb-8">
+                <div>
+                    <span class="mono-label text-rust text-xs block mb-2 animate-fade-in">Archetype Analysis</span>
+                    <h1 class="font-display font-bold text-6xl md:text-8xl text-surveillance leading-[0.9] tracking-tighter animate-slide-up">
+                        THE<br />FAITHFUL
+                    </h1>
+                </div>
+                <div class="hidden md:block border border-surveillance text-surveillance px-4 py-2 font-mono text-xs uppercase tracking-widest">
+                    Status: Operational
+                </div>
             </div>
-          </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-12 items-end animate-slide-up" style="animation-delay: 200ms;">
+                <div class="md:col-span-8">
+                    <p class="font-display text-2xl md:text-3xl leading-tight text-surveillance mb-6">
+                        "You believe competence is rewarded."
+                    </p>
+                    <p class="text-xl leading-relaxed text-surveillance/80">
+                        You believe competence is rewarded. You believe mastery translates to recognition. You believe if you do excellent work, the systems around you will notice and respond accordingly.
+                    </p>
+                </div>
+                <div class="md:col-span-4 border-l border-surveillance/20 pl-6">
+                    <span class="mono-label text-surveillance/50 text-xs block mb-2">Subject Motivation</span>
+                    <p class="font-mono text-sm leading-relaxed text-surveillance">
+                        Depth over breadth<br>
+                        Substance over performance<br>
+                        Craft over signaling
+                    </p>
+                </div>
+            </div>
         </div>
-      </div>
     </header>
 
-    <main class="max-w-3xl md:max-w-4xl mx-auto px-6 py-24">
-      <article
-        class="prose prose-lg md:prose-xl text-surveillance/80 font-body prose-headings:font-display prose-headings:text-surveillance"
-      >
-        <p>You believe competence is rewarded. You believe mastery translates to recognition. You believe if you do excellent work, the systems around you will notice and respond accordingly.</p>
-        <p>This is not naivety. It's strategy.</p>
-        <p>You've watched peers advance through politics, shortcuts, and optics. You've chosen a different path: depth over breadth, substance over performance, craft over signaling. You've invested thousands of hours into skill acquisition while others invested in visibility. This wasn't ignorance&mdash;it was a calculated bet that quality would eventually prove itself.</p>
-        <p>The bet has not paid off as expected.</p>
-        <h2>The Logic of Mastery</h2>
-        <p>The Faithful approach begins with a reasonable premise: in any functioning system, demonstrated competence should create opportunities. Build real expertise, deliver consistent results, and the gap between your contributions and your compensation will eventually close.</p>
-        <p>This isn't about being liked. It's about being undeniable.</p>
-        <p>You've accumulated credentials, certifications, specialized knowledge. You've solved problems that others couldn't. You've become the person teams rely on when stakes are high. The portfolio is genuine. The track record is documented. The gap between your output and your title is measurable.</p>
-        <p>The system continues to underprice you.</p>
-        <h2>What This Solves</h2>
-        <p>The Faithful strategy provides clear psychological returns:</p>
-        <p><strong>Certainty in chaos.</strong> When organizations make decisions that appear arbitrary or political, you have a framework that makes sense: keep improving, and eventually the noise will resolve into signal.</p>
-        <p><strong>Protection from exploitation.</strong> If you're always developing real skills, no one can accuse you of coasting. Your leverage comes from being technically irreplaceable, not politically connected.</p>
-        <p><strong>Narrative coherence.</strong> Your career has a clean story. You're not gaming the system. You're not cutting corners. If advancement is slow, it's because you're building something solid.</p>
-        <p>These returns are real. The strategy is internally consistent. The problem is that it assumes a particular kind of environment&mdash;one that no longer reliably exists.</p>
-        <h2>The Structural Problem</h2>
-        <p>American workers are now more educated than at any point in recorded history. In 1980, 17% of workers held bachelor's degrees. By 2023, that figure reached 42%. Graduate degree attainment has more than tripled in the same period.</p>
-        <p>Productivity per worker has increased 64.6% since 1979. Median compensation has increased 15.3%.</p>
-        <p>This is not a problem you can skill your way out of. The entire labor force has been skilling up for forty years. The returns have gone elsewhere.</p>
-        <p>The equation is precise: a typical worker now produces $35 more in value per hour than they did in 1979, in inflation-adjusted terms. They are compensated for $7 of it.</p>
-        <p>Your excellent work is absorbed into this gap.</p>
-        <h2>The Recognition Bottleneck</h2>
-        <p>In systems where advancement depends on visibility rather than output, mastery becomes a handicap.</p>
-        <p>The person who quietly solves complex problems is less legible than the person who announces simple problems loudly. The person who ships reliable work is less memorable than the person who ships inconsistent work with compelling narratives. Deep expertise in a narrow domain makes you valuable to your current team and illegible to everyone else.</p>
-        <p>This is not a moral failure. It's a coordination failure.</p>
-        <p>Hiring managers allocate attention in thirty-second increments. Promotion committees evaluate portfolios they don't have the technical background to assess. The person who can translate competence into slides wins. The person who can only demonstrate competence through work does not.</p>
-        <p>You've optimized for the wrong evaluator.</p>
-        <h2>The Lag Problem</h2>
-        <p>Even when competence is eventually recognized, the delay creates compound losses.</p>
-        <p>The median time from demonstrating readiness for promotion to receiving that promotion is 18 months in large organizations. The lifetime earnings impact of a two-year delay in a single promotion ranges from $150,000 to $300,000 depending on compounding assumptions and career length.</p>
-        <p>You cannot recover this time. The person who was promoted early continues to accumulate seniority advantages, network advantages, and decision-making authority you will spend years catching up to&mdash;if the gap ever closes.</p>
-        <p>Meanwhile, you continue to deliver excellent work at the previous compensation tier. The system does not retroactively pay you for the value you already created.</p>
-        <h2>The Specialization Trap</h2>
-        <p>Deep expertise makes you harder to replace in your current role and harder to move from it.</p>
-        <p>A mechanical engineer who becomes the organization's expert in thermal management systems has built genuine leverage&mdash;but only within the scope of problems that require thermal management expertise. When budget cuts come, the question isn't "how much value does this person create," it's "can we function without this particular specialty."</p>
-        <p>The more specialized your expertise, the more your value depends on the organization continuing to need exactly that thing. Market conditions change. Strategic priorities shift. The domain you've mastered can become structurally irrelevant while your competence in it remains perfect.</p>
-        <p>You've built deep roots in soil that may not remain fertile.</p>
-        <h2>The Return Paradox</h2>
-        <p>The Faithful strategy produces the highest returns in the environments where it's least necessary.</p>
-        <p>In high-trust organizations with long time horizons and technically sophisticated leadership, competence is legible and appropriately rewarded. These environments are rare, they select for people who already have credentials and networks, and they're often the first to become political when economic conditions tighten.</p>
-        <p>In low-trust environments with short time horizons and leadership focused on quarterly metrics, competence is invisible until someone with better optics takes credit for it.</p>
-        <p>You've optimized for environments that either don't exist or don't need you to optimize.</p>
-        <h2>What Remains</h2>
-        <p>You've built something real. The skills are not fake. The expertise is not imaginary. The work is not worthless.</p>
-        <p>It is underpriced.</p>
-        <p>The systems you're operating in were not designed to reward what you've become. They were designed to extract value from it at the lowest sustainable cost. Your competence makes you useful. It does not make you expensive.</p>
-        <p>You can continue to deepen expertise. You can continue to deliver excellent work. The strategy remains internally coherent. The returns remain structurally capped.</p>
-        <p>There is no resolution to this. Only recognition.</p>
-      </article>
+    <main>
+        <!-- SECTION 1: THE CORE LOGIC -->
+        <section class="py-24 px-6 border-b border-surveillance/10">
+            <div class="max-w-5xl mx-auto">
+                <span class="mono-label text-surveillance/50 text-xs block mb-12">01 // The Core Logic</span>
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+                    <!-- Text Side -->
+                    <div>
+                        <h2 class="font-display font-bold text-4xl mb-6">The Logic of Mastery</h2>
+                        <!-- Replaced P1/P2 with a single block placeholder. Inject <p> tags here. -->
+                        <div class="prose prose-lg text-surveillance/80 mb-8">
+                            <p>This is not naivety. It's strategy.</p>
+                            <p>You've watched peers advance through politics, shortcuts, and optics. You've chosen a different path: depth over breadth, substance over performance, craft over signaling. You've invested thousands of hours into skill acquisition while others invested in visibility. This wasn't ignorance&mdash;it was a calculated bet that quality would eventually prove itself.</p>
+                            <p>The bet has not paid off as expected.</p>
+                            <p>The Faithful approach begins with a reasonable premise: in any functioning system, demonstrated competence should create opportunities. Build real expertise, deliver consistent results, and the gap between your contributions and your compensation will eventually close.</p>
+                            <p>This isn't about being liked. It's about being undeniable.</p>
+                            <p>You've accumulated credentials, certifications, specialized knowledge. You've solved problems that others couldn't. You've become the person teams rely on when stakes are high. The portfolio is genuine. The track record is documented. The gap between your output and your title is measurable.</p>
+                            <p>The system continues to underprice you.</p>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="bg-surveillance/5 p-4 border border-surveillance/10 w-full">
+                                <span class="block font-mono text-xs text-rust mb-1">Observation A</span>
+                                <span class="block font-display text-lg leading-none">Demonstrated competence should create opportunities.</span>
+                            </div>
+                            <div class="bg-surveillance/5 p-4 border border-surveillance/10 w-full">
+                                <span class="block font-mono text-xs text-rust mb-1">Observation B</span>
+                                <span class="block font-display text-lg leading-none">It's about being undeniable.</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Diagrammatic Element -->
+                    <div class="relative bg-surveillance text-cream p-8 md:p-12">
+                        <div class="absolute top-0 right-0 p-4 opacity-20">
+                            <!-- Icon can be changed via google material symbols name -->
+                            <span class="material-symbols-outlined text-6xl">school</span>
+                        </div>
+                        <span class="mono-label text-rust text-xs mb-4 block">Internal Algorithm</span>
+                        <div class="space-y-6 font-mono text-sm">
+                            <div class="flex justify-between border-b border-cream/20 pb-2">
+                                <span>Input:</span>
+                                <span>Demonstrated competence</span>
+                            </div>
+                            <div class="flex justify-between border-b border-cream/20 pb-2">
+                                <span>Observation:</span>
+                                <span>It's about being undeniable.</span>
+                            </div>
+                            <div class="flex justify-between border-b border-cream/20 pb-2">
+                                <span>Conclusion:</span>
+                                <span class="text-rust">The system continues to underprice you.</span>
+                            </div>
+                        </div>
+                        <div class="mt-8 pt-6 border-t border-cream/20">
+                            <p class="font-display text-2xl italic leading-tight">
+                                "This is not naivety. It's strategy."
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 2: THE LEDGER (Assets vs Liabilities) -->
+        <section class="py-24 px-6 bg-cream">
+            <div class="max-w-6xl mx-auto">
+                <div class="flex items-baseline justify-between mb-12 border-b border-surveillance/10 pb-4">
+                    <span class="mono-label text-surveillance/50 text-xs">02 // The Ledger</span>
+                    <span class="mono-label text-rust text-xs">Audit In Progress</span>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-0 border border-surveillance/10">
+                    
+                    <!-- LEFT: ASSETS (What It Solves) -->
+                    <div class="p-8 md:p-12 border-b md:border-b-0 md:border-r border-surveillance/10 bg-white">
+                        <div class="flex items-center gap-2 mb-8 text-soft-green">
+                            <span class="material-symbols-outlined">add_circle</span>
+                            <h3 class="font-display font-bold text-2xl text-surveillance">What This Solves</h3>
+                        </div>
+                        
+                        <ul class="space-y-8">
+                            <li>
+                                <p>The Faithful strategy provides clear psychological returns:</p>
+                            </li>
+                            <li>
+                                <p><strong>Certainty in chaos.</strong> When organizations make decisions that appear arbitrary or political, you have a framework that makes sense: keep improving, and eventually the noise will resolve into signal.</p>
+                            </li>
+                            <li>
+                                <p><strong>Protection from exploitation.</strong> If you're always developing real skills, no one can accuse you of coasting. Your leverage comes from being technically irreplaceable, not politically connected.</p>
+                            </li>
+                            <li>
+                                <p><strong>Narrative coherence.</strong> Your career has a clean story. You're not gaming the system. You're not cutting corners. If advancement is slow, it's because you're building something solid.</p>
+                            </li>
+                            <li>
+                                <p>These returns are real. The strategy is internally consistent. The problem is that it assumes a particular kind of environment&mdash;one that no longer reliably exists.</p>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- RIGHT: LIABILITIES (The Hidden Costs) -->
+                    <div class="p-8 md:p-12 bg-blueprint-pattern bg-blueprint relative overflow-hidden">
+                        <!-- Dark overlay for tone -->
+                        <div class="absolute inset-0 bg-surveillance/5 mix-blend-multiply pointer-events-none"></div>
+                        
+                        <div class="relative z-10">
+                            <div class="flex items-center gap-2 mb-8 text-rust">
+                                <span class="material-symbols-outlined">remove_circle</span>
+                                <h3 class="font-display font-bold text-2xl text-surveillance">The Recognition Bottleneck</h3>
+                            </div>
+
+                            <ul class="space-y-8">
+                                <li>
+                                    <h4>The Recognition Bottleneck</h4>
+                                    <p>In systems where advancement depends on visibility rather than output, mastery becomes a handicap.</p>
+                                    <p>The person who quietly solves complex problems is less legible than the person who announces simple problems loudly. The person who ships reliable work is less memorable than the person who ships inconsistent work with compelling narratives. Deep expertise in a narrow domain makes you valuable to your current team and illegible to everyone else.</p>
+                                    <p>This is not a moral failure. It's a coordination failure.</p>
+                                    <p>Hiring managers allocate attention in thirty-second increments. Promotion committees evaluate portfolios they don't have the technical background to assess. The person who can translate competence into slides wins. The person who can only demonstrate competence through work does not.</p>
+                                    <p>You've optimized for the wrong evaluator.</p>
+                                </li>
+                                <li>
+                                    <h4>The Lag Problem</h4>
+                                    <p>Even when competence is eventually recognized, the delay creates compound losses.</p>
+                                    <p>The median time from demonstrating readiness for promotion to receiving that promotion is 18 months in large organizations. The lifetime earnings impact of a two-year delay in a single promotion ranges from $150,000 to $300,000 depending on compounding assumptions and career length.</p>
+                                    <p>You cannot recover this time. The person who was promoted early continues to accumulate seniority advantages, network advantages, and decision-making authority you will spend years catching up to&mdash;if the gap ever closes.</p>
+                                    <p>Meanwhile, you continue to deliver excellent work at the previous compensation tier. The system does not retroactively pay you for the value you already created.</p>
+                                </li>
+                                <li>
+                                    <h4>The Specialization Trap</h4>
+                                    <p>Deep expertise makes you harder to replace in your current role and harder to move from it.</p>
+                                    <p>A mechanical engineer who becomes the organization's expert in thermal management systems has built genuine leverage&mdash;but only within the scope of problems that require thermal management expertise. When budget cuts come, the question isn't "how much value does this person create," it's "can we function without this particular specialty."</p>
+                                    <p>The more specialized your expertise, the more your value depends on the organization continuing to need exactly that thing. Market conditions change. Strategic priorities shift. The domain you've mastered can become structurally irrelevant while your competence in it remains perfect.</p>
+                                    <p>You've built deep roots in soil that may not remain fertile.</p>
+                                </li>
+                                <li>
+                                    <h4>The Return Paradox</h4>
+                                    <p>The Faithful strategy produces the highest returns in the environments where it's least necessary.</p>
+                                    <p>In high-trust organizations with long time horizons and technically sophisticated leadership, competence is legible and appropriately rewarded. These environments are rare, they select for people who already have credentials and networks, and they're often the first to become political when economic conditions tighten.</p>
+                                    <p>In low-trust environments with short time horizons and leadership focused on quarterly metrics, competence is invisible until someone with better optics takes credit for it.</p>
+                                    <p>You've optimized for environments that either don't exist or don't need you to optimize.</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: THE SYSTEM ERROR (Quantitative Failure) -->
+        <section class="py-24 px-6 bg-surveillance text-cream">
+            <div class="max-w-5xl mx-auto">
+                <span class="mono-label text-rust text-xs block mb-8">03 // System Error</span>
+                
+                <h2 class="font-display font-bold text-4xl md:text-5xl mb-12">The Structural Problem</h2>
+
+                <!-- Optional: omit this grid if no quantitative stats apply -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+                    <div>
+                        <p>American workers are now more educated than at any point in recorded history. In 1980, 17% of workers held bachelor's degrees. By 2023, that figure reached 42%. Graduate degree attainment has more than tripled in the same period.</p>
+                        <p>Productivity per worker has increased 64.6% since 1979. Median compensation has increased 15.3%.</p>
+                    </div>
+                    <div>
+                        <p>This is not a problem you can skill your way out of. The entire labor force has been skilling up for forty years. The returns have gone elsewhere.</p>
+                        <p>The equation is precise: a typical worker now produces $35 more in value per hour than they did in 1979, in inflation-adjusted terms. They are compensated for $7 of it.</p>
+                    </div>
+                    <div>
+                        <p>Your excellent work is absorbed into this gap.</p>
+                    </div>
+                </div>
+
+                <div class="bg-rust/10 border border-rust/30 p-8 md:p-12 text-center max-w-3xl mx-auto">
+                    <p class="font-display text-2xl md:text-3xl mb-4">
+                        "This is not a problem you can skill your way out of."
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: DIAGNOSTIC PROTOCOL -->
+        <section class="py-24 px-6 bg-cream bg-blueprint-pattern bg-blueprint">
+            <div class="max-w-4xl mx-auto">
+                <div class="text-center mb-16">
+                    <span class="mono-label text-surveillance/50 text-xs block mb-4">04 // Diagnostic Protocol</span>
+                    <h2 class="font-display font-bold text-4xl md:text-5xl text-surveillance">Only recognition.</h2>
+                    <p class="mt-4 text-surveillance/60 font-body text-lg italic">There is no resolution to this.</p>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="bg-white/80 border border-surveillance/10 p-6 text-red-600">
+                        <h3>The system continues to underprice you.</h3>
+                        <p>The gap between your output and your title is measurable.</p>
+                    </div>
+                    <div class="bg-white/80 border border-surveillance/10 p-6 text-red-600">
+                        <h3>You've optimized for the wrong evaluator.</h3>
+                        <p>The person who can translate competence into slides wins. The person who can only demonstrate competence through work does not.</p>
+                    </div>
+                    <div class="bg-white/80 border border-surveillance/10 p-6 text-red-600">
+                        <h3>Your excellent work is absorbed into this gap.</h3>
+                        <p>This is not a problem you can skill your way out of.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: NEXT STEPS / CLOSING -->
+        <section class="py-24 px-6 border-t border-surveillance/10">
+            <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16">
+                <!-- Closing Provocation -->
+                <div>
+                    <span class="mono-label text-surveillance/50 text-xs block mb-6">05 // Closing Provocation</span>
+                    <h3 class="font-display font-bold text-3xl mb-6">What Remains</h3>
+                    <!-- Replaced P1/P2 with a single block placeholder. Inject <p> tags here. -->
+                    <div class="text-xl leading-relaxed text-surveillance/80 space-y-6">
+                        <p>You've built something real. The skills are not fake. The expertise is not imaginary. The work is not worthless.</p>
+                        <p>It is underpriced.</p>
+                        <p>The systems you're operating in were not designed to reward what you've become. They were designed to extract value from it at the lowest sustainable cost. Your competence makes you useful. It does not make you expensive.</p>
+                        <p>You can continue to deepen expertise. You can continue to deliver excellent work. The strategy remains internally coherent. The returns remain structurally capped.</p>
+                        <p>There is no resolution to this. Only recognition.</p>
+                    </div>
+                </div>
+
+                <!-- Recommended Actions Box -->
+                <div class="bg-white border border-surveillance/20 p-8 shadow-sm">
+                    <span class="mono-label text-rust text-xs block mb-6">Recommended Actions</span>
+                    
+                    <ul class="space-y-4">
+                        <li class="flex items-start gap-3 text-red-600">
+                            <span class="material-symbols-outlined text-rust text-sm mt-1">menu_book</span>
+                            <div>
+                                <strong class="font-display block">Depth over breadth.</strong>
+                                <span class="text-sm text-surveillance/60">You've invested thousands of hours into skill acquisition while others invested in visibility.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3 text-red-600">
+                            <span class="material-symbols-outlined text-rust text-sm mt-1">calculate</span>
+                            <div>
+                                <strong class="font-display block">Substance over performance.</strong>
+                                <span class="text-sm text-surveillance/60">You're not gaming the system. You're not cutting corners.</span>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-3 text-red-600">
+                            <span class="material-symbols-outlined text-rust text-sm mt-1">experiment</span>
+                            <div>
+                                <strong class="font-display block">Craft over signaling.</strong>
+                                <span class="text-sm text-surveillance/60">The portfolio is genuine. The track record is documented.</span>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
     </main>
 
-    <footer class="bg-surveillance text-cream py-12 border-t border-rust/30">
-      <div
-        class="max-w-6xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-4"
-      >
-        <p class="font-mono text-xs uppercase tracking-widest">Project Faust &copy; 2024</p>
-        <p class="font-mono text-xs uppercase tracking-widest text-cream/60">
-          System Status: Operational
-        </p>
-      </div>
+    <!-- FOOTER -->
+    <footer class="bg-surveillance text-cream py-16 px-6 border-t border-rust/30">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
+            <div class="col-span-1 md:col-span-2">
+                <h4 class="font-display font-bold text-2xl mb-4">Architecture of Ambition</h4>
+                <p class="font-body text-cream/60 max-w-sm">
+                    A digital research document investigating why we build the lives we build, and how to build them differently.
+                </p>
+            </div>
+            <div>
+                <h5 class="font-mono text-rust text-xs uppercase tracking-widest mb-4">Cross-Reference</h5>
+                <ul class="space-y-2 font-mono text-sm text-cream/70">
+                    <li><a href="#" class="hover:text-cream transition-colors">The Cities</a></li>
+                    <li><a href="#" class="hover:text-cream transition-colors">The System</a></li>
+                    <li><a href="#" class="hover:text-cream transition-colors">The Exits</a></li>
+                </ul>
+            </div>
+            <div>
+                 <h5 class="font-mono text-rust text-xs uppercase tracking-widest mb-4">Data</h5>
+                 <p class="font-mono text-xs text-cream/50">
+                    Fig. FAI-01: THE<br />FAITHFUL<br>
+                    Status: Operational<br>
+                    ID: FAI-01
+                 </p>
+            </div>
+        </div>
     </footer>
 
-    <script>
-      window.onscroll = function () {
-        let winScroll = document.body.scrollTop || document.documentElement.scrollTop
-        let height = document.documentElement.scrollHeight - document.documentElement.clientHeight
-        let scrolled = winScroll / height
-        document.getElementById('progress-bar').style.transform = 'scaleX(' + scrolled + ')'
-      }
-    </script>
-    <script type="module" src="../main.js"></script>
-  </body>
+</body>
 </html>
