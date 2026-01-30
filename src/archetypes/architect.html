@@ -327,15 +327,15 @@
                 </div>
 
                 <div class="space-y-4">
-                    <div class="bg-white/80 border border-surveillance/10 p-6 text-red-600">
+                    <div class="bg-white/80 border border-surveillance/10 p-6 hover:border-rust/40 hover:bg-white/90 transition-colors cursor-pointer">
                         <h3>The question is not whether the strategy works.</h3>
                         <p>The question is <strong>what you do with the understanding that it doesn't</strong>.</p>
                     </div>
-                    <div class="bg-white/80 border border-surveillance/10 p-6 text-red-600">
+                    <div class="bg-white/80 border border-surveillance/10 p-6 hover:border-rust/40 hover:bg-white/90 transition-colors cursor-pointer">
                         <h3>You cannot un-know this.</h3>
                         <p>You understand the problem now. You understand that <strong>you cannot achieve your way to safety</strong> in a system designed to extract effort without guaranteeing returns.</p>
                     </div>
-                    <div class="bg-white/80 border border-surveillance/10 p-6 text-red-600">
+                    <div class="bg-white/80 border border-surveillance/10 p-6 hover:border-rust/40 hover:bg-white/90 transition-colors cursor-pointer">
                         <h3>There is no answer provided here.</h3>
                         <p>No framework for what comes next. No reassurance that another strategy exists.</p>
                     </div>
@@ -374,21 +374,21 @@
                     <span class="mono-label text-rust text-xs block mb-6">Recommended Actions</span>
                     
                     <ul class="space-y-4">
-                        <li class="flex items-start gap-3 text-red-600">
+                        <li class="flex items-start gap-3">
                             <span class="material-symbols-outlined text-rust text-sm mt-1">menu_book</span>
                             <div>
                                 <strong class="font-display block">You are solving the wrong equation.</strong>
                                 <span class="text-sm text-surveillance/60">The strategy does not terminate&mdash;it depletes.</span>
                             </div>
                         </li>
-                        <li class="flex items-start gap-3 text-red-600">
+                        <li class="flex items-start gap-3">
                             <span class="material-symbols-outlined text-rust text-sm mt-1">calculate</span>
                             <div>
                                 <strong class="font-display block">Achievement does not compound linearly.</strong>
                                 <span class="text-sm text-surveillance/60">The system does not reward sustained effort&mdash;it rewards position.</span>
                             </div>
                         </li>
-                        <li class="flex items-start gap-3 text-red-600">
+                        <li class="flex items-start gap-3">
                             <span class="material-symbols-outlined text-rust text-sm mt-1">experiment</span>
                             <div>
                                 <strong class="font-display block">Security is a function of position in the wealth distribution.</strong>
@@ -429,5 +429,15 @@
         </div>
     </footer>
 
+    <script>
+      window.addEventListener('scroll', () => {
+        const doc = document.documentElement
+        const scrollTop = doc.scrollTop || document.body.scrollTop
+        const scrollHeight = doc.scrollHeight - doc.clientHeight
+        const progress = scrollHeight > 0 ? scrollTop / scrollHeight : 0
+        const bar = document.getElementById('progress-bar')
+        if (bar) bar.style.transform = `scaleX(${progress})`
+      })
+    </script>
 </body>
 </html>

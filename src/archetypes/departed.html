@@ -345,15 +345,15 @@
                 </div>
 
                 <div class="space-y-4">
-                    <div class="bg-white/80 border border-surveillance/10 p-6 text-red-600">
+                    <div class="bg-white/80 border border-surveillance/10 p-6 hover:border-rust/40 hover:bg-white/90 transition-colors cursor-pointer">
                         <h3>You begin to ask: for what?</h3>
                         <p>The salary supports survival and some accumulation, but it doesn't create optionality.</p>
                     </div>
-                    <div class="bg-white/80 border border-surveillance/10 p-6 text-red-600">
+                    <div class="bg-white/80 border border-surveillance/10 p-6 hover:border-rust/40 hover:bg-white/90 transition-colors cursor-pointer">
                         <h3>The relief is immediate. The uncertainty is vast.</h3>
                         <p>This isn't freedom. It's exposure.</p>
                     </div>
-                    <div class="bg-white/80 border border-surveillance/10 p-6 text-red-600">
+                    <div class="bg-white/80 border border-surveillance/10 p-6 hover:border-rust/40 hover:bg-white/90 transition-colors cursor-pointer">
                         <h3>The path forward is not clear. The path backward is closed.</h3>
                         <p>You are between states.</p>
                     </div>
@@ -394,21 +394,21 @@
                     <span class="mono-label text-rust text-xs block mb-6">Recommended Actions</span>
                     
                     <ul class="space-y-4">
-                        <li class="flex items-start gap-3 text-red-600">
+                        <li class="flex items-start gap-3">
                             <span class="material-symbols-outlined text-rust text-sm mt-1">menu_book</span>
                             <div>
                                 <strong class="font-display block">You stop negotiating with a pyramid.</strong>
                                 <span class="text-sm text-surveillance/60">You stop trying to differentiate within a saturated tier.</span>
                             </div>
                         </li>
-                        <li class="flex items-start gap-3 text-red-600">
+                        <li class="flex items-start gap-3">
                             <span class="material-symbols-outlined text-rust text-sm mt-1">calculate</span>
                             <div>
                                 <strong class="font-display block">You leave your laptop on the desk.</strong>
                                 <span class="text-sm text-surveillance/60">You send the exit email. You transfer your knowledge.</span>
                             </div>
                         </li>
-                        <li class="flex items-start gap-3 text-red-600">
+                        <li class="flex items-start gap-3">
                             <span class="material-symbols-outlined text-rust text-sm mt-1">experiment</span>
                             <div>
                                 <strong class="font-display block">The time is yours.</strong>
@@ -449,5 +449,15 @@
         </div>
     </footer>
 
+    <script>
+      window.addEventListener('scroll', () => {
+        const doc = document.documentElement
+        const scrollTop = doc.scrollTop || document.body.scrollTop
+        const scrollHeight = doc.scrollHeight - doc.clientHeight
+        const progress = scrollHeight > 0 ? scrollTop / scrollHeight : 0
+        const bar = document.getElementById('progress-bar')
+        if (bar) bar.style.transform = `scaleX(${progress})`
+      })
+    </script>
 </body>
 </html>

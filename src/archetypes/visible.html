@@ -351,13 +351,13 @@
                 </div>
 
                 <div class="space-y-4">
-                    <div class="bg-white/80 border border-surveillance/10 p-6 text-red-600">
+                    <div class="bg-white/80 border border-surveillance/10 p-6 hover:border-rust/40 hover:bg-white/90 transition-colors cursor-pointer">
                         <h3>You know that your manager who praises your work ethic is extracting uncompensated labor.</h3>
                     </div>
-                    <div class="bg-white/80 border border-surveillance/10 p-6 text-red-600">
+                    <div class="bg-white/80 border border-surveillance/10 p-6 hover:border-rust/40 hover:bg-white/90 transition-colors cursor-pointer">
                         <h3>You know that "growth mindset" is often a euphemism for accepting worse conditions.</h3>
                     </div>
-                    <div class="bg-white/80 border border-surveillance/10 p-6 text-red-600">
+                    <div class="bg-white/80 border border-surveillance/10 p-6 hover:border-rust/40 hover:bg-white/90 transition-colors cursor-pointer">
                         <h3>You know that the colleague who "doesn't take work home" isn't less committed&mdash;they've just recognized the exchange rate.</h3>
                     </div>
                 </div>
@@ -390,21 +390,21 @@
                     <span class="mono-label text-rust text-xs block mb-6">Recommended Actions</span>
                     
                     <ul class="space-y-4">
-                        <li class="flex items-start gap-3 text-red-600">
+                        <li class="flex items-start gap-3">
                             <span class="material-symbols-outlined text-rust text-sm mt-1">menu_book</span>
                             <div>
                                 <strong class="font-display block">Be non-standard.</strong>
                                 <span class="text-sm text-surveillance/60">Outperform the median. Extract economic security through differentiation.</span>
                             </div>
                         </li>
-                        <li class="flex items-start gap-3 text-red-600">
+                        <li class="flex items-start gap-3">
                             <span class="material-symbols-outlined text-rust text-sm mt-1">calculate</span>
                             <div>
                                 <strong class="font-display block">Standard effort produces standard wages.</strong>
                                 <span class="text-sm text-surveillance/60">Standard wages, adjusted for cost structure, produce financial fragility.</span>
                             </div>
                         </li>
-                        <li class="flex items-start gap-3 text-red-600">
+                        <li class="flex items-start gap-3">
                             <span class="material-symbols-outlined text-rust text-sm mt-1">experiment</span>
                             <div>
                                 <strong class="font-display block">Individual optimization cannot solve structural problems.</strong>
@@ -445,5 +445,15 @@
         </div>
     </footer>
 
+    <script>
+      window.addEventListener('scroll', () => {
+        const doc = document.documentElement
+        const scrollTop = doc.scrollTop || document.body.scrollTop
+        const scrollHeight = doc.scrollHeight - doc.clientHeight
+        const progress = scrollHeight > 0 ? scrollTop / scrollHeight : 0
+        const bar = document.getElementById('progress-bar')
+        if (bar) bar.style.transform = `scaleX(${progress})`
+      })
+    </script>
 </body>
 </html>

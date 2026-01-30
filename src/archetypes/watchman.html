@@ -390,12 +390,12 @@
                 </div>
 
                 <div class="space-y-4">
-                    <div class="bg-white/80 border border-surveillance/10 p-6 text-red-600">
+                    <div class="bg-white/80 border border-surveillance/10 p-6 hover:border-rust/40 hover:bg-white/90 transition-colors cursor-pointer">
                         <h3>1. What would "enough" look like?</h3>
                         <p>Not "comfortable" or "secure" in the abstract. A number. A condition. A date.</p>
                         <p>If you can't name it, you don't have a goal. You have a treadmill with a variable speed setting.</p>
                     </div>
-                    <div class="bg-white/80 border border-surveillance/10 p-6 text-red-600">
+                    <div class="bg-white/80 border border-surveillance/10 p-6 hover:border-rust/40 hover:bg-white/90 transition-colors cursor-pointer">
                         <h3>2. What is the specific disaster?</h3>
                         <p>Not "falling behind" or "losing optionality." The actual disaster:</p>
                         <ul>
@@ -405,13 +405,13 @@
                         </ul>
                         <p>Now look at what you wrote. Is that threat actual, or is it the threat of feeling out of control?</p>
                     </div>
-                    <div class="bg-white/80 border border-surveillance/10 p-6 text-red-600">
+                    <div class="bg-white/80 border border-surveillance/10 p-6 hover:border-rust/40 hover:bg-white/90 transition-colors cursor-pointer">
                         <h3>3. Have you tested whether the floor is where you think it is?</h3>
                         <p>You assume slowing down equals falling. But have you ever tried?</p>
                         <p>What if the difference between 60 hours and 45 hours per week is not the difference between security and ruin, but the difference between burnout and sustainability?</p>
                         <p>What if the disaster you're defending against wouldn't happen even if you eased up?</p>
                     </div>
-                    <div class="bg-white/80 border border-surveillance/10 p-6 text-red-600">
+                    <div class="bg-white/80 border border-surveillance/10 p-6 hover:border-rust/40 hover:bg-white/90 transition-colors cursor-pointer">
                         <h3>4. What are you not building while you're defending?</h3>
                         <p>The Watchman strategy makes you good at working. It doesn't make you:</p>
                         <ul>
@@ -422,7 +422,7 @@
                         </ul>
                         <p><strong>The vigilance is making you more fragile, not less.</strong></p>
                     </div>
-                    <div class="bg-white/80 border border-surveillance/10 p-6 text-red-600">
+                    <div class="bg-white/80 border border-surveillance/10 p-6 hover:border-rust/40 hover:bg-white/90 transition-colors cursor-pointer">
                         <h3>5. When will you admit the strategy isn't producing the feeling?</h3>
                         <p>You've hit milestones before. $50,000 saved, then $100,000, then certifications completed, then promotions secured.</p>
                         <p>Did the anxiety decrease? Did you feel safer? Or did the goal post simply move?</p>
@@ -490,21 +490,21 @@
                     <span class="mono-label text-rust text-xs block mb-6">Recommended Actions</span>
                     
                     <ul class="space-y-4">
-                        <li class="flex items-start gap-3 text-red-600">
+                        <li class="flex items-start gap-3">
                             <span class="material-symbols-outlined text-rust text-sm mt-1">menu_book</span>
                             <div>
                                 <strong class="font-display block">Permission Disguised as Evidence</strong>
                                 <span class="text-sm text-surveillance/60">You don't need someone to tell you to rest. You need evidence that slowing down won't trigger the disaster.</span>
                             </div>
                         </li>
-                        <li class="flex items-start gap-3 text-red-600">
+                        <li class="flex items-start gap-3">
                             <span class="material-symbols-outlined text-rust text-sm mt-1">calculate</span>
                             <div>
                                 <strong class="font-display block">Structural Honesty</strong>
                                 <span class="text-sm text-surveillance/60">Individual effort cannot solve structural problems. The game is rigged.</span>
                             </div>
                         </li>
-                        <li class="flex items-start gap-3 text-red-600">
+                        <li class="flex items-start gap-3">
                             <span class="material-symbols-outlined text-rust text-sm mt-1">experiment</span>
                             <div>
                                 <strong class="font-display block">Acknowledgment That the Floor Has Held Before</strong>
@@ -545,5 +545,15 @@
         </div>
     </footer>
 
+    <script>
+      window.addEventListener('scroll', () => {
+        const doc = document.documentElement
+        const scrollTop = doc.scrollTop || document.body.scrollTop
+        const scrollHeight = doc.scrollHeight - doc.clientHeight
+        const progress = scrollHeight > 0 ? scrollTop / scrollHeight : 0
+        const bar = document.getElementById('progress-bar')
+        if (bar) bar.style.transform = `scaleX(${progress})`
+      })
+    </script>
 </body>
 </html>
