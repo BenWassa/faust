@@ -465,8 +465,31 @@
         currentCity: 'toronto',
       }
 
+      const validViews = new Set([
+        'home',
+        'system',
+        'cities',
+        'machines',
+        'casualties',
+        'exits',
+        'resources',
+      ])
+
+      function syncViewFromHash() {
+        const hashView = window.location.hash.replace('#', '')
+        if (hashView && validViews.has(hashView)) {
+          state.currentView = hashView
+        }
+      }
+
       function navigateTo(viewId) {
+        if (!validViews.has(viewId)) return
         state.currentView = viewId
+        if (viewId === 'home') {
+          history.replaceState(null, '', window.location.pathname + window.location.search)
+        } else {
+          window.location.hash = viewId
+        }
         render()
         window.scrollTo(0, 0)
       }
@@ -532,7 +555,7 @@
         `
 
       const ArchetypeCard = (num, title, desc, file, icon) => `
-            <div onclick="window.open('archetypes/${file}.html', '_blank')" class="group border border-surveillance/20 p-8 hover:bg-surveillance hover:text-cream transition-all duration-300 cursor-pointer h-full flex flex-col justify-between relative overflow-hidden bg-white">
+            <div onclick="window.location.href='archetypes/${file}.html'" class="group border border-surveillance/20 p-8 hover:bg-surveillance hover:text-cream transition-all duration-300 cursor-pointer h-full flex flex-col justify-between relative overflow-hidden bg-white">
                 <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20"><span class="material-symbols-outlined text-6xl">${icon}</span></div>
                 <div><span class="font-mono text-rust text-sm mb-2 block group-hover:text-soft-green">${num}</span><h3 class="font-display font-bold text-2xl mb-4">${title}</h3><p class="font-body text-lg opacity-70">${desc}</p></div>
                 <div class="mt-8 flex items-center gap-2 font-mono text-xs uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">Explore <span class="material-symbols-outlined text-sm">arrow_forward</span></div>
@@ -882,7 +905,12 @@
       }
 
       document.addEventListener('DOMContentLoaded', () => {
+        syncViewFromHash()
         render()
+        window.addEventListener('hashchange', () => {
+          syncViewFromHash()
+          render()
+        })
         window.addEventListener('scroll', () => {
           const nav = document.getElementById('navbar')
           if (window.scrollY > 50) {
