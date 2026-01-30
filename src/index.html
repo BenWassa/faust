@@ -230,7 +230,7 @@
     <main
       id="app"
       class="pt-16 min-h-screen relative transition-opacity duration-300"
-      style="opacity: 1"
+      style="opacity: 0"
     >
       <section
         class="relative min-h-screen flex items-center justify-center overflow-hidden bg-blueprint"
@@ -503,12 +503,12 @@
         const panel = document.getElementById('analysis-panel')
         const titleEl = document.getElementById('analysis-title')
         const textEl = document.getElementById('analysis-text')
-        
+
         if (panel && titleEl && textEl) {
           titleEl.innerText = title
           textEl.innerText = text
           panel.classList.remove('hidden')
-          
+
           // Smooth scroll to panel on mobile
           if (window.innerWidth < 768) {
             setTimeout(() => {
@@ -859,10 +859,10 @@
           nyc: 'The velocity machine. 53% are rent-burdened, yet cultural narrative says you are lucky.',
         }
         const images = {
-          toronto: { src: '/toronto.png', alt: 'CN Tower Toronto skyline black and white' },
-          vancouver: { src: '/vancouver.png', alt: 'Lions Gate Bridge Vancouver black and white' },
-          london: { src: '/london.png', alt: 'St Pauls Cathedral London skyline black and white' },
-          nyc: { src: '/nyc.png', alt: 'Empire State Building NYC black and white' },
+          toronto: { src: './toronto.png', alt: 'CN Tower Toronto skyline black and white' },
+          vancouver: { src: './vancouver.png', alt: 'Lions Gate Bridge Vancouver black and white' },
+          london: { src: './london.png', alt: 'St Pauls Cathedral London skyline black and white' },
+          nyc: { src: './nyc.png', alt: 'Empire State Building NYC black and white' },
         }
 
         if (narrative) narrative.innerText = texts[state.currentCity]
@@ -884,7 +884,7 @@
         // Cost bar and value - scale based on ratio
         let costDisplay = ''
         let costHeightPercent = 240
-        
+
         if (state.currentCity === 'toronto') {
           costDisplay = '$1.07M'
           costHeightPercent = 240
