@@ -1,0 +1,19 @@
+{
+  "name": "The Architecture of Ambition",
+  "short_name": "Faust",
+  "description": "A digital essay exploring career identity, extreme ambition, and alternative frameworks.",
+  "start_url": "/faust/",
+  "scope": "/faust/",
+  "display": "standalone",
+  "theme_color": "#1A202C",
+  "background_color": "#FDFBF7",
+  "categories": ["education", "reference"],
+  "icons": [
+    {
+      "src": "/faust/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}
