@@ -4,7 +4,8 @@ export const cityData = {
     income: 99000,
     desc: 'The Trap of Good Intentions',
     stats: '77% income for ownership',
-    narrative: 'The ambition tax: where hustle is survival, not aspiration. 10.7 price-to-income makes ownership mathematical.',
+    narrative:
+      'The ambition tax: where hustle is survival, not aspiration. 10.7 price-to-income makes ownership mathematical.',
     costDisplay: '$1.07M',
     costBarHeight: 130,
     image: { src: './toronto.png', alt: 'CN Tower Toronto skyline black and white' },
@@ -14,7 +15,8 @@ export const cityData = {
     income: 92000,
     desc: 'Immobility by Design',
     stats: '12.7 Price-to-Income Ratio',
-    narrative: 'The most beautiful trap: a 12.7 price-to-income ratio means only inheritance buys shelter.',
+    narrative:
+      'The most beautiful trap: a 12.7 price-to-income ratio means only inheritance buys shelter.',
     costDisplay: '$1.27M',
     costBarHeight: 138,
     image: { src: './vancouver.png', alt: 'Lions Gate Bridge Vancouver black and white' },
