@@ -9,10 +9,10 @@ module.exports = {
         'soft-green': '#7A9A84'
       },
       fontFamily: {
-        display: ['Syne', 'sans-serif'],
+        display: ['DM Sans', 'sans-serif'],
         body: ['Crimson Pro', 'serif'],
         mono: ['JetBrains Mono', 'monospace']
-      }
+      },
     }
   },
   plugins: []

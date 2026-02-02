@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Font Test - Display Fonts</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Inter:wght@400;600;700;800&family=DM+Sans:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&family=Ubuntu:wght@400;500;700&family=Montserrat:wght@400;500;600;700&family=Work+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              cream: '#FDFBF7',
+              surveillance: '#1A202C',
+              rust: '#C05640',
+            },
+            fontFamily: {
+              syne: ['Syne', 'sans-serif'],
+              inter: ['Inter', 'sans-serif'],
+              dmsans: ['DM Sans', 'sans-serif'],
+              grotesk: ['Space Grotesk', 'sans-serif'],
+              ubuntu: ['Ubuntu', 'sans-serif'],
+              montserrat: ['Montserrat', 'sans-serif'],
+              worksans: ['Work Sans', 'sans-serif'],
+            },
+          },
+        },
+      }
+    </script>
+
+    <style>
+      body {
+        background-color: #fdfbf7;
+        color: #1a202c;
+      }
+      .font-test {
+        line-height: 1.4;
+      }
+    </style>
+  </head>
+
+  <body class="antialiased bg-cream p-12">
+    <div class="max-w-5xl mx-auto space-y-16">
+      
+      <h1 class="text-4xl font-bold text-surveillance mb-12 border-b border-surveillance/20 pb-4">
+        Display Font Test
+      </h1>
+
+      <!-- Syne -->
+      <div class="border border-surveillance/20 p-8 bg-white">
+        <div class="mb-4 text-sm font-mono text-rust uppercase tracking-widest">Syne (Original)</div>
+        <p class="font-syne font-test text-2xl md:text-3xl text-surveillance mb-6">
+          "If I don't stay vigilant, I'll lose ground I can't get back."
+        </p>
+        <p class="font-mono text-xs text-surveillance/60">
+          Testing: ground, aging, going, debugging, triggering
+        </p>
+      </div>
+
+      <!-- Inter -->
+      <div class="border border-surveillance/20 p-8 bg-white">
+        <div class="mb-4 text-sm font-mono text-rust uppercase tracking-widest">Inter</div>
+        <p class="font-inter font-test text-2xl md:text-3xl text-surveillance mb-6">
+          "If I don't stay vigilant, I'll lose ground I can't get back."
+        </p>
+        <p class="font-mono text-xs text-surveillance/60">
+          Testing: ground, aging, going, debugging, triggering
+        </p>
+      </div>
+
+      <!-- DM Sans -->
+      <div class="border border-surveillance/20 p-8 bg-white">
+        <div class="mb-4 text-sm font-mono text-rust uppercase tracking-widest">DM Sans</div>
+        <p class="font-dmsans font-test text-2xl md:text-3xl text-surveillance mb-6">
+          "If I don't stay vigilant, I'll lose ground I can't get back."
+        </p>
+        <p class="font-mono text-xs text-surveillance/60">
+          Testing: ground, aging, going, debugging, triggering
+        </p>
+      </div>
+
+      <!-- Space Grotesk -->
+      <div class="border border-surveillance/20 p-8 bg-white">
+        <div class="mb-4 text-sm font-mono text-rust uppercase tracking-widest">Space Grotesk</div>
+        <p class="font-grotesk font-test text-2xl md:text-3xl text-surveillance mb-6">
+          "If I don't stay vigilant, I'll lose ground I can't get back."
+        </p>
+        <p class="font-mono text-xs text-surveillance/60">
+          Testing: ground, aging, going, debugging, triggering
+        </p>
+      </div>
+
+      <!-- Ubuntu -->
+      <div class="border border-surveillance/20 p-8 bg-white">
+        <div class="mb-4 text-sm font-mono text-rust uppercase tracking-widest">Ubuntu</div>
+        <p class="font-ubuntu font-test text-2xl md:text-3xl text-surveillance mb-6">
+          "If I don't stay vigilant, I'll lose ground I can't get back."
+        </p>
+        <p class="font-mono text-xs text-surveillance/60">
+          Testing: ground, aging, going, debugging, triggering
+        </p>
+      </div>
+
+      <!-- Montserrat -->
+      <div class="border border-surveillance/20 p-8 bg-white">
+        <div class="mb-4 text-sm font-mono text-rust uppercase tracking-widest">Montserrat</div>
+        <p class="font-montserrat font-test text-2xl md:text-3xl text-surveillance mb-6">
+          "If I don't stay vigilant, I'll lose ground I can't get back."
+        </p>
+        <p class="font-mono text-xs text-surveillance/60">
+          Testing: ground, aging, going, debugging, triggering
+        </p>
+      </div>
+
+      <!-- Work Sans -->
+      <div class="border border-surveillance/20 p-8 bg-white">
+        <div class="mb-4 text-sm font-mono text-rust uppercase tracking-widest">Work Sans</div>
+        <p class="font-worksans font-test text-2xl md:text-3xl text-surveillance mb-6">
+          "If I don't stay vigilant, I'll lose ground I can't get back."
+        </p>
+        <p class="font-mono text-xs text-surveillance/60">
+          Testing: ground, aging, going, debugging, triggering
+        </p>
+      </div>
+
+    </div>
+  </body>
+</html>

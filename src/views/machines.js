@@ -128,8 +128,9 @@ export const MachinesView = () => `
                       </div>
                   </div>
                   
+                  <div class="hidden md:block" style="height: 50px;"></div>
                   <!-- Post 1 - Future Audience -->
-                  <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow md:mt-12">
+                  <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
                       <div class="p-4">
                           <div class="flex items-start gap-3 mb-3">
                               <div class="w-12 h-12 rounded-full bg-gradient-to-br from-pink-400 to-pink-600 flex items-center justify-center text-white font-bold text-lg flex-shrink-0">
