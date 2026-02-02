@@ -127,8 +127,9 @@ export const MachinesView = () => `
                       </div>
                   </div>
                   
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <!-- Post 1 - Future Audience -->
-                  <div class="mt-32 bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
+                  <div class="md:mt-32 bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
                       <div class="p-4">
                           <div class="flex items-start gap-3 mb-3">
                               <div class="w-12 h-12 rounded-full bg-gradient-to-br from-pink-400 to-pink-600 flex items-center justify-center text-white font-bold text-lg flex-shrink-0">
@@ -328,6 +329,7 @@ export const MachinesView = () => `
                               <p class="mt-2"><span class="cursor-pointer text-rust border-b-2 border-rust/30 hover:border-rust hover:bg-rust/10 transition-colors px-0.5 rounded-sm" onclick="openTrap('defensive-ambition', true)">In this market, you can never be too prepared.</span> Already enrolled in the next one!</p>
                           </div>
                       </div>
+                  </div>
                   </div>
 
                   <p class="mt-8 text-xs text-center text-gray-500 font-mono uppercase tracking-wide">Click highlighted phrases to explore psychological traps</p>
