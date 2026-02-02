@@ -1,0 +1,838 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>The Departed | Architecture of Ambition</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,400&family=JetBrains+Mono:wght@300;400;500&family=DM+Sans:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+
+    <!-- SYSTEM CONFIGURATION: DO NOT MODIFY -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              cream: '#FDFBF7',
+              surveillance: '#1A202C',
+              rust: '#C05640',
+              'soft-green': '#7A9A84',
+            },
+            fontFamily: {
+              display: ['DM Sans', 'sans-serif'],
+              body: ['Crimson Pro', 'serif'],
+              mono: ['JetBrains Mono', 'monospace'],
+            },
+            animation: {
+              'fade-in': 'fadeIn 1s ease-out forwards',
+              'slide-up': 'slideUp 0.8s ease-out forwards',
+            },
+            keyframes: {
+              fadeIn: { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
+              slideUp: {
+                '0%': { transform: 'translateY(20px)', opacity: '0' },
+                '100%': { transform: 'translateY(0)', opacity: '1' },
+              },
+            },
+            backgroundImage: {
+              blueprint:
+                'linear-gradient(#e2e8f0 1px, transparent 1px), linear-gradient(90deg, #e2e8f0 1px, transparent 1px)',
+            },
+          },
+        },
+      }
+    </script>
+
+    <style>
+      body {
+        background-color: #fdfbf7;
+        color: #1a202c;
+        overflow-x: hidden;
+      }
+      .bg-blueprint-pattern {
+        background-size: 40px 40px;
+      }
+      .mono-label {
+        font-family: 'JetBrains Mono', monospace;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+      }
+      .font-display {
+        line-height: 1.3 !important;
+      }
+      /* Custom scrollbar for that technical feel */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #fdfbf7;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #1a202c;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #c05640;
+      }
+    </style>
+  </head>
+
+  <body class="font-body selection:bg-rust selection:text-white antialiased bg-cream">
+    <!--
+    TEMPLATE RULES:
+    - Do not edit layout, classes, or structure
+    - Only replace {{PLACEHOLDERS}}
+    - Inject valid HTML into block placeholders
+    -->
+
+    <!-- Navigation -->
+    <nav
+      id="navbar"
+      class="fixed top-0 left-0 w-full z-50 bg-cream/95 backdrop-blur-sm border-b border-surveillance/10 transition-all duration-300 shadow-md py-2"
+    >
+      <div
+        id="progress-bar"
+        class="h-1 bg-surveillance w-0 absolute top-0 left-0 transition-all duration-300"
+        style="width: 0%"
+      ></div>
+      <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+        <a
+          class="flex items-center gap-3 cursor-pointer p-2 rounded -m-2"
+          href="../"
+          aria-label="Navigate to home"
+        >
+          <span class="material-symbols-outlined text-surveillance" aria-hidden="true"
+            >grid_4x4</span
+          >
+          <span class="font-display font-bold text-lg tracking-tight uppercase"
+            >Architecture of Ambition</span
+          >
+        </a>
+        <!-- Desktop Nav -->
+        <div
+          class="hidden md:flex items-center gap-8 font-mono text-sm uppercase tracking-widest text-surveillance/70"
+        >
+          <a class="hover:text-rust transition-colors p-2 rounded -m-2" href="../#system"
+            >The System</a
+          >
+          <a class="hover:text-rust transition-colors p-2 rounded -m-2" href="../#cities"
+            >The Cities</a
+          >
+          <a class="hover:text-rust transition-colors p-2 rounded -m-2" href="../#machines"
+            >The Machines</a
+          >
+          <a class="hover:text-rust transition-colors p-2 rounded -m-2" href="../#casualties"
+            >The Casualties</a
+          >
+          <a class="hover:text-rust transition-colors p-2 rounded -m-2" href="../#exits"
+            >The Exits</a
+          >
+        </div>
+        <!-- Mobile Menu Button -->
+        <button
+          class="md:hidden text-surveillance p-2 rounded -m-2"
+          onclick="toggleMobileMenu()"
+          aria-label="Toggle mobile menu"
+        >
+          <span class="material-symbols-outlined" aria-hidden="true">menu</span>
+        </button>
+      </div>
+      <!-- Mobile Menu -->
+      <div
+        id="mobile-menu"
+        class="hidden absolute top-full left-0 w-full bg-cream border-b border-surveillance p-6 flex-col gap-4 shadow-lg md:hidden"
+      >
+        <a
+          class="text-left font-display text-xl hover:text-rust"
+          href="../#system"
+          onclick="toggleMobileMenu()"
+          >01. The System</a
+        >
+        <a
+          class="text-left font-display text-xl hover:text-rust"
+          href="../#cities"
+          onclick="toggleMobileMenu()"
+          >02. The Cities</a
+        >
+        <a
+          class="text-left font-display text-xl hover:text-rust"
+          href="../#machines"
+          onclick="toggleMobileMenu()"
+          >03. The Machines</a
+        >
+        <a
+          class="text-left font-display text-xl hover:text-rust"
+          href="../#casualties"
+          onclick="toggleMobileMenu()"
+          >04. The Casualties</a
+        >
+        <a
+          class="text-left font-display text-xl hover:text-rust"
+          href="../#exits"
+          onclick="toggleMobileMenu()"
+          >05. The Exits</a
+        >
+      </div>
+    </nav>
+
+    <!-- HEADER / SUBJECT PROFILE -->
+    <header
+      class="relative pt-32 pb-24 px-6 border-b border-surveillance/10 bg-blueprint-pattern bg-blueprint"
+    >
+      <div
+        class="absolute inset-0 bg-gradient-to-b from-cream/50 to-cream pointer-events-none"
+      ></div>
+
+      <div class="max-w-5xl mx-auto relative z-10">
+        <div class="flex items-start justify-between mb-8 border-b border-surveillance/20 pb-8">
+          <div>
+            <span class="mono-label text-rust text-xs block mb-2 animate-fade-in"
+              >Archetype Analysis</span
+            >
+            <h1
+              class="font-display font-bold text-6xl md:text-8xl text-surveillance leading-[0.9] tracking-tighter pb-px animate-slide-up"
+            >
+              The Departed
+            </h1>
+          </div>
+          <div
+            class="hidden md:block border border-surveillance text-surveillance px-4 py-2 font-mono text-xs uppercase tracking-widest"
+          >
+            Status: Active
+          </div>
+        </div>
+
+        <div
+          class="grid grid-cols-1 md:grid-cols-12 gap-12 items-end animate-slide-up"
+          style="animation-delay: 200ms"
+        >
+          <div class="md:col-span-8">
+            <p class="font-display text-2xl md:text-3xl text-surveillance mb-6 pb-px">
+              "You didn't leave because you failed. You left because the terms were impossible."
+            </p>
+            <p class="text-xl leading-relaxed text-surveillance/80">
+              This is the archetype of the person who worked the system correctly, saw what it would
+              cost, and chose exit over extraction. Not from weakness. From arithmetic.
+            </p>
+          </div>
+          <div class="md:col-span-4 border-l border-surveillance/20 pl-6">
+            <span class="mono-label text-surveillance/50 text-xs block mb-2"
+              >Subject Motivation</span
+            >
+            <p class="font-mono text-sm leading-relaxed text-surveillance">
+              Exchange effort for security<br />
+              Skill for advancement<br />
+              Contribution for stability
+            </p>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- SECTION 1: THE CORE LOGIC -->
+      <section class="py-24 px-6 border-b border-surveillance/10">
+        <div class="max-w-5xl mx-auto">
+          <span class="mono-label text-surveillance/50 text-xs block mb-12"
+            >01 // The Core Logic</span
+          >
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+            <!-- Text Side -->
+            <div>
+              <h2 class="font-display font-bold text-4xl mb-6">The Rational Foundation</h2>
+              <!-- Replaced P1/P2 with a single block placeholder. Inject <p> tags here. -->
+              <div class="prose prose-lg text-surveillance/80 mb-8">
+                <p>
+                  You didn't leave because you failed. You left because the terms were impossible.
+                </p>
+                <p>
+                  The Departed began with a clear proposition: exchange effort for security, skill
+                  for advancement, contribution for stability. The contract seemed mutual. It wasn't
+                  decorative&mdash;it was structural. You would build capability. The organization
+                  would recognize it. Progression would follow.
+                </p>
+                <p>
+                  This wasn't naivete. It was pattern recognition based on observable mechanisms.
+                  Mentors existed. Hierarchies had logic. Performance reviews had criteria. The
+                  system appeared to operate on legible rules.
+                </p>
+                <p>For a time, it did.</p>
+              </div>
+              <div class="flex gap-4">
+                <div class="bg-surveillance/5 p-4 border border-surveillance/10 w-full">
+                  <span class="block font-mono text-xs text-rust mb-1">Observation A</span>
+                  <span class="block font-display text-lg leading-tight"
+                    >Exchange effort for security</span
+                  >
+                </div>
+                <div class="bg-surveillance/5 p-4 border border-surveillance/10 w-full">
+                  <span class="block font-mono text-xs text-rust mb-1">Observation B</span>
+                  <span class="block font-display text-lg leading-tight"
+                    >The contract seemed mutual.</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <!-- Diagrammatic Element -->
+            <div class="relative bg-surveillance text-cream p-8 md:p-12">
+              <div class="absolute top-0 right-0 p-4 opacity-20">
+                <!-- Icon can be changed via google material symbols name -->
+                <span class="material-symbols-outlined text-6xl">exit_to_app</span>
+              </div>
+              <span class="mono-label text-rust text-xs mb-4 block">Internal Algorithm</span>
+              <div class="space-y-6 font-mono text-sm">
+                <div class="flex justify-between border-b border-cream/20 pb-2">
+                  <span>Input:</span>
+                  <span>Contribution</span>
+                </div>
+                <div class="flex justify-between border-b border-cream/20 pb-2">
+                  <span>Observation:</span>
+                  <span>The system appeared to operate on legible rules.</span>
+                </div>
+                <div class="flex justify-between border-b border-cream/20 pb-2">
+                  <span>Conclusion:</span>
+                  <span class="text-rust">For a time, it did.</span>
+                </div>
+              </div>
+              <div class="mt-8 pt-6 border-t border-cream/20">
+                <p class="font-display text-2xl italic leading-tight">
+                  "You didn't leave because you failed. You left because the terms were impossible."
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 2: THE LEDGER (Assets vs Liabilities) -->
+      <section class="py-24 px-6 bg-cream">
+        <div class="max-w-6xl mx-auto">
+          <div
+            class="flex items-baseline justify-between mb-12 border-b border-surveillance/10 pb-4"
+          >
+            <span class="mono-label text-surveillance/50 text-xs">02 // The Ledger</span>
+            <span class="mono-label text-rust text-xs">Audit In Progress</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-0 border border-surveillance/10">
+            <!-- LEFT: ASSETS (What It Solves) -->
+            <div
+              class="p-8 md:p-12 border-b md:border-b-0 md:border-r border-surveillance/10 bg-white"
+            >
+              <div class="flex items-center gap-2 mb-8 text-soft-green">
+                <span class="material-symbols-outlined">add_circle</span>
+                <h3 class="font-display font-bold text-2xl text-surveillance">The First Returns</h3>
+              </div>
+
+              <ul class="space-y-8">
+                <li class="group">
+                  <span
+                    class="mono-label text-xs text-surveillance/40 mb-1 block group-hover:text-soft-green transition-colors"
+                    >Goal 01</span
+                  >
+                  <h4>The First Returns</h4>
+                  <p>
+                    Early career advancement follows a predictable curve. Entry-level positions
+                    convert entirely to next-level positions within 18-24 months if competence is
+                    demonstrated. The bottleneck is minimal. The returns are visible.
+                  </p>
+                  <p>
+                    You cleared the initial gates efficiently. Projects shipped. Feedback arrived.
+                    Responsibilities expanded. The equation held: input produced output. Each cycle
+                    confirmed the model.
+                  </p>
+                  <p>
+                    Promotion velocity in years one through three tracks reliably with effort and
+                    skill acquisition. The exceptions are rare enough to remain exceptions. The
+                    system appears to be working because it is working.
+                  </p>
+                  <p>The early returns are real. They're also terminal.</p>
+                </li>
+              </ul>
+            </div>
+
+            <!-- RIGHT: LIABILITIES (The Hidden Costs) -->
+            <div class="p-8 md:p-12 bg-blueprint-pattern bg-blueprint relative overflow-visible">
+              <!-- Dark overlay for tone -->
+              <div
+                class="absolute inset-0 bg-surveillance/5 mix-blend-multiply pointer-events-none"
+              ></div>
+
+              <div class="relative z-10">
+                <div class="flex items-center gap-2 mb-8 text-rust">
+                  <span class="material-symbols-outlined">remove_circle</span>
+                  <h3 class="font-display font-bold text-2xl text-surveillance">
+                    The Visible Ceiling
+                  </h3>
+                </div>
+
+                <ul class="space-y-8">
+                  <li class="group">
+                    <span class="mono-label text-xs text-rust/60 mb-1 block">Cost 01</span>
+                    <h4>The Visible Ceiling</h4>
+                    <p>
+                      Somewhere between mid-level and senior positions, the conversion rate changes.
+                      Not gradually. Structurally.
+                    </p>
+                    <p>
+                      The number of director-level positions relative to senior individual
+                      contributors sits between 1:7 and 1:12 across most organizations. The number
+                      of VP-level positions relative to directors sits between 1:6 and 1:9. The
+                      pyramid narrows faster than performance can differentiate.
+                    </p>
+                    <p>
+                      By the time you reach senior tenure, 60-70% of your peers will have equivalent
+                      performance records. Differentiation becomes fractional. The criteria that
+                      governed early advancement&mdash;output, reliability, skill&mdash;lose
+                      predictive power.
+                    </p>
+                    <p>
+                      What replaces them is less legible: sponsorship, visibility, adjacency to
+                      revenue, timing, internal politics, demographic optics. These aren't
+                      corruptions of the system. They're features of resource scarcity at scale.
+                    </p>
+                    <p>
+                      You didn't fail to perform. You failed to exist in a context where performance
+                      was sufficient.
+                    </p>
+                  </li>
+                  <li class="group">
+                    <span class="mono-label text-xs text-rust/60 mb-1 block">Cost 02</span>
+                    <h4>The Optimization Trap</h4>
+                    <p>
+                      The Departed's first response is intensification. If the criteria are unclear,
+                      increase all inputs. Work longer. Deliver more. Anticipate asks. Reduce
+                      friction. Become indispensable.
+                    </p>
+                    <p>
+                      This produces local gains. Your manager values you. Your team depends on you.
+                      Your output is consistently above baseline. The performance review reflects
+                      this.
+                    </p>
+                    <p>The promotion does not arrive.</p>
+                    <p>
+                      Because you've optimized for the wrong variable. Indispensability keeps you in
+                      place. It doesn't create upward momentum. The organization has no incentive to
+                      move someone who is solving problems exactly where they are.
+                    </p>
+                    <p>
+                      High performers in stable roles experience 23-31% longer times-to-promotion
+                      than high performers in high-visibility roles. Competence becomes a
+                      stabilization mechanism, not a launch platform.
+                    </p>
+                    <p>The system prefers you exactly where you are.</p>
+                  </li>
+                  <li class="group">
+                    <span class="mono-label text-xs text-rust/60 mb-1 block">Cost 03</span>
+                    <h4>The Credentialing Detour</h4>
+                    <p>
+                      When internal pathways stall, the Departed often turns to external validation.
+                      If the organization won't recognize capability, the market will. Credentials
+                      become the next rational move.
+                    </p>
+                    <p>
+                      An MBA. A graduate certificate. An executive education program. These require
+                      capital&mdash;tuition, opportunity cost, time&mdash;but they promise portable
+                      status. They offer a structured path when the internal one has become
+                      occluded.
+                    </p>
+                    <p>
+                      The average cost of an executive MBA in the United States exceeds $140,000.
+                      The average salary increase post-MBA for someone already in a professional
+                      role is 8-14%. The breakeven timeline, accounting for forgone wages and
+                      tuition, extends beyond eight years.
+                    </p>
+                    <p>
+                      The degree does not rewrite the pyramid. It recredentials you for the same
+                      narrowing structure. You return with certification and debt. The bottleneck
+                      remains.
+                    </p>
+                  </li>
+                  <li class="group">
+                    <span class="mono-label text-xs text-rust/60 mb-1 block">Cost 04</span>
+                    <h4>The Equity Illusion</h4>
+                    <p>
+                      If salary pathways stall, equity seems like the alternative. Early-stage
+                      companies promise ownership. The narrative is clear: take the risk, capture
+                      the upside, escape the wage ceiling.
+                    </p>
+                    <p>
+                      The Departed joins a startup. The salary is lower, but the option pool is
+                      meaningful. The work is harder, the hours longer, but the incentive structure
+                      seems aligned. You are building something that could pay out asymmetrically.
+                    </p>
+                    <p>
+                      Approximately 90% of startups fail within ten years. Of those that survive,
+                      fewer than 10% reach a liquidity event that returns significant value to
+                      employees outside the founding team. The median outcome for employee equity at
+                      a failed startup is zero. The median outcome at an acquired startup, after
+                      dilution and liquidation preferences, is zero.
+                    </p>
+                    <p>
+                      Stock options are a call option on a lottery ticket. The call requires years
+                      of exercise. The ticket usually expires.
+                    </p>
+                  </li>
+                  <li class="group">
+                    <span class="mono-label text-xs text-rust/60 mb-1 block">Cost 05</span>
+                    <h4>The Geographic Arbitrage</h4>
+                    <p>
+                      The Departed begins to consider geography as a variable. If the local market
+                      is saturated, perhaps another market offers better ratios. A city where demand
+                      exceeds supply. A region where your skillset is scarce.
+                    </p>
+                    <p>
+                      Relocation carries costs: moving expenses, network disruption, cost-of-living
+                      recalibration, separation from established support systems. But if the
+                      destination offers compressed advancement timelines, the trade seems rational.
+                    </p>
+                    <p>
+                      The same structural narrowing exists in every mature market. The pyramid
+                      doesn't flatten by changing cities. It replicates. High-growth markets attract
+                      saturation faster than they create new senior positions. What appeared to be
+                      geographic opportunity is temporal&mdash;a brief window before the ratios
+                      normalize.
+                    </p>
+                    <p>You move. The ceiling follows.</p>
+                  </li>
+                  <li class="group">
+                    <span class="mono-label text-xs text-rust/60 mb-1 block">Cost 06</span>
+                    <h4>The Expertise Fallback</h4>
+                    <p>
+                      If breadth doesn't work, the Departed tries depth. Become the definitive
+                      expert in a narrow domain. If you cannot ascend, become irreplaceable
+                      laterally. Specialization as shelter.
+                    </p>
+                    <p>
+                      This produces stability. Your knowledge is difficult to transfer. Your
+                      judgment is trusted. You are consulted. But specialized expertise in a
+                      narrowing domain doesn't create leverage&mdash;it creates dependency in both
+                      directions.
+                    </p>
+                    <p>
+                      The organization needs you to remain in your lane. You need the organization
+                      to continue valuing that lane. The moment the technology shifts, the market
+                      changes, or the priority rotates, the expertise becomes a liability.
+                      Overspecialization is a bet that the present will remain legible.
+                    </p>
+                    <p>It rarely does.</p>
+                  </li>
+                  <li class="group">
+                    <span class="mono-label text-xs text-rust/60 mb-1 block">Cost 07</span>
+                    <h4>The Recognition Stall</h4>
+                    <p>
+                      The Departed is often described by managers as "solid," "reliable," "a steady
+                      hand." These are not criticisms. They are also not promotions.
+                    </p>
+                    <p>
+                      To be valued for stability is to be valued for remaining in place.
+                      Recognition, in this context, is a mechanism of retention, not reward. The
+                      organization has successfully converted your capability into their
+                      infrastructure.
+                    </p>
+                    <p>You are praised. You are not elevated.</p>
+                    <p>
+                      The gap between acknowledgment and advancement becomes its own data point. The
+                      system is communicating clearly. Your role is to remain competent at the
+                      current level indefinitely.
+                    </p>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 3: THE SYSTEM ERROR (Quantitative Failure) -->
+      <section class="py-24 px-6 bg-surveillance text-cream">
+        <div class="max-w-5xl mx-auto">
+          <span class="mono-label text-rust text-xs block mb-8">03 // System Error</span>
+
+          <h2 class="font-display font-bold text-4xl md:text-5xl mb-12">The Exit Calculus</h2>
+
+          <!-- Optional: omit this grid if no quantitative stats apply -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+            <div>
+              <p>
+                The Departed starts calculating time differently. Not in terms of career
+                progression, but in terms of life expenditure.
+              </p>
+              <p>
+                You're working 50-60 hour weeks. Your commute consumes another 8-12 hours. Email and
+                Slack extend into evenings and weekends. The boundaries between work and non-work
+                have eroded not because you're passionate, but because responsiveness has become a
+                baseline expectation.
+              </p>
+            </div>
+            <div>
+              <p>
+                At full-time employment intensity, you spend approximately 2,500-3,000 hours per
+                year in work or work-adjacent activity. Over a 30-year career, that's 75,000-90,000
+                hours. Subtract time for basic maintenance&mdash;sleep, hygiene, commuting,
+                errands&mdash;and the discretionary remainder is thin.
+              </p>
+              <p>You begin to ask: for what?</p>
+            </div>
+            <div>
+              <p>
+                The salary supports survival and some accumulation, but it doesn't create
+                optionality. The retirement accounts grow slowly. The savings rate is positive but
+                not transformative. The math suggests you will work until you are old, then stop
+                working because you are too old, not because you have escaped the requirement.
+              </p>
+              <p>Continuation feels like loss distribution, not gain accumulation.</p>
+            </div>
+          </div>
+
+          <div class="bg-rust/10 border border-rust/30 p-8 md:p-12 text-center max-w-3xl mx-auto">
+            <p class="font-display text-2xl md:text-3xl mb-4">
+              "Continuation feels like loss distribution, not gain accumulation."
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 4: DIAGNOSTIC PROTOCOL -->
+      <section class="py-24 px-6 bg-cream bg-blueprint-pattern bg-blueprint">
+        <div class="max-w-4xl mx-auto">
+          <div class="text-center mb-16">
+            <span class="mono-label text-surveillance/50 text-xs block mb-4"
+              >04 // Diagnostic Protocol</span
+            >
+            <h2 class="font-display font-bold text-4xl md:text-5xl text-surveillance">
+              You begin to ask: for what?
+            </h2>
+            <p class="mt-4 text-surveillance/60 font-body text-lg italic">
+              Continuation feels like loss distribution, not gain accumulation.
+            </p>
+          </div>
+
+          <div class="space-y-4">
+            <details
+              class="group bg-white border border-surveillance/10 open:border-rust transition-colors"
+            >
+              <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+                <div class="flex items-center gap-4">
+                  <span class="font-mono text-rust text-xl">01</span>
+                  <span
+                    class="font-display font-bold text-xl text-surveillance group-hover:text-rust transition-colors"
+                    >You begin to ask: for what?</span
+                  >
+                </div>
+                <span
+                  class="material-symbols-outlined text-surveillance/30 group-open:rotate-180 transition-transform"
+                  >expand_more</span
+                >
+              </summary>
+              <div
+                class="px-6 pb-6 pl-14 text-surveillance/80 text-lg leading-relaxed border-t border-surveillance/5 pt-4"
+              >
+                The salary supports survival and some accumulation, but it doesn't create
+                optionality.
+              </div>
+            </details>
+
+            <details
+              class="group bg-white border border-surveillance/10 open:border-rust transition-colors"
+            >
+              <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+                <div class="flex items-center gap-4">
+                  <span class="font-mono text-rust text-xl">02</span>
+                  <span
+                    class="font-display font-bold text-xl text-surveillance group-hover:text-rust transition-colors\"
+                    >The relief is immediate. The uncertainty is vast.</span
+                  >
+                </div>
+                <span
+                  class="material-symbols-outlined text-surveillance/30 group-open:rotate-180 transition-transform"
+                  >expand_more</span
+                >
+              </summary>
+              <div
+                class="px-6 pb-6 pl-14 text-surveillance/80 text-lg leading-relaxed border-t border-surveillance/5 pt-4"
+              >
+                This isn't freedom. It's exposure.
+              </div>
+            </details>
+
+            <details
+              class="group bg-white border border-surveillance/10 open:border-rust transition-colors"
+            >
+              <summary class="flex items-center justify-between p-6 cursor-pointer list-none">
+                <div class="flex items-center gap-4">
+                  <span class="font-mono text-rust text-xl">03</span>
+                  <span
+                    class="font-display font-bold text-xl text-surveillance group-hover:text-rust transition-colors"
+                    >The path forward is not clear.</span
+                  >
+                </div>
+                <span
+                  class="material-symbols-outlined text-surveillance/30 group-open:rotate-180 transition-transform"
+                  >expand_more</span
+                >
+              </summary>
+              <div
+                class="px-6 pb-6 pl-14 text-surveillance/80 text-lg leading-relaxed border-t border-surveillance/5 pt-4"
+              >
+                The path backward is closed. You are between states.
+              </div>
+            </details>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 5: NEXT STEPS / CLOSING -->
+      <section class="py-24 px-6 border-t border-surveillance/10">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16">
+          <!-- Closing Provocation -->
+          <div>
+            <span class="mono-label text-surveillance/50 text-xs block mb-6"
+              >05 // Closing Provocation</span
+            >
+            <h3 class="font-display font-bold text-3xl mb-6">The Departure</h3>
+            <!-- Replaced P1/P2 with a single block placeholder. Inject <p> tags here. -->
+            <div class="text-xl leading-relaxed text-surveillance/80 space-y-6">
+              <p>The Departed leaves.</p>
+              <p>Not in anger. Not in protest. In recognition.</p>
+              <p>
+                The system was not lying when it promised a meritocratic structure. It delivered
+                that structure in the early phase. The illusion was in assuming the structure would
+                continue at higher altitudes. It doesn't. It can't. The geometry forbids it.
+              </p>
+              <p>
+                You stop negotiating with a pyramid. You stop trying to differentiate within a
+                saturated tier. You stop optimizing for a promotion cycle that has structurally
+                stalled.
+              </p>
+              <p>
+                You leave your laptop on the desk. You send the exit email. You transfer your
+                knowledge. You take the interviews that don't feel like interviews. You accept the
+                severance if it's offered, or you simply stop renewing the contract.
+              </p>
+              <p>The relief is immediate. The uncertainty is vast.</p>
+              <h4>What Remains</h4>
+              <p>You don't have a plan. You have an absence.</p>
+              <p>
+                No morning commute. No performance review cycle. No Slack notifications. No manager
+                one-on-ones. No strategic initiatives that vanish after the reorganization. No
+                metrics that change every quarter. No goals that exist to justify other goals.
+              </p>
+              <p>The time is yours. The structure is gone. You are unmoored.</p>
+              <p>This isn't freedom. It's exposure.</p>
+              <p>
+                You've removed the frame that dictated your calendar, your worth, your trajectory.
+                What you haven't removed is the need to eat, to pay rent, to justify your existence
+                to yourself.
+              </p>
+              <p>
+                The Departed sits in the quiet and begins to feel the weight of the question they've
+                been deferring: now what?
+              </p>
+              <p>
+                The system was insufficient. The alternative is unknown. You are between states.
+              </p>
+              <p>The path forward is not clear. The path backward is closed.</p>
+              <p>You are here.</p>
+            </div>
+          </div>
+
+          <!-- Recommended Actions Box -->
+          <div class="bg-white border border-surveillance/20 p-8 shadow-sm">
+            <span class="mono-label text-rust text-xs block mb-6">Recommended Actions</span>
+
+            <ul class="space-y-4">
+              <li class="flex items-start gap-3">
+                <span class="material-symbols-outlined text-rust text-sm mt-1">menu_book</span>
+                <div>
+                  <strong class="font-display block">You stop negotiating with a pyramid.</strong>
+                  <span class="text-sm text-surveillance/60"
+                    >You stop trying to differentiate within a saturated tier.</span
+                  >
+                </div>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="material-symbols-outlined text-rust text-sm mt-1">calculate</span>
+                <div>
+                  <strong class="font-display block">You leave your laptop on the desk.</strong>
+                  <span class="text-sm text-surveillance/60"
+                    >You send the exit email. You transfer your knowledge.</span
+                  >
+                </div>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="material-symbols-outlined text-rust text-sm mt-1">experiment</span>
+                <div>
+                  <strong class="font-display block">The time is yours.</strong>
+                  <span class="text-sm text-surveillance/60"
+                    >The structure is gone. You are unmoored.</span
+                  >
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-surveillance text-cream py-16 px-6 border-t border-rust/30">
+      <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
+        <div class="col-span-1 md:col-span-2">
+          <h4 class="font-display font-bold text-2xl mb-4">Architecture of Ambition</h4>
+          <p class="font-body text-cream/60 max-w-sm">
+            A digital research document investigating why we build the lives we build, and how to
+            build them differently.
+          </p>
+        </div>
+        <div>
+          <h5 class="font-mono text-rust text-xs uppercase tracking-widest mb-4">
+            Cross-Reference
+          </h5>
+          <ul class="space-y-2 font-mono text-sm text-cream/70">
+            <li><a href="#" class="hover:text-cream transition-colors">The Cities</a></li>
+            <li><a href="#" class="hover:text-cream transition-colors">The System</a></li>
+            <li><a href="#" class="hover:text-cream transition-colors">The Exits</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="font-mono text-rust text-xs uppercase tracking-widest mb-4">Data</h5>
+          <p class="font-mono text-xs text-cream/50">
+            Fig. 04: The Departed<br />
+            Status: Active<br />
+            ID: #ARCH-04
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      function toggleMobileMenu() {
+        const menu = document.getElementById('mobile-menu')
+        if (!menu) return
+        menu.classList.toggle('hidden')
+        menu.classList.toggle('flex')
+      }
+
+      window.addEventListener('scroll', () => {
+        const doc = document.documentElement
+        const scrollTop = doc.scrollTop || document.body.scrollTop
+        const scrollHeight = doc.scrollHeight - doc.clientHeight
+        const progress = scrollHeight > 0 ? scrollTop / scrollHeight : 0
+        const bar = document.getElementById('progress-bar')
+        if (bar) bar.style.width = `${Math.round(progress * 10000) / 100}%`
+      })
+    </script>
+  </body>
+</html>

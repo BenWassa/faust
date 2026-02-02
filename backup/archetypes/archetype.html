@@ -1,0 +1,489 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{PAGE_TITLE}} | Architecture of Ambition</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,400&family=JetBrains+Mono:wght@300;400;500&family=Syne:wght@400;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+
+    <!-- SYSTEM CONFIGURATION: DO NOT MODIFY -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              cream: '#FDFBF7',
+              surveillance: '#1A202C',
+              rust: '#C05640',
+              'soft-green': '#7A9A84',
+            },
+            fontFamily: {
+              display: ['Syne', 'sans-serif'],
+              body: ['Crimson Pro', 'serif'],
+              mono: ['JetBrains Mono', 'monospace'],
+            },
+            animation: {
+              'fade-in': 'fadeIn 1s ease-out forwards',
+              'slide-up': 'slideUp 0.8s ease-out forwards',
+            },
+            keyframes: {
+              fadeIn: { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
+              slideUp: {
+                '0%': { transform: 'translateY(20px)', opacity: '0' },
+                '100%': { transform: 'translateY(0)', opacity: '1' },
+              },
+            },
+            backgroundImage: {
+              blueprint:
+                'linear-gradient(#e2e8f0 1px, transparent 1px), linear-gradient(90deg, #e2e8f0 1px, transparent 1px)',
+            },
+          },
+        },
+      }
+    </script>
+
+    <style>
+      body {
+        background-color: #fdfbf7;
+        color: #1a202c;
+        overflow-x: hidden;
+      }
+      .bg-blueprint-pattern {
+        background-size: 40px 40px;
+      }
+      .mono-label {
+        font-family: 'JetBrains Mono', monospace;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+      }
+      /* Custom scrollbar for that technical feel */
+      ::-webkit-scrollbar {
+        width: 8px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #fdfbf7;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #1a202c;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #c05640;
+      }
+    </style>
+  </head>
+
+  <body class="font-body selection:bg-rust selection:text-white antialiased bg-cream">
+    <!--
+    TEMPLATE RULES:
+    - Do not edit layout, classes, or structure
+    - Only replace {{PLACEHOLDERS}}
+    - Inject valid HTML into block placeholders
+    -->
+
+    <!-- Navigation -->
+    <nav
+      id="navbar"
+      class="fixed top-0 left-0 w-full z-50 bg-cream/95 backdrop-blur-sm border-b border-surveillance/10 transition-all duration-300 shadow-md py-2"
+    >
+      <div
+        id="progress-bar"
+        class="h-1 bg-surveillance w-0 absolute top-0 left-0 transition-all duration-300"
+        style="width: 0%"
+      ></div>
+      <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+        <a
+          class="flex items-center gap-3 cursor-pointer p-2 rounded -m-2"
+          href="../"
+          aria-label="Navigate to home"
+        >
+          <span class="material-symbols-outlined text-surveillance" aria-hidden="true"
+            >grid_4x4</span
+          >
+          <span class="font-display font-bold text-lg tracking-tight uppercase"
+            >Architecture of Ambition</span
+          >
+        </a>
+        <!-- Desktop Nav -->
+        <div
+          class="hidden md:flex items-center gap-8 font-mono text-sm uppercase tracking-widest text-surveillance/70"
+        >
+          <a class="hover:text-rust transition-colors p-2 rounded -m-2" href="../#system"
+            >The System</a
+          >
+          <a class="hover:text-rust transition-colors p-2 rounded -m-2" href="../#cities"
+            >The Cities</a
+          >
+          <a class="hover:text-rust transition-colors p-2 rounded -m-2" href="../#machines"
+            >The Machines</a
+          >
+          <a class="hover:text-rust transition-colors p-2 rounded -m-2" href="../#casualties"
+            >The Casualties</a
+          >
+          <a class="hover:text-rust transition-colors p-2 rounded -m-2" href="../#exits"
+            >The Exits</a
+          >
+        </div>
+        <!-- Mobile Menu Button -->
+        <button
+          class="md:hidden text-surveillance p-2 rounded -m-2"
+          onclick="toggleMobileMenu()"
+          aria-label="Toggle mobile menu"
+        >
+          <span class="material-symbols-outlined" aria-hidden="true">menu</span>
+        </button>
+      </div>
+      <!-- Mobile Menu -->
+      <div
+        id="mobile-menu"
+        class="hidden absolute top-full left-0 w-full bg-cream border-b border-surveillance p-6 flex-col gap-4 shadow-lg md:hidden"
+      >
+        <a
+          class="text-left font-display text-xl hover:text-rust"
+          href="../#system"
+          onclick="toggleMobileMenu()"
+          >01. The System</a
+        >
+        <a
+          class="text-left font-display text-xl hover:text-rust"
+          href="../#cities"
+          onclick="toggleMobileMenu()"
+          >02. The Cities</a
+        >
+        <a
+          class="text-left font-display text-xl hover:text-rust"
+          href="../#machines"
+          onclick="toggleMobileMenu()"
+          >03. The Machines</a
+        >
+        <a
+          class="text-left font-display text-xl hover:text-rust"
+          href="../#casualties"
+          onclick="toggleMobileMenu()"
+          >04. The Casualties</a
+        >
+        <a
+          class="text-left font-display text-xl hover:text-rust"
+          href="../#exits"
+          onclick="toggleMobileMenu()"
+          >05. The Exits</a
+        >
+      </div>
+    </nav>
+
+    <!-- HEADER / SUBJECT PROFILE -->
+    <header
+      class="relative pt-32 pb-24 px-6 border-b border-surveillance/10 bg-blueprint-pattern bg-blueprint"
+    >
+      <div
+        class="absolute inset-0 bg-gradient-to-b from-cream/50 to-cream pointer-events-none"
+      ></div>
+
+      <div class="max-w-5xl mx-auto relative z-10">
+        <div class="flex items-start justify-between mb-8 border-b border-surveillance/20 pb-8">
+          <div>
+            <span class="mono-label text-rust text-xs block mb-2 animate-fade-in"
+              >Archetype Analysis</span
+            >
+            <h1
+              class="font-display font-bold text-6xl md:text-8xl text-surveillance leading-[0.9] tracking-tighter pb-px animate-slide-up"
+            >
+              {{ARCHETYPE_TITLE}}
+            </h1>
+          </div>
+          <div
+            class="hidden md:block border border-surveillance text-surveillance px-4 py-2 font-mono text-xs uppercase tracking-widest"
+          >
+            Status: {{META_STATUS}}
+          </div>
+        </div>
+
+        <div
+          class="grid grid-cols-1 md:grid-cols-12 gap-12 items-end animate-slide-up"
+          style="animation-delay: 200ms"
+        >
+          <div class="md:col-span-8">
+            <p class="font-display text-2xl md:text-3xl leading-tight text-surveillance mb-6 pb-px">
+              "{{HERO_QUOTE}}"
+            </p>
+            <p class="text-xl leading-relaxed text-surveillance/80">{{HERO_DESCRIPTION}}</p>
+          </div>
+          <div class="md:col-span-4 border-l border-surveillance/20 pl-6">
+            <span class="mono-label text-surveillance/50 text-xs block mb-2"
+              >Subject Motivation</span
+            >
+            <p class="font-mono text-sm leading-relaxed text-surveillance">
+              <!-- Use <br> and > for formatting in this block -->
+              {{HERO_MOTIVATION_BLOCK}}
+            </p>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- SECTION 1: THE CORE LOGIC -->
+      <section class="py-24 px-6 border-b border-surveillance/10">
+        <div class="max-w-5xl mx-auto">
+          <span class="mono-label text-surveillance/50 text-xs block mb-12"
+            >01 // The Core Logic</span
+          >
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
+            <!-- Text Side -->
+            <div>
+              <h2 class="font-display font-bold text-4xl mb-6">{{LOGIC_HEADING}}</h2>
+              <!-- Replaced P1/P2 with a single block placeholder. Inject <p> tags here. -->
+              <div class="prose prose-lg text-surveillance/80 mb-8">{{LOGIC_BODY}}</div>
+              <div class="flex gap-4">
+                <div class="bg-surveillance/5 p-4 border border-surveillance/10 w-full">
+                  <span class="block font-mono text-xs text-rust mb-1">Observation A</span>
+                  <span class="block font-display text-lg leading-tight">{{LOGIC_OBS_A_TEXT}}</span>
+                </div>
+                <div class="bg-surveillance/5 p-4 border border-surveillance/10 w-full">
+                  <span class="block font-mono text-xs text-rust mb-1">Observation B</span>
+                  <span class="block font-display text-lg leading-tight">{{LOGIC_OBS_B_TEXT}}</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Diagrammatic Element -->
+            <div class="relative bg-surveillance text-cream p-8 md:p-12">
+              <div class="absolute top-0 right-0 p-4 opacity-20">
+                <!-- Icon can be changed via google material symbols name -->
+                <span class="material-symbols-outlined text-6xl">{{LOGIC_DIAGRAM_ICON_NAME}}</span>
+              </div>
+              <span class="mono-label text-rust text-xs mb-4 block">Internal Algorithm</span>
+              <div class="space-y-6 font-mono text-sm">
+                <div class="flex justify-between border-b border-cream/20 pb-2">
+                  <span>Input:</span>
+                  <span>{{LOGIC_ALGO_INPUT}}</span>
+                </div>
+                <div class="flex justify-between border-b border-cream/20 pb-2">
+                  <span>Observation:</span>
+                  <span>{{LOGIC_ALGO_OBSERVATION}}</span>
+                </div>
+                <div class="flex justify-between border-b border-cream/20 pb-2">
+                  <span>Conclusion:</span>
+                  <span class="text-rust">{{LOGIC_ALGO_CONCLUSION}}</span>
+                </div>
+              </div>
+              <div class="mt-8 pt-6 border-t border-cream/20">
+                <p class="font-display text-2xl italic leading-tight">"{{LOGIC_ALGO_QUOTE}}"</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 2: THE LEDGER (Assets vs Liabilities) -->
+      <section class="py-24 px-6 bg-cream">
+        <div class="max-w-6xl mx-auto">
+          <div
+            class="flex items-baseline justify-between mb-12 border-b border-surveillance/10 pb-4"
+          >
+            <span class="mono-label text-surveillance/50 text-xs">02 // The Ledger</span>
+            <span class="mono-label text-rust text-xs">Audit In Progress</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-0 border border-surveillance/10">
+            <!-- LEFT: ASSETS (What It Solves) -->
+            <div
+              class="p-8 md:p-12 border-b md:border-b-0 md:border-r border-surveillance/10 bg-white"
+            >
+              <div class="flex items-center gap-2 mb-8 text-soft-green">
+                <span class="material-symbols-outlined">add_circle</span>
+                <h3 class="font-display font-bold text-2xl text-surveillance">
+                  {{LEDGER_LEFT_TITLE}}
+                </h3>
+              </div>
+
+              <ul class="space-y-8">
+                <!-- Use this structure for each asset: -->
+                <!-- <li class="group"> -->
+                <!--     <span class="mono-label text-xs text-surveillance/40 mb-1 block group-hover:text-soft-green transition-colors">Goal 01</span> -->
+                <!--     <strong class="block font-display text-xl mb-2">Title</strong> -->
+                <!--     <p class="text-surveillance/70 text-base leading-relaxed">Description</p> -->
+                <!-- </li> -->
+                {{LEDGER_ASSETS_HTML}}
+              </ul>
+            </div>
+
+            <!-- RIGHT: LIABILITIES (The Hidden Costs) -->
+            <div class="p-8 md:p-12 bg-blueprint-pattern bg-blueprint relative overflow-visible">
+              <!-- Dark overlay for tone -->
+              <div
+                class="absolute inset-0 bg-surveillance/5 mix-blend-multiply pointer-events-none"
+              ></div>
+
+              <div class="relative z-10">
+                <div class="flex items-center gap-2 mb-8 text-rust">
+                  <span class="material-symbols-outlined">remove_circle</span>
+                  <h3 class="font-display font-bold text-2xl text-surveillance">
+                    {{LEDGER_RIGHT_TITLE}}
+                  </h3>
+                </div>
+
+                <ul class="space-y-8">
+                  {{LEDGER_LIABILITIES_HTML}}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 3: THE SYSTEM ERROR (Quantitative Failure) -->
+      <section class="py-24 px-6 bg-surveillance text-cream">
+        <div class="max-w-5xl mx-auto">
+          <span class="mono-label text-rust text-xs block mb-8">03 // System Error</span>
+
+          <h2 class="font-display font-bold text-4xl md:text-5xl mb-12">{{FAILURE_HEADING}}</h2>
+
+          <!-- Optional: omit this grid if no quantitative stats apply -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+            <!-- Use this structure for each stat: -->
+            <!-- <div class="border-t border-rust pt-4"> -->
+            <!--     <span class="block text-4xl font-mono mb-2 text-rust">1,000</span> -->
+            <!--     <p class="font-mono text-xs uppercase tracking-widest text-cream/60">Label</p> -->
+            <!--     <p class="mt-4 text-sm text-cream/80">Description text.</p> -->
+            <!-- </div> -->
+            {{FAILURE_STATS_HTML}}
+          </div>
+
+          <div class="bg-rust/10 border border-rust/30 p-8 md:p-12 text-center max-w-3xl mx-auto">
+            <p class="font-display text-2xl md:text-3xl mb-4">"{{FAILURE_QUOTE}}"</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 4: DIAGNOSTIC PROTOCOL -->
+      <section class="py-24 px-6 bg-cream bg-blueprint-pattern bg-blueprint">
+        <div class="max-w-4xl mx-auto">
+          <div class="text-center mb-16">
+            <span class="mono-label text-surveillance/50 text-xs block mb-4"
+              >04 // Diagnostic Protocol</span
+            >
+            <h2 class="font-display font-bold text-4xl md:text-5xl text-surveillance">
+              {{DIAGNOSTIC_HEADING}}
+            </h2>
+            <p class="mt-4 text-surveillance/60 font-body text-lg italic">
+              {{DIAGNOSTIC_SUBHEADING}}
+            </p>
+          </div>
+
+          <div class="space-y-4">
+            <!-- Use this structure for each diagnostic question: -->
+            <!-- <details class="group bg-white border border-surveillance/10 open:border-rust transition-colors"> -->
+            <!--     <summary class="flex items-center justify-between p-6 cursor-pointer list-none"> -->
+            <!--         <div class="flex items-center gap-4"> -->
+            <!--             <span class="font-mono text-rust text-xl">01</span> -->
+            <!--             <span class="font-display font-bold text-xl text-surveillance group-hover:text-rust transition-colors">Question text?</span> -->
+            <!--         </div> -->
+            <!--         <span class="material-symbols-outlined text-surveillance/30 group-open:rotate-180 transition-transform">expand_more</span> -->
+            <!--     </summary> -->
+            <!--     <div class="px-6 pb-6 pl-14 text-surveillance/80 text-lg leading-relaxed border-t border-surveillance/5 pt-4"> -->
+            <!--         Answer text here. -->
+            <!--     </div> -->
+            <!-- </details> -->
+            {{DIAGNOSTIC_BLOCKS_HTML}}
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 5: NEXT STEPS / CLOSING -->
+      <section class="py-24 px-6 border-t border-surveillance/10">
+        <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16">
+          <!-- Closing Provocation -->
+          <div>
+            <span class="mono-label text-surveillance/50 text-xs block mb-6"
+              >05 // Closing Provocation</span
+            >
+            <h3 class="font-display font-bold text-3xl mb-6">{{CLOSE_HEADING}}</h3>
+            <!-- Replaced P1/P2 with a single block placeholder. Inject <p> tags here. -->
+            <div class="text-xl leading-relaxed text-surveillance/80 space-y-6">{{CLOSE_BODY}}</div>
+          </div>
+
+          <!-- Recommended Actions Box -->
+          <div class="bg-white border border-surveillance/20 p-8 shadow-sm">
+            <span class="mono-label text-rust text-xs block mb-6">Recommended Actions</span>
+
+            <ul class="space-y-4">
+              <li class="flex items-start gap-3">
+                <span class="material-symbols-outlined text-rust text-sm mt-1">menu_book</span>
+                <div>
+                  <strong class="font-display block">{{CLOSE_ACTION_1_TITLE}}</strong>
+                  <span class="text-sm text-surveillance/60">{{CLOSE_ACTION_1_DESC}}</span>
+                </div>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="material-symbols-outlined text-rust text-sm mt-1">calculate</span>
+                <div>
+                  <strong class="font-display block">{{CLOSE_ACTION_2_TITLE}}</strong>
+                  <span class="text-sm text-surveillance/60">{{CLOSE_ACTION_2_DESC}}</span>
+                </div>
+              </li>
+              <li class="flex items-start gap-3">
+                <span class="material-symbols-outlined text-rust text-sm mt-1">experiment</span>
+                <div>
+                  <strong class="font-display block">{{CLOSE_ACTION_3_TITLE}}</strong>
+                  <span class="text-sm text-surveillance/60">{{CLOSE_ACTION_3_DESC}}</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="bg-surveillance text-cream py-16 px-6 border-t border-rust/30">
+      <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
+        <div class="col-span-1 md:col-span-2">
+          <h4 class="font-display font-bold text-2xl mb-4">Architecture of Ambition</h4>
+          <p class="font-body text-cream/60 max-w-sm">
+            A digital research document investigating why we build the lives we build, and how to
+            build them differently.
+          </p>
+        </div>
+        <div>
+          <h5 class="font-mono text-rust text-xs uppercase tracking-widest mb-4">
+            Cross-Reference
+          </h5>
+          <ul class="space-y-2 font-mono text-sm text-cream/70">
+            <li><a href="#" class="hover:text-cream transition-colors">The Cities</a></li>
+            <li><a href="#" class="hover:text-cream transition-colors">The System</a></li>
+            <li><a href="#" class="hover:text-cream transition-colors">The Exits</a></li>
+          </ul>
+        </div>
+        <div>
+          <h5 class="font-mono text-rust text-xs uppercase tracking-widest mb-4">Data</h5>
+          <p class="font-mono text-xs text-cream/50">
+            Fig. {{META_FIG_ID}}: {{ARCHETYPE_TITLE}}<br />
+            Status: {{META_STATUS}}<br />
+            ID: {{META_ID_CODE}}
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      function toggleMobileMenu() {
+        const menu = document.getElementById('mobile-menu')
+        if (!menu) return
+        menu.classList.toggle('hidden')
+        menu.classList.toggle('flex')
+      }
+    </script>
+  </body>
+</html>
