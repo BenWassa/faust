@@ -91,23 +91,93 @@
     - Inject valid HTML into block placeholders
     -->
 
-    <!-- NAVIGATION STUB -->
+    <!-- Navigation -->
     <nav
-      class="fixed top-0 w-full z-50 bg-cream/95 backdrop-blur-sm border-b border-surveillance/10"
+      id="navbar"
+      class="fixed top-0 left-0 w-full z-50 bg-cream/95 backdrop-blur-sm border-b border-surveillance/10 transition-all duration-300 shadow-md py-2"
     >
-      <div class="max-w-7xl mx-auto px-6 h-12 flex items-center justify-between">
+      <div
+        id="progress-bar"
+        class="h-1 bg-surveillance w-0 absolute top-0 left-0 transition-all duration-300"
+        style="width: 0%"
+      ></div>
+      <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
         <a
-          href="../index.html#casualties"
-          class="font-mono text-xs uppercase tracking-widest text-surveillance/70 hover:text-rust transition-colors flex items-center gap-2"
+          class="flex items-center gap-3 cursor-pointer p-2 rounded -m-2"
+          href="../"
+          aria-label="Navigate to home"
         >
-          <span class="material-symbols-outlined text-base">arrow_back</span>
-          Back to Casualties
+          <span class="material-symbols-outlined text-surveillance" aria-hidden="true"
+            >grid_4x4</span
+          >
+          <span class="font-display font-bold text-lg tracking-tight uppercase"
+            >Architecture of Ambition</span
+          >
         </a>
-        <div class="font-mono text-xs uppercase tracking-widest text-rust">Ref: Fig.05</div>
+        <!-- Desktop Nav -->
+        <div
+          class="hidden md:flex items-center gap-8 font-mono text-sm uppercase tracking-widest text-surveillance/70"
+        >
+          <a class="hover:text-rust transition-colors p-2 rounded -m-2" href="../#system"
+            >The System</a
+          >
+          <a class="hover:text-rust transition-colors p-2 rounded -m-2" href="../#cities"
+            >The Cities</a
+          >
+          <a class="hover:text-rust transition-colors p-2 rounded -m-2" href="../#machines"
+            >The Machines</a
+          >
+          <a class="hover:text-rust transition-colors p-2 rounded -m-2" href="../#casualties"
+            >The Casualties</a
+          >
+          <a class="hover:text-rust transition-colors p-2 rounded -m-2" href="../#exits"
+            >The Exits</a
+          >
+        </div>
+        <!-- Mobile Menu Button -->
+        <button
+          class="md:hidden text-surveillance p-2 rounded -m-2"
+          onclick="toggleMobileMenu()"
+          aria-label="Toggle mobile menu"
+        >
+          <span class="material-symbols-outlined" aria-hidden="true">menu</span>
+        </button>
       </div>
-      <!-- Progress Bar -->
-      <div class="h-[1px] bg-surveillance/10 w-full">
-        <div class="h-full bg-rust w-full origin-left transform scale-x-0" id="progress-bar"></div>
+      <!-- Mobile Menu -->
+      <div
+        id="mobile-menu"
+        class="hidden absolute top-full left-0 w-full bg-cream border-b border-surveillance p-6 flex-col gap-4 shadow-lg md:hidden"
+      >
+        <a
+          class="text-left font-display text-xl hover:text-rust"
+          href="../#system"
+          onclick="toggleMobileMenu()"
+          >01. The System</a
+        >
+        <a
+          class="text-left font-display text-xl hover:text-rust"
+          href="../#cities"
+          onclick="toggleMobileMenu()"
+          >02. The Cities</a
+        >
+        <a
+          class="text-left font-display text-xl hover:text-rust"
+          href="../#machines"
+          onclick="toggleMobileMenu()"
+          >03. The Machines</a
+        >
+        <a
+          class="text-left font-display text-xl hover:text-rust"
+          href="../#casualties"
+          onclick="toggleMobileMenu()"
+          >04. The Casualties</a
+        >
+        <a
+          class="text-left font-display text-xl hover:text-rust"
+          href="../#exits"
+          onclick="toggleMobileMenu()"
+          >05. The Exits</a
+        >
       </div>
     </nav>
 
@@ -126,7 +196,7 @@
               >Archetype Analysis</span
             >
             <h1
-              class="font-display font-bold text-6xl md:text-8xl text-surveillance leading-[0.9] tracking-tighter animate-slide-up"
+              class="font-display font-bold text-6xl md:text-8xl text-surveillance leading-[0.9] tracking-tighter pb-px animate-slide-up"
             >
               The Architect
             </h1>
@@ -143,7 +213,7 @@
           style="animation-delay: 200ms"
         >
           <div class="md:col-span-8">
-            <p class="font-display text-2xl md:text-3xl leading-tight text-surveillance mb-6">
+            <p class="font-display text-2xl md:text-3xl leading-tight text-surveillance mb-6 pb-px">
               "This is not ambition as self-expression. This is ambition as structural necessity."
             </p>
             <p class="text-xl leading-relaxed text-surveillance/80">
@@ -736,13 +806,20 @@
     </footer>
 
     <script>
+      function toggleMobileMenu() {
+        const menu = document.getElementById('mobile-menu')
+        if (!menu) return
+        menu.classList.toggle('hidden')
+        menu.classList.toggle('flex')
+      }
+
       window.addEventListener('scroll', () => {
         const doc = document.documentElement
         const scrollTop = doc.scrollTop || document.body.scrollTop
         const scrollHeight = doc.scrollHeight - doc.clientHeight
         const progress = scrollHeight > 0 ? scrollTop / scrollHeight : 0
         const bar = document.getElementById('progress-bar')
-        if (bar) bar.style.transform = `scaleX(${progress})`
+        if (bar) bar.style.width = `${Math.round(progress * 10000) / 100}%`
       })
     </script>
   </body>

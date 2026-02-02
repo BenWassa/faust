@@ -1,6 +1,6 @@
 export const Header = (num, title, sub, view) => `
-      <header class="bg-cream pt-12 pb-12 px-6 border-b border-surveillance/10 relative overflow-hidden">
-          <div class="max-w-7xl mx-auto relative z-10"><span class="font-mono text-rust text-sm uppercase tracking-widest mb-2 block animate-fade-in">Chapter ${num}</span><h2 class="font-display font-bold text-5xl md:text-6xl text-surveillance mb-4 animate-slide-up">${title}</h2><p class="font-body text-xl md:text-2xl text-surveillance/60 max-w-2xl animate-slide-up">${sub}</p></div>
+      <header class="bg-cream pt-12 pb-12 px-6 border-b border-surveillance/10 relative">
+          <div class="max-w-7xl mx-auto relative z-10"><span class="font-mono text-rust text-sm uppercase tracking-widest mb-2 block animate-fade-in">Chapter ${num}</span><h2 class="font-display font-bold text-5xl md:text-6xl text-surveillance mb-4 pb-px animate-slide-up">${title}</h2><p class="font-body text-xl md:text-2xl text-surveillance/60 max-w-2xl pb-px animate-slide-up">${sub}</p></div>
       </header>
   `
 
