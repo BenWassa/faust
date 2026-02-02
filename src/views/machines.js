@@ -14,8 +14,8 @@ export const MachinesView = () => `
                       <span>Trap Index</span>
                       <span>Tap to expand</span>
                   </div>
-                  <ol class="space-y-3">
-                      <div class="flex items-center gap-2 mb-3 mt-2">
+                  <ol class="space-y-6">
+                      <div class="flex items-center gap-2 mb-4 mt-6">
                           <span class="h-px flex-1 bg-gradient-to-r from-rust/20 to-transparent"></span>
                           <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-rust/60 px-2">Identity & Structural</span>
                           <span class="h-px flex-1 bg-gradient-to-l from-rust/20 to-transparent"></span>
@@ -30,7 +30,7 @@ export const MachinesView = () => `
                               Every action is treated as future recruiter content; the present is performance and authenticity gets deferred to a future viewer.
                           </div>
                       </li>
-                      <div class="flex items-center gap-2 mb-3 mt-6">
+                      <div class="flex items-center gap-2 mb-4 mt-8">
                           <span class="h-px flex-1 bg-gradient-to-r from-rust/20 to-transparent"></span>
                           <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-rust/60 px-2">Performative & Linguistic</span>
                           <span class="h-px flex-1 bg-gradient-to-l from-rust/20 to-transparent"></span>
@@ -55,7 +55,7 @@ export const MachinesView = () => `
                               Failures and layoffs are repackaged as brand assets to signal resilience, excluding losses you cannot monetize.
                           </div>
                       </li>
-                      <div class="flex items-center gap-2 mb-3 mt-6">
+                      <div class="flex items-center gap-2 mb-4 mt-8">
                           <span class="h-px flex-1 bg-gradient-to-r from-rust/20 to-transparent"></span>
                           <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-rust/60 px-2">Comparison & Envy</span>
                           <span class="h-px flex-1 bg-gradient-to-l from-rust/20 to-transparent"></span>
@@ -80,7 +80,7 @@ export const MachinesView = () => `
                               Platforms disproportionately surface unicorn founders, creating a skewed reference point and hiding average success.
                           </div>
                       </li>
-                      <div class="flex items-center gap-2 mb-3 mt-6">
+                      <div class="flex items-center gap-2 mb-4 mt-8">
                           <span class="h-px flex-1 bg-gradient-to-r from-rust/20 to-transparent"></span>
                           <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-rust/60 px-2">Psychological Cost</span>
                           <span class="h-px flex-1 bg-gradient-to-l from-rust/20 to-transparent"></span>
@@ -124,13 +124,11 @@ export const MachinesView = () => `
                       <span class="material-symbols-outlined text-3xl text-surveillance/90">visibility</span>
                       <div>
                           <p class="text-xs uppercase tracking-[0.3em] text-surveillance/60">Surveillance feed</p>
-                          <p class="text-sm font-display text-surveillance">Live sentiment</p>
                       </div>
                   </div>
                   
-                  <div class="hidden md:block" style="height: 50px;"></div>
                   <!-- Post 1 - Future Audience -->
-                  <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
+                  <div class="mt-32 bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
                       <div class="p-4">
                           <div class="flex items-start gap-3 mb-3">
                               <div class="w-12 h-12 rounded-full bg-gradient-to-br from-pink-400 to-pink-600 flex items-center justify-center text-white font-bold text-lg flex-shrink-0">
