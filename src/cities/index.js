@@ -43,6 +43,12 @@ export const cityData = {
   },
 }
 
+const cityNameMap = {
+  nyc: 'New York City',
+}
+
+const formatCityName = (key) => cityNameMap[key] || key.charAt(0).toUpperCase() + key.slice(1)
+
 export const CitiesLayout = (state) => {
   const { currentCity, cityData } = state
   if (!cityData[currentCity]) return ''
@@ -71,7 +77,7 @@ export const CitiesLayout = (state) => {
     .join('')
 
   return `
-    <section class="max-w-7xl mx-auto px-6 py-12 lg:py-20">
+    <section class="max-w-7xl mx-auto px-6 pt-8 pb-8 lg:pt-12 lg:pb-16">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-0 border border-surveillance/20 bg-white shadow-sm">
 
         <div class="lg:col-span-4 border-r border-surveillance/20 flex flex-col">
@@ -114,7 +120,7 @@ export const CitiesLayout = (state) => {
             <img id="city-img" src="" class="absolute inset-0 w-full h-full object-cover opacity-60 grayscale contrast-125 mix-blend-luminosity transition-all duration-700 group-hover:scale-105 group-hover:opacity-40">
           </div>
 
-          <div class="bg-white border-t border-surveillance/20 p-8 grid grid-cols-2 md:grid-cols-3 gap-8 items-end relative z-20">
+          <div class="bg-white border-t border-surveillance/20 p-8 pb-4 md:p-10 md:pb-5 lg:p-12 lg:pb-6 min-h-[220px] mt-auto grid grid-cols-2 md:grid-cols-3 gap-8 items-end relative z-20">
 
             <div class="col-span-2 md:col-span-1">
               <span class="font-mono text-[10px] uppercase text-surveillance/60 block mb-2">Price-to-Income Ratio</span>
@@ -126,11 +132,18 @@ export const CitiesLayout = (state) => {
               </div>
             </div>
 
-            <div class="col-span-2 flex items-end gap-12 h-32 pb-2">
+            <figure
+              class="col-span-2 flex items-end gap-12 h-32 pb-2"
+              role="img"
+              aria-labelledby="affordability-graph-title"
+              aria-describedby="city-graph-description"
+              id="affordability-graph"
+            >
+              <span id="affordability-graph-title" class="sr-only">Housing affordability comparison</span>
                <div class="flex flex-col items-center gap-2 group w-1/2">
                   <div class="w-full relative h-[140px] flex items-end">
                     <div class="w-full bg-surveillance/20 hover:bg-surveillance/30 transition-all duration-500 relative" id="bar-income" style="height: 70px">
-                       <div class="absolute -top-6 left-0 w-full text-center font-mono text-xs font-bold text-surveillance" id="income-value"></div>
+                       <div class="absolute -top-7 left-1/2 -translate-x-1/2 w-fit bg-cream/95 border border-surveillance/10 rounded-sm px-2 py-0.5 font-mono text-xs font-bold text-surveillance shadow-sm" id="income-value"></div>
                     </div>
                   </div>
                   <span class="font-mono text-[10px] uppercase tracking-widest text-surveillance/60">Annual Income</span>
@@ -139,12 +152,14 @@ export const CitiesLayout = (state) => {
                <div class="flex flex-col items-center gap-2 group w-1/2">
                    <div class="w-full relative h-[140px] flex items-end">
                     <div class="w-full bg-rust hover:bg-rust/90 transition-all duration-500 relative" id="bar-cost" style="height: 130px">
-                       <div class="absolute -top-6 left-0 w-full text-center font-mono text-xs font-bold text-rust" id="cost-value"></div>
+                       <div class="absolute -top-7 left-1/2 -translate-x-1/2 w-fit bg-cream/95 border border-surveillance/10 rounded-sm px-2 py-0.5 font-mono text-xs font-bold text-rust shadow-sm" id="cost-value"></div>
                     </div>
                   </div>
                   <span class="font-mono text-[10px] uppercase tracking-widest text-surveillance/60">Property Cost</span>
                </div>
-            </div>
+
+               <figcaption id="city-graph-description" class="sr-only" aria-live="polite"></figcaption>
+            </figure>
 
           </div>
         </div>
@@ -173,8 +188,16 @@ export const updateCityPanel = (state) => {
   setText('city-desc', data.desc)
   setText('stat-main', data.stats)
   setText('ratio-value', data.ratio)
-  setText('income-value', '$' + (data.income / 1000).toFixed(0) + 'K')
+  const incomeLabel = '$' + (data.income / 1000).toFixed(0) + 'K'
+  setText('income-value', incomeLabel)
   setText('cost-value', data.costDisplay)
+
+  const cityLabel = formatCityName(state.currentCity)
+  const graphDescription = `${cityLabel} annual income ${incomeLabel} compared to property cost ${data.costDisplay}; price-to-income ratio ${data.ratio}:1.`
+  const graphDescriptionEl = document.getElementById('city-graph-description')
+  if (graphDescriptionEl) graphDescriptionEl.innerText = graphDescription
+  const graphEl = document.getElementById('affordability-graph')
+  if (graphEl) graphEl.setAttribute('aria-label', graphDescription)
 
   // Update Image
   const img = document.getElementById('city-img')
