@@ -4,7 +4,7 @@ export const MachinesView = () => `
       ${Header('03', 'The Machines', 'Engines of Envy.', 'machines')}
       <section class="max-w-5xl mx-auto px-6 py-12">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
-              <div class="md:sticky md:top-24 self-start">
+              <div class="self-start">
                   <div class="flex items-center gap-3 mb-4">
                       <span class="material-symbols-outlined text-rust">visibility</span>
                       <h3 class="font-display font-bold text-3xl">The Panopticon</h3>
@@ -129,7 +129,7 @@ export const MachinesView = () => `
                   </div>
                   
                   <!-- Post 1 - Future Audience -->
-                  <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
+                  <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow md:mt-12">
                       <div class="p-4">
                           <div class="flex items-start gap-3 mb-3">
                               <div class="w-12 h-12 rounded-full bg-gradient-to-br from-pink-400 to-pink-600 flex items-center justify-center text-white font-bold text-lg flex-shrink-0">
