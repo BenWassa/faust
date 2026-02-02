@@ -6,7 +6,7 @@ export const cityData = {
     stats: '77% income for ownership',
     narrative: 'The ambition tax: where hustle is survival, not aspiration. 10.7 price-to-income makes ownership mathematical.',
     costDisplay: '$1.07M',
-    costBarHeight: 240,
+    costBarHeight: 130,
     image: { src: './toronto.png', alt: 'CN Tower Toronto skyline black and white' },
   },
   vancouver: {
@@ -16,7 +16,7 @@ export const cityData = {
     stats: '12.7 Price-to-Income Ratio',
     narrative: 'The most beautiful trap: a 12.7 price-to-income ratio means only inheritance buys shelter.',
     costDisplay: '$1.27M',
-    costBarHeight: 254,
+    costBarHeight: 138,
     image: { src: './vancouver.png', alt: 'Lions Gate Bridge Vancouver black and white' },
   },
   london: {
@@ -24,9 +24,9 @@ export const cityData = {
     income: 45000,
     desc: 'The Feudal Rental Market',
     stats: '52% income on rent',
-    narrative: 'Feudalism reinvented. 9.8 price-to-income and 52% of pay on rent feels “normal.”',
+    narrative: 'Feudalism reinvented. 9.8 price-to-income and 52% of pay on rent feels "normal."',
     costDisplay: '£221K',
-    costBarHeight: 190,
+    costBarHeight: 115,
     image: { src: './london.png', alt: 'St Pauls Cathedral London skyline black and white' },
   },
   nyc: {
@@ -36,7 +36,7 @@ export const cityData = {
     stats: '53% Rent Burdened',
     narrative: 'Velocity over everything. 53% rent burden, yet the story says you are lucky.',
     costDisplay: '$600K',
-    costBarHeight: 200,
+    costBarHeight: 118,
     image: { src: './nyc.png', alt: 'Empire State Building NYC skyline black and white' },
   },
 }
@@ -65,27 +65,27 @@ export const CitiesLayout = (state) => {
                         <p class="font-body text-lg" id="city-narrative"></p>
                     </div>
                 </div>
-                <div class="bg-blueprint p-6 border border-surveillance/20 relative min-h-[400px] flex flex-col justify-end">
+                <div class="bg-blueprint border border-surveillance/20 relative min-h-[380px] flex flex-col justify-end overflow-hidden">
                     <img id="city-img" src="" class="absolute inset-0 w-full h-full object-cover opacity-30 img-blueprint mix-blend-multiply">
-                    <div class="relative z-10 w-full bg-cream/90 p-6 backdrop-blur-sm border border-surveillance/10">
-                        <h5 class="font-mono text-xs uppercase mb-6 text-center font-bold tracking-widest">Economic Viability</h5>
-                        <div class="flex justify-center items-end gap-12 mb-6" style="height: 200px">
-                            <div class="flex flex-col items-center gap-3">
-                                <div class="w-16 bg-surveillance transition-all duration-500" id="bar-income" style="height: 120px"></div>
+                    <div class="relative z-10 w-full bg-cream/90 backdrop-blur-sm border border-surveillance/10 px-6 py-4">
+                        <h5 class="font-mono text-xs uppercase mb-4 text-center font-bold tracking-widest">Economic Viability</h5>
+                        <div class="flex justify-center items-end gap-10 mb-4" style="height: 140px">
+                            <div class="flex flex-col items-center gap-2">
+                                <div class="w-14 bg-surveillance transition-all duration-500" id="bar-income" style="height: 70px"></div>
                                 <div class="text-center">
-                                    <span class="text-sm font-mono font-bold text-surveillance mb-1 block" id="income-value">$99K</span>
-                                    <span class="text-xs font-mono text-surveillance/60 uppercase">Income</span>
+                                    <span class="text-xs font-mono font-bold text-surveillance mb-0.5 block" id="income-value">$99K</span>
+                                    <span class="text-xs font-mono text-surveillance/60 uppercase text-[10px]">Income</span>
                                 </div>
                             </div>
-                            <div class="flex flex-col items-center gap-3">
-                                <div class="w-16 bg-rust transition-all duration-500" id="bar-cost" style="height: 180px"></div>
+                            <div class="flex flex-col items-center gap-2">
+                                <div class="w-14 bg-rust transition-all duration-500" id="bar-cost" style="height: 130px"></div>
                                 <div class="text-center">
-                                    <span class="text-sm font-mono font-bold text-rust mb-1 block" id="cost-value">$1.07M</span>
-                                    <span class="text-xs font-mono text-surveillance/60 uppercase">Cost</span>
+                                    <span class="text-xs font-mono font-bold text-rust mb-0.5 block" id="cost-value">$1.07M</span>
+                                    <span class="text-xs font-mono text-surveillance/60 uppercase text-[10px]">Cost</span>
                                 </div>
                             </div>
                         </div>
-                        <div class="text-center pt-4 border-t border-surveillance/10"><span class="block font-mono text-xs text-surveillance/50 uppercase mb-2">Key Stat</span><span class="block font-display font-bold text-xl text-rust" id="stat-main">${cityData[currentCity].stats}</span></div>
+                        <div class="text-center pt-3 border-t border-surveillance/10"><span class="block font-mono text-[10px] text-surveillance/50 uppercase mb-1">Key Stat</span><span class="block font-display font-bold text-lg text-rust" id="stat-main">${cityData[currentCity].stats}</span></div>
                     </div>
                 </div>
             </div>
@@ -112,7 +112,7 @@ export const updateCityPanel = (state) => {
   const costBar = document.getElementById('bar-cost')
 
   if (incomeValue) incomeValue.innerText = '$' + (data.income / 1000).toFixed(0) + 'K'
-  if (incomeBar) incomeBar.style.height = '120px'
+  if (incomeBar) incomeBar.style.height = '70px'
   if (costValue) costValue.innerText = data.costDisplay
   if (costBar) costBar.style.height = data.costBarHeight + 'px'
 }

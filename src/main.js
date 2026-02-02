@@ -210,28 +210,28 @@ const MachinesView = () => `
                           <p class="text-xs font-mono text-gray-400 uppercase mb-2">Post 01</p>
                           <p>
                             Hustle culture is optimized for an audience that never sees the real cost. Post real rest instead of another seed-round win.
-                            <span class="cursor-pointer text-rust border-b-2 border-rust/30 hover:border-rust hover:bg-rust/10 transition-colors px-0.5 rounded-sm" onclick="openTrap('future-audience')">Every move becomes marketing</span>.
+                            <span class="cursor-pointer text-rust border-b-2 border-rust/30 hover:border-rust hover:bg-rust/10 transition-colors px-0.5 rounded-sm" onclick="openTrap('future-audience', true)">Every move becomes marketing</span>.
                           </p>
                       </div>
                       <div class="border border-surveillance/10 rounded-lg p-4 bg-cream/60">
                           <p class="text-xs font-mono text-gray-400 uppercase mb-2">Post 02</p>
                           <p>
-                            My feed is sticky. When I remove algorithmic dopamine, I actually ship slower, but feel sharper. Going quiet helps avoid <span class="cursor-pointer text-rust border-b-2 border-rust/30 hover:border-rust hover:bg-rust/10 transition-colors px-0.5 rounded-sm" onclick="openTrap('success-theater')">constant pitching</span>.
+                            My feed is sticky. When I remove algorithmic dopamine, I actually ship slower, but feel sharper. Going quiet helps avoid <span class="cursor-pointer text-rust border-b-2 border-rust/30 hover:border-rust hover:bg-rust/10 transition-colors px-0.5 rounded-sm" onclick="openTrap('success-theater', true)">constant pitching</span>.
                           </p>
                       </div>
                       <div class="border border-surveillance/10 rounded-lg p-4 bg-cream/60">
                           <p class="text-xs font-mono text-gray-400 uppercase mb-2">Post 03</p>
                           <p>
                             It’s easy to feel small when the feed highlights the biggest wins. I try to measure progress by shipped outcomes—this month I launched a feature that improved retention by 8%.
-                            Small, consistent wins beat chasing the <span class="cursor-pointer text-rust border-b-2 border-rust/30 hover:border-rust hover:bg-rust/10 transition-colors px-0.5 rounded-sm" onclick="openTrap('extremity-bias')">extreme stories</span>.
-                            <span class="cursor-pointer text-rust border-b-2 border-rust/30 hover:border-rust hover:bg-rust/10 transition-colors px-0.5 rounded-sm" onclick="openTrap('infinite-comparison')">Perspective helps</span>.
+                            Small, consistent wins beat chasing the <span class="cursor-pointer text-rust border-b-2 border-rust/30 hover:border-rust hover:bg-rust/10 transition-colors px-0.5 rounded-sm" onclick="openTrap('extremity-bias', true)">extreme stories</span>.
+                            <span class="cursor-pointer text-rust border-b-2 border-rust/30 hover:border-rust hover:bg-rust/10 transition-colors px-0.5 rounded-sm" onclick="openTrap('infinite-comparison', true)">Perspective helps</span>.
                           </p>
                       </div>
                       <div class="border border-surveillance/10 rounded-lg p-4 bg-cream/60">
                           <p class="text-xs font-mono text-gray-400 uppercase mb-2">Post 04</p>
                           <p>
                             Burnout isn’t a badge. I took a short break to reset and returned with clearer priorities—productivity improved and meetings felt less urgent. Rest is a strategy, not a status symbol.
-                            <span class="cursor-pointer text-rust border-b-2 border-rust/30 hover:border-rust hover:bg-rust/10 transition-colors px-0.5 rounded-sm" onclick="openTrap('veblen-inversion')">Healthy boundaries</span> beat performative exhaustion.
+                            <span class="cursor-pointer text-rust border-b-2 border-rust/30 hover:border-rust hover:bg-rust/10 transition-colors px-0.5 rounded-sm" onclick="openTrap('veblen-inversion', true)">Healthy boundaries</span> beat performative exhaustion.
                           </p>
                       </div>
                   </div>
@@ -422,21 +422,31 @@ function toggleMobileMenu() {
   menu.classList.toggle('flex')
 }
 
-function openTrap(trapId) {
-  const items = document.querySelectorAll('[data-trap]')
-  items.forEach((item) => {
-    item.classList.remove('border-rust', 'border-l-rust', 'bg-rust/5')
-    const detail = item.querySelector('[data-trap-detail]')
-    const icon = item.querySelector('[data-trap-icon]')
-    if (detail) detail.classList.add('hidden')
-    if (icon) icon.classList.remove('rotate-180')
-  })
-
+function openTrap(trapId, forceOpen = false) {
   const target = document.querySelector(`[data-trap="${trapId}"]`)
   if (!target) return
   const detail = target.querySelector('[data-trap-detail]')
   const icon = target.querySelector('[data-trap-icon]')
-  target.classList.add('border-rust', 'border-l-rust', 'bg-rust/5')
+  const isOpen = detail && !detail.classList.contains('hidden')
+
+  if (isOpen && forceOpen) {
+    return
+  }
+
+  const items = document.querySelectorAll('[data-trap]')
+  items.forEach((item) => {
+    item.classList.remove('trap-active', 'border-l-rust', 'bg-rust/5')
+    const itemDetail = item.querySelector('[data-trap-detail]')
+    const itemIcon = item.querySelector('[data-trap-icon]')
+    if (itemDetail) itemDetail.classList.add('hidden')
+    if (itemIcon) itemIcon.classList.remove('rotate-180')
+  })
+
+  if (isOpen) {
+    return
+  }
+
+  target.classList.add('trap-active', 'border-l-rust')
   if (detail) detail.classList.remove('hidden')
   if (icon) icon.classList.add('rotate-180')
 
