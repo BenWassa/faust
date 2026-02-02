@@ -24,8 +24,8 @@
   }
 }
 
-@layer components {
+@layer utilities {
   .trap-active {
-    @apply border-rust border-l-8 bg-rust/10 shadow-md;
+    @apply !border-rust !border-l-8 !bg-rust/10 !shadow-md;
   }
 }
