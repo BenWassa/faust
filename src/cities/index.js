@@ -150,10 +150,7 @@ export const CitiesLayout = (state) => {
 
       <div class="flex justify-between items-center mt-8">
         <span class="font-mono text-xs text-surveillance/40 uppercase">Fig 02.1 — Global Affordability Index</span>
-        <button onclick="navigateTo('machines')" class="group flex items-center gap-3 px-6 py-3 border border-rust text-rust font-mono text-sm uppercase tracking-widest hover:bg-rust hover:text-white transition-all">
-          Enter The Machines
-          <span class="material-symbols-outlined transition-transform group-hover:translate-x-1">arrow_forward</span>
-        </button>
+        <button onclick="navigateTo('machines')" class="text-rust font-bold flex items-center gap-2">Next: The Machines <span class="material-symbols-outlined">arrow_forward</span></button>
       </div>
     </section>
   `
