@@ -8,6 +8,10 @@
     @apply bg-cream text-surveillance overflow-x-hidden;
   }
 
+  .font-display {
+    line-height: 1.2;
+  }
+
   .bg-blueprint {
     background-image:
       linear-gradient(#e2e8f0 1px, transparent 1px),
