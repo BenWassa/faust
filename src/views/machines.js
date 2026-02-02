@@ -2,9 +2,9 @@ import { Header } from './shared.js'
 
 export const MachinesView = () => `
       ${Header('03', 'The Machines', 'Engines of Envy.', 'machines')}
-      <section class="max-w-5xl mx-auto px-6 py-12">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
-              <div class="self-start">
+      <section class="max-w-7xl mx-auto px-6 py-12">
+          <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12">
+              <div class="lg:col-span-2">
                   <div class="flex items-center gap-3 mb-4">
                       <span class="material-symbols-outlined text-rust">visibility</span>
                       <h3 class="font-display font-bold text-3xl">The Panopticon</h3>
@@ -14,7 +14,7 @@ export const MachinesView = () => `
                       <span>Trap Index</span>
                       <span>Tap to expand</span>
                   </div>
-                  <ol class="space-y-6">
+                  <ol class="space-y-3">
                       <div class="flex items-center gap-2 mb-4 mt-6">
                           <span class="h-px flex-1 bg-gradient-to-r from-rust/20 to-transparent"></span>
                           <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-rust/60 px-2">Identity & Structural</span>
@@ -30,7 +30,7 @@ export const MachinesView = () => `
                               Every action is treated as future recruiter content; the present is performance and authenticity gets deferred to a future viewer.
                           </div>
                       </li>
-                      <div class="flex items-center gap-2 mb-4 mt-8">
+                      <div class="flex items-center gap-2 mb-4 mt-5">
                           <span class="h-px flex-1 bg-gradient-to-r from-rust/20 to-transparent"></span>
                           <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-rust/60 px-2">Performative & Linguistic</span>
                           <span class="h-px flex-1 bg-gradient-to-l from-rust/20 to-transparent"></span>
@@ -55,7 +55,7 @@ export const MachinesView = () => `
                               Failures and layoffs are repackaged as brand assets to signal resilience, excluding losses you cannot monetize.
                           </div>
                       </li>
-                      <div class="flex items-center gap-2 mb-4 mt-8">
+                      <div class="flex items-center gap-2 mb-4 mt-5">
                           <span class="h-px flex-1 bg-gradient-to-r from-rust/20 to-transparent"></span>
                           <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-rust/60 px-2">Comparison & Envy</span>
                           <span class="h-px flex-1 bg-gradient-to-l from-rust/20 to-transparent"></span>
@@ -80,7 +80,7 @@ export const MachinesView = () => `
                               Platforms disproportionately surface unicorn founders, creating a skewed reference point and hiding average success.
                           </div>
                       </li>
-                      <div class="flex items-center gap-2 mb-4 mt-8">
+                      <div class="flex items-center gap-2 mb-4 mt-5">
                           <span class="h-px flex-1 bg-gradient-to-r from-rust/20 to-transparent"></span>
                           <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-rust/60 px-2">Psychological Cost</span>
                           <span class="h-px flex-1 bg-gradient-to-l from-rust/20 to-transparent"></span>
@@ -119,7 +119,7 @@ export const MachinesView = () => `
               </div>
               
               <!-- LinkedIn Feed Container -->
-              <div class="space-y-4">
+              <div class="lg:col-span-3 space-y-4">
                   <div class="flex items-center gap-3 mb-6 px-1">
                       <span class="material-symbols-outlined text-3xl text-surveillance/90">visibility</span>
                       <div>
@@ -141,7 +141,7 @@ export const MachinesView = () => `
                                       <span class="text-gray-500 text-xs">1st</span>
                                   </div>
                                   <p class="text-xs text-gray-600">Software Engineer @ DataCorp</p>
-                                  <p class="text-xs text-gray-500">3h • 🌎</p>
+                                  <p class="text-xs text-gray-500"></p>
                               </div>
                           </div>
                           <div class="text-sm text-gray-800 leading-relaxed">
@@ -168,7 +168,7 @@ export const MachinesView = () => `
                                       <span class="text-gray-500 text-xs">2nd</span>
                                   </div>
                                   <p class="text-xs text-gray-600">Product Manager @ TechCorp</p>
-                                  <p class="text-xs text-gray-500">4h • 🌎</p>
+                                  <p class="text-xs text-gray-500"></p>
                               </div>
                           </div>
                           <div class="text-sm text-gray-800 leading-relaxed">
@@ -193,7 +193,7 @@ export const MachinesView = () => `
                                       <span class="text-gray-500 text-xs">3rd+</span>
                                   </div>
                                   <p class="text-xs text-gray-600">Marketing Director @ FinTech Inc</p>
-                                  <p class="text-xs text-gray-500">2d • 🌎</p>
+                                  <p class="text-xs text-gray-500"></p>
                               </div>
                           </div>
                           <div class="text-sm text-gray-800 leading-relaxed">
@@ -220,7 +220,7 @@ export const MachinesView = () => `
                                       <span class="text-gray-500 text-xs">3rd+</span>
                                   </div>
                                   <p class="text-xs text-gray-600">UX Designer @ DesignStudio</p>
-                                  <p class="text-xs text-gray-500">6h • 🌎</p>
+                                  <p class="text-xs text-gray-500"></p>
                               </div>
                           </div>
                           <div class="text-sm text-gray-800 leading-relaxed">
@@ -244,7 +244,7 @@ export const MachinesView = () => `
                                       <span class="text-gray-500 text-xs">1st</span>
                                   </div>
                                   <p class="text-xs text-gray-600">CEO & Founder @ StartupAI | Forbes 30U30</p>
-                                  <p class="text-xs text-gray-500">1d • 🌎</p>
+                                  <p class="text-xs text-gray-500"></p>
                               </div>
                           </div>
                           <div class="text-sm text-gray-800 leading-relaxed">
@@ -269,7 +269,7 @@ export const MachinesView = () => `
                                       <span class="text-gray-500 text-xs">2nd</span>
                                   </div>
                                   <p class="text-xs text-gray-600">Sales Manager @ Enterprise Solutions</p>
-                                  <p class="text-xs text-gray-500">12h • 🌎</p>
+                                  <p class="text-xs text-gray-500"></p>
                               </div>
                           </div>
                           <div class="text-sm text-gray-800 leading-relaxed">
@@ -294,7 +294,7 @@ export const MachinesView = () => `
                                       <span class="text-gray-500 text-xs">2nd</span>
                                   </div>
                                   <p class="text-xs text-gray-600">VP Engineering @ CloudScale</p>
-                                  <p class="text-xs text-gray-500">18h • 🌎</p>
+                                  <p class="text-xs text-gray-500"></p>
                               </div>
                           </div>
                           <div class="text-sm text-gray-800 leading-relaxed">
@@ -319,7 +319,7 @@ export const MachinesView = () => `
                                       <span class="text-gray-500 text-xs">1st</span>
                                   </div>
                                   <p class="text-xs text-gray-600">Business Analyst @ Consulting Firm</p>
-                                  <p class="text-xs text-gray-500">1d • 🌎</p>
+                                  <p class="text-xs text-gray-500"></p>
                               </div>
                           </div>
                           <div class="text-sm text-gray-800 leading-relaxed">
