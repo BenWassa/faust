@@ -1,22 +1,42 @@
-import { cityData, CitiesLayout, updateCityPanel } from './cities/index.js'
-
-const state = {
-  currentView: 'home',
-  cityData,
-  currentCity: 'toronto',
-}
-
-const validViews = new Set([
-  'home',
-  'system',
-  'cities',
-  'machines',
-  'casualties',
-  'exits',
-  'resources',
-])
-
-const Hero = () => `
+(function(){const a=document.createElement("link").relList;if(a&&a.supports&&a.supports("modulepreload"))return;for(const t of document.querySelectorAll('link[rel="modulepreload"]'))r(t);new MutationObserver(t=>{for(const n of t)if(n.type==="childList")for(const o of n.addedNodes)o.tagName==="LINK"&&o.rel==="modulepreload"&&r(o)}).observe(document,{childList:!0,subtree:!0});function s(t){const n={};return t.integrity&&(n.integrity=t.integrity),t.referrerPolicy&&(n.referrerPolicy=t.referrerPolicy),t.crossOrigin==="use-credentials"?n.credentials="include":t.crossOrigin==="anonymous"?n.credentials="omit":n.credentials="same-origin",n}function r(t){if(t.ep)return;t.ep=!0;const n=s(t);fetch(t.href,n)}})();const b={toronto:{ratio:10.7,income:99e3,desc:"The Trap of Good Intentions",stats:"77% income for ownership",narrative:"The ambition tax: where hustle is survival, not aspiration. 10.7 price-to-income makes ownership mathematical.",costDisplay:"$1.07M",costBarHeight:240,image:{src:"./toronto.png",alt:"CN Tower Toronto skyline black and white"}},vancouver:{ratio:12.7,income:92e3,desc:"Immobility by Design",stats:"12.7 Price-to-Income Ratio",narrative:"The most beautiful trap: a 12.7 price-to-income ratio means only inheritance buys shelter.",costDisplay:"$1.27M",costBarHeight:254,image:{src:"./vancouver.png",alt:"Lions Gate Bridge Vancouver black and white"}},london:{ratio:9.8,income:45e3,desc:"The Feudal Rental Market",stats:"52% income on rent",narrative:"Feudalism reinvented. 9.8 price-to-income and 52% of pay on rent feels “normal.”",costDisplay:"£221K",costBarHeight:190,image:{src:"./london.png",alt:"St Pauls Cathedral London skyline black and white"}},nyc:{ratio:7.5,income:8e4,desc:"The Velocity Machine",stats:"53% Rent Burdened",narrative:"Velocity over everything. 53% rent burden, yet the story says you are lucky.",costDisplay:"$600K",costBarHeight:200,image:{src:"./nyc.png",alt:"Empire State Building NYC skyline black and white"}}},h=e=>{const{currentCity:a,cityData:s}=e;return s[a]?`
+        <section class="max-w-6xl mx-auto px-6 py-12">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+                <div>
+                    <h3 class="font-display font-bold text-3xl mb-6">Select Pressure Point</h3>
+                    <div class="flex flex-wrap gap-4 mb-8">${Object.keys(s).map(t=>`<button onclick="selectCity('${t}')" class="px-6 py-3 border border-surveillance font-mono text-sm uppercase transition-all ${t===a?"bg-surveillance text-cream":"hover:bg-surveillance/10"}">${t}</button>`).join("")}</div>
+                    <div id="city-details" class="bg-white p-8 border border-surveillance/10 shadow-sm animate-fade-in">
+                        <h4 class="font-display font-bold text-4xl mb-2 text-surveillance uppercase">${a}</h4>
+                        <p class="font-mono text-rust text-sm uppercase tracking-widest mb-6">${s[a].desc}</p>
+                        <p class="font-body text-lg" id="city-narrative"></p>
+                    </div>
+                </div>
+                <div class="bg-blueprint p-6 border border-surveillance/20 relative min-h-[400px] flex flex-col justify-end">
+                    <img id="city-img" src="" class="absolute inset-0 w-full h-full object-cover opacity-30 img-blueprint mix-blend-multiply">
+                    <div class="relative z-10 w-full bg-cream/90 p-6 backdrop-blur-sm border border-surveillance/10">
+                        <h5 class="font-mono text-xs uppercase mb-6 text-center font-bold tracking-widest">Economic Viability</h5>
+                        <div class="flex justify-center items-end gap-12 mb-6" style="height: 200px">
+                            <div class="flex flex-col items-center gap-3">
+                                <div class="w-16 bg-surveillance transition-all duration-500" id="bar-income" style="height: 120px"></div>
+                                <div class="text-center">
+                                    <span class="text-sm font-mono font-bold text-surveillance mb-1 block" id="income-value">$99K</span>
+                                    <span class="text-xs font-mono text-surveillance/60 uppercase">Income</span>
+                                </div>
+                            </div>
+                            <div class="flex flex-col items-center gap-3">
+                                <div class="w-16 bg-rust transition-all duration-500" id="bar-cost" style="height: 180px"></div>
+                                <div class="text-center">
+                                    <span class="text-sm font-mono font-bold text-rust mb-1 block" id="cost-value">$1.07M</span>
+                                    <span class="text-xs font-mono text-surveillance/60 uppercase">Cost</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center pt-4 border-t border-surveillance/10"><span class="block font-mono text-xs text-surveillance/50 uppercase mb-2">Key Stat</span><span class="block font-display font-bold text-xl text-rust" id="stat-main">${s[a].stats}</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="flex justify-end mt-8"><button onclick="navigateTo('machines')" class="text-rust font-bold flex items-center gap-2">Next: The Machines <span class="material-symbols-outlined">arrow_forward</span></button></div>
+        </section>
+    `:""},v=e=>{const a=document.getElementById("city-narrative"),s=document.getElementById("city-img"),r=b[e.currentCity];if(!r)return;a&&(a.innerText=r.narrative),s&&(s.src=r.image.src,s.alt=r.image.alt);const t=document.getElementById("income-value"),n=document.getElementById("cost-value"),o=document.getElementById("bar-income"),d=document.getElementById("bar-cost");t&&(t.innerText="$"+(r.income/1e3).toFixed(0)+"K"),o&&(o.style.height="120px"),n&&(n.innerText=r.costDisplay),d&&(d.style.height=r.costBarHeight+"px")},i={currentView:"home",cityData:b,currentCity:"toronto"},f=new Set(["home","system","cities","machines","casualties","exits","resources"]),g=()=>`
       <section class="relative min-h-screen flex items-center justify-center overflow-hidden bg-blueprint">
           <div class="absolute inset-0 opacity-10 pointer-events-none">
                <!-- Placeholder for abstract architectural grid wireframe distortion panopticon style minimalist cream background blue lines -->
@@ -32,34 +52,28 @@ const Hero = () => `
       </section>
       <section class="py-24 px-6 max-w-6xl mx-auto">
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              ${Card('01', 'The System', 'The Tyranny of Merit', 'system', 'grid_view')}
-              ${Card('02', 'The Cities', 'Toronto, London, NYC', 'cities', 'location_city')}
-              ${Card('03', 'The Machines', 'LinkedIn Panopticon', 'machines', 'devices')}
-              ${Card('04', 'The Casualties', 'Burnout & Anxiety', 'casualties', 'psychology')}
-              ${Card('05', 'The Exits', 'Alternative Frameworks', 'exits', 'door_open')}
-              ${Card('06', 'Resources', 'Practical Tools', 'resources', 'library_books')}
+              ${l("01","The System","The Tyranny of Merit","system","grid_view")}
+              ${l("02","The Cities","Toronto, London, NYC","cities","location_city")}
+              ${l("03","The Machines","LinkedIn Panopticon","machines","devices")}
+              ${l("04","The Casualties","Burnout & Anxiety","casualties","psychology")}
+              ${l("05","The Exits","Alternative Frameworks","exits","door_open")}
+              ${l("06","Resources","Practical Tools","resources","library_books")}
           </div>
       </section>
-  `
-
-const Card = (num, title, desc, link, icon) => `
-      <div onclick="navigateTo('${link}')" class="group border border-surveillance/20 p-8 hover:bg-surveillance hover:text-cream transition-all duration-300 cursor-pointer h-full flex flex-col justify-between relative overflow-hidden bg-white">
-          <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20"><span class="material-symbols-outlined text-6xl">${icon}</span></div>
-          <div><span class="font-mono text-rust text-sm mb-2 block group-hover:text-soft-green">${num}</span><h3 class="font-display font-bold text-2xl mb-4">${title}</h3><p class="font-body text-lg opacity-70">${desc}</p></div>
+  `,l=(e,a,s,r,t)=>`
+      <div onclick="navigateTo('${r}')" class="group border border-surveillance/20 p-8 hover:bg-surveillance hover:text-cream transition-all duration-300 cursor-pointer h-full flex flex-col justify-between relative overflow-hidden bg-white">
+          <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20"><span class="material-symbols-outlined text-6xl">${t}</span></div>
+          <div><span class="font-mono text-rust text-sm mb-2 block group-hover:text-soft-green">${e}</span><h3 class="font-display font-bold text-2xl mb-4">${a}</h3><p class="font-body text-lg opacity-70">${s}</p></div>
           <div class="mt-8 flex items-center gap-2 font-mono text-xs uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">Explore <span class="material-symbols-outlined text-sm">arrow_forward</span></div>
       </div>
-  `
-
-const ArchetypeCard = (num, title, desc, file, icon) => `
-      <div onclick="window.location.href='archetypes/${file}.html'" class="group border border-surveillance/20 p-8 hover:bg-surveillance hover:text-cream transition-all duration-300 cursor-pointer h-full flex flex-col justify-between relative overflow-hidden bg-white">
-          <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20"><span class="material-symbols-outlined text-6xl">${icon}</span></div>
-          <div><span class="font-mono text-rust text-sm mb-2 block group-hover:text-soft-green">${num}</span><h3 class="font-display font-bold text-2xl mb-4">${title}</h3><p class="font-body text-lg opacity-70">${desc}</p></div>
+  `,p=(e,a,s,r,t)=>`
+      <div onclick="window.location.href='archetypes/${r}.html'" class="group border border-surveillance/20 p-8 hover:bg-surveillance hover:text-cream transition-all duration-300 cursor-pointer h-full flex flex-col justify-between relative overflow-hidden bg-white">
+          <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20"><span class="material-symbols-outlined text-6xl">${t}</span></div>
+          <div><span class="font-mono text-rust text-sm mb-2 block group-hover:text-soft-green">${e}</span><h3 class="font-display font-bold text-2xl mb-4">${a}</h3><p class="font-body text-lg opacity-70">${s}</p></div>
           <div class="mt-8 flex items-center gap-2 font-mono text-xs uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">Explore <span class="material-symbols-outlined text-sm">arrow_forward</span></div>
       </div>
-  `
-
-const SystemView = () => `
-      ${Header('01', 'The System', 'The theological intensity of modern work.', 'system')}
+  `,y=()=>`
+      ${c("01","The System","The theological intensity of modern work.")}
       <article class="max-w-3xl mx-auto px-6 py-16">
           <p class="font-body text-2xl leading-relaxed text-surveillance/80 mb-12 first-letter:text-5xl first-letter:font-bold first-letter:mr-2 first-letter:float-left">We have replaced the worship of gods with the worship of potential. Derek Thompson calls it "Workism"—the belief that work is not only necessary to economic production, but also the centerpiece of one’s identity.</p>
           <div class="my-12 border-l-4 border-rust pl-8 py-2"><blockquote class="font-display font-bold text-2xl text-surveillance italic">"The achievement-subject exploits itself. It means that exploitation is possible even without domination."</blockquote><cite class="block mt-4 font-mono text-sm text-rust uppercase">— Byung-Chul Han</cite></div>
@@ -68,15 +82,11 @@ const SystemView = () => `
           <div class="bg-surveillance text-cream p-8 my-12 relative"><h4 class="font-mono text-rust uppercase tracking-widest mb-4">Diagnostic</h4><ul class="space-y-4 font-body text-lg"><li>Do you introduce yourself by job title?</li><li>Do you feel guilty when unproductive?</li><li>Is work your primary community?</li></ul></div>
           <div class="flex justify-between items-center mt-16 pt-8 border-t border-surveillance/10"><button onclick="navigateTo('home')" class="text-surveillance/50 hover:text-surveillance flex items-center gap-2"><span class="material-symbols-outlined">arrow_back</span> Home</button><button onclick="navigateTo('cities')" class="text-rust font-bold hover:text-surveillance flex items-center gap-2">Next: The Cities <span class="material-symbols-outlined">arrow_forward</span></button></div>
       </article>
-  `
-
-const CitiesView = () => `
-      ${Header('02', 'The Cities', 'Where ambition goes to pay rent.', 'cities')}
-      ${CitiesLayout(state)}
-  `
-
-const MachinesView = () => `
-      ${Header('03', 'The Machines', 'Engines of Envy.', 'machines')}
+  `,w=()=>`
+      ${c("02","The Cities","Where ambition goes to pay rent.")}
+      ${h(i)}
+  `,k=()=>`
+      ${c("03","The Machines","Engines of Envy.")}
       <section class="max-w-5xl mx-auto px-6 py-12">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
               <div class="md:sticky md:top-24 self-start">
@@ -247,18 +257,14 @@ const MachinesView = () => `
           </div>
           <div class="flex justify-end mt-16"><button onclick="navigateTo('casualties')" class="text-rust font-bold flex items-center gap-2">Next: The Casualties <span class="material-symbols-outlined">arrow_forward</span></button></div>
       </section>
-  `
-
-const ExitCard = (icon, title, sub, text) => `
+  `,m=(e,a,s,r)=>`
       <div class="bg-white border border-surveillance/10 p-8 hover:shadow-lg transition-all group">
-          <div class="h-12 w-12 bg-rust/10 text-rust flex items-center justify-center mb-6 group-hover:bg-rust group-hover:text-white transition-colors"><span class="material-symbols-outlined">${icon}</span></div>
-          <h3 class="font-display font-bold text-2xl mb-2">${title}</h3><span class="font-mono text-xs uppercase tracking-widest text-surveillance/50 mb-4 block">${sub}</span>
-          <p class="font-body text-lg">${text}</p>
+          <div class="h-12 w-12 bg-rust/10 text-rust flex items-center justify-center mb-6 group-hover:bg-rust group-hover:text-white transition-colors"><span class="material-symbols-outlined">${e}</span></div>
+          <h3 class="font-display font-bold text-2xl mb-2">${a}</h3><span class="font-mono text-xs uppercase tracking-widest text-surveillance/50 mb-4 block">${s}</span>
+          <p class="font-body text-lg">${r}</p>
       </div>
-  `
-
-const ExitsView = () => `
-      ${Header('05', 'The Exits', 'Doors out of the burning building.', 'exits')}
+  `,T=()=>`
+      ${c("05","The Exits","Doors out of the burning building.")}
       <section class="max-w-6xl mx-auto px-6 py-12">
           <div class="mb-16 max-w-3xl mx-auto bg-surveillance/5 p-8 border-l-4 border-rust">
               <p class="font-body text-lg text-surveillance/80 mb-4">
@@ -269,16 +275,14 @@ const ExitsView = () => `
               </p>
           </div>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-              ${ExitCard('church', 'Vocation', 'Christian Exit', 'Work is not a ladder, but a station to serve. Value is conferred by origin (Imago Dei), not utility.')}
-              ${ExitCard('balance', 'Eudaimonia', 'Aristotelian Exit', 'Happiness is not a dopamine spike, but the steady practice of virtue over a complete life.')}
-              ${ExitCard('self_improvement', 'Transcendence', 'Humanistic Exit', 'The self is not a project to be optimized, but a vessel to be emptied into something larger.')}
+              ${m("church","Vocation","Christian Exit","Work is not a ladder, but a station to serve. Value is conferred by origin (Imago Dei), not utility.")}
+              ${m("balance","Eudaimonia","Aristotelian Exit","Happiness is not a dopamine spike, but the steady practice of virtue over a complete life.")}
+              ${m("self_improvement","Transcendence","Humanistic Exit","The self is not a project to be optimized, but a vessel to be emptied into something larger.")}
           </div>
           <div class="mt-16 text-center"><button onclick="navigateTo('resources')" class="px-8 py-3 bg-surveillance text-cream font-mono uppercase hover:bg-rust transition-colors">View Resources</button></div>
       </section>
-  `
-
-const ResourcesView = () => `
-      ${Header('06', 'Resources', 'Tools for resistance.', 'resources')}
+  `,$=()=>`
+      ${c("06","Resources","Tools for resistance.")}
       <section class="max-w-4xl mx-auto px-6 py-12 space-y-12">
           <div>
               <h3 class="font-display font-bold text-2xl border-b border-surveillance mb-6 pb-2">Essential Reading</h3>
@@ -340,31 +344,11 @@ const ResourcesView = () => `
               </ul>
           </div>
       </section>
-  `
-
-const Header = (num, title, sub, view) => `
+  `,c=(e,a,s,r)=>`
       <header class="bg-cream pt-12 pb-12 px-6 border-b border-surveillance/10 relative overflow-hidden">
-          <div class="max-w-7xl mx-auto relative z-10"><span class="font-mono text-rust text-sm uppercase tracking-widest mb-2 block animate-fade-in">Chapter ${num}</span><h2 class="font-display font-bold text-5xl md:text-6xl text-surveillance mb-4 animate-slide-up">${title}</h2><p class="font-body text-xl md:text-2xl text-surveillance/60 max-w-2xl animate-slide-up">${sub}</p></div>
+          <div class="max-w-7xl mx-auto relative z-10"><span class="font-mono text-rust text-sm uppercase tracking-widest mb-2 block animate-fade-in">Chapter ${e}</span><h2 class="font-display font-bold text-5xl md:text-6xl text-surveillance mb-4 animate-slide-up">${a}</h2><p class="font-body text-xl md:text-2xl text-surveillance/60 max-w-2xl animate-slide-up">${s}</p></div>
       </header>
-  `
-
-function selectCity(cityKey) {
-  state.currentCity = cityKey
-  render()
-}
-
-function render() {
-  const app = document.getElementById('app')
-  const views = {
-    home: Hero,
-    system: SystemView,
-    cities: CitiesView,
-    machines: MachinesView,
-    exits: ExitsView,
-    resources: ResourcesView,
-    casualties: () =>
-      Header('04', 'The Casualties', 'Psychological Archetypes', 'casualties') +
-      `
+  `;function E(e){i.currentCity=e,u()}function u(){const e=document.getElementById("app"),a={home:g,system:y,cities:w,machines:k,exits:T,resources:$,casualties:()=>c("04","The Casualties","Psychological Archetypes")+`
           <section class="py-16 px-6 max-w-6xl mx-auto">
               <div class="mb-16 max-w-3xl mx-auto">
                   <p class="font-body text-xl leading-relaxed text-surveillance/70">
@@ -372,11 +356,11 @@ function render() {
                   </p>
               </div>
               <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                  ${ArchetypeCard('01', 'The Watchman', 'Vigilant defense against uncertainty', 'watchman', 'visibility')}
-                  ${ArchetypeCard('02', 'The Visible', 'Performance as identity', 'visible', 'person')}
-                  ${ArchetypeCard('03', 'The Faithful', 'Work as calling', 'faithful', 'church')}
-                  ${ArchetypeCard('04', 'The Departed', 'Quiet withdrawal', 'departed', 'person_off')}
-                  ${ArchetypeCard('05', 'The Architect', 'Strategic detachment', 'architect', 'architecture')}
+                  ${p("01","The Watchman","Vigilant defense against uncertainty","watchman","visibility")}
+                  ${p("02","The Visible","Performance as identity","visible","person")}
+                  ${p("03","The Faithful","Work as calling","faithful","church")}
+                  ${p("04","The Departed","Quiet withdrawal","departed","person_off")}
+                  ${p("05","The Architect","Strategic detachment","architect","architecture")}
               </div>
               <div class="flex justify-end mt-16">
                   <button onclick="navigateTo('exits')" class="text-rust font-bold flex items-center gap-2">
@@ -384,93 +368,4 @@ function render() {
                   </button>
               </div>
           </section>
-      `,
-  }
-  app.style.opacity = '0'
-  setTimeout(() => {
-    app.innerHTML = views[state.currentView]()
-    if (state.currentView === 'cities') updateCityPanel(state)
-    app.style.opacity = '1'
-    const progress = {
-      home: '0%',
-      system: '16%',
-      cities: '32%',
-      machines: '48%',
-      casualties: '64%',
-      exits: '80%',
-      resources: '100%',
-    }
-    document.getElementById('progress-bar').style.width = progress[state.currentView]
-  }, 300)
-}
-
-function navigateTo(viewId) {
-  if (!validViews.has(viewId)) return
-  state.currentView = viewId
-  if (viewId === 'home') {
-    history.replaceState(null, '', window.location.pathname + window.location.search)
-  } else {
-    window.location.hash = viewId
-  }
-  render()
-  window.scrollTo(0, 0)
-}
-
-function toggleMobileMenu() {
-  const menu = document.getElementById('mobile-menu')
-  menu.classList.toggle('hidden')
-  menu.classList.toggle('flex')
-}
-
-function openTrap(trapId) {
-  const items = document.querySelectorAll('[data-trap]')
-  items.forEach((item) => {
-    item.classList.remove('border-rust', 'border-l-rust', 'bg-rust/5')
-    const detail = item.querySelector('[data-trap-detail]')
-    const icon = item.querySelector('[data-trap-icon]')
-    if (detail) detail.classList.add('hidden')
-    if (icon) icon.classList.remove('rotate-180')
-  })
-
-  const target = document.querySelector(`[data-trap="${trapId}"]`)
-  if (!target) return
-  const detail = target.querySelector('[data-trap-detail]')
-  const icon = target.querySelector('[data-trap-icon]')
-  target.classList.add('border-rust', 'border-l-rust', 'bg-rust/5')
-  if (detail) detail.classList.remove('hidden')
-  if (icon) icon.classList.add('rotate-180')
-
-  if (window.innerWidth < 768) {
-    setTimeout(() => {
-      target.scrollIntoView({ behavior: 'smooth', block: 'nearest' })
-    }, 100)
-  }
-}
-
-Object.assign(window, { navigateTo, toggleMobileMenu, openTrap, selectCity })
-
-document.addEventListener('DOMContentLoaded', () => {
-  syncViewFromHash()
-  render()
-  window.addEventListener('hashchange', () => {
-    syncViewFromHash()
-    render()
-  })
-  window.addEventListener('scroll', () => {
-    const nav = document.getElementById('navbar')
-    if (window.scrollY > 50) {
-      nav.classList.add('shadow-md', 'py-2')
-      nav.classList.remove('py-4')
-    } else {
-      nav.classList.remove('shadow-md', 'py-2')
-      nav.classList.add('py-4')
-    }
-  })
-})
-
-function syncViewFromHash() {
-  const hashView = window.location.hash.replace('#', '')
-  if (hashView && validViews.has(hashView)) {
-    state.currentView = hashView
-  }
-}
+      `};e.style.opacity="0",setTimeout(()=>{e.innerHTML=a[i.currentView](),i.currentView==="cities"&&v(i),e.style.opacity="1";const s={home:"0%",system:"16%",cities:"32%",machines:"48%",casualties:"64%",exits:"80%",resources:"100%"};document.getElementById("progress-bar").style.width=s[i.currentView]},300)}function C(e){f.has(e)&&(i.currentView=e,e==="home"?history.replaceState(null,"",window.location.pathname+window.location.search):window.location.hash=e,u(),window.scrollTo(0,0))}function I(){const e=document.getElementById("mobile-menu");e.classList.toggle("hidden"),e.classList.toggle("flex")}function S(e){document.querySelectorAll("[data-trap]").forEach(n=>{n.classList.remove("border-rust","border-l-rust","bg-rust/5");const o=n.querySelector("[data-trap-detail]"),d=n.querySelector("[data-trap-icon]");o&&o.classList.add("hidden"),d&&d.classList.remove("rotate-180")});const s=document.querySelector(`[data-trap="${e}"]`);if(!s)return;const r=s.querySelector("[data-trap-detail]"),t=s.querySelector("[data-trap-icon]");s.classList.add("border-rust","border-l-rust","bg-rust/5"),r&&r.classList.remove("hidden"),t&&t.classList.add("rotate-180"),window.innerWidth<768&&setTimeout(()=>{s.scrollIntoView({behavior:"smooth",block:"nearest"})},100)}Object.assign(window,{navigateTo:C,toggleMobileMenu:I,openTrap:S,selectCity:E});document.addEventListener("DOMContentLoaded",()=>{x(),u(),window.addEventListener("hashchange",()=>{x(),u()}),window.addEventListener("scroll",()=>{const e=document.getElementById("navbar");window.scrollY>50?(e.classList.add("shadow-md","py-2"),e.classList.remove("py-4")):(e.classList.remove("shadow-md","py-2"),e.classList.add("py-4"))})});function x(){const e=window.location.hash.replace("#","");e&&f.has(e)&&(i.currentView=e)}
