@@ -1,5 +1,5 @@
-(function(){const t=document.createElement("link").relList;if(t&&t.supports&&t.supports("modulepreload"))return;for(const a of document.querySelectorAll('link[rel="modulepreload"]'))i(a);new MutationObserver(a=>{for(const r of a)if(r.type==="childList")for(const n of r.addedNodes)n.tagName==="LINK"&&n.rel==="modulepreload"&&i(n)}).observe(document,{childList:!0,subtree:!0});function s(a){const r={};return a.integrity&&(r.integrity=a.integrity),a.referrerPolicy&&(r.referrerPolicy=a.referrerPolicy),a.crossOrigin==="use-credentials"?r.credentials="include":a.crossOrigin==="anonymous"?r.credentials="omit":r.credentials="same-origin",r}function i(a){if(a.ep)return;a.ep=!0;const r=s(a);fetch(a.href,r)}})();const f={toronto:{ratio:10.7,income:99e3,desc:"The Trap of Good Intentions",stats:"77% income for ownership",narrative:"The ambition tax: where hustle is survival, not aspiration. 10.7 price-to-income makes ownership mathematical.",costDisplay:"$1.07M",costBarHeight:130,image:{src:"./toronto.png",alt:"CN Tower Toronto skyline black and white"}},vancouver:{ratio:12.7,income:92e3,desc:"Immobility by Design",stats:"12.7 Price-to-Income Ratio",narrative:"The most beautiful trap: a 12.7 price-to-income ratio means only inheritance buys shelter.",costDisplay:"$1.27M",costBarHeight:138,image:{src:"./vancouver.png",alt:"Lions Gate Bridge Vancouver black and white"}},london:{ratio:9.8,income:45e3,desc:"The Feudal Rental Market",stats:"52% income on rent",narrative:'Feudalism reinvented. 9.8 price-to-income and 52% of pay on rent feels "normal."',costDisplay:"£221K",costBarHeight:115,image:{src:"./london.png",alt:"St Pauls Cathedral London skyline black and white"}},nyc:{ratio:7.5,income:8e4,desc:"The Velocity Machine",stats:"53% Rent Burdened",narrative:"Velocity over everything. 53% rent burden, yet the story says you are lucky.",costDisplay:"$600K",costBarHeight:118,image:{src:"./nyc.png",alt:"Empire State Building NYC skyline black and white"}}},g=e=>{const{currentCity:t,cityData:s}=e;return s[t]?`
-    <section class="max-w-7xl mx-auto px-6 py-12 lg:py-20">
+(function(){const t=document.createElement("link").relList;if(t&&t.supports&&t.supports("modulepreload"))return;for(const a of document.querySelectorAll('link[rel="modulepreload"]'))r(a);new MutationObserver(a=>{for(const i of a)if(i.type==="childList")for(const n of i.addedNodes)n.tagName==="LINK"&&n.rel==="modulepreload"&&r(n)}).observe(document,{childList:!0,subtree:!0});function s(a){const i={};return a.integrity&&(i.integrity=a.integrity),a.referrerPolicy&&(i.referrerPolicy=a.referrerPolicy),a.crossOrigin==="use-credentials"?i.credentials="include":a.crossOrigin==="anonymous"?i.credentials="omit":i.credentials="same-origin",i}function r(a){if(a.ep)return;a.ep=!0;const i=s(a);fetch(a.href,i)}})();const g={toronto:{ratio:10.7,income:99e3,desc:"The Trap of Good Intentions",stats:"77% income for ownership",narrative:"The ambition tax: where hustle is survival, not aspiration. 10.7 price-to-income makes ownership mathematical.",costDisplay:"$1.07M",costBarHeight:130,image:{src:"./toronto.png",alt:"CN Tower Toronto skyline black and white"}},vancouver:{ratio:12.7,income:92e3,desc:"Immobility by Design",stats:"12.7 Price-to-Income Ratio",narrative:"The most beautiful trap: a 12.7 price-to-income ratio means only inheritance buys shelter.",costDisplay:"$1.27M",costBarHeight:138,image:{src:"./vancouver.png",alt:"Lions Gate Bridge Vancouver black and white"}},london:{ratio:9.8,income:45e3,desc:"The Feudal Rental Market",stats:"52% income on rent",narrative:'Feudalism reinvented. 9.8 price-to-income and 52% of pay on rent feels "normal."',costDisplay:"£221K",costBarHeight:115,image:{src:"./london.png",alt:"St Pauls Cathedral London skyline black and white"}},nyc:{ratio:7.5,income:8e4,desc:"The Velocity Machine",stats:"53% Rent Burdened",narrative:"Velocity over everything. 53% rent burden, yet the story says you are lucky.",costDisplay:"$600K",costBarHeight:118,image:{src:"./nyc.png",alt:"Empire State Building NYC skyline black and white"}}},T={nyc:"New York City"},C=e=>T[e]||e.charAt(0).toUpperCase()+e.slice(1),E=e=>{const{currentCity:t,cityData:s}=e;return s[t]?`
+    <section class="max-w-7xl mx-auto px-6 pt-8 pb-8 lg:pt-12 lg:pb-16">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-0 border border-surveillance/20 bg-white shadow-sm">
 
         <div class="lg:col-span-4 border-r border-surveillance/20 flex flex-col">
@@ -9,13 +9,13 @@
           </div>
 
           <div class="flex-grow flex flex-col">
-            ${Object.keys(s).map(a=>{const r=a===t;return`
+            ${Object.keys(s).map(a=>{const i=a===t;return`
         <button
           onclick="selectCity('${a}')"
-          class="w-full text-left px-4 py-4 border-b border-surveillance/10 flex justify-between items-center group transition-all hover:bg-surveillance/5 ${r?"bg-surveillance/5 border-l-4 border-l-rust pl-3":"pl-4"}"
+          class="w-full text-left px-4 py-4 border-b border-surveillance/10 flex justify-between items-center group transition-all hover:bg-surveillance/5 ${i?"bg-surveillance/5 border-l-4 border-l-rust pl-3":"pl-4"}"
         >
-          <span class="font-mono text-sm uppercase tracking-widest ${r?"text-rust font-bold":"text-surveillance/70"}">${a}</span>
-          ${r?'<span class="material-symbols-outlined text-sm text-rust">arrow_right</span>':""}
+          <span class="font-mono text-sm uppercase tracking-widest ${i?"text-rust font-bold":"text-surveillance/70"}">${a}</span>
+          ${i?'<span class="material-symbols-outlined text-sm text-rust">arrow_right</span>':""}
         </button>`}).join("")}
           </div>
 
@@ -49,7 +49,7 @@
             <img id="city-img" src="" class="absolute inset-0 w-full h-full object-cover opacity-60 grayscale contrast-125 mix-blend-luminosity transition-all duration-700 group-hover:scale-105 group-hover:opacity-40">
           </div>
 
-          <div class="bg-white border-t border-surveillance/20 p-8 grid grid-cols-2 md:grid-cols-3 gap-8 items-end relative z-20">
+          <div class="bg-white border-t border-surveillance/20 p-8 pb-4 md:p-10 md:pb-5 lg:p-12 lg:pb-6 min-h-[220px] mt-auto grid grid-cols-2 md:grid-cols-3 gap-8 items-end relative z-20">
 
             <div class="col-span-2 md:col-span-1">
               <span class="font-mono text-[10px] uppercase text-surveillance/60 block mb-2">Price-to-Income Ratio</span>
@@ -59,11 +59,18 @@
               </div>
             </div>
 
-            <div class="col-span-2 flex items-end gap-12 h-32 pb-2">
+            <figure
+              class="col-span-2 flex items-end gap-12 h-32 pb-2"
+              role="img"
+              aria-labelledby="affordability-graph-title"
+              aria-describedby="city-graph-description"
+              id="affordability-graph"
+            >
+              <span id="affordability-graph-title" class="sr-only">Housing affordability comparison</span>
                <div class="flex flex-col items-center gap-2 group w-1/2">
                   <div class="w-full relative h-[140px] flex items-end">
                     <div class="w-full bg-surveillance/20 hover:bg-surveillance/30 transition-all duration-500 relative" id="bar-income" style="height: 70px">
-                       <div class="absolute -top-6 left-0 w-full text-center font-mono text-xs font-bold text-surveillance" id="income-value"></div>
+                       <div class="absolute -top-7 left-1/2 -translate-x-1/2 w-fit bg-cream/95 border border-surveillance/10 rounded-sm px-2 py-0.5 font-mono text-xs font-bold text-surveillance shadow-sm" id="income-value"></div>
                     </div>
                   </div>
                   <span class="font-mono text-[10px] uppercase tracking-widest text-surveillance/60">Annual Income</span>
@@ -72,12 +79,14 @@
                <div class="flex flex-col items-center gap-2 group w-1/2">
                    <div class="w-full relative h-[140px] flex items-end">
                     <div class="w-full bg-rust hover:bg-rust/90 transition-all duration-500 relative" id="bar-cost" style="height: 130px">
-                       <div class="absolute -top-6 left-0 w-full text-center font-mono text-xs font-bold text-rust" id="cost-value"></div>
+                       <div class="absolute -top-7 left-1/2 -translate-x-1/2 w-fit bg-cream/95 border border-surveillance/10 rounded-sm px-2 py-0.5 font-mono text-xs font-bold text-rust shadow-sm" id="cost-value"></div>
                     </div>
                   </div>
                   <span class="font-mono text-[10px] uppercase tracking-widest text-surveillance/60">Property Cost</span>
                </div>
-            </div>
+
+               <figcaption id="city-graph-description" class="sr-only" aria-live="polite"></figcaption>
+            </figure>
 
           </div>
         </div>
@@ -88,29 +97,29 @@
         <button onclick="navigateTo('machines')" class="text-rust font-bold flex items-center gap-2">Next: The Machines <span class="material-symbols-outlined">arrow_forward</span></button>
       </div>
     </section>
-  `:""},y=e=>{const t=f[e.currentCity];if(!t)return;const s=(n,d)=>{const p=document.getElementById(n);p&&(p.innerText=d)};s("city-narrative",t.narrative),s("city-title",e.currentCity),s("city-desc",t.desc),s("stat-main",t.stats),s("ratio-value",t.ratio),s("income-value","$"+(t.income/1e3).toFixed(0)+"K"),s("cost-value",t.costDisplay);const i=document.getElementById("city-img");i&&(i.src=t.image.src,i.alt=t.image.alt);const a=document.getElementById("bar-income"),r=document.getElementById("bar-cost");requestAnimationFrame(()=>{a&&(a.style.height="70px"),r&&(r.style.height=t.costBarHeight+"px")})},c=(e,t,s,i)=>`
+  `:""},$=e=>{const t=g[e.currentCity];if(!t)return;const s=(w,k)=>{const v=document.getElementById(w);v&&(v.innerText=k)};s("city-narrative",t.narrative),s("city-title",e.currentCity),s("city-desc",t.desc),s("stat-main",t.stats),s("ratio-value",t.ratio);const r="$"+(t.income/1e3).toFixed(0)+"K";s("income-value",r),s("cost-value",t.costDisplay);const i=`${C(e.currentCity)} annual income ${r} compared to property cost ${t.costDisplay}; price-to-income ratio ${t.ratio}:1.`,n=document.getElementById("city-graph-description");n&&(n.innerText=i);const l=document.getElementById("affordability-graph");l&&l.setAttribute("aria-label",i);const c=document.getElementById("city-img");c&&(c.src=t.image.src,c.alt=t.image.alt);const u=document.getElementById("bar-income"),f=document.getElementById("bar-cost");requestAnimationFrame(()=>{u&&(u.style.height="70px"),f&&(f.style.height=t.costBarHeight+"px")})},p=(e,t,s,r)=>`
       <header class="bg-cream pt-12 pb-12 px-6 border-b border-surveillance/10 relative">
           <div class="max-w-7xl mx-auto relative z-10"><span class="font-mono text-rust text-sm uppercase tracking-widest mb-2 block animate-fade-in">Chapter ${e}</span><h2 class="font-display font-bold text-5xl md:text-6xl text-surveillance mb-4 pb-px animate-slide-up">${t}</h2><p class="font-body text-xl md:text-2xl text-surveillance/60 max-w-2xl pb-px animate-slide-up">${s}</p></div>
       </header>
-  `,l=(e,t,s,i,a)=>`
-      <div onclick="navigateTo('${i}')" class="group border border-surveillance/20 p-8 hover:bg-surveillance hover:text-cream transition-all duration-300 cursor-pointer h-full flex flex-col justify-between relative overflow-hidden bg-white">
+  `,d=(e,t,s,r,a)=>`
+      <div onclick="navigateTo('${r}')" class="group border border-surveillance/20 p-8 hover:bg-surveillance hover:text-cream transition-all duration-300 cursor-pointer h-full flex flex-col justify-between relative overflow-hidden bg-white">
           <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20"><span class="material-symbols-outlined text-6xl">${a}</span></div>
           <div><span class="font-mono text-rust text-sm mb-2 block group-hover:text-soft-green">${e}</span><h3 class="font-display font-bold text-2xl mb-4">${t}</h3><p class="font-body text-lg opacity-70">${s}</p></div>
           <div class="mt-8 flex items-center gap-2 font-mono text-xs uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">Explore <span class="material-symbols-outlined text-sm">arrow_forward</span></div>
       </div>
-  `,u=(e,t,s,i,a)=>`
-      <div onclick="window.location.href='archetypes/${i}.html'" class="group border border-surveillance/20 p-8 hover:bg-surveillance hover:text-cream transition-all duration-300 cursor-pointer h-full flex flex-col justify-between relative overflow-hidden bg-white">
+  `,x=(e,t,s,r,a)=>`
+      <div onclick="window.location.href='archetypes/${r}.html'" class="group border border-surveillance/20 p-8 hover:bg-surveillance hover:text-cream transition-all duration-300 cursor-pointer h-full flex flex-col justify-between relative overflow-hidden bg-white">
           <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20"><span class="material-symbols-outlined text-6xl">${a}</span></div>
           <div><span class="font-mono text-rust text-sm mb-2 block group-hover:text-soft-green">${e}</span><h3 class="font-display font-bold text-2xl mb-4">${t}</h3><p class="font-body text-lg opacity-70">${s}</p></div>
           <div class="mt-8 flex items-center gap-2 font-mono text-xs uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">Explore <span class="material-symbols-outlined text-sm">arrow_forward</span></div>
       </div>
-  `,m=(e,t,s,i)=>`
+  `,b=(e,t,s,r)=>`
       <div class="bg-white border border-surveillance/10 p-8 hover:shadow-lg transition-all group">
           <div class="h-12 w-12 bg-rust/10 text-rust flex items-center justify-center mb-6 group-hover:bg-rust group-hover:text-white transition-colors"><span class="material-symbols-outlined">${e}</span></div>
           <h3 class="font-display font-bold text-2xl mb-2">${t}</h3><span class="font-mono text-xs uppercase tracking-widest text-surveillance/50 mb-4 block">${s}</span>
-          <p class="font-body text-lg">${i}</p>
+          <p class="font-body text-lg">${r}</p>
       </div>
-  `,w=()=>`
+  `,S=()=>`
       <section class="relative min-h-screen flex items-center justify-center overflow-hidden bg-blueprint">
           <div class="absolute inset-0 opacity-10 pointer-events-none">
                <!-- Placeholder for abstract architectural grid wireframe distortion panopticon style minimalist cream background blue lines -->
@@ -126,16 +135,16 @@
       </section>
       <section class="py-24 px-6 max-w-6xl mx-auto">
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              ${l("01","The System","The Tyranny of Merit","system","grid_view")}
-              ${l("02","The Cities","Toronto, London, NYC","cities","location_city")}
-              ${l("03","The Machines","LinkedIn Panopticon","machines","devices")}
-              ${l("04","The Casualties","Burnout & Anxiety","casualties","psychology")}
-              ${l("05","The Exits","Alternative Frameworks","exits","door_open")}
-              ${l("06","Resources","Practical Tools","resources","library_books")}
+              ${d("01","The System","The Tyranny of Merit","system","grid_view")}
+              ${d("02","The Cities","Toronto, London, NYC","cities","location_city")}
+              ${d("03","The Machines","LinkedIn Panopticon","machines","devices")}
+              ${d("04","The Casualties","Burnout & Anxiety","casualties","psychology")}
+              ${d("05","The Exits","Alternative Frameworks","exits","door_open")}
+              ${d("06","Resources","Practical Tools","resources","library_books")}
           </div>
       </section>
-  `,k=()=>`
-      ${c("01","The System","The theological intensity of modern work.")}
+  `,I=()=>`
+      ${p("01","The System","The theological intensity of modern work.")}
       <article class="max-w-3xl mx-auto px-6 py-16">
           <p class="font-body text-2xl leading-relaxed text-surveillance/80 mb-12 first-letter:text-5xl first-letter:font-bold first-letter:mr-2 first-letter:float-left">We have replaced the worship of gods with the worship of potential. Derek Thompson calls it "Workism"—the belief that work is not only necessary to economic production, but also the centerpiece of one’s identity.</p>
           <div class="my-12 border-l-4 border-rust pl-8 py-2"><blockquote class="font-display font-bold text-2xl text-surveillance italic">"The achievement-subject exploits itself. It means that exploitation is possible even without domination."</blockquote><cite class="block mt-4 font-mono text-sm text-rust uppercase">— Byung-Chul Han</cite></div>
@@ -144,14 +153,14 @@
           <div class="bg-surveillance text-cream p-8 my-12 relative"><h4 class="font-mono text-rust uppercase tracking-widest mb-4">Diagnostic</h4><ul class="space-y-4 font-body text-lg"><li>Do you introduce yourself by job title?</li><li>Do you feel guilty when unproductive?</li><li>Is work your primary community?</li></ul></div>
           <div class="flex justify-between items-center mt-16 pt-8 border-t border-surveillance/10"><button onclick="navigateTo('home')" class="text-surveillance/50 hover:text-surveillance flex items-center gap-2"><span class="material-symbols-outlined">arrow_back</span> Home</button><button onclick="navigateTo('cities')" class="text-rust font-bold hover:text-surveillance flex items-center gap-2">Next: The Cities <span class="material-symbols-outlined">arrow_forward</span></button></div>
       </article>
-  `,T=e=>`
-      ${c("02","The Cities","Where ambition goes to pay rent.")}
-      ${g(e)}
-  `,C=()=>`
-      ${c("03","The Machines","Engines of Envy.")}
+  `,P=e=>`
+      ${p("02","The Cities","Where ambition goes to pay rent.")}
+      ${E(e)}
+  `,j=()=>`
+      ${p("03","The Machines","Engines of Envy.")}
       <section class="max-w-5xl mx-auto px-6 py-12">
           <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
-              <div class="md:sticky md:top-24 self-start">
+              <div class="self-start">
                   <div class="flex items-center gap-3 mb-4">
                       <span class="material-symbols-outlined text-rust">visibility</span>
                       <h3 class="font-display font-bold text-3xl">The Panopticon</h3>
@@ -275,6 +284,7 @@
                       </div>
                   </div>
                   
+                  <div class="hidden md:block" style="height: 50px;"></div>
                   <!-- Post 1 - Future Audience -->
                   <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
                       <div class="p-4">
@@ -483,7 +493,7 @@
           </div>
           <div class="flex justify-end mt-16"><button onclick="navigateTo('casualties')" class="text-rust font-bold flex items-center gap-2">Next: The Casualties <span class="material-symbols-outlined">arrow_forward</span></button></div>
       </section>
-  `,E=()=>c("04","The Casualties","Psychological Archetypes")+`
+  `,L=()=>p("04","The Casualties","Psychological Archetypes")+`
           <section class="py-16 px-6 max-w-6xl mx-auto">
               <div class="mb-16 max-w-3xl mx-auto">
                   <p class="font-body text-xl leading-relaxed text-surveillance/70">
@@ -491,11 +501,11 @@
                   </p>
               </div>
               <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                  ${u("01","The Watchman","Vigilant defense against uncertainty","watchman","visibility")}
-                  ${u("02","The Visible","Performance as identity","visible","person")}
-                  ${u("03","The Faithful","Work as calling","faithful","church")}
-                  ${u("04","The Departed","Quiet withdrawal","departed","person_off")}
-                  ${u("05","The Architect","Strategic detachment","architect","architecture")}
+                  ${x("01","The Watchman","Vigilant defense against uncertainty","watchman","visibility")}
+                  ${x("02","The Visible","Performance as identity","visible","person")}
+                  ${x("03","The Faithful","Work as calling","faithful","church")}
+                  ${x("04","The Departed","Quiet withdrawal","departed","person_off")}
+                  ${x("05","The Architect","Strategic detachment","architect","architecture")}
               </div>
               <div class="flex justify-end mt-16">
                   <button onclick="navigateTo('exits')" class="text-rust font-bold flex items-center gap-2">
@@ -503,8 +513,8 @@
                   </button>
               </div>
           </section>
-      `,$=()=>`
-      ${c("05","The Exits","Doors out of the burning building.")}
+      `,M=()=>`
+      ${p("05","The Exits","Doors out of the burning building.")}
       <section class="max-w-6xl mx-auto px-6 py-12">
           <div class="mb-16 max-w-3xl mx-auto bg-surveillance/5 p-8 border-l-4 border-rust">
               <p class="font-body text-lg text-surveillance/80 mb-4">
@@ -515,14 +525,14 @@
               </p>
           </div>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-              ${m("church","Vocation","Christian Exit","Work is not a ladder, but a station to serve. Value is conferred by origin (Imago Dei), not utility.")}
-              ${m("balance","Eudaimonia","Aristotelian Exit","Happiness is not a dopamine spike, but the steady practice of virtue over a complete life.")}
-              ${m("self_improvement","Transcendence","Humanistic Exit","The self is not a project to be optimized, but a vessel to be emptied into something larger.")}
+              ${b("church","Vocation","Christian Exit","Work is not a ladder, but a station to serve. Value is conferred by origin (Imago Dei), not utility.")}
+              ${b("balance","Eudaimonia","Aristotelian Exit","Happiness is not a dopamine spike, but the steady practice of virtue over a complete life.")}
+              ${b("self_improvement","Transcendence","Humanistic Exit","The self is not a project to be optimized, but a vessel to be emptied into something larger.")}
           </div>
           <div class="mt-16 text-center"><button onclick="navigateTo('resources')" class="px-8 py-3 bg-surveillance text-cream font-mono uppercase hover:bg-rust transition-colors">View Resources</button></div>
       </section>
-  `,S=()=>`
-      ${c("06","Resources","Tools for resistance.")}
+  `,B=()=>`
+      ${p("06","Resources","Tools for resistance.")}
       <section class="max-w-4xl mx-auto px-6 py-12 space-y-12">
           <div>
               <h3 class="font-display font-bold text-2xl border-b border-surveillance mb-6 pb-2">Essential Reading</h3>
@@ -584,4 +594,4 @@
               </ul>
           </div>
       </section>
-  `,o={currentView:"home",cityData:f,currentCity:"toronto"},h=new Set(["home","system","cities","machines","casualties","exits","resources"]);function I(e){o.currentCity=e,x()}function x(){const e=document.getElementById("app"),t={home:w,system:k,cities:()=>T(o),machines:C,casualties:E,exits:$,resources:S};e.style.opacity="0",setTimeout(()=>{e.innerHTML=t[o.currentView](),o.currentView==="cities"&&y(o),e.style.opacity="1";const s={home:"0%",system:"16%",cities:"32%",machines:"48%",casualties:"64%",exits:"80%",resources:"100%"};document.getElementById("progress-bar").style.width=s[o.currentView]},300)}function P(e){h.has(e)&&(o.currentView=e,e==="home"?history.replaceState(null,"",window.location.pathname+window.location.search):window.location.hash=e,x(),window.scrollTo(0,0))}function j(){const e=document.getElementById("mobile-menu");e.classList.toggle("hidden"),e.classList.toggle("flex")}function L(e,t=!1){const s=document.querySelector(`[data-trap="${e}"]`);if(!s)return;const i=s.querySelector("[data-trap-detail]"),a=s.querySelector("[data-trap-icon]"),r=i&&!i.classList.contains("hidden");r&&t||(document.querySelectorAll("[data-trap]").forEach(d=>{d.classList.remove("trap-active","bg-rust/5");const p=d.querySelector("[data-trap-detail]"),b=d.querySelector("[data-trap-icon]");p&&p.classList.add("hidden"),b&&b.classList.remove("rotate-180")}),r)||(s.classList.add("trap-active"),i&&i.classList.remove("hidden"),a&&a.classList.add("rotate-180"),window.innerWidth<768&&setTimeout(()=>{s.scrollIntoView({behavior:"smooth",block:"nearest"})},100))}Object.assign(window,{navigateTo:P,toggleMobileMenu:j,openTrap:L,selectCity:I});document.addEventListener("DOMContentLoaded",()=>{v(),x(),window.addEventListener("hashchange",()=>{v(),x()}),window.addEventListener("scroll",()=>{const e=document.getElementById("navbar");window.scrollY>50?(e.classList.add("shadow-md","py-2"),e.classList.remove("py-4")):(e.classList.remove("shadow-md","py-2"),e.classList.add("py-4"))})});function v(){const e=window.location.hash.replace("#","");e&&h.has(e)&&(o.currentView=e)}
+  `,o={currentView:"home",cityData:g,currentCity:"toronto"},y=new Set(["home","system","cities","machines","casualties","exits","resources"]);function A(e){o.currentCity=e,m()}function m(){const e=document.getElementById("app"),t={home:S,system:I,cities:()=>P(o),machines:j,casualties:L,exits:M,resources:B};e.style.opacity="0",setTimeout(()=>{e.innerHTML=t[o.currentView](),o.currentView==="cities"&&$(o),e.style.opacity="1";const s={home:"0%",system:"16%",cities:"32%",machines:"48%",casualties:"64%",exits:"80%",resources:"100%"};document.getElementById("progress-bar").style.width=s[o.currentView]},300)}function D(e){y.has(e)&&(o.currentView=e,e==="home"?history.replaceState(null,"",window.location.pathname+window.location.search):window.location.hash=e,m(),window.scrollTo(0,0))}function V(){const e=document.getElementById("mobile-menu");e.classList.toggle("hidden"),e.classList.toggle("flex")}function O(e,t=!1){const s=document.querySelector(`[data-trap="${e}"]`);if(!s)return;const r=s.querySelector("[data-trap-detail]"),a=s.querySelector("[data-trap-icon]"),i=r&&!r.classList.contains("hidden");i&&t||(document.querySelectorAll("[data-trap]").forEach(l=>{l.classList.remove("trap-active","bg-rust/5");const c=l.querySelector("[data-trap-detail]"),u=l.querySelector("[data-trap-icon]");c&&c.classList.add("hidden"),u&&u.classList.remove("rotate-180")}),i)||(s.classList.add("trap-active"),r&&r.classList.remove("hidden"),a&&a.classList.add("rotate-180"),window.innerWidth<768&&setTimeout(()=>{s.scrollIntoView({behavior:"smooth",block:"nearest"})},100))}Object.assign(window,{navigateTo:D,toggleMobileMenu:V,openTrap:O,selectCity:A});document.addEventListener("DOMContentLoaded",()=>{h(),m(),window.addEventListener("hashchange",()=>{h(),m()}),window.addEventListener("scroll",()=>{const e=document.getElementById("navbar");window.scrollY>50?(e.classList.add("shadow-md","py-2"),e.classList.remove("py-4")):(e.classList.remove("shadow-md","py-2"),e.classList.add("py-4"))})});function h(){const e=window.location.hash.replace("#","");e&&y.has(e)&&(o.currentView=e)}
