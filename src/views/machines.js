@@ -88,26 +88,21 @@ export const MachinesView = () => `
                       <li data-trap="work-esteem" class="border border-surveillance/10 border-l-4 border-l-transparent bg-white rounded-lg transition-all hover:border-rust/40 hover:shadow-sm">
                           <button class="w-full flex items-center justify-between gap-4 p-4 text-left" onclick="openTrap('work-esteem')">
                               <span class="font-mono text-xs text-rust">06</span>
-                              <span class="font-display font-bold text-lg text-surveillance flex-1">Work-Contingent Self-Esteem</span>
+                              <span class="font-display font-bold text-lg text-surveillance flex-1">Work-Conditional Esteem</span>
                               <span class="material-symbols-outlined text-surveillance/40 transition-transform" data-trap-icon>expand_more</span>
                           </button>
                           <div class="hidden px-4 pb-4 text-sm text-surveillance/70 leading-relaxed" data-trap-detail>
-                              Self-worth now updates in real time with likes and reviews, producing chronic emotional volatility.
+                              Your sense of worth becomes directly coupled to career validation; identity is outsourced to engagement metrics.
                           </div>
                       </li>
-                      <div class="flex items-center gap-2 mb-3 mt-6">
-                          <span class="h-px flex-1 bg-gradient-to-r from-rust/20 to-transparent"></span>
-                          <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-rust/60 px-2">Status & Defensive</span>
-                          <span class="h-px flex-1 bg-gradient-to-l from-rust/20 to-transparent"></span>
-                      </div>
                       <li data-trap="veblen-inversion" class="border border-surveillance/10 border-l-4 border-l-transparent bg-white rounded-lg transition-all hover:border-rust/40 hover:shadow-sm">
                           <button class="w-full flex items-center justify-between gap-4 p-4 text-left" onclick="openTrap('veblen-inversion')">
                               <span class="font-mono text-xs text-rust">07</span>
-                              <span class="font-display font-bold text-lg text-surveillance flex-1">The Veblen Inversion</span>
+                              <span class="font-display font-bold text-lg text-surveillance flex-1">Veblen Inversion</span>
                               <span class="material-symbols-outlined text-surveillance/40 transition-transform" data-trap-icon>expand_more</span>
                           </button>
                           <div class="hidden px-4 pb-4 text-sm text-surveillance/70 leading-relaxed" data-trap-detail>
-                              Exhaustion becomes the new flex; lack of leisure signals scarce human capital and high demand.
+                              Exhaustion becomes status signaling; burnout is reframed as proof of dedication and hustle.
                           </div>
                       </li>
                       <li data-trap="defensive-ambition" class="border border-surveillance/10 border-l-4 border-l-transparent bg-white rounded-lg transition-all hover:border-rust/40 hover:shadow-sm">
@@ -122,79 +117,221 @@ export const MachinesView = () => `
                       </li>
                   </ol>
               </div>
-              <div class="bg-white shadow-xl border p-6 relative">
-                  <div class="flex items-center gap-3 mb-4">
+              
+              <!-- LinkedIn Feed Container -->
+              <div class="space-y-4">
+                  <div class="flex items-center gap-3 mb-6 px-1">
                       <span class="material-symbols-outlined text-3xl text-surveillance/90">visibility</span>
                       <div>
                           <p class="text-xs uppercase tracking-[0.3em] text-surveillance/60">Surveillance feed</p>
                           <p class="text-sm font-display text-surveillance">Live sentiment</p>
                       </div>
                   </div>
-                  <div class="space-y-6">
-                      <div class="border border-surveillance/10 rounded-lg p-4 bg-cream/60">
-                          <p class="text-xs font-mono text-gray-400 uppercase mb-2">Post 01</p>
-                          <p>
-                            Hustle culture is optimized for an audience that never sees the real cost. Post real rest instead of another seed-round win.
-                            <span class="cursor-pointer text-rust border-b-2 border-rust/30 hover:border-rust hover:bg-rust/10 transition-colors px-0.5 rounded-sm" onclick="openTrap('future-audience', true)">Every move becomes marketing</span>.
-                          </p>
-                      </div>
-                      <div class="border border-surveillance/10 rounded-lg p-4 bg-cream/60">
-                          <p class="text-xs font-mono text-gray-400 uppercase mb-2">Post 02</p>
-                          <p>
-                            My feed is sticky. When I remove algorithmic dopamine, I actually ship slower, but feel sharper. Going quiet helps avoid <span class="cursor-pointer text-rust border-b-2 border-rust/30 hover:border-rust hover:bg-rust/10 transition-colors px-0.5 rounded-sm" onclick="openTrap('success-theater', true)">constant pitching</span>.
-                          </p>
-                      </div>
-                      <div class="border border-surveillance/10 rounded-lg p-4 bg-cream/60">
-                          <p class="text-xs font-mono text-gray-400 uppercase mb-2">Post 03</p>
-                          <p>
-                            The feed is a highlight reel of outliers. I try to measure progress by shipped outcomes and depth of focus.
-                            <span class="cursor-pointer text-rust border-b-2 border-rust/30 hover:border-rust hover:bg-rust/10 transition-colors px-0.5 rounded-sm" onclick="openTrap('extremity-bias', true)">The unicorns set the baseline</span>.
-                          </p>
-                      </div>
-                      <div class="border border-surveillance/10 rounded-lg p-4 bg-cream/60">
-                          <p class="text-xs font-mono text-gray-400 uppercase mb-2">Post 04</p>
-                          <p>
-                            I didn’t realize how much I was tracking my peers until I logged off and felt relief. Comparison is infinite if you let it be.
-                            <span class="cursor-pointer text-rust border-b-2 border-rust/30 hover:border-rust hover:bg-rust/10 transition-colors px-0.5 rounded-sm" onclick="openTrap('infinite-comparison', true)">Perspective breaks the spell</span>.
-                          </p>
-                      </div>
-                      <div class="border border-surveillance/10 rounded-lg p-4 bg-cream/60">
-                          <p class="text-xs font-mono text-gray-400 uppercase mb-2">Post 05</p>
-                          <p>
-                            If your layoff post reads like a case study, something is off. Pain is allowed to be unoptimized.
-                            <span class="cursor-pointer text-rust border-b-2 border-rust/30 hover:border-rust hover:bg-rust/10 transition-colors px-0.5 rounded-sm" onclick="openTrap('performative-vulnerability', true)">Turning loss into content</span>.
-                          </p>
-                      </div>
-                      <div class="border border-surveillance/10 rounded-lg p-4 bg-cream/60">
-                          <p class="text-xs font-mono text-gray-400 uppercase mb-2">Post 06</p>
-                          <p>
-                            I used to feel guilty on weekends until I saw how much my mood depended on notifications.
-                            <span class="cursor-pointer text-rust border-b-2 border-rust/30 hover:border-rust hover:bg-rust/10 transition-colors px-0.5 rounded-sm" onclick="openTrap('work-esteem', true)">Self-worth updates in real time</span>.
-                          </p>
-                      </div>
-                      <div class="border border-surveillance/10 rounded-lg p-4 bg-cream/60">
-                          <p class="text-xs font-mono text-gray-400 uppercase mb-2">Post 07</p>
-                          <p>
-                            Burnout isn't a badge. Rest is a strategy, not a status symbol.
-                            <span class="cursor-pointer text-rust border-b-2 border-rust/30 hover:border-rust hover:bg-rust/10 transition-colors px-0.5 rounded-sm" onclick="openTrap('veblen-inversion', true)">Exhaustion as a flex</span>.
-                          </p>
-                      </div>
-                      <div class="border border-surveillance/10 rounded-lg p-4 bg-cream/60">
-                          <p class="text-xs font-mono text-gray-400 uppercase mb-2">Post 08</p>
-                          <p>
-                            I chase credentials when I feel precarious, not when I'm inspired. It's protection dressed up as ambition.
-                            <span class="cursor-pointer text-rust border-b-2 border-rust/30 hover:border-rust hover:bg-rust/10 transition-colors px-0.5 rounded-sm" onclick="openTrap('defensive-ambition', true)">Fear-driven optimization</span>.
-                          </p>
+                  
+                  <!-- Post 1 - Future Audience -->
+                  <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
+                      <div class="p-4">
+                          <div class="flex items-start gap-3 mb-3">
+                              <div class="w-12 h-12 rounded-full bg-gradient-to-br from-pink-400 to-pink-600 flex items-center justify-center text-white font-bold text-lg flex-shrink-0">
+                                  AT
+                              </div>
+                              <div class="flex-1 min-w-0">
+                                  <div class="flex items-center gap-2">
+                                      <h4 class="font-semibold text-gray-900 text-sm">Alex Thompson</h4>
+                                      <span class="text-gray-400">•</span>
+                                      <span class="text-gray-500 text-xs">1st</span>
+                                  </div>
+                                  <p class="text-xs text-gray-600">Software Engineer @ DataCorp</p>
+                                  <p class="text-xs text-gray-500">3h • 🌎</p>
+                              </div>
+                          </div>
+                          <div class="text-sm text-gray-800 leading-relaxed">
+                              <p>Quick wins from this week:</p>
+                              <p class="mt-2">✅ Led standup (showing leadership!)</p>
+                              <p>✅ Mentored junior dev (giving back!)</p>
+                              <p>✅ Fixed critical bug (problem solver!)</p>
+                              <p class="mt-2"><span class="cursor-pointer text-rust border-b-2 border-rust/30 hover:border-rust hover:bg-rust/10 transition-colors px-0.5 rounded-sm" onclick="openTrap('future-audience', true)">Always documenting the journey.</span> You never know who's watching! 👀</p>
+                          </div>
                       </div>
                   </div>
-                  <div class="mt-6 pt-4 border-t border-gray-100 flex items-center justify-between text-gray-400">
-                      <div class="flex gap-4 text-xs font-mono">
-                          <span>👍 127</span>
-                          <span>💬 23</span>
-                          <span>🔄 8</span>
+
+                  <!-- Post 2 - Success Theater -->
+                  <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
+                      <div class="p-4">
+                          <div class="flex items-start gap-3 mb-3">
+                              <div class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-400 to-blue-600 flex items-center justify-center text-white font-bold text-lg flex-shrink-0">
+                                  JM
+                              </div>
+                              <div class="flex-1 min-w-0">
+                                  <div class="flex items-center gap-2">
+                                      <h4 class="font-semibold text-gray-900 text-sm">Jessica Martinez</h4>
+                                      <span class="text-gray-400">•</span>
+                                      <span class="text-gray-500 text-xs">2nd</span>
+                                  </div>
+                                  <p class="text-xs text-gray-600">Product Manager @ TechCorp</p>
+                                  <p class="text-xs text-gray-500">4h • 🌎</p>
+                              </div>
+                          </div>
+                          <div class="text-sm text-gray-800 leading-relaxed">
+                              <p>Excited to share that our team just shipped v2.0! 🚀</p>
+                              <p class="mt-2">6 months of hard work, countless late nights, but we made it happen. <span class="cursor-pointer text-rust border-b-2 border-rust/30 hover:border-rust hover:bg-rust/10 transition-colors px-0.5 rounded-sm" onclick="openTrap('success-theater', true)">Grateful for this amazing journey.</span></p>
+                              <p class="mt-2">Onward and upward! 💪</p>
+                          </div>
                       </div>
                   </div>
-                  <p class="mt-4 text-xs text-center text-gray-400 font-mono uppercase tracking-wide">Click highlighted phrases to expand the left list</p>
+
+                  <!-- Post 3 - Performative Vulnerability -->
+                  <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
+                      <div class="p-4">
+                          <div class="flex items-start gap-3 mb-3">
+                              <div class="w-12 h-12 rounded-full bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center text-white font-bold text-lg flex-shrink-0">
+                                  SC
+                              </div>
+                              <div class="flex-1 min-w-0">
+                                  <div class="flex items-center gap-2">
+                                      <h4 class="font-semibold text-gray-900 text-sm">Sarah Chen</h4>
+                                      <span class="text-gray-400">•</span>
+                                      <span class="text-gray-500 text-xs">3rd+</span>
+                                  </div>
+                                  <p class="text-xs text-gray-600">Marketing Director @ FinTech Inc</p>
+                                  <p class="text-xs text-gray-500">2d • 🌎</p>
+                              </div>
+                          </div>
+                          <div class="text-sm text-gray-800 leading-relaxed">
+                              <p>Today I was laid off. Here's what I learned 🧵</p>
+                              <p class="mt-2">1. <span class="cursor-pointer text-rust border-b-2 border-rust/30 hover:border-rust hover:bg-rust/10 transition-colors px-0.5 rounded-sm" onclick="openTrap('performative-vulnerability', true)">Every ending is a new beginning</span></p>
+                              <p>2. Your network is your net worth</p>
+                              <p>3. Resilience is built in moments like these</p>
+                              <p class="mt-2">I'm excited about what's next. Open to opportunities in marketing leadership!</p>
+                          </div>
+                      </div>
+                  </div>
+
+                  <!-- Post 4 - Infinite Comparison -->
+                  <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
+                      <div class="p-4">
+                          <div class="flex items-start gap-3 mb-3">
+                              <div class="w-12 h-12 rounded-full bg-gradient-to-br from-indigo-400 to-indigo-600 flex items-center justify-center text-white font-bold text-lg flex-shrink-0">
+                                  LP
+                              </div>
+                              <div class="flex-1 min-w-0">
+                                  <div class="flex items-center gap-2">
+                                      <h4 class="font-semibold text-gray-900 text-sm">Lisa Park</h4>
+                                      <span class="text-gray-400">•</span>
+                                      <span class="text-gray-500 text-xs">3rd+</span>
+                                  </div>
+                                  <p class="text-xs text-gray-600">UX Designer @ DesignStudio</p>
+                                  <p class="text-xs text-gray-500">6h • 🌎</p>
+                              </div>
+                          </div>
+                          <div class="text-sm text-gray-800 leading-relaxed">
+                              <p>Seeing all these amazing career updates in my feed today.</p>
+                              <p class="mt-2"><span class="cursor-pointer text-rust border-b-2 border-rust/30 hover:border-rust hover:bg-rust/10 transition-colors px-0.5 rounded-sm" onclick="openTrap('infinite-comparison', true)">Everyone's crushing it while I'm still working on the same project.</span> Time to level up!</p>
+                          </div>
+                      </div>
+                  </div>
+
+                  <!-- Post 5 - Extremity Bias -->
+                  <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
+                      <div class="p-4">
+                          <div class="flex items-start gap-3 mb-3">
+                              <div class="w-12 h-12 rounded-full bg-gradient-to-br from-purple-400 to-purple-600 flex items-center justify-center text-white font-bold text-lg flex-shrink-0">
+                                  RK
+                              </div>
+                              <div class="flex-1 min-w-0">
+                                  <div class="flex items-center gap-2">
+                                      <h4 class="font-semibold text-gray-900 text-sm">Ryan Kumar</h4>
+                                      <span class="text-gray-400">•</span>
+                                      <span class="text-gray-500 text-xs">1st</span>
+                                  </div>
+                                  <p class="text-xs text-gray-600">CEO & Founder @ StartupAI | Forbes 30U30</p>
+                                  <p class="text-xs text-gray-500">1d • 🌎</p>
+                              </div>
+                          </div>
+                          <div class="text-sm text-gray-800 leading-relaxed">
+                              <p>Thrilled to announce we've closed our $40M Series B! 🎉</p>
+                              <p class="mt-2">From dorm room idea to 200+ employees in 18 months. <span class="cursor-pointer text-rust border-b-2 border-rust/30 hover:border-rust hover:bg-rust/10 transition-colors px-0.5 rounded-sm" onclick="openTrap('extremity-bias', true)">The journey is just beginning.</span></p>
+                              <p class="mt-2">Thank you to our incredible team and investors who believed in the vision.</p>
+                          </div>
+                      </div>
+                  </div>
+
+                  <!-- Post 6 - Work-Conditional Esteem -->
+                  <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
+                      <div class="p-4">
+                          <div class="flex items-start gap-3 mb-3">
+                              <div class="w-12 h-12 rounded-full bg-gradient-to-br from-teal-400 to-teal-600 flex items-center justify-center text-white font-bold text-lg flex-shrink-0">
+                                  DW
+                              </div>
+                              <div class="flex-1 min-w-0">
+                                  <div class="flex items-center gap-2">
+                                      <h4 class="font-semibold text-gray-900 text-sm">David Wang</h4>
+                                      <span class="text-gray-400">•</span>
+                                      <span class="text-gray-500 text-xs">2nd</span>
+                                  </div>
+                                  <p class="text-xs text-gray-600">Sales Manager @ Enterprise Solutions</p>
+                                  <p class="text-xs text-gray-500">12h • 🌎</p>
+                              </div>
+                          </div>
+                          <div class="text-sm text-gray-800 leading-relaxed">
+                              <p>Hit 150% of quota this month! 📈</p>
+                              <p class="mt-2"><span class="cursor-pointer text-rust border-b-2 border-rust/30 hover:border-rust hover:bg-rust/10 transition-colors px-0.5 rounded-sm" onclick="openTrap('work-esteem', true)">Finally feeling like I'm adding value.</span> This week has been rough but numbers don't lie.</p>
+                              <p class="mt-2">Engagement = validation 💯</p>
+                          </div>
+                      </div>
+                  </div>
+
+                  <!-- Post 7 - Veblen Inversion -->
+                  <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
+                      <div class="p-4">
+                          <div class="flex items-start gap-3 mb-3">
+                              <div class="w-12 h-12 rounded-full bg-gradient-to-br from-orange-400 to-orange-600 flex items-center justify-center text-white font-bold text-lg flex-shrink-0">
+                                  MB
+                              </div>
+                              <div class="flex-1 min-w-0">
+                                  <div class="flex items-center gap-2">
+                                      <h4 class="font-semibold text-gray-900 text-sm">Michael Brooks</h4>
+                                      <span class="text-gray-400">•</span>
+                                      <span class="text-gray-500 text-xs">2nd</span>
+                                  </div>
+                                  <p class="text-xs text-gray-600">VP Engineering @ CloudScale</p>
+                                  <p class="text-xs text-gray-500">18h • 🌎</p>
+                              </div>
+                          </div>
+                          <div class="text-sm text-gray-800 leading-relaxed">
+                              <p>Sunday grind hits different ☕💻</p>
+                              <p class="mt-2"><span class="cursor-pointer text-rust border-b-2 border-rust/30 hover:border-rust hover:bg-rust/10 transition-colors px-0.5 rounded-sm" onclick="openTrap('veblen-inversion', true)">No rest for those building the future.</span> Just pushed 3 PRs before breakfast.</p>
+                              <p class="mt-2">#hustleculture #neverstop</p>
+                          </div>
+                      </div>
+                  </div>
+
+                  <!-- Post 8 - Defensive Ambition -->
+                  <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
+                      <div class="p-4">
+                          <div class="flex items-start gap-3 mb-3">
+                              <div class="w-12 h-12 rounded-full bg-gradient-to-br from-rose-400 to-rose-600 flex items-center justify-center text-white font-bold text-lg flex-shrink-0">
+                                  NK
+                              </div>
+                              <div class="flex-1 min-w-0">
+                                  <div class="flex items-center gap-2">
+                                      <h4 class="font-semibold text-gray-900 text-sm">Nina Kapoor</h4>
+                                      <span class="text-gray-400">•</span>
+                                      <span class="text-gray-500 text-xs">1st</span>
+                                  </div>
+                                  <p class="text-xs text-gray-600">Business Analyst @ Consulting Firm</p>
+                                  <p class="text-xs text-gray-500">1d • 🌎</p>
+                              </div>
+                          </div>
+                          <div class="text-sm text-gray-800 leading-relaxed">
+                              <p>Just completed my 5th certification this year 🎓</p>
+                              <p class="mt-2">AWS ✓ Scrum Master ✓ Six Sigma ✓ PMP ✓ Data Analytics ✓</p>
+                              <p class="mt-2"><span class="cursor-pointer text-rust border-b-2 border-rust/30 hover:border-rust hover:bg-rust/10 transition-colors px-0.5 rounded-sm" onclick="openTrap('defensive-ambition', true)">In this market, you can never be too prepared.</span> Already enrolled in the next one!</p>
+                          </div>
+                      </div>
+                  </div>
+
+                  <p class="mt-8 text-xs text-center text-gray-500 font-mono uppercase tracking-wide">Click highlighted phrases to explore psychological traps</p>
               </div>
           </div>
           <div class="flex justify-end mt-16"><button onclick="navigateTo('casualties')" class="text-rust font-bold flex items-center gap-2">Next: The Casualties <span class="material-symbols-outlined">arrow_forward</span></button></div>

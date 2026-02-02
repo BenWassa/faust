@@ -44,75 +44,153 @@ export const cityData = {
 export const CitiesLayout = (state) => {
   const { currentCity, cityData } = state
   if (!cityData[currentCity]) return ''
-  const buttons = Object.keys(cityData)
-    .map(
-      (key) =>
-        `<button onclick="selectCity('${key}')" class="px-6 py-3 border border-surveillance font-mono text-sm uppercase transition-all ${
-          key === currentCity ? 'bg-surveillance text-cream' : 'hover:bg-surveillance/10'
-        }">${key}</button>`
-    )
+
+  // Generate the "Index" list of cities
+  const cityList = Object.keys(cityData)
+    .map((key) => {
+      const isActive = key === currentCity
+      return `
+        <button
+          onclick="selectCity('${key}')"
+          class="w-full text-left px-4 py-4 border-b border-surveillance/10 flex justify-between items-center group transition-all hover:bg-surveillance/5 ${
+            isActive ? 'bg-surveillance/5 border-l-4 border-l-rust pl-3' : 'pl-4'
+          }"
+        >
+          <span class="font-mono text-sm uppercase tracking-widest ${
+            isActive ? 'text-rust font-bold' : 'text-surveillance/70'
+          }">${key}</span>
+          ${
+            isActive
+              ? '<span class="material-symbols-outlined text-sm text-rust">arrow_right</span>'
+              : ''
+          }
+        </button>`
+    })
     .join('')
 
   return `
-        <section class="max-w-6xl mx-auto px-6 py-12">
-            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-                <div>
-                    <h3 class="font-display font-bold text-3xl mb-6">Select Pressure Point</h3>
-                    <div class="flex flex-wrap gap-4 mb-8">${buttons}</div>
-                    <div id="city-details" class="bg-white p-8 border border-surveillance/10 shadow-sm animate-fade-in">
-                        <h4 class="font-display font-bold text-4xl mb-2 text-surveillance uppercase">${currentCity}</h4>
-                        <p class="font-mono text-rust text-sm uppercase tracking-widest mb-6">${cityData[currentCity].desc}</p>
-                        <p class="font-body text-lg" id="city-narrative"></p>
-                    </div>
-                </div>
-                <div class="bg-blueprint border border-surveillance/20 relative min-h-[380px] flex flex-col justify-end overflow-hidden">
-                    <img id="city-img" src="" class="absolute inset-0 w-full h-full object-cover opacity-30 img-blueprint mix-blend-multiply">
-                    <div class="relative z-10 w-full bg-cream/90 backdrop-blur-sm border border-surveillance/10 px-6 py-4">
-                        <h5 class="font-mono text-xs uppercase mb-4 text-center font-bold tracking-widest">Economic Viability</h5>
-                        <div class="flex justify-center items-end gap-10 mb-4" style="height: 140px">
-                            <div class="flex flex-col items-center gap-2">
-                                <div class="w-14 bg-surveillance transition-all duration-500" id="bar-income" style="height: 70px"></div>
-                                <div class="text-center">
-                                    <span class="text-xs font-mono font-bold text-surveillance mb-0.5 block" id="income-value">$99K</span>
-                                    <span class="text-xs font-mono text-surveillance/60 uppercase text-[10px]">Income</span>
-                                </div>
-                            </div>
-                            <div class="flex flex-col items-center gap-2">
-                                <div class="w-14 bg-rust transition-all duration-500" id="bar-cost" style="height: 130px"></div>
-                                <div class="text-center">
-                                    <span class="text-xs font-mono font-bold text-rust mb-0.5 block" id="cost-value">$1.07M</span>
-                                    <span class="text-xs font-mono text-surveillance/60 uppercase text-[10px]">Cost</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="text-center pt-3 border-t border-surveillance/10"><span class="block font-mono text-[10px] text-surveillance/50 uppercase mb-1">Key Stat</span><span class="block font-display font-bold text-lg text-rust" id="stat-main">${cityData[currentCity].stats}</span></div>
-                    </div>
-                </div>
+    <section class="max-w-7xl mx-auto px-6 py-12 lg:py-20">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-0 border border-surveillance/20 bg-white shadow-sm">
+
+        <div class="lg:col-span-4 border-r border-surveillance/20 flex flex-col">
+          <div class="p-6 border-b border-surveillance/20 bg-blueprint">
+            <span class="font-mono text-[10px] uppercase text-surveillance/60 mb-1 block">Select Jurisdiction</span>
+            <h3 class="font-display font-bold text-2xl text-surveillance">The Markets</h3>
+          </div>
+
+          <div class="flex-grow flex flex-col">
+            ${cityList}
+          </div>
+
+          <div class="p-8 mt-auto bg-cream/30">
+             <div class="font-mono text-[10px] uppercase text-rust mb-2 tracking-widest">System Note</div>
+             <p class="font-body text-lg italic leading-relaxed text-surveillance/80" id="city-narrative"></p>
+          </div>
+        </div>
+
+        <div class="lg:col-span-8 relative min-h-[500px] flex flex-col">
+
+          <div class="absolute top-0 left-0 w-full z-20 flex justify-between items-start p-6 pointer-events-none">
+            <div class="bg-white/90 backdrop-blur border border-surveillance/20 px-4 py-2 shadow-sm">
+              <span class="font-mono text-[10px] uppercase text-surveillance/50 block mb-1">Status</span>
+              <span class="font-display font-bold text-xl text-surveillance uppercase" id="city-title">${currentCity}</span>
+              <span class="font-mono text-xs text-rust uppercase tracking-widest block mt-1" id="city-desc"></span>
             </div>
-            <div class="flex justify-end mt-8"><button onclick="navigateTo('machines')" class="text-rust font-bold flex items-center gap-2">Next: The Machines <span class="material-symbols-outlined">arrow_forward</span></button></div>
-        </section>
-    `
+            <div class="bg-rust text-cream px-3 py-1 font-mono text-xs uppercase tracking-widest shadow-md">
+              <span id="stat-main">${cityData[currentCity].stats}</span>
+            </div>
+          </div>
+
+          <div class="relative flex-grow bg-surveillance overflow-hidden group">
+            <div class="absolute inset-0 bg-blueprint opacity-20 z-10 mix-blend-overlay"></div>
+            <div class="absolute top-0 left-0 w-full h-full z-10 pointer-events-none border-[20px] border-white/0">
+               <div class="absolute top-8 left-8 w-4 h-4 border-t border-l border-white/50"></div>
+               <div class="absolute top-8 right-8 w-4 h-4 border-t border-r border-white/50"></div>
+               <div class="absolute bottom-8 left-8 w-4 h-4 border-b border-l border-white/50"></div>
+               <div class="absolute bottom-8 right-8 w-4 h-4 border-b border-r border-white/50"></div>
+            </div>
+            <img id="city-img" src="" class="absolute inset-0 w-full h-full object-cover opacity-60 grayscale contrast-125 mix-blend-luminosity transition-all duration-700 group-hover:scale-105 group-hover:opacity-40">
+          </div>
+
+          <div class="bg-white border-t border-surveillance/20 p-8 grid grid-cols-2 md:grid-cols-3 gap-8 items-end relative z-20">
+
+            <div class="col-span-2 md:col-span-1">
+              <span class="font-mono text-[10px] uppercase text-surveillance/60 block mb-2">Price-to-Income Ratio</span>
+              <div class="flex items-baseline gap-2">
+                 <span class="font-display font-bold text-6xl text-rust" id="ratio-value">${
+                   cityData[currentCity].ratio
+                 }</span>
+                 <span class="font-mono text-sm text-surveillance/50">x</span>
+              </div>
+            </div>
+
+            <div class="col-span-2 flex items-end gap-12 h-32 pb-2">
+               <div class="flex flex-col items-center gap-2 group w-1/2">
+                  <div class="w-full relative h-[140px] flex items-end">
+                    <div class="w-full bg-surveillance/20 hover:bg-surveillance/30 transition-all duration-500 relative" id="bar-income" style="height: 70px">
+                       <div class="absolute -top-6 left-0 w-full text-center font-mono text-xs font-bold text-surveillance" id="income-value"></div>
+                    </div>
+                  </div>
+                  <span class="font-mono text-[10px] uppercase tracking-widest text-surveillance/60">Annual Income</span>
+               </div>
+
+               <div class="flex flex-col items-center gap-2 group w-1/2">
+                   <div class="w-full relative h-[140px] flex items-end">
+                    <div class="w-full bg-rust hover:bg-rust/90 transition-all duration-500 relative" id="bar-cost" style="height: 130px">
+                       <div class="absolute -top-6 left-0 w-full text-center font-mono text-xs font-bold text-rust" id="cost-value"></div>
+                    </div>
+                  </div>
+                  <span class="font-mono text-[10px] uppercase tracking-widest text-surveillance/60">Property Cost</span>
+               </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="flex justify-between items-center mt-8">
+        <span class="font-mono text-xs text-surveillance/40 uppercase">Fig 02.1 — Global Affordability Index</span>
+        <button onclick="navigateTo('machines')" class="group flex items-center gap-3 px-6 py-3 border border-rust text-rust font-mono text-sm uppercase tracking-widest hover:bg-rust hover:text-white transition-all">
+          Enter The Machines
+          <span class="material-symbols-outlined transition-transform group-hover:translate-x-1">arrow_forward</span>
+        </button>
+      </div>
+    </section>
+  `
 }
 
 export const updateCityPanel = (state) => {
-  const narrative = document.getElementById('city-narrative')
-  const img = document.getElementById('city-img')
   const data = cityData[state.currentCity]
   if (!data) return
 
-  if (narrative) narrative.innerText = data.narrative
+  // Update Text Content
+  const setText = (id, text) => {
+    const el = document.getElementById(id)
+    if (el) el.innerText = text
+  }
+
+  setText('city-narrative', data.narrative)
+  setText('city-title', state.currentCity)
+  setText('city-desc', data.desc)
+  setText('stat-main', data.stats)
+  setText('ratio-value', data.ratio)
+  setText('income-value', '$' + (data.income / 1000).toFixed(0) + 'K')
+  setText('cost-value', data.costDisplay)
+
+  // Update Image
+  const img = document.getElementById('city-img')
   if (img) {
     img.src = data.image.src
     img.alt = data.image.alt
   }
 
-  const incomeValue = document.getElementById('income-value')
-  const costValue = document.getElementById('cost-value')
+  // Update Bars
   const incomeBar = document.getElementById('bar-income')
   const costBar = document.getElementById('bar-cost')
 
-  if (incomeValue) incomeValue.innerText = '$' + (data.income / 1000).toFixed(0) + 'K'
-  if (incomeBar) incomeBar.style.height = '70px'
-  if (costValue) costValue.innerText = data.costDisplay
-  if (costBar) costBar.style.height = data.costBarHeight + 'px'
+  // We set a small timeout to allow the CSS transition to trigger if this is a re-render
+  requestAnimationFrame(() => {
+    if (incomeBar) incomeBar.style.height = '70px' // Baseline
+    if (costBar) costBar.style.height = data.costBarHeight + 'px'
+  })
 }
