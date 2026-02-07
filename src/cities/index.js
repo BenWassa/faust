@@ -229,6 +229,8 @@ export const CitiesLayout = (state) => {
         </div>
       </div>
 
+      <p class="mt-3 font-mono text-[10px] text-surveillance/35 tracking-wide lowercase" id="city-sources"></p>
+
       <div class="flex justify-between items-center mt-8">
         <span class="font-mono text-xs text-surveillance/40 uppercase">Fig 02.1 — Housing Affordability (Price-to-Income)</span>
         <button onclick="navigateTo('machines')" class="text-rust font-bold flex items-center gap-2">Next: The Machines <span class="material-symbols-outlined">arrow_forward</span></button>
@@ -261,11 +263,15 @@ export const updateCityPanel = (state) => {
   setText('cost-value', priceLabel)
   setText(
     'city-metadata',
-    `${data.incomeType} (${data.taxBasis}). Ownership: ${data.ownershipSource} (${data.ownershipYear}). Rent: ${data.rentSource} (${data.rentYear}).`
+    `Inputs: ${data.incomeType} (${data.taxBasis}), ${data.rentYear}. Median home price, ${data.ownershipYear}.`
   )
   setText(
     'city-definition',
     'Definition: price-to-income = median home price divided by median annual household income.'
+  )
+  setText(
+    'city-sources',
+    `sources: ownership - ${data.ownershipSource} (${data.ownershipYear}); rent - ${data.rentSource} (${data.rentYear}).`.toLowerCase()
   )
 
   const graphDescription = `${cityLabel}: median income ${incomeLabel}, median home price ${priceLabel}, price-to-income ratio ${ratioLabel} to 1.`
