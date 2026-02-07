@@ -1,4 +1,11 @@
-(function(){const t=document.createElement("link").relList;if(t&&t.supports&&t.supports("modulepreload"))return;for(const a of document.querySelectorAll('link[rel="modulepreload"]'))r(a);new MutationObserver(a=>{for(const i of a)if(i.type==="childList")for(const n of i.addedNodes)n.tagName==="LINK"&&n.rel==="modulepreload"&&r(n)}).observe(document,{childList:!0,subtree:!0});function s(a){const i={};return a.integrity&&(i.integrity=a.integrity),a.referrerPolicy&&(i.referrerPolicy=a.referrerPolicy),a.crossOrigin==="use-credentials"?i.credentials="include":a.crossOrigin==="anonymous"?i.credentials="omit":i.credentials="same-origin",i}function r(a){if(a.ep)return;a.ep=!0;const i=s(a);fetch(a.href,i)}})();const g={toronto:{ratio:10.7,income:99e3,desc:"The Trap of Good Intentions",stats:"77% income for ownership",narrative:"The ambition tax: where hustle is survival, not aspiration. 10.7 price-to-income makes ownership mathematical.",costDisplay:"$1.07M",costBarHeight:130,image:{src:"./toronto.png",alt:"CN Tower Toronto skyline black and white"}},vancouver:{ratio:12.7,income:92e3,desc:"Immobility by Design",stats:"12.7 Price-to-Income Ratio",narrative:"The most beautiful trap: a 12.7 price-to-income ratio means only inheritance buys shelter.",costDisplay:"$1.27M",costBarHeight:138,image:{src:"./vancouver.png",alt:"Lions Gate Bridge Vancouver black and white"}},london:{ratio:9.8,income:45e3,desc:"The Feudal Rental Market",stats:"52% income on rent",narrative:'Feudalism reinvented. 9.8 price-to-income and 52% of pay on rent feels "normal."',costDisplay:"£221K",costBarHeight:115,image:{src:"./london.png",alt:"St Pauls Cathedral London skyline black and white"}},nyc:{ratio:7.5,income:8e4,desc:"The Velocity Machine",stats:"53% Rent Burdened",narrative:"Velocity over everything. 53% rent burden, yet the story says you are lucky.",costDisplay:"$600K",costBarHeight:118,image:{src:"./nyc.png",alt:"Empire State Building NYC skyline black and white"}}},T={nyc:"New York City"},C=e=>T[e]||e.charAt(0).toUpperCase()+e.slice(1),E=e=>{const{currentCity:t,cityData:s}=e;return s[t]?`
+(function(){const a=document.createElement("link").relList;if(a&&a.supports&&a.supports("modulepreload"))return;for(const t of document.querySelectorAll('link[rel="modulepreload"]'))s(t);new MutationObserver(t=>{for(const r of t)if(r.type==="childList")for(const o of r.addedNodes)o.tagName==="LINK"&&o.rel==="modulepreload"&&s(o)}).observe(document,{childList:!0,subtree:!0});function i(t){const r={};return t.integrity&&(r.integrity=t.integrity),t.referrerPolicy&&(r.referrerPolicy=t.referrerPolicy),t.crossOrigin==="use-credentials"?r.credentials="include":t.crossOrigin==="anonymous"?r.credentials="omit":r.credentials="same-origin",r}function s(t){if(t.ep)return;t.ep=!0;const r=i(t);fetch(t.href,r)}})();const x=24,L=130,M={toronto:{medianIncome:99e3,medianHomePrice:1029600,currency:"CAD",year:2025,incomeType:"Median household income",taxBasis:"Pre-tax",ownershipSource:"Project Faust city baseline",rentSource:"Project Faust city baseline",desc:"The Trap of Good Intentions",burdenLabel:"Ownership burden",burdenValue:"77% of income",narrative:"The ambition tax: where hustle is survival, not aspiration. Ownership becomes a math problem first, a life decision second.",image:{src:"./toronto.png",alt:"CN Tower Toronto skyline black and white"}},vancouver:{medianIncome:92e3,medianHomePrice:1168400,currency:"CAD",year:2025,incomeType:"Median household income",taxBasis:"Pre-tax",ownershipSource:"Project Faust city baseline",rentSource:"Project Faust city baseline",desc:"Immobility by Design",burdenLabel:"Affordability pressure",burdenValue:"12.7x income",narrative:"The most beautiful trap: affordability drifts so far from wages that mobility becomes inheritance-dependent.",image:{src:"./vancouver.png",alt:"Lions Gate Bridge Vancouver black and white"}},london:{medianIncome:45e3,medianHomePrice:441e3,currency:"GBP",year:2025,incomeType:"Median household income",taxBasis:"Pre-tax",ownershipSource:"Project Faust city baseline",rentSource:"Project Faust city baseline",desc:"The Feudal Rental Market",burdenLabel:"Rent burden",burdenValue:"52% of income",narrative:"Feudalism reinvented: rent absorbs upward mobility while ownership keeps moving out of reach.",image:{src:"./london.png",alt:"St Pauls Cathedral London skyline black and white"}},nyc:{medianIncome:8e4,medianHomePrice:6e5,currency:"USD",year:2025,incomeType:"Median household income",taxBasis:"Pre-tax",ownershipSource:"Project Faust city baseline",rentSource:"Project Faust city baseline",desc:"The Velocity Machine",burdenLabel:"Rent burdened households",burdenValue:"53%",narrative:"Velocity over everything. High rent burden persists, but the social story still calls this opportunity.",image:{src:"./nyc.png",alt:"Empire State Building NYC skyline black and white"}}},F={nyc:"New York City"},h=e=>F[e]||e.charAt(0).toUpperCase()+e.slice(1),$=(e,a)=>{if(a==="CAD"||a==="USD"){const i=new Intl.NumberFormat("en",{notation:"compact",compactDisplay:"short",maximumFractionDigits:1}).format(e);return`${a} ${i}`}return new Intl.NumberFormat("en",{style:"currency",currency:a,notation:"compact",compactDisplay:"short",maximumFractionDigits:1}).format(e)},S=e=>{const a=Object.entries(e).map(([t,r])=>{const o=r.medianHomePrice/r.medianIncome;return[t,{...r,ratio:o}]}),i=Object.fromEntries(a),s=Math.max(...a.map(([,t])=>t.medianHomePrice));return{computed:i,maxValue:s}},P=(e,a)=>{if(!a||e<=0)return`${x}px`;const i=x+e/a*(L-x);return`${Math.round(i)}px`},A=e=>{const{currentCity:a}=e,{computed:i}=S(e.cityData);if(!i[a])return"";const s=Object.keys(i).map(r=>{const o=r===a;return`
+        <button
+          onclick="selectCity('${r}')"
+          class="w-full text-left px-4 py-4 border-b border-surveillance/10 flex justify-between items-center group transition-all hover:bg-surveillance/5 ${o?"bg-surveillance/5 border-l-4 border-l-rust pl-3":"pl-4"}"
+        >
+          <span class="font-mono text-sm uppercase tracking-widest ${o?"text-rust font-bold":"text-surveillance/70"}">${h(r)}</span>
+          ${o?'<span class="material-symbols-outlined text-sm text-rust">arrow_right</span>':""}
+        </button>`}).join(""),t=i[a];return`
     <section class="max-w-7xl mx-auto px-6 pt-8 pb-8 lg:pt-12 lg:pb-16">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-0 border border-surveillance/20 bg-white shadow-sm">
 
@@ -9,14 +16,7 @@
           </div>
 
           <div class="flex-grow flex flex-col">
-            ${Object.keys(s).map(a=>{const i=a===t;return`
-        <button
-          onclick="selectCity('${a}')"
-          class="w-full text-left px-4 py-4 border-b border-surveillance/10 flex justify-between items-center group transition-all hover:bg-surveillance/5 ${i?"bg-surveillance/5 border-l-4 border-l-rust pl-3":"pl-4"}"
-        >
-          <span class="font-mono text-sm uppercase tracking-widest ${i?"text-rust font-bold":"text-surveillance/70"}">${a}</span>
-          ${i?'<span class="material-symbols-outlined text-sm text-rust">arrow_right</span>':""}
-        </button>`}).join("")}
+            ${s}
           </div>
 
           <div class="p-8 mt-auto bg-cream/30">
@@ -30,11 +30,16 @@
           <div class="absolute top-0 left-0 w-full z-20 flex justify-between items-start p-6 pointer-events-none">
             <div class="bg-white/90 backdrop-blur border border-surveillance/20 px-4 py-2 shadow-sm">
               <span class="font-mono text-[10px] uppercase text-surveillance/50 block mb-1">Status</span>
-              <span class="font-display font-bold text-xl text-surveillance uppercase" id="city-title">${t}</span>
+              <span class="font-display font-bold text-xl text-surveillance uppercase" id="city-title">${h(a)}</span>
               <span class="font-mono text-xs text-rust uppercase tracking-widest block mt-1" id="city-desc"></span>
             </div>
-            <div class="bg-rust text-cream px-3 py-1 font-mono text-xs uppercase tracking-widest shadow-md">
-              <span id="stat-main">${s[t].stats}</span>
+            <div class="space-y-2">
+              <div class="bg-rust text-cream px-3 py-1 font-mono text-xs uppercase tracking-widest shadow-md">
+                <span id="stat-ratio">${t.ratio.toFixed(1)}x Price-to-Income</span>
+              </div>
+              <div class="bg-surveillance text-cream px-3 py-1 font-mono text-xs uppercase tracking-widest shadow-md">
+                <span id="stat-burden">${t.burdenLabel}: ${t.burdenValue}</span>
+              </div>
             </div>
           </div>
 
@@ -54,7 +59,7 @@
             <div class="col-span-2 md:col-span-1">
               <span class="font-mono text-[10px] uppercase text-surveillance/60 block mb-2">Price-to-Income Ratio</span>
               <div class="flex items-baseline gap-2">
-                 <span class="font-display font-bold text-6xl text-rust" id="ratio-value">${s[t].ratio}</span>
+                 <span class="font-display font-bold text-6xl text-rust" id="ratio-value">${t.ratio.toFixed(1)}</span>
                  <span class="font-mono text-sm text-surveillance/50">x</span>
               </div>
             </div>
@@ -69,57 +74,53 @@
               <span id="affordability-graph-title" class="sr-only">Housing affordability comparison</span>
                <div class="flex flex-col items-center gap-2 group w-1/2">
                   <div class="w-full relative h-[140px] flex items-end">
-                    <div class="w-full bg-surveillance/20 hover:bg-surveillance/30 transition-all duration-500 relative" id="bar-income" style="height: 70px">
+                    <div class="w-full bg-surveillance/20 hover:bg-surveillance/30 transition-all duration-500 relative" id="bar-income" style="height: ${x}px">
                        <div class="absolute -top-7 left-1/2 -translate-x-1/2 w-fit bg-cream/95 border border-surveillance/10 rounded-sm px-2 py-0.5 font-mono text-xs font-bold text-surveillance shadow-sm" id="income-value"></div>
                     </div>
                   </div>
-                  <span class="font-mono text-[10px] uppercase tracking-widest text-surveillance/60">Annual Income</span>
+                  <span class="font-mono text-[10px] uppercase tracking-widest text-surveillance/60">Median Income</span>
                </div>
 
                <div class="flex flex-col items-center gap-2 group w-1/2">
                    <div class="w-full relative h-[140px] flex items-end">
-                    <div class="w-full bg-rust hover:bg-rust/90 transition-all duration-500 relative" id="bar-cost" style="height: 130px">
+                    <div class="w-full bg-rust hover:bg-rust/90 transition-all duration-500 relative" id="bar-cost" style="height: ${x}px">
                        <div class="absolute -top-7 left-1/2 -translate-x-1/2 w-fit bg-cream/95 border border-surveillance/10 rounded-sm px-2 py-0.5 font-mono text-xs font-bold text-rust shadow-sm" id="cost-value"></div>
                     </div>
                   </div>
-                  <span class="font-mono text-[10px] uppercase tracking-widest text-surveillance/60">Property Cost</span>
+                  <span class="font-mono text-[10px] uppercase tracking-widest text-surveillance/60">Median Home Price</span>
                </div>
 
                <figcaption id="city-graph-description" class="sr-only" aria-live="polite"></figcaption>
             </figure>
 
+            <p class="col-span-2 md:col-span-3 font-mono text-[10px] uppercase text-surveillance/50 tracking-wider" id="city-metadata"></p>
+            <p class="col-span-2 md:col-span-3 font-mono text-[10px] uppercase text-surveillance/40 tracking-wider" id="city-definition"></p>
           </div>
         </div>
       </div>
 
       <div class="flex justify-between items-center mt-8">
-        <span class="font-mono text-xs text-surveillance/40 uppercase">Fig 02.1 — Global Affordability Index</span>
+        <span class="font-mono text-xs text-surveillance/40 uppercase">Fig 02.1 — Housing Affordability (Price-to-Income)</span>
         <button onclick="navigateTo('machines')" class="text-rust font-bold flex items-center gap-2">Next: The Machines <span class="material-symbols-outlined">arrow_forward</span></button>
       </div>
     </section>
-  `:""},$=e=>{const t=g[e.currentCity];if(!t)return;const s=(w,k)=>{const v=document.getElementById(w);v&&(v.innerText=k)};s("city-narrative",t.narrative),s("city-title",e.currentCity),s("city-desc",t.desc),s("stat-main",t.stats),s("ratio-value",t.ratio);const r="$"+(t.income/1e3).toFixed(0)+"K";s("income-value",r),s("cost-value",t.costDisplay);const i=`${C(e.currentCity)} annual income ${r} compared to property cost ${t.costDisplay}; price-to-income ratio ${t.ratio}:1.`,n=document.getElementById("city-graph-description");n&&(n.innerText=i);const l=document.getElementById("affordability-graph");l&&l.setAttribute("aria-label",i);const c=document.getElementById("city-img");c&&(c.src=t.image.src,c.alt=t.image.alt);const u=document.getElementById("bar-income"),f=document.getElementById("bar-cost");requestAnimationFrame(()=>{u&&(u.style.height="70px"),f&&(f.style.height=t.costBarHeight+"px")})},p=(e,t,s,r)=>`
+  `},B=e=>{const{computed:a,maxValue:i}=S(e.cityData),s=a[e.currentCity];if(!s)return;const t=(E,j)=>{const T=document.getElementById(E);T&&(T.innerText=j)},r=h(e.currentCity),o=$(s.medianIncome,s.currency),l=$(s.medianHomePrice,s.currency),c=s.ratio.toFixed(1);t("city-narrative",s.narrative),t("city-title",r),t("city-desc",s.desc),t("stat-ratio",`${c}x Price-to-Income`),t("stat-burden",`${s.burdenLabel}: ${s.burdenValue}`),t("ratio-value",c),t("income-value",o),t("cost-value",l),t("city-metadata",`${s.incomeType} (${s.taxBasis}), ${s.year}. Ownership source: ${s.ownershipSource}. Rent source: ${s.rentSource}.`),t("city-definition","Definition: price-to-income = median home price divided by median annual household income.");const u=`${r}: median income ${o}, median home price ${l}, price-to-income ratio ${c} to 1.`,g=document.getElementById("city-graph-description");g&&(g.innerText=u);const y=document.getElementById("affordability-graph");y&&y.setAttribute("aria-label",u);const f=document.getElementById("city-img");f&&(f.src=s.image.src,f.alt=s.image.alt);const w=document.getElementById("bar-income"),k=document.getElementById("bar-cost");requestAnimationFrame(()=>{w&&(w.style.height=P(s.medianIncome,i)),k&&(k.style.height=P(s.medianHomePrice,i))})},p=(e,a,i,s)=>`
       <header class="bg-cream pt-12 pb-12 px-6 border-b border-surveillance/10 relative">
-          <div class="max-w-7xl mx-auto relative z-10"><span class="font-mono text-rust text-sm uppercase tracking-widest mb-2 block animate-fade-in">Chapter ${e}</span><h2 class="font-display font-bold text-5xl md:text-6xl text-surveillance mb-4 pb-px animate-slide-up">${t}</h2><p class="font-body text-xl md:text-2xl text-surveillance/60 max-w-2xl pb-px animate-slide-up">${s}</p></div>
+          <div class="max-w-7xl mx-auto relative z-10"><span class="font-mono text-rust text-sm uppercase tracking-widest mb-2 block animate-fade-in">Chapter ${e}</span><h2 class="font-display font-bold text-5xl md:text-6xl text-surveillance mb-4 pb-px animate-slide-up">${a}</h2><p class="font-body text-xl md:text-2xl text-surveillance/60 max-w-2xl pb-px animate-slide-up">${i}</p></div>
       </header>
-  `,d=(e,t,s,r,a)=>`
-      <div onclick="navigateTo('${r}')" class="group border border-surveillance/20 p-8 hover:bg-surveillance hover:text-cream transition-all duration-300 cursor-pointer h-full flex flex-col justify-between relative overflow-hidden bg-white">
-          <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20"><span class="material-symbols-outlined text-6xl">${a}</span></div>
-          <div><span class="font-mono text-rust text-sm mb-2 block group-hover:text-soft-green">${e}</span><h3 class="font-display font-bold text-2xl mb-4">${t}</h3><p class="font-body text-lg opacity-70">${s}</p></div>
+  `,d=(e,a,i,s,t)=>`
+      <div onclick="navigateTo('${s}')" class="group border border-surveillance/20 p-8 hover:bg-surveillance hover:text-cream transition-all duration-300 cursor-pointer h-full flex flex-col justify-between relative overflow-hidden bg-white">
+          <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20"><span class="material-symbols-outlined text-6xl">${t}</span></div>
+          <div><span class="font-mono text-rust text-sm mb-2 block group-hover:text-soft-green">${e}</span><h3 class="font-display font-bold text-2xl mb-4">${a}</h3><p class="font-body text-lg opacity-70">${i}</p></div>
           <div class="mt-8 flex items-center gap-2 font-mono text-xs uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">Explore <span class="material-symbols-outlined text-sm">arrow_forward</span></div>
       </div>
-  `,x=(e,t,s,r,a)=>`
-      <div onclick="window.location.href='archetypes/${r}.html'" class="group border border-surveillance/20 p-8 hover:bg-surveillance hover:text-cream transition-all duration-300 cursor-pointer h-full flex flex-col justify-between relative overflow-hidden bg-white">
-          <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20"><span class="material-symbols-outlined text-6xl">${a}</span></div>
-          <div><span class="font-mono text-rust text-sm mb-2 block group-hover:text-soft-green">${e}</span><h3 class="font-display font-bold text-2xl mb-4">${t}</h3><p class="font-body text-lg opacity-70">${s}</p></div>
+  `,m=(e,a,i,s,t)=>`
+      <div onclick="window.location.href='archetypes/${s}.html'" class="group border border-surveillance/20 p-8 hover:bg-surveillance hover:text-cream transition-all duration-300 cursor-pointer h-full flex flex-col justify-between relative overflow-hidden bg-white">
+          <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20"><span class="material-symbols-outlined text-6xl">${t}</span></div>
+          <div><span class="font-mono text-rust text-sm mb-2 block group-hover:text-soft-green">${e}</span><h3 class="font-display font-bold text-2xl mb-4">${a}</h3><p class="font-body text-lg opacity-70">${i}</p></div>
           <div class="mt-8 flex items-center gap-2 font-mono text-xs uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0">Explore <span class="material-symbols-outlined text-sm">arrow_forward</span></div>
       </div>
-  `,b=(e,t,s,r)=>`
-      <div class="bg-white border border-surveillance/10 p-8 hover:shadow-lg transition-all group">
-          <div class="h-12 w-12 bg-rust/10 text-rust flex items-center justify-center mb-6 group-hover:bg-rust group-hover:text-white transition-colors"><span class="material-symbols-outlined">${e}</span></div>
-          <h3 class="font-display font-bold text-2xl mb-2">${t}</h3><span class="font-mono text-xs uppercase tracking-widest text-surveillance/50 mb-4 block">${s}</span>
-          <p class="font-body text-lg">${r}</p>
-      </div>
-  `,S=()=>`
+  `,V=()=>`
       <section class="relative min-h-screen flex items-center justify-center overflow-hidden bg-blueprint">
           <div class="absolute inset-0 opacity-10 pointer-events-none">
                <!-- Placeholder for abstract architectural grid wireframe distortion panopticon style minimalist cream background blue lines -->
@@ -130,10 +131,19 @@
               </div>
               <h1 class="font-display font-bold text-5xl md:text-7xl lg:text-8xl mb-6 tracking-tighter leading-[0.9] text-surveillance animate-slide-up">THE ARCHITECTURE<br>OF AMBITION</h1>
               <p class="font-body text-xl md:text-2xl text-surveillance/70 max-w-2xl mx-auto mb-12 animate-slide-up" style="animation-delay: 0.2s;">How career became identity, why it's breaking us, and the structural flaws in the "rational" pursuit of success.</p>
-              <button onclick="navigateTo('system')" class="px-8 py-4 bg-surveillance text-cream font-mono uppercase tracking-widest hover:bg-rust transition-colors animate-slide-up" style="animation-delay: 0.4s;">Enter System</button>
+              <div class="flex flex-col items-center">
+                  <button onclick="navigateTo('system')" class="px-8 py-4 bg-surveillance text-cream font-mono uppercase tracking-widest hover:bg-rust transition-colors animate-slide-up mx-auto" style="animation-delay: 0.4s;">Enter System</button>
+
+                  <div class="mt-6 animate-slide-up" style="animation-delay: 0.6s">
+                      <button onclick="document.getElementById('sections').scrollIntoView({behavior: 'smooth'})" aria-label="Scroll to sections" class="flex flex-col items-center gap-1 text-surveillance/70 hover:text-surveillance transition-colors w-max mx-auto">
+                          <span class="material-symbols-outlined text-3xl">expand_more</span>
+                          <span class="font-mono text-xs uppercase tracking-widest">Or review the sections below</span>
+                      </button>
+                  </div>
+              </div>
           </div>
       </section>
-      <section class="py-24 px-6 max-w-6xl mx-auto">
+      <section id="sections" class="py-24 px-6 max-w-6xl mx-auto">
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               ${d("01","The System","The Tyranny of Merit","system","grid_view")}
               ${d("02","The Cities","Toronto, London, NYC","cities","location_city")}
@@ -143,7 +153,7 @@
               ${d("06","Resources","Practical Tools","resources","library_books")}
           </div>
       </section>
-  `,I=()=>`
+  `,D=()=>`
       ${p("01","The System","The theological intensity of modern work.")}
       <article class="max-w-3xl mx-auto px-6 py-16">
           <p class="font-body text-2xl leading-relaxed text-surveillance/80 mb-12 first-letter:text-5xl first-letter:font-bold first-letter:mr-2 first-letter:float-left">We have replaced the worship of gods with the worship of potential. Derek Thompson calls it "Workism"—the belief that work is not only necessary to economic production, but also the centerpiece of one’s identity.</p>
@@ -153,14 +163,14 @@
           <div class="bg-surveillance text-cream p-8 my-12 relative"><h4 class="font-mono text-rust uppercase tracking-widest mb-4">Diagnostic</h4><ul class="space-y-4 font-body text-lg"><li>Do you introduce yourself by job title?</li><li>Do you feel guilty when unproductive?</li><li>Is work your primary community?</li></ul></div>
           <div class="flex justify-between items-center mt-16 pt-8 border-t border-surveillance/10"><button onclick="navigateTo('home')" class="text-surveillance/50 hover:text-surveillance flex items-center gap-2"><span class="material-symbols-outlined">arrow_back</span> Home</button><button onclick="navigateTo('cities')" class="text-rust font-bold hover:text-surveillance flex items-center gap-2">Next: The Cities <span class="material-symbols-outlined">arrow_forward</span></button></div>
       </article>
-  `,P=e=>`
+  `,H=e=>`
       ${p("02","The Cities","Where ambition goes to pay rent.")}
-      ${E(e)}
-  `,j=()=>`
+      ${A(e)}
+  `,R=()=>`
       ${p("03","The Machines","Engines of Envy.")}
-      <section class="max-w-5xl mx-auto px-6 py-12">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-16">
-              <div class="self-start">
+      <section class="max-w-7xl mx-auto px-6 py-12">
+          <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12">
+              <div class="lg:col-span-2">
                   <div class="flex items-center gap-3 mb-4">
                       <span class="material-symbols-outlined text-rust">visibility</span>
                       <h3 class="font-display font-bold text-3xl">The Panopticon</h3>
@@ -171,7 +181,7 @@
                       <span>Tap to expand</span>
                   </div>
                   <ol class="space-y-3">
-                      <div class="flex items-center gap-2 mb-3 mt-2">
+                      <div class="flex items-center gap-2 mb-4 mt-6">
                           <span class="h-px flex-1 bg-gradient-to-r from-rust/20 to-transparent"></span>
                           <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-rust/60 px-2">Identity & Structural</span>
                           <span class="h-px flex-1 bg-gradient-to-l from-rust/20 to-transparent"></span>
@@ -186,7 +196,7 @@
                               Every action is treated as future recruiter content; the present is performance and authenticity gets deferred to a future viewer.
                           </div>
                       </li>
-                      <div class="flex items-center gap-2 mb-3 mt-6">
+                      <div class="flex items-center gap-2 mb-4 mt-5">
                           <span class="h-px flex-1 bg-gradient-to-r from-rust/20 to-transparent"></span>
                           <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-rust/60 px-2">Performative & Linguistic</span>
                           <span class="h-px flex-1 bg-gradient-to-l from-rust/20 to-transparent"></span>
@@ -211,7 +221,7 @@
                               Failures and layoffs are repackaged as brand assets to signal resilience, excluding losses you cannot monetize.
                           </div>
                       </li>
-                      <div class="flex items-center gap-2 mb-3 mt-6">
+                      <div class="flex items-center gap-2 mb-4 mt-5">
                           <span class="h-px flex-1 bg-gradient-to-r from-rust/20 to-transparent"></span>
                           <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-rust/60 px-2">Comparison & Envy</span>
                           <span class="h-px flex-1 bg-gradient-to-l from-rust/20 to-transparent"></span>
@@ -236,7 +246,7 @@
                               Platforms disproportionately surface unicorn founders, creating a skewed reference point and hiding average success.
                           </div>
                       </li>
-                      <div class="flex items-center gap-2 mb-3 mt-6">
+                      <div class="flex items-center gap-2 mb-4 mt-5">
                           <span class="h-px flex-1 bg-gradient-to-r from-rust/20 to-transparent"></span>
                           <span class="font-mono text-[10px] uppercase tracking-[0.2em] text-rust/60 px-2">Psychological Cost</span>
                           <span class="h-px flex-1 bg-gradient-to-l from-rust/20 to-transparent"></span>
@@ -275,16 +285,15 @@
               </div>
               
               <!-- LinkedIn Feed Container -->
-              <div class="space-y-4">
+              <div class="lg:col-span-3 space-y-4">
                   <div class="flex items-center gap-3 mb-6 px-1">
                       <span class="material-symbols-outlined text-3xl text-surveillance/90">visibility</span>
                       <div>
                           <p class="text-xs uppercase tracking-[0.3em] text-surveillance/60">Surveillance feed</p>
-                          <p class="text-sm font-display text-surveillance">Live sentiment</p>
                       </div>
                   </div>
                   
-                  <div class="hidden md:block" style="height: 50px;"></div>
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <!-- Post 1 - Future Audience -->
                   <div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-md transition-shadow">
                       <div class="p-4">
@@ -299,7 +308,7 @@
                                       <span class="text-gray-500 text-xs">1st</span>
                                   </div>
                                   <p class="text-xs text-gray-600">Software Engineer @ DataCorp</p>
-                                  <p class="text-xs text-gray-500">3h • 🌎</p>
+                                  <p class="text-xs text-gray-500"></p>
                               </div>
                           </div>
                           <div class="text-sm text-gray-800 leading-relaxed">
@@ -326,7 +335,7 @@
                                       <span class="text-gray-500 text-xs">2nd</span>
                                   </div>
                                   <p class="text-xs text-gray-600">Product Manager @ TechCorp</p>
-                                  <p class="text-xs text-gray-500">4h • 🌎</p>
+                                  <p class="text-xs text-gray-500"></p>
                               </div>
                           </div>
                           <div class="text-sm text-gray-800 leading-relaxed">
@@ -351,7 +360,7 @@
                                       <span class="text-gray-500 text-xs">3rd+</span>
                                   </div>
                                   <p class="text-xs text-gray-600">Marketing Director @ FinTech Inc</p>
-                                  <p class="text-xs text-gray-500">2d • 🌎</p>
+                                  <p class="text-xs text-gray-500"></p>
                               </div>
                           </div>
                           <div class="text-sm text-gray-800 leading-relaxed">
@@ -378,7 +387,7 @@
                                       <span class="text-gray-500 text-xs">3rd+</span>
                                   </div>
                                   <p class="text-xs text-gray-600">UX Designer @ DesignStudio</p>
-                                  <p class="text-xs text-gray-500">6h • 🌎</p>
+                                  <p class="text-xs text-gray-500"></p>
                               </div>
                           </div>
                           <div class="text-sm text-gray-800 leading-relaxed">
@@ -402,7 +411,7 @@
                                       <span class="text-gray-500 text-xs">1st</span>
                                   </div>
                                   <p class="text-xs text-gray-600">CEO & Founder @ StartupAI | Forbes 30U30</p>
-                                  <p class="text-xs text-gray-500">1d • 🌎</p>
+                                  <p class="text-xs text-gray-500"></p>
                               </div>
                           </div>
                           <div class="text-sm text-gray-800 leading-relaxed">
@@ -427,7 +436,7 @@
                                       <span class="text-gray-500 text-xs">2nd</span>
                                   </div>
                                   <p class="text-xs text-gray-600">Sales Manager @ Enterprise Solutions</p>
-                                  <p class="text-xs text-gray-500">12h • 🌎</p>
+                                  <p class="text-xs text-gray-500"></p>
                               </div>
                           </div>
                           <div class="text-sm text-gray-800 leading-relaxed">
@@ -452,7 +461,7 @@
                                       <span class="text-gray-500 text-xs">2nd</span>
                                   </div>
                                   <p class="text-xs text-gray-600">VP Engineering @ CloudScale</p>
-                                  <p class="text-xs text-gray-500">18h • 🌎</p>
+                                  <p class="text-xs text-gray-500"></p>
                               </div>
                           </div>
                           <div class="text-sm text-gray-800 leading-relaxed">
@@ -477,7 +486,7 @@
                                       <span class="text-gray-500 text-xs">1st</span>
                                   </div>
                                   <p class="text-xs text-gray-600">Business Analyst @ Consulting Firm</p>
-                                  <p class="text-xs text-gray-500">1d • 🌎</p>
+                                  <p class="text-xs text-gray-500"></p>
                               </div>
                           </div>
                           <div class="text-sm text-gray-800 leading-relaxed">
@@ -487,13 +496,14 @@
                           </div>
                       </div>
                   </div>
+                  </div>
 
                   <p class="mt-8 text-xs text-center text-gray-500 font-mono uppercase tracking-wide">Click highlighted phrases to explore psychological traps</p>
               </div>
           </div>
           <div class="flex justify-end mt-16"><button onclick="navigateTo('casualties')" class="text-rust font-bold flex items-center gap-2">Next: The Casualties <span class="material-symbols-outlined">arrow_forward</span></button></div>
       </section>
-  `,L=()=>p("04","The Casualties","Psychological Archetypes")+`
+  `,O=()=>p("04","The Casualties","Psychological Archetypes")+`
           <section class="py-16 px-6 max-w-6xl mx-auto">
               <div class="mb-16 max-w-3xl mx-auto">
                   <p class="font-body text-xl leading-relaxed text-surveillance/70">
@@ -501,11 +511,11 @@
                   </p>
               </div>
               <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                  ${x("01","The Watchman","Vigilant defense against uncertainty","watchman","visibility")}
-                  ${x("02","The Visible","Performance as identity","visible","person")}
-                  ${x("03","The Faithful","Work as calling","faithful","church")}
-                  ${x("04","The Departed","Quiet withdrawal","departed","person_off")}
-                  ${x("05","The Architect","Strategic detachment","architect","architecture")}
+                  ${m("01","The Watchman","Vigilant defense against uncertainty","watchman","visibility")}
+                  ${m("02","The Visible","Performance as identity","visible","person")}
+                  ${m("03","The Faithful","Work as calling","faithful","church")}
+                  ${m("04","The Departed","Quiet withdrawal","departed","person_off")}
+                  ${m("05","The Architect","Strategic detachment","architect","architecture")}
               </div>
               <div class="flex justify-end mt-16">
                   <button onclick="navigateTo('exits')" class="text-rust font-bold flex items-center gap-2">
@@ -513,25 +523,127 @@
                   </button>
               </div>
           </section>
-      `,M=()=>`
-      ${p("05","The Exits","Doors out of the burning building.")}
+      `,v=(e,a,i,s,t,r,o)=>`
+    <div class="bg-white border border-surveillance/20 p-8 hover:shadow-md transition-all relative overflow-hidden group flex flex-col h-full" data-trap="${e}">
+       <div class="flex items-start justify-between mb-6">
+         <div>
+           <span class="font-mono text-xs text-rust uppercase tracking-widest mb-2 block border-l-2 border-rust pl-2">${s}</span>
+           <h3 class="font-display font-bold text-2xl text-surveillance leading-none">${i}</h3>
+         </div>
+         <span class="material-symbols-outlined text-surveillance/10 text-5xl group-hover:text-rust/10 transition-colors">${a}</span>
+       </div>
+
+       <div class="mb-6">
+          <span class="font-mono text-[10px] uppercase text-surveillance/50 tracking-widest">Archetype</span>
+          <div class="font-body font-bold text-surveillance text-lg">${t}</div>
+       </div>
+
+       <p class="font-body text-lg text-surveillance/80 mb-8 flex-grow">${r}</p>
+
+       <div class="mt-auto pt-6 border-t border-surveillance/10">
+         <button onclick="openTrap('${e}')" class="w-full flex items-center justify-between group/btn">
+            <span class="font-mono text-xs uppercase tracking-widest text-surveillance/60 group-hover/btn:text-rust transition-colors">Analyze Risks</span>
+            <span data-trap-icon class="material-symbols-outlined text-sm text-surveillance/60 transition-transform duration-300">expand_more</span>
+         </button>
+       </div>
+
+       <div data-trap-detail class="hidden mt-4 bg-surveillance/5 -mx-8 -mb-8 p-8 border-t border-surveillance/10">
+          ${o}
+       </div>
+    </div>
+`,_=()=>`
+      ${p("05","The Exits","Strategies for defensive detachment.")}
+      
       <section class="max-w-6xl mx-auto px-6 py-12">
-          <div class="mb-16 max-w-3xl mx-auto bg-surveillance/5 p-8 border-l-4 border-rust">
-              <p class="font-body text-lg text-surveillance/80 mb-4">
-                  <strong>The Architect</strong> (Chapter 04) is the practical application of these exits. It is what happens when you deliberately construct a life where work is not identity, where productivity is bounded, where success is redefined.
+          
+          <div class="mb-16 max-w-3xl mx-auto text-center">
+              <p class="font-body text-xl text-surveillance/80 leading-relaxed mb-6">
+                  These are not ideals. These are <strong class="text-rust">containment strategies</strong>.
               </p>
-              <p class="font-body text-lg text-surveillance/80">
-                  The Exits are frameworks. The Architect is proof it is possible.
+              <p class="font-body text-lg text-surveillance/70">
+                 In an economy where "failure" is often a rational maladaptation to a sick system, we do not seek pure freedom. We seek to manage ego depletion. Each exit below is a calculated trade-off designed to protect the self from total institutional absorption.
               </p>
           </div>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-              ${b("church","Vocation","Christian Exit","Work is not a ladder, but a station to serve. Value is conferred by origin (Imago Dei), not utility.")}
-              ${b("balance","Eudaimonia","Aristotelian Exit","Happiness is not a dopamine spike, but the steady practice of virtue over a complete life.")}
-              ${b("self_improvement","Transcendence","Humanistic Exit","The self is not a project to be optimized, but a vessel to be emptied into something larger.")}
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-24">
+              
+              ${v("exit-vocation","church","Identity Containment","The Theological Exit","The New Monastic",'Work is stripped of its ultimate status. By imposing a "rule of life," mobility and upside are traded for geographic and relational stability. Value is conferred by origin (Imago Dei), not utility.',`
+                <div class="space-y-4">
+                    <div>
+                        <span class="font-mono text-[10px] uppercase text-rust tracking-widest block mb-1">Hidden Tension</span>
+                        <p class="text-sm opacity-80">The Protestant ghost never leaves. Faithfulness easily mutates into "sanctified overwork," where the calling becomes indistinguishable from the hustle.</p>
+                    </div>
+                    <div>
+                        <span class="font-mono text-[10px] uppercase text-rust tracking-widest block mb-1">Failure Mode</span>
+                        <p class="text-sm opacity-80"><strong>Burnout reframed as sacrifice.</strong> This exit fails when obedience becomes indistinguishable from productivity.</p>
+                    </div>
+                </div>
+                `)}
+
+              ${v("exit-craft","handyman","Craft Loyalty","The Aristotelian Exit","The Virtuous Practitioner",'A refusal of promotions that sever the worker from the work. This strategy prioritizes the "internal goods" of a practice over the "external goods" (status, scale) of the institution.',`
+                <div class="space-y-4">
+                    <div>
+                        <span class="font-mono text-[10px] uppercase text-rust tracking-widest block mb-1">Hidden Tension</span>
+                        <p class="text-sm opacity-80">Institutions require external goods to survive. The practitioner is constantly at war with the management layer that employs them.</p>
+                    </div>
+                    <div>
+                        <span class="font-mono text-[10px] uppercase text-rust tracking-widest block mb-1">Failure Mode</span>
+                        <p class="text-sm opacity-80"><strong>Moral Injury.</strong> To survive, the virtuous practitioner often learns to speak the language of the institution they distrust.</p>
+                    </div>
+                </div>
+                `)}
+
+              ${v("exit-ego","psychology","Ego Load Reduction","The Humanistic Exit","The Strategic Deprioritizer",'Manages the ego depletion caused by the digital panopticon. The self is not a project to be optimized, but a vessel to be protected. Often misread by management as "quiet quitting."',`
+                <div class="space-y-4">
+                    <div>
+                        <span class="font-mono text-[10px] uppercase text-rust tracking-widest block mb-1">Hidden Tension</span>
+                        <p class="text-sm opacity-80">Without communal anchors, this defensive detachment easily slides into narcissism or apathy.</p>
+                    </div>
+                    <div>
+                        <span class="font-mono text-[10px] uppercase text-rust tracking-widest block mb-1">Failure Mode</span>
+                        <p class="text-sm opacity-80"><strong>Optimization Loops.</strong> Without transcendence, self-actualization simply becomes another metric to optimize.</p>
+                    </div>
+                </div>
+                `)}
           </div>
-          <div class="mt-16 text-center"><button onclick="navigateTo('resources')" class="px-8 py-3 bg-surveillance text-cream font-mono uppercase hover:bg-rust transition-colors">View Resources</button></div>
+
+          <div class="border-t border-surveillance/20 pt-16">
+            <h3 class="font-display font-bold text-3xl mb-8 text-center">The Radical Refusals</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+                
+                <div class="bg-surveillance text-cream p-8 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 font-mono text-6xl font-bold">FIRE</div>
+                    <h4 class="font-mono text-rust uppercase tracking-widest mb-2 text-sm">Weaponized Ambition</h4>
+                    <p class="font-body opacity-90 mb-4">
+                        Financial Independence, Retire Early (FIRE) is not an exit from ambition. It is ambition turned against the system that created it.
+                    </p>
+                    <p class="font-mono text-xs opacity-60 border-t border-cream/20 pt-4">
+                        RESULT: Freedom is purchased, not discovered.
+                    </p>
+                </div>
+
+                <div class="bg-rust/10 border border-rust p-8 relative overflow-hidden">
+                    <div class="absolute top-0 right-0 p-4 opacity-10 font-mono text-6xl font-bold">躺平</div>
+                    <h4 class="font-mono text-rust uppercase tracking-widest mb-2 text-sm">Tang Ping (Lying Flat)</h4>
+                    <p class="font-body text-surveillance opacity-90 mb-4">
+                        Not a lifestyle choice, but a political refusal. It demonstrates what happens when hope itself is withdrawn from the labor market.
+                    </p>
+                    <p class="font-mono text-xs text-surveillance opacity-60 border-t border-surveillance/20 pt-4">
+                        RESULT: The refusal of the game itself.
+                    </p>
+                </div>
+
+            </div>
+          </div>
+
+          <div class="mt-24 text-center">
+             <p class="font-mono text-xs text-surveillance/50 uppercase tracking-widest mb-4">Proof of Concept</p>
+             <button onclick="navigateTo('resources')" class="px-8 py-3 bg-surveillance text-cream font-mono uppercase hover:bg-rust transition-colors shadow-lg">
+                View The Architect's Tools
+             </button>
+          </div>
       </section>
-  `,B=()=>`
+  `,N=()=>`
       ${p("06","Resources","Tools for resistance.")}
       <section class="max-w-4xl mx-auto px-6 py-12 space-y-12">
           <div>
@@ -594,4 +706,4 @@
               </ul>
           </div>
       </section>
-  `,o={currentView:"home",cityData:g,currentCity:"toronto"},y=new Set(["home","system","cities","machines","casualties","exits","resources"]);function A(e){o.currentCity=e,m()}function m(){const e=document.getElementById("app"),t={home:S,system:I,cities:()=>P(o),machines:j,casualties:L,exits:M,resources:B};e.style.opacity="0",setTimeout(()=>{e.innerHTML=t[o.currentView](),o.currentView==="cities"&&$(o),e.style.opacity="1";const s={home:"0%",system:"16%",cities:"32%",machines:"48%",casualties:"64%",exits:"80%",resources:"100%"};document.getElementById("progress-bar").style.width=s[o.currentView]},300)}function D(e){y.has(e)&&(o.currentView=e,e==="home"?history.replaceState(null,"",window.location.pathname+window.location.search):window.location.hash=e,m(),window.scrollTo(0,0))}function V(){const e=document.getElementById("mobile-menu");e.classList.toggle("hidden"),e.classList.toggle("flex")}function O(e,t=!1){const s=document.querySelector(`[data-trap="${e}"]`);if(!s)return;const r=s.querySelector("[data-trap-detail]"),a=s.querySelector("[data-trap-icon]"),i=r&&!r.classList.contains("hidden");i&&t||(document.querySelectorAll("[data-trap]").forEach(l=>{l.classList.remove("trap-active","bg-rust/5");const c=l.querySelector("[data-trap-detail]"),u=l.querySelector("[data-trap-icon]");c&&c.classList.add("hidden"),u&&u.classList.remove("rotate-180")}),i)||(s.classList.add("trap-active"),r&&r.classList.remove("hidden"),a&&a.classList.add("rotate-180"),window.innerWidth<768&&setTimeout(()=>{s.scrollIntoView({behavior:"smooth",block:"nearest"})},100))}Object.assign(window,{navigateTo:D,toggleMobileMenu:V,openTrap:O,selectCity:A});document.addEventListener("DOMContentLoaded",()=>{h(),m(),window.addEventListener("hashchange",()=>{h(),m()}),window.addEventListener("scroll",()=>{const e=document.getElementById("navbar");window.scrollY>50?(e.classList.add("shadow-md","py-2"),e.classList.remove("py-4")):(e.classList.remove("shadow-md","py-2"),e.classList.add("py-4"))})});function h(){const e=window.location.hash.replace("#","");e&&y.has(e)&&(o.currentView=e)}
+  `,n={currentView:"home",cityData:M,currentCity:"toronto"},C=new Set(["home","system","cities","machines","casualties","exits","resources"]);function z(e){n.currentCity=e,b()}function b(){const e=document.getElementById("app"),a={home:V,system:D,cities:()=>H(n),machines:R,casualties:O,exits:_,resources:N};e.style.opacity="0",setTimeout(()=>{e.innerHTML=a[n.currentView](),n.currentView==="cities"&&B(n),e.style.opacity="1";const i={home:"0%",system:"16%",cities:"32%",machines:"48%",casualties:"64%",exits:"80%",resources:"100%"};document.getElementById("progress-bar").style.width=i[n.currentView]},300)}function W(e){C.has(e)&&(n.currentView=e,e==="home"?history.replaceState(null,"",window.location.pathname+window.location.search):window.location.hash=e,b(),window.scrollTo(0,0))}function q(){const e=document.getElementById("mobile-menu");e.classList.toggle("hidden"),e.classList.toggle("flex")}function U(e,a=!1){const i=document.querySelector(`[data-trap="${e}"]`);if(!i)return;const s=i.querySelector("[data-trap-detail]"),t=i.querySelector("[data-trap-icon]"),r=s&&!s.classList.contains("hidden");r&&a||(document.querySelectorAll("[data-trap]").forEach(l=>{l.classList.remove("trap-active","bg-rust/5");const c=l.querySelector("[data-trap-detail]"),u=l.querySelector("[data-trap-icon]");c&&c.classList.add("hidden"),u&&u.classList.remove("rotate-180")}),r)||(i.classList.add("trap-active"),s&&s.classList.remove("hidden"),t&&t.classList.add("rotate-180"),window.innerWidth<768&&setTimeout(()=>{i.scrollIntoView({behavior:"smooth",block:"nearest"})},100))}Object.assign(window,{navigateTo:W,toggleMobileMenu:q,openTrap:U,selectCity:z});document.addEventListener("DOMContentLoaded",()=>{I(),b(),window.addEventListener("hashchange",()=>{I(),b()}),window.addEventListener("scroll",()=>{const e=document.getElementById("navbar");window.scrollY>50?(e.classList.add("shadow-md","py-2"),e.classList.remove("py-4")):(e.classList.remove("shadow-md","py-2"),e.classList.add("py-4"))})});function I(){const e=window.location.hash.replace("#","");e&&C.has(e)&&(n.currentView=e)}

@@ -17,7 +17,6 @@
       href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
     />
 
-    <!-- SYSTEM CONFIGURATION: DO NOT MODIFY -->
     <script>
       tailwind.config = {
         theme: {
@@ -68,9 +67,9 @@
         letter-spacing: 0.1em;
       }
       .font-display {
-        line-height: 1.3 !important;
+        line-height: 1.1 !important;
       }
-      /* Custom scrollbar for that technical feel */
+      /* Custom scrollbar */
       ::-webkit-scrollbar {
         width: 8px;
       }
@@ -87,14 +86,7 @@
   </head>
 
   <body class="font-body selection:bg-rust selection:text-white antialiased bg-cream">
-    <!--
-    TEMPLATE RULES:
-    - Do not edit layout, classes, or structure
-    - Only replace {{PLACEHOLDERS}}
-    - Inject valid HTML into block placeholders
-    -->
-
-    <!-- Navigation -->
+    
     <nav
       id="navbar"
       class="fixed top-0 left-0 w-full z-50 bg-cream/95 backdrop-blur-sm border-b border-surveillance/10 transition-all duration-300 shadow-md py-2"
@@ -117,27 +109,25 @@
             >Architecture of Ambition</span
           >
         </a>
-        <!-- Desktop Nav -->
         <div
           class="hidden md:flex items-center gap-8 font-mono text-sm uppercase tracking-widest text-surveillance/70"
         >
           <a class="hover:text-rust transition-colors p-2 rounded -m-2" href="../#system"
-            >The System</a
+            >I. The System</a
           >
           <a class="hover:text-rust transition-colors p-2 rounded -m-2" href="../#cities"
-            >The Cities</a
+            >II. The Cities</a
           >
           <a class="hover:text-rust transition-colors p-2 rounded -m-2" href="../#machines"
-            >The Machines</a
+            >III. The Machines</a
           >
           <a class="hover:text-rust transition-colors p-2 rounded -m-2" href="../#casualties"
-            >The Casualties</a
+            >IV. The Casualties</a
           >
           <a class="hover:text-rust transition-colors p-2 rounded -m-2" href="../#exits"
-            >The Exits</a
+            >V. The Exits</a
           >
         </div>
-        <!-- Mobile Menu Button -->
         <button
           class="md:hidden text-surveillance p-2 rounded -m-2"
           onclick="toggleMobileMenu()"
@@ -146,51 +136,22 @@
           <span class="material-symbols-outlined" aria-hidden="true">menu</span>
         </button>
       </div>
-      <!-- Mobile Menu -->
       <div
         id="mobile-menu"
         class="hidden absolute top-full left-0 w-full bg-cream border-b border-surveillance p-6 flex-col gap-4 shadow-lg md:hidden"
       >
-        <a
-          class="text-left font-display text-xl hover:text-rust"
-          href="../#system"
-          onclick="toggleMobileMenu()"
-          >01. The System</a
-        >
-        <a
-          class="text-left font-display text-xl hover:text-rust"
-          href="../#cities"
-          onclick="toggleMobileMenu()"
-          >02. The Cities</a
-        >
-        <a
-          class="text-left font-display text-xl hover:text-rust"
-          href="../#machines"
-          onclick="toggleMobileMenu()"
-          >03. The Machines</a
-        >
-        <a
-          class="text-left font-display text-xl hover:text-rust"
-          href="../#casualties"
-          onclick="toggleMobileMenu()"
-          >04. The Casualties</a
-        >
-        <a
-          class="text-left font-display text-xl hover:text-rust"
-          href="../#exits"
-          onclick="toggleMobileMenu()"
-          >05. The Exits</a
-        >
+        <a class="text-left font-display text-xl hover:text-rust" href="../#system">I. The System</a>
+        <a class="text-left font-display text-xl hover:text-rust" href="../#cities">II. The Cities</a>
+        <a class="text-left font-display text-xl hover:text-rust" href="../#machines">III. The Machines</a>
+        <a class="text-left font-display text-xl hover:text-rust" href="../#casualties">IV. The Casualties</a>
+        <a class="text-left font-display text-xl hover:text-rust" href="../#exits">V. The Exits</a>
       </div>
     </nav>
 
-    <!-- HEADER / SUBJECT PROFILE -->
     <header
       class="relative pt-32 pb-24 px-6 border-b border-surveillance/10 bg-blueprint-pattern bg-blueprint"
     >
-      <div
-        class="absolute inset-0 bg-gradient-to-b from-cream/50 to-cream pointer-events-none"
-      ></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-cream/50 to-cream pointer-events-none"></div>
 
       <div class="max-w-5xl mx-auto relative z-10">
         <div class="flex items-start justify-between mb-8 border-b border-surveillance/20 pb-8">
@@ -217,12 +178,10 @@
         >
           <div class="md:col-span-8">
             <p class="font-display text-2xl md:text-3xl text-surveillance mb-6 pb-px">
-              "You're tired all the time."
+              "Invisibility feels dangerous."
             </p>
             <p class="text-xl leading-relaxed text-surveillance/80">
-              Not the kind of tired that sleep fixes. The kind that accumulates across months of
-              prioritizing deliverables over meals, of answering emails on weekends, of mentally
-              running through your calendar while you're supposed to be present at dinner.
+              You are tired all the time. Not the kind of tired sleep fixes, but the kind that accumulates from months of scanning for threats. You call it "dedication." It is actually exposure management.
             </p>
           </div>
           <div class="md:col-span-4 border-l border-surveillance/20 pl-6">
@@ -230,17 +189,54 @@
               >Subject Motivation</span
             >
             <p class="font-mono text-sm leading-relaxed text-surveillance">
-              You work harder than necessary.<br />
-              You prepare more thoroughly than required.<br />
-              You deliver ahead of schedule.
+              Work harder than necessary<br />
+              Prepare more than required<br />
+              Deliver ahead of schedule
             </p>
           </div>
         </div>
       </div>
     </header>
 
+    <section class="py-24 px-6 border-b border-surveillance/10 bg-cream">
+        <div class="max-w-5xl mx-auto">
+            <span class="mono-label text-surveillance/50 text-xs block mb-12">00 // Recognition</span>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-12">
+                <div class="prose prose-lg text-surveillance/80">
+                    <p class="font-display text-2xl font-bold mb-4">You've seen this person.</p>
+                    <p>They are not disorganized. They are not inefficient. They are not confused about priorities.</p>
+                    <p>They look successful from the outside and exhausted up close. This is not burnout yet. It is preemptive.</p>
+                </div>
+                
+                <div class="grid grid-cols-1 gap-4">
+                    <div class="flex items-start gap-4 p-4 border border-surveillance/10 bg-white">
+                        <span class="material-symbols-outlined text-rust mt-1">schedule</span>
+                        <div>
+                            <strong class="font-mono text-xs uppercase tracking-widest block mb-1 text-rust">Marker A: The Timestamp</strong>
+                            <p class="text-sm text-surveillance/70">Responds to emails within minutes, regardless of the hour. Responsiveness is treated as a character trait.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4 p-4 border border-surveillance/10 bg-white">
+                        <span class="material-symbols-outlined text-rust mt-1">calendar_month</span>
+                        <div>
+                            <strong class="font-mono text-xs uppercase tracking-widest block mb-1 text-rust">Marker B: The Calendar</strong>
+                            <p class="text-sm text-surveillance/70">Permanently full. Lunch is eaten at the desk. There is no white space, because white space looks like idleness.</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start gap-4 p-4 border border-surveillance/10 bg-white">
+                        <span class="material-symbols-outlined text-rust mt-1">notifications_active</span>
+                        <div>
+                            <strong class="font-mono text-xs uppercase tracking-widest block mb-1 text-rust">Marker C: The Anxiety</strong>
+                            <p class="text-sm text-surveillance/70">Quietly panicked when nothing is urgent. If there is no fire to fight, they wonder if they are still needed.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <main>
-      <!-- SECTION 1: THE CORE LOGIC -->
       <section class="py-24 px-6 border-b border-surveillance/10">
         <div class="max-w-5xl mx-auto">
           <span class="mono-label text-surveillance/50 text-xs block mb-12"
@@ -248,74 +244,57 @@
           >
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-            <!-- Text Side -->
             <div>
-              <h2 class="font-display font-bold text-4xl mb-6">The Pattern</h2>
-              <!-- Replaced P1/P2 with a single block placeholder. Inject <p> tags here. -->
+              <h2 class="font-display font-bold text-4xl leading-tight mb-6">Defensive Optimization</h2>
               <div class="prose prose-lg text-surveillance/80 mb-8">
-                <p>You're tired all the time.</p>
                 <p>
-                  You call it dedication. Other people call it impressive. What no one calls it is
-                  what it actually is: an optimized response to structural economic precarity.
+                  You take on assignments others avoid. You check messages after hours not because anyone explicitly demands it, but because the expectation is ambient.
                 </p>
                 <p>
-                  You work harder than necessary. You prepare more thoroughly than required. You
-                  deliver ahead of schedule. You take on assignments others avoid. You check email
-                  after hours not because anyone explicitly demands it, but because the ambient
-                  expectation exists.
-                </p>
-                <p>This isn't conscientiousness. It's risk mitigation.</p>
-                <p>
-                  In an economy where median household wealth has stagnated for decades while
-                  housing costs have increased 121% and healthcare costs have risen 300%,
-                  incremental performance advantages aren't about excellence&mdash;they're about
-                  margin for survival.
+                  This is not conscientiousness. <span class="text-rust italic font-semibold">It is risk mitigation.</span>
                 </p>
                 <p>
-                  You've calculated, perhaps without realizing it, that being replaceable is
-                  expensive.
+                   In an environment where layoffs arrive without warning, you have learned that being visible is cheaper than being replaceable.
                 </p>
               </div>
               <div class="flex gap-4">
                 <div class="bg-surveillance/5 p-4 border border-surveillance/10 w-full">
-                  <span class="block font-mono text-xs text-rust mb-1">Observation A</span>
+                  <span class="block font-mono text-xs text-rust mb-1">Signal</span>
                   <span class="block font-display text-lg leading-tight"
-                    >This isn't conscientiousness. It's risk mitigation.</span
+                    >Responsiveness</span
                   >
                 </div>
                 <div class="bg-surveillance/5 p-4 border border-surveillance/10 w-full">
-                  <span class="block font-mono text-xs text-rust mb-1">Observation B</span>
+                  <span class="block font-mono text-xs text-rust mb-1">Goal</span>
                   <span class="block font-display text-lg leading-tight"
-                    >Being replaceable is expensive.</span
+                    >Insulation</span
                   >
                 </div>
               </div>
             </div>
 
-            <!-- Diagrammatic Element -->
             <div class="relative bg-surveillance text-cream p-8 md:p-12">
               <div class="absolute top-0 right-0 p-4 opacity-20">
-                <!-- Icon can be changed via google material symbols name -->
                 <span class="material-symbols-outlined text-6xl">visibility</span>
               </div>
               <span class="mono-label text-rust text-xs mb-4 block">Internal Algorithm</span>
               <div class="space-y-6 font-mono text-sm">
                 <div class="flex justify-between border-b border-cream/20 pb-2">
                   <span>Input:</span>
-                  <span>Performance</span>
+                  <span>Uncertainty</span>
                 </div>
                 <div class="flex justify-between border-b border-cream/20 pb-2">
-                  <span>Observation:</span>
-                  <span>Risk mitigation</span>
+                  <span>Method:</span>
+                  <span>Maximize Availability</span>
                 </div>
                 <div class="flex justify-between border-b border-cream/20 pb-2">
                   <span>Conclusion:</span>
-                  <span class="text-rust">Being replaceable is expensive.</span>
+                  <span class="text-rust">Exhaustion = Safety</span>
                 </div>
               </div>
               <div class="mt-8 pt-6 border-t border-cream/20">
                 <p class="font-display text-2xl italic leading-tight">
-                  "This isn't conscientiousness. It's risk mitigation."
+                    "Being replaceable feels expensive."
                 </p>
               </div>
             </div>
@@ -323,7 +302,6 @@
         </div>
       </section>
 
-      <!-- SECTION 2: THE LEDGER (Assets vs Liabilities) -->
       <section class="py-24 px-6 bg-cream">
         <div class="max-w-6xl mx-auto">
           <div
@@ -334,74 +312,51 @@
           </div>
 
           <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-0 border border-surveillance/10">
-            <!-- LEFT: ASSETS (What It Solves) -->
             <div
               class="p-8 md:p-12 border-b md:border-b-0 md:border-r border-surveillance/10 bg-white"
             >
               <div class="flex items-center gap-2 mb-8 text-soft-green">
                 <span class="material-symbols-outlined">add_circle</span>
-                <h3 class="font-display font-bold text-2xl text-surveillance">
-                  What You're Solving For
-                </h3>
+                <h3 class="font-display font-bold text-2xl text-surveillance">What It Solves</h3>
               </div>
 
               <ul class="space-y-8">
-                <li>
-                  <p>The strategy is rational. Here's the equation:</p>
-                  <p>
-                    <strong
-                      >If the median worker's productivity increased 61% since 1979 while hourly
-                      compensation increased only 17.5%, then individual economic security cannot be
-                      derived from standard effort.</strong
-                    >
-                  </p>
-                  <p>
-                    Standard effort produces standard wages. Standard wages, adjusted for cost
-                    structure, produce financial fragility. 76% of Americans live paycheck to
-                    paycheck. 40% can't cover a $400 emergency expense.
-                  </p>
-                  <p>
-                    Your solution: be non-standard. Outperform the median. Extract economic security
-                    through differentiation.
-                  </p>
-                  <p>
-                    The problem isn't your work ethic. The problem is that you're solving for
-                    variance in a system designed to minimize it.
-                  </p>
-                </li>
                 <li class="group">
                   <span
                     class="mono-label text-xs text-surveillance/40 mb-1 block group-hover:text-soft-green transition-colors"
                     >Goal 01</span
                   >
-                  <h4>The Mechanism</h4>
-                  <p>Overachievement operates through three feedback loops:</p>
-                  <p><strong>1. Performance → visibility → opportunity</strong></p>
-                  <p>
-                    You deliver exceptional work. Someone notices. You receive more responsibility,
-                    more access, occasionally more compensation. The cycle reinforces itself.
+                  <strong class="block font-display text-xl mb-2">Differentiation</strong>
+                  <p class="text-surveillance/70 text-base leading-relaxed">
+                    Standard effort produces standard outcomes. Standard outcomes produce fragility. You outperform the median to buy margin.
                   </p>
-                  <p><strong>2. Reliability → indispensability → security</strong></p>
-                  <p>
-                    You become the person who can be counted on. Projects route through you. Your
-                    absence creates friction. You interpret this as job security.
+                </li>
+                <li class="group">
+                  <span
+                    class="mono-label text-xs text-surveillance/40 mb-1 block group-hover:text-soft-green transition-colors"
+                    >Goal 02</span
+                  >
+                  <strong class="block font-display text-xl mb-2"
+                    >Subjective Safety</strong
+                  >
+                  <p class="text-surveillance/70 text-base leading-relaxed">
+                    If work routes through you, and your absence creates friction, you interpret this as job security. "They can't fire me, I'm doing everything."
                   </p>
-                  <p><strong>3. Exhaustion → proof of commitment</strong></p>
-                  <p>
-                    You're visibly tired. This signals seriousness. In organizational cultures that
-                    valorize overwork, fatigue functions as credential.
-                  </p>
-                  <p>
-                    Each loop feels like progress. Each loop is a bet that exceptional individual
-                    effort can offset structural economic exposure.
+                </li>
+                <li class="group">
+                  <span
+                    class="mono-label text-xs text-surveillance/40 mb-1 block group-hover:text-soft-green transition-colors"
+                    >Goal 03</span
+                  >
+                  <strong class="block font-display text-xl mb-2">Proof of Seriousness</strong>
+                  <p class="text-surveillance/70 text-base leading-relaxed">
+                    In cultures that valorize overwork, fatigue functions as a credential. You are visibly tired, therefore you are visibly valuable.
                   </p>
                 </li>
               </ul>
             </div>
 
-            <!-- RIGHT: LIABILITIES (The Hidden Costs) -->
             <div class="p-8 md:p-12 bg-blueprint-pattern bg-blueprint relative overflow-visible">
-              <!-- Dark overlay for tone -->
               <div
                 class="absolute inset-0 bg-surveillance/5 mix-blend-multiply pointer-events-none"
               ></div>
@@ -410,135 +365,36 @@
                 <div class="flex items-center gap-2 mb-8 text-rust">
                   <span class="material-symbols-outlined">remove_circle</span>
                   <h3 class="font-display font-bold text-2xl text-surveillance">
-                    The Cost Structure
+                    The Hidden Costs
                   </h3>
                 </div>
 
                 <ul class="space-y-8">
                   <li class="group">
                     <span class="mono-label text-xs text-rust/60 mb-1 block">Cost 01</span>
-                    <h4>What You've Learned</h4>
-                    <p>
-                      You've learned that effort matters. That preparation matters. That showing up
-                      matters. And these things do matter&mdash;but not in the way you think they
-                      matter.
-                    </p>
-                    <p>
-                      They matter because in an economy where wage growth has decoupled from
-                      productivity growth, the only remaining lever for individual economic
-                      advancement is positional competition. You're not trying to create value.
-                      You're trying to capture a larger share of value already created.
-                    </p>
-                    <p>
-                      This is why your manager's praise feels empty. They're thanking you for your
-                      contribution. You're executing a survival strategy. These are not the same
-                      thing.
+                    <strong class="block font-display text-xl mb-2 text-surveillance"
+                      >The Threshold Problem</strong
+                    >
+                    <p class="text-surveillance/70 text-base leading-relaxed">
+                      What once signaled commitment becomes baseline expectation. Availability becomes default. You run faster, but the distance does not close.
                     </p>
                   </li>
                   <li class="group">
                     <span class="mono-label text-xs text-rust/60 mb-1 block">Cost 02</span>
-                    <h4>The Cost Structure</h4>
-                    <p>Overachievement has a specific cost profile:</p>
-                    <p>
-                      <strong>Time</strong>&mdash;You work 50-60+ hours per week in a salaried
-                      position designed for 40. The marginal 10-20 hours are uncompensated. Across a
-                      year, you've donated 500-1,000 hours of labor. Across a career, tens of
-                      thousands.
+                    <strong class="block font-display text-xl mb-2 text-surveillance"
+                      >Depleted Optionality</strong
+                    >
+                    <p class="text-surveillance/70 text-base leading-relaxed">
+                      Cognitive energy diverted from rest and unstructured thought destroys your ability to plan an exit. You are too busy digging to check if you are in the right hole.
                     </p>
-                    <p>
-                      <strong>Health</strong>&mdash;Chronic stress increases risk of cardiovascular
-                      disease by 40%, stroke by 50%, type 2 diabetes by 45%. These conditions
-                      produce lifetime healthcare costs exceeding $200,000.
-                    </p>
-                    <p>
-                      <strong>Opportunity</strong>&mdash;Skills and relationships that don't
-                      translate to legible professional advancement are deprioritized. The person
-                      you might have been exists only as a hypothetical.
-                    </p>
-                    <p>You know this. You continue anyway.</p>
                   </li>
                   <li class="group">
                     <span class="mono-label text-xs text-rust/60 mb-1 block">Cost 03</span>
-                    <h4>The Substitution</h4>
-                    <p>
-                      Overachievement substitutes legible professional success for forms of security
-                      that no longer route through employment.
-                    </p>
-                    <p>Previous generations could expect:</p>
-                    <ul>
-                      <li>Employer-funded pensions</li>
-                      <li>Predictable wage growth</li>
-                      <li>Housing costs proportional to income</li>
-                      <li>Healthcare covered through employment</li>
-                      <li>Social safety nets indexed to inflation</li>
-                    </ul>
-                    <p>
-                      You cannot expect these things. They have been structurally removed or
-                      degraded.
-                    </p>
-                    <p>
-                      What you can expect: the opportunity to compete for positional advantage in
-                      labor markets that reward top performers.
-                    </p>
-                    <p>
-                      You've made the substitution without choosing it. The system makes
-                      overachievement feel like agency.
-                    </p>
-                  </li>
-                  <li class="group">
-                    <span class="mono-label text-xs text-rust/60 mb-1 block">Cost 04</span>
-                    <h4>Why It Fails</h4>
-                    <p>
-                      Even if you reach the 90th percentile&mdash;even if you achieve the income,
-                      the title, the recognition&mdash;you don't escape the underlying structure.
-                    </p>
-                    <p>
-                      <strong>Housing</strong>: If you earn $150,000/year, you can afford a $600,000
-                      home under standard lending guidelines. Median home prices in major metros
-                      exceed this. You still face cost burden.
-                    </p>
-                    <p>
-                      <strong>Healthcare</strong>: Employer-sponsored healthcare still requires
-                      out-of-pocket maximums of $9,450/year for families. A major illness still
-                      produces financial disruption.
-                    </p>
-                    <p>
-                      <strong>Retirement</strong>: Even aggressive savings rates require decades to
-                      accumulate sufficient capital. Market volatility introduces sequence risk.
-                      You've offloaded the entire structural risk of old age onto your personal
-                      balance sheet.
-                    </p>
-                    <p>
-                      <strong>Competition</strong>: As more workers adopt the overachievement
-                      strategy, the threshold for differentiation rises. What used to signal
-                      commitment&mdash;working weekends, responding after hours&mdash;becomes
-                      baseline expectation. You're running faster to stay in the same position.
-                    </p>
-                    <p>
-                      The strategy doesn't fail because you're not working hard enough. It fails
-                      because individual optimization cannot solve structural problems.
-                    </p>
-                  </li>
-                  <li class="group">
-                    <span class="mono-label text-xs text-rust/60 mb-1 block">Cost 05</span>
-                    <h4>What You Know But Don't Say</h4>
-                    <p>
-                      You know that your manager who praises your work ethic is extracting
-                      uncompensated labor.
-                    </p>
-                    <p>
-                      You know that "growth mindset" is often a euphemism for accepting worse
-                      conditions.
-                    </p>
-                    <p>
-                      You know that the colleague who "doesn't take work home" isn't less
-                      committed&mdash;they've just recognized the exchange rate.
-                    </p>
-                    <p>You know that your exhaustion isn't producing proportional results.</p>
-                    <p>
-                      You know all of this. You continue because the alternative&mdash;standard
-                      effort in a system that penalizes it&mdash;feels more dangerous than the costs
-                      you're currently paying.
+                    <strong class="block font-display text-xl mb-2 text-surveillance"
+                      >The Real Bill</strong
+                    >
+                    <p class="text-surveillance/70 text-base leading-relaxed">
+                      Hours that are never compensated. Health that degrades quietly, then suddenly. The system accepts these subsidies without thanks.
                     </p>
                   </li>
                 </ul>
@@ -548,45 +404,43 @@
         </div>
       </section>
 
-      <!-- SECTION 3: THE SYSTEM ERROR (Quantitative Failure) -->
       <section class="py-24 px-6 bg-surveillance text-cream">
         <div class="max-w-5xl mx-auto">
           <span class="mono-label text-rust text-xs block mb-8">03 // System Error</span>
 
-          <h2 class="font-display font-bold text-4xl md:text-5xl mb-12">The Arithmetic</h2>
+          <h2 class="font-display font-bold text-4xl md:text-5xl leading-tight mb-12">
+            The Arithmetic
+          </h2>
 
-          <!-- Optional: omit this grid if no quantitative stats apply -->
           <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-            <div>
-              <p>
-                The median US worker with a bachelor's degree earns $1.5 million across their
-                career. Lifetime housing costs average $1.1 million. Healthcare spending over a
-                lifetime averages $500,000. Median retirement savings at age 65 is $200,000,
-                requiring approximately $1 million for minimal healthcare and living expenses across
-                a 20-year retirement.
+            <div class="border-t border-rust pt-4">
+              <span class="block text-4xl md:text-5xl font-mono mb-2 text-rust">$1.5M</span>
+              <p class="font-mono text-xs uppercase tracking-widest text-cream/60">
+                Median Lifetime Earnings
               </p>
-              <p>
-                The math is this: median outcomes require consuming more resources than median
-                incomes produce.
+              <p class="mt-4 text-sm text-cream/80">
+                The median US worker with a bachelor's degree earns roughly $1.5M across their career.
               </p>
             </div>
-            <div>
-              <p>
-                Your response: be above median. If you're in the 75th percentile of earnings, the
-                gap closes. If you're in the 90th percentile, margins appear.
+            <div class="border-t border-rust pt-4">
+              <span class="block text-4xl md:text-5xl font-mono mb-2 text-rust">$1.6M</span>
+              <p class="font-mono text-xs uppercase tracking-widest text-cream/60">
+                Basic Lifetime Costs
               </p>
-              <p>This isn't ambition. It's arithmetic.</p>
+              <p class="mt-4 text-sm text-cream/80">
+                Housing ($1.1M) + Minimal Healthcare ($500k). This excludes food, transport, and children. Median outcomes do not cover median costs.
+              </p>
             </div>
-            <div>
-              <p>
-                The problem is that the 75th percentile is, by definition, achievable by only 25% of
-                workers. The strategy doesn't scale. It's a solution that functions only by most
-                people failing to execute it.
+            <div class="border-t border-rust pt-4">
+              <span class="block text-4xl md:text-5xl font-mono mb-2 text-rust">Top 25%</span>
+              <p class="font-mono text-xs uppercase tracking-widest text-cream/60">Required Position</p>
+              <p class="mt-4 text-sm text-cream/80">
+                The system only works if you are in the 75th percentile. It is a solution that functions only by most people failing to execute it.
               </p>
             </div>
           </div>
 
-          <div class="bg-rust/10 border border-rust/30 p-8 md:p-12 text-center max-w-3xl mx-auto">
+          <div class="bg-rust/10 border border-rust/30 p-8 md:p-12 text-center max-w-4xl mx-auto">
             <p class="font-display text-2xl md:text-3xl mb-4">
               "This isn't ambition. It's arithmetic."
             </p>
@@ -594,19 +448,17 @@
         </div>
       </section>
 
-      <!-- SECTION 4: DIAGNOSTIC PROTOCOL -->
       <section class="py-24 px-6 bg-cream bg-blueprint-pattern bg-blueprint">
         <div class="max-w-4xl mx-auto">
           <div class="text-center mb-16">
             <span class="mono-label text-surveillance/50 text-xs block mb-4"
               >04 // Diagnostic Protocol</span
             >
-            <h2 class="font-display font-bold text-4xl md:text-5xl text-surveillance">
+            <h2 class="font-display font-bold text-4xl md:text-5xl leading-tight text-surveillance">
               What You Know But Don't Say
             </h2>
             <p class="mt-4 text-surveillance/60 font-body text-lg italic">
-              You know all of this. You continue because the alternative feels more dangerous than
-              the costs you're currently paying.
+              You continue because the alternative feels more dangerous.
             </p>
           </div>
 
@@ -619,7 +471,7 @@
                   <span class="font-mono text-rust text-xl">01</span>
                   <span
                     class="font-display font-bold text-xl text-surveillance group-hover:text-rust transition-colors"
-                    >Your manager is extracting value.</span
+                    >Restraint feels like exposure.</span
                   >
                 </div>
                 <span
@@ -630,8 +482,7 @@
               <div
                 class="px-6 pb-6 pl-14 text-surveillance/80 text-lg leading-relaxed border-t border-surveillance/5 pt-4"
               >
-                You know that your manager who praises your work ethic is extracting uncompensated
-                labor.
+               You know that the colleague who disconnects is not less serious, just less afraid. But you cannot make yourself do it.
               </div>
             </details>
 
@@ -643,7 +494,7 @@
                   <span class="font-mono text-rust text-xl">02</span>
                   <span
                     class="font-display font-bold text-xl text-surveillance group-hover:text-rust transition-colors"
-                    >Growth mindset is a euphemism.</span
+                    >Responsiveness wins.</span
                   >
                 </div>
                 <span
@@ -654,7 +505,7 @@
               <div
                 class="px-6 pb-6 pl-14 text-surveillance/80 text-lg leading-relaxed border-t border-surveillance/5 pt-4"
               >
-                You know that "growth mindset" is often a euphemism for accepting worse conditions.
+                You know that speed is rewarded more reliably than depth. The person who answers the email at 10pm gets the "thank you," even if the answer is mediocre.
               </div>
             </details>
 
@@ -666,7 +517,7 @@
                   <span class="font-mono text-rust text-xl">03</span>
                   <span
                     class="font-display font-bold text-xl text-surveillance group-hover:text-rust transition-colors"
-                    >The exchange rate has been calculated.</span
+                    >Praise is not protection.</span
                   >
                 </div>
                 <span
@@ -677,89 +528,62 @@
               <div
                 class="px-6 pb-6 pl-14 text-surveillance/80 text-lg leading-relaxed border-t border-surveillance/5 pt-4"
               >
-                You know that the colleague who "doesn't take work home" isn't less
-                committed&mdash;they've just recognized the exchange rate.
+                You know that "Good job" is not a contract. It does not convert cleanly into "You are safe."
               </div>
             </details>
+
           </div>
         </div>
       </section>
 
-      <!-- SECTION 5: NEXT STEPS / CLOSING -->
       <section class="py-24 px-6 border-t border-surveillance/10">
         <div class="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16">
-          <!-- Closing Provocation -->
           <div>
             <span class="mono-label text-surveillance/50 text-xs block mb-6"
               >05 // Closing Provocation</span
             >
             <h3 class="font-display font-bold text-3xl mb-6">The Trap</h3>
-            <!-- Replaced P1/P2 with a single block placeholder. Inject <p> tags here. -->
             <div class="text-xl leading-relaxed text-surveillance/80 space-y-6">
               <p>
-                The trap isn't that you work too hard. The trap is that working hard has been
-                substituted for structural security that working hard cannot produce.
+                The trap isn't that you work too hard. The trap is that <span class="text-rust font-bold">effort has been substituted for security.</span>
               </p>
               <p>
-                You're not failing. The strategy is functioning exactly as designed: converting your
-                finite time and health into positional advantage in a zero-sum competition for
-                economic stability.
+                The system does not need to promise you success. It only needs to make overachievement feel marginally safer than restraint.
               </p>
               <p>
-                The system doesn't need to promise you success. It only needs to make
-                overachievement feel more rational than the alternative.
+                You will keep doing this because stopping feels like exposure. This is not weakness. It is accurate risk assessment.
               </p>
-              <p>And it does.</p>
-              <p>
-                You're going to keep doing this. You know the math doesn't work. You know the costs
-                accumulate. You know that exceptional effort has become minimum expectation.
-              </p>
-              <p>
-                You're going to keep doing this because the system has made every other option feel
-                like resignation.
-              </p>
-              <p>
-                This isn't a moral failing. This is accurate risk assessment under conditions of
-                structural precarity.
-              </p>
-              <p>The exhaustion you feel isn't weakness.</p>
-              <p>It's the cost of being right about the world you're living in.</p>
             </div>
           </div>
 
-          <!-- Recommended Actions Box -->
-          <div class="bg-white border border-surveillance/20 p-8 shadow-sm">
-            <span class="mono-label text-rust text-xs block mb-6">Recommended Actions</span>
+          <div class="bg-white border border-surveillance/20 p-10 shadow-sm">
+            <span class="mono-label text-rust text-xs block mb-8">Recommended Actions</span>
 
-            <ul class="space-y-4">
-              <li class="flex items-start gap-3">
-                <span class="material-symbols-outlined text-rust text-sm mt-1">menu_book</span>
+            <ul class="space-y-6">
+              <li class="flex items-start gap-4">
+                <span class="material-symbols-outlined text-rust text-base mt-0.5">calculate</span>
                 <div>
-                  <strong class="font-display block">Be non-standard.</strong>
-                  <span class="text-sm text-surveillance/60"
-                    >Outperform the median. Extract economic security through differentiation.</span
+                  <strong class="font-display block text-lg">Calculate the Hourly Rate</strong>
+                  <span class="text-base text-surveillance/60"
+                    >Divide your salary by your <em>actual</em> hours. The number will horrify you.</span
                   >
                 </div>
               </li>
-              <li class="flex items-start gap-3">
-                <span class="material-symbols-outlined text-rust text-sm mt-1">calculate</span>
+              <li class="flex items-start gap-4">
+                <span class="material-symbols-outlined text-rust text-base mt-0.5">hourglass_empty</span>
                 <div>
-                  <strong class="font-display block"
-                    >Standard effort produces standard wages.</strong
-                  >
-                  <span class="text-sm text-surveillance/60"
-                    >Standard wages, adjusted for cost structure, produce financial fragility.</span
+                  <strong class="font-display block text-lg">Test the Silence</strong>
+                  <span class="text-base text-surveillance/60"
+                    >Wait 60 minutes to respond. Observe that the sky does not fall.</span
                   >
                 </div>
               </li>
-              <li class="flex items-start gap-3">
-                <span class="material-symbols-outlined text-rust text-sm mt-1">experiment</span>
+              <li class="flex items-start gap-4">
+                <span class="material-symbols-outlined text-rust text-base mt-0.5">account_balance</span>
                 <div>
-                  <strong class="font-display block"
-                    >Individual optimization cannot solve structural problems.</strong
-                  >
-                  <span class="text-sm text-surveillance/60"
-                    >The strategy doesn't fail because you're not working hard enough.</span
+                  <strong class="font-display block text-lg">Buy Real Margin</strong>
+                  <span class="text-base text-surveillance/60"
+                    >Financial savings provide more safety than political goodwill.</span
                   >
                 </div>
               </li>
@@ -769,7 +593,6 @@
       </section>
     </main>
 
-    <!-- FOOTER -->
     <footer class="bg-surveillance text-cream py-16 px-6 border-t border-rust/30">
       <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-12">
         <div class="col-span-1 md:col-span-2">
@@ -784,9 +607,9 @@
             Cross-Reference
           </h5>
           <ul class="space-y-2 font-mono text-sm text-cream/70">
-            <li><a href="#" class="hover:text-cream transition-colors">The Cities</a></li>
-            <li><a href="#" class="hover:text-cream transition-colors">The System</a></li>
-            <li><a href="#" class="hover:text-cream transition-colors">The Exits</a></li>
+            <li><a href="../#system" class="hover:text-cream transition-colors">I. The System</a></li>
+            <li><a href="../#cities" class="hover:text-cream transition-colors">II. The Cities</a></li>
+            <li><a href="../#exits" class="hover:text-cream transition-colors">V. The Exits</a></li>
           </ul>
         </div>
         <div>
