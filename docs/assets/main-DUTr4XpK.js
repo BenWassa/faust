@@ -1,4 +1,4 @@
-(function(){const a=document.createElement("link").relList;if(a&&a.supports&&a.supports("modulepreload"))return;for(const t of document.querySelectorAll('link[rel="modulepreload"]'))s(t);new MutationObserver(t=>{for(const r of t)if(r.type==="childList")for(const o of r.addedNodes)o.tagName==="LINK"&&o.rel==="modulepreload"&&s(o)}).observe(document,{childList:!0,subtree:!0});function i(t){const r={};return t.integrity&&(r.integrity=t.integrity),t.referrerPolicy&&(r.referrerPolicy=t.referrerPolicy),t.crossOrigin==="use-credentials"?r.credentials="include":t.crossOrigin==="anonymous"?r.credentials="omit":r.credentials="same-origin",r}function s(t){if(t.ep)return;t.ep=!0;const r=i(t);fetch(t.href,r)}})();const x=24,L=130,M={toronto:{medianIncome:99e3,medianHomePrice:1029600,currency:"CAD",year:2025,incomeType:"Median household income",taxBasis:"Pre-tax",ownershipSource:"Project Faust city baseline",rentSource:"Project Faust city baseline",desc:"The Trap of Good Intentions",burdenLabel:"Ownership burden",burdenValue:"77% of income",narrative:"The ambition tax: where hustle is survival, not aspiration. Ownership becomes a math problem first, a life decision second.",image:{src:"./toronto.png",alt:"CN Tower Toronto skyline black and white"}},vancouver:{medianIncome:92e3,medianHomePrice:1168400,currency:"CAD",year:2025,incomeType:"Median household income",taxBasis:"Pre-tax",ownershipSource:"Project Faust city baseline",rentSource:"Project Faust city baseline",desc:"Immobility by Design",burdenLabel:"Affordability pressure",burdenValue:"12.7x income",narrative:"The most beautiful trap: affordability drifts so far from wages that mobility becomes inheritance-dependent.",image:{src:"./vancouver.png",alt:"Lions Gate Bridge Vancouver black and white"}},london:{medianIncome:45e3,medianHomePrice:441e3,currency:"GBP",year:2025,incomeType:"Median household income",taxBasis:"Pre-tax",ownershipSource:"Project Faust city baseline",rentSource:"Project Faust city baseline",desc:"The Feudal Rental Market",burdenLabel:"Rent burden",burdenValue:"52% of income",narrative:"Feudalism reinvented: rent absorbs upward mobility while ownership keeps moving out of reach.",image:{src:"./london.png",alt:"St Pauls Cathedral London skyline black and white"}},nyc:{medianIncome:8e4,medianHomePrice:6e5,currency:"USD",year:2025,incomeType:"Median household income",taxBasis:"Pre-tax",ownershipSource:"Project Faust city baseline",rentSource:"Project Faust city baseline",desc:"The Velocity Machine",burdenLabel:"Rent burdened households",burdenValue:"53%",narrative:"Velocity over everything. High rent burden persists, but the social story still calls this opportunity.",image:{src:"./nyc.png",alt:"Empire State Building NYC skyline black and white"}}},F={nyc:"New York City"},h=e=>F[e]||e.charAt(0).toUpperCase()+e.slice(1),$=(e,a)=>{if(a==="CAD"||a==="USD"){const i=new Intl.NumberFormat("en",{notation:"compact",compactDisplay:"short",maximumFractionDigits:1}).format(e);return`${a} ${i}`}return new Intl.NumberFormat("en",{style:"currency",currency:a,notation:"compact",compactDisplay:"short",maximumFractionDigits:1}).format(e)},S=e=>{const a=Object.entries(e).map(([t,r])=>{const o=r.medianHomePrice/r.medianIncome;return[t,{...r,ratio:o}]}),i=Object.fromEntries(a),s=Math.max(...a.map(([,t])=>t.medianHomePrice));return{computed:i,maxValue:s}},P=(e,a)=>{if(!a||e<=0)return`${x}px`;const i=x+e/a*(L-x);return`${Math.round(i)}px`},A=e=>{const{currentCity:a}=e,{computed:i}=S(e.cityData);if(!i[a])return"";const s=Object.keys(i).map(r=>{const o=r===a;return`
+(function(){const a=document.createElement("link").relList;if(a&&a.supports&&a.supports("modulepreload"))return;for(const t of document.querySelectorAll('link[rel="modulepreload"]'))s(t);new MutationObserver(t=>{for(const r of t)if(r.type==="childList")for(const o of r.addedNodes)o.tagName==="LINK"&&o.rel==="modulepreload"&&s(o)}).observe(document,{childList:!0,subtree:!0});function i(t){const r={};return t.integrity&&(r.integrity=t.integrity),t.referrerPolicy&&(r.referrerPolicy=t.referrerPolicy),t.crossOrigin==="use-credentials"?r.credentials="include":t.crossOrigin==="anonymous"?r.credentials="omit":r.credentials="same-origin",r}function s(t){if(t.ep)return;t.ep=!0;const r=i(t);fetch(t.href,r)}})();const x=24,L=130,M={toronto:{medianIncome:99e3,medianHomePrice:1029600,currency:"CAD",year:2025,incomeType:"Median household income",taxBasis:"Pre-tax",ownershipSource:"Project Faust city baseline",rentSource:"Project Faust city baseline",desc:"The Trap of Good Intentions",burdenLabel:"Ownership burden",burdenValue:"77% of income",narrative:"The ambition tax: where hustle is survival, not aspiration. Ownership becomes a math problem first, a life decision second.",image:{src:"./toronto.png",alt:"CN Tower Toronto skyline black and white"}},vancouver:{medianIncome:92e3,medianHomePrice:1168400,currency:"CAD",year:2025,incomeType:"Median household income",taxBasis:"Pre-tax",ownershipSource:"Project Faust city baseline",rentSource:"Project Faust city baseline",desc:"Immobility by Design",burdenLabel:"Affordability pressure",burdenValue:"12.7x income",narrative:"The most beautiful trap: affordability drifts so far from wages that mobility becomes inheritance-dependent.",image:{src:"./vancouver.png",alt:"Lions Gate Bridge Vancouver black and white"}},london:{medianIncome:45e3,medianHomePrice:441e3,currency:"GBP",year:2025,incomeType:"Median household income",taxBasis:"Pre-tax",ownershipSource:"Project Faust city baseline",rentSource:"Project Faust city baseline",desc:"The Feudal Rental Market",burdenLabel:"Rent burden",burdenValue:"52% of income",narrative:"Feudalism reinvented: rent absorbs upward mobility while ownership keeps moving out of reach.",image:{src:"./london.png",alt:"St Pauls Cathedral London skyline black and white"}},nyc:{medianIncome:8e4,medianHomePrice:6e5,currency:"USD",year:2025,incomeType:"Median household income",taxBasis:"Pre-tax",ownershipSource:"Project Faust city baseline",rentSource:"Project Faust city baseline",desc:"The Velocity Machine",burdenLabel:"Rent burdened households",burdenValue:"53%",narrative:"Velocity over everything. High rent burden persists, but the social story still calls this opportunity.",image:{src:"./nyc.png",alt:"Empire State Building NYC skyline black and white"}}},F={nyc:"New York City"},h=e=>F[e]||e.charAt(0).toUpperCase()+e.slice(1),$=(e,a)=>{if(a==="CAD"||a==="USD"){const i=new Intl.NumberFormat("en",{notation:"compact",compactDisplay:"short",maximumFractionDigits:1}).format(e);return`${a} ${i}`}return new Intl.NumberFormat("en",{style:"currency",currency:a,notation:"compact",compactDisplay:"short",maximumFractionDigits:1}).format(e)},C=e=>{const a=Object.entries(e).map(([t,r])=>{const o=r.medianHomePrice/r.medianIncome;return[t,{...r,ratio:o}]}),i=Object.fromEntries(a),s=Math.max(...a.map(([,t])=>t.medianHomePrice));return{computed:i,maxValue:s}},P=(e,a)=>{if(!a||e<=0)return`${x}px`;const i=x+e/a*(L-x);return`${Math.round(i)}px`},A=e=>{const{currentCity:a}=e,{computed:i}=C(e.cityData);if(!i[a])return"";const s=Object.keys(i).map(r=>{const o=r===a;return`
         <button
           onclick="selectCity('${r}')"
           class="w-full text-left px-4 py-4 border-b border-surveillance/10 flex justify-between items-center group transition-all hover:bg-surveillance/5 ${o?"bg-surveillance/5 border-l-4 border-l-rust pl-3":"pl-4"}"
@@ -33,13 +33,8 @@
               <span class="font-display font-bold text-xl text-surveillance uppercase" id="city-title">${h(a)}</span>
               <span class="font-mono text-xs text-rust uppercase tracking-widest block mt-1" id="city-desc"></span>
             </div>
-            <div class="space-y-2">
-              <div class="bg-rust text-cream px-3 py-1 font-mono text-xs uppercase tracking-widest shadow-md">
-                <span id="stat-ratio">${t.ratio.toFixed(1)}x Price-to-Income</span>
-              </div>
-              <div class="bg-surveillance text-cream px-3 py-1 font-mono text-xs uppercase tracking-widest shadow-md">
-                <span id="stat-burden">${t.burdenLabel}: ${t.burdenValue}</span>
-              </div>
+            <div class="bg-surveillance text-cream px-3 py-1 font-mono text-xs uppercase tracking-widest shadow-md">
+              <span id="stat-burden">${t.burdenLabel}: ${t.burdenValue}</span>
             </div>
           </div>
 
@@ -104,11 +99,11 @@
         <button onclick="navigateTo('machines')" class="text-rust font-bold flex items-center gap-2">Next: The Machines <span class="material-symbols-outlined">arrow_forward</span></button>
       </div>
     </section>
-  `},B=e=>{const{computed:a,maxValue:i}=S(e.cityData),s=a[e.currentCity];if(!s)return;const t=(E,j)=>{const T=document.getElementById(E);T&&(T.innerText=j)},r=h(e.currentCity),o=$(s.medianIncome,s.currency),l=$(s.medianHomePrice,s.currency),c=s.ratio.toFixed(1);t("city-narrative",s.narrative),t("city-title",r),t("city-desc",s.desc),t("stat-ratio",`${c}x Price-to-Income`),t("stat-burden",`${s.burdenLabel}: ${s.burdenValue}`),t("ratio-value",c),t("income-value",o),t("cost-value",l),t("city-metadata",`${s.incomeType} (${s.taxBasis}), ${s.year}. Ownership source: ${s.ownershipSource}. Rent source: ${s.rentSource}.`),t("city-definition","Definition: price-to-income = median home price divided by median annual household income.");const u=`${r}: median income ${o}, median home price ${l}, price-to-income ratio ${c} to 1.`,g=document.getElementById("city-graph-description");g&&(g.innerText=u);const y=document.getElementById("affordability-graph");y&&y.setAttribute("aria-label",u);const f=document.getElementById("city-img");f&&(f.src=s.image.src,f.alt=s.image.alt);const w=document.getElementById("bar-income"),k=document.getElementById("bar-cost");requestAnimationFrame(()=>{w&&(w.style.height=P(s.medianIncome,i)),k&&(k.style.height=P(s.medianHomePrice,i))})},p=(e,a,i,s)=>`
+  `},B=e=>{const{computed:a,maxValue:i}=C(e.cityData),s=a[e.currentCity];if(!s)return;const t=(I,j)=>{const T=document.getElementById(I);T&&(T.innerText=j)},r=h(e.currentCity),o=$(s.medianIncome,s.currency),l=$(s.medianHomePrice,s.currency),p=s.ratio.toFixed(1);t("city-narrative",s.narrative),t("city-title",r),t("city-desc",s.desc),t("stat-burden",`${s.burdenLabel}: ${s.burdenValue}`),t("ratio-value",p),t("income-value",o),t("cost-value",l),t("city-metadata",`${s.incomeType} (${s.taxBasis}), ${s.year}. Ownership source: ${s.ownershipSource}. Rent source: ${s.rentSource}.`),t("city-definition","Definition: price-to-income = median home price divided by median annual household income.");const u=`${r}: median income ${o}, median home price ${l}, price-to-income ratio ${p} to 1.`,g=document.getElementById("city-graph-description");g&&(g.innerText=u);const y=document.getElementById("affordability-graph");y&&y.setAttribute("aria-label",u);const f=document.getElementById("city-img");f&&(f.src=s.image.src,f.alt=s.image.alt);const w=document.getElementById("bar-income"),k=document.getElementById("bar-cost");requestAnimationFrame(()=>{w&&(w.style.height=P(s.medianIncome,i)),k&&(k.style.height=P(s.medianHomePrice,i))})},d=(e,a,i,s)=>`
       <header class="bg-cream pt-12 pb-12 px-6 border-b border-surveillance/10 relative">
           <div class="max-w-7xl mx-auto relative z-10"><span class="font-mono text-rust text-sm uppercase tracking-widest mb-2 block animate-fade-in">Chapter ${e}</span><h2 class="font-display font-bold text-5xl md:text-6xl text-surveillance mb-4 pb-px animate-slide-up">${a}</h2><p class="font-body text-xl md:text-2xl text-surveillance/60 max-w-2xl pb-px animate-slide-up">${i}</p></div>
       </header>
-  `,d=(e,a,i,s,t)=>`
+  `,c=(e,a,i,s,t)=>`
       <div onclick="navigateTo('${s}')" class="group border border-surveillance/20 p-8 hover:bg-surveillance hover:text-cream transition-all duration-300 cursor-pointer h-full flex flex-col justify-between relative overflow-hidden bg-white">
           <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20"><span class="material-symbols-outlined text-6xl">${t}</span></div>
           <div><span class="font-mono text-rust text-sm mb-2 block group-hover:text-soft-green">${e}</span><h3 class="font-display font-bold text-2xl mb-4">${a}</h3><p class="font-body text-lg opacity-70">${i}</p></div>
@@ -145,16 +140,16 @@
       </section>
       <section id="sections" class="py-24 px-6 max-w-6xl mx-auto">
           <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              ${d("01","The System","The Tyranny of Merit","system","grid_view")}
-              ${d("02","The Cities","Toronto, London, NYC","cities","location_city")}
-              ${d("03","The Machines","LinkedIn Panopticon","machines","devices")}
-              ${d("04","The Casualties","Burnout & Anxiety","casualties","psychology")}
-              ${d("05","The Exits","Alternative Frameworks","exits","door_open")}
-              ${d("06","Resources","Practical Tools","resources","library_books")}
+              ${c("01","The System","The Tyranny of Merit","system","grid_view")}
+              ${c("02","The Cities","Toronto, London, NYC","cities","location_city")}
+              ${c("03","The Machines","LinkedIn Panopticon","machines","devices")}
+              ${c("04","The Casualties","Burnout & Anxiety","casualties","psychology")}
+              ${c("05","The Exits","Alternative Frameworks","exits","door_open")}
+              ${c("06","Resources","Practical Tools","resources","library_books")}
           </div>
       </section>
   `,D=()=>`
-      ${p("01","The System","The theological intensity of modern work.")}
+      ${d("01","The System","The theological intensity of modern work.")}
       <article class="max-w-3xl mx-auto px-6 py-16">
           <p class="font-body text-2xl leading-relaxed text-surveillance/80 mb-12 first-letter:text-5xl first-letter:font-bold first-letter:mr-2 first-letter:float-left">We have replaced the worship of gods with the worship of potential. Derek Thompson calls it "Workism"—the belief that work is not only necessary to economic production, but also the centerpiece of one’s identity.</p>
           <div class="my-12 border-l-4 border-rust pl-8 py-2"><blockquote class="font-display font-bold text-2xl text-surveillance italic">"The achievement-subject exploits itself. It means that exploitation is possible even without domination."</blockquote><cite class="block mt-4 font-mono text-sm text-rust uppercase">— Byung-Chul Han</cite></div>
@@ -164,10 +159,10 @@
           <div class="flex justify-between items-center mt-16 pt-8 border-t border-surveillance/10"><button onclick="navigateTo('home')" class="text-surveillance/50 hover:text-surveillance flex items-center gap-2"><span class="material-symbols-outlined">arrow_back</span> Home</button><button onclick="navigateTo('cities')" class="text-rust font-bold hover:text-surveillance flex items-center gap-2">Next: The Cities <span class="material-symbols-outlined">arrow_forward</span></button></div>
       </article>
   `,H=e=>`
-      ${p("02","The Cities","Where ambition goes to pay rent.")}
+      ${d("02","The Cities","Where ambition goes to pay rent.")}
       ${A(e)}
   `,R=()=>`
-      ${p("03","The Machines","Engines of Envy.")}
+      ${d("03","The Machines","Engines of Envy.")}
       <section class="max-w-7xl mx-auto px-6 py-12">
           <div class="grid grid-cols-1 lg:grid-cols-5 gap-8 lg:gap-12">
               <div class="lg:col-span-2">
@@ -503,7 +498,7 @@
           </div>
           <div class="flex justify-end mt-16"><button onclick="navigateTo('casualties')" class="text-rust font-bold flex items-center gap-2">Next: The Casualties <span class="material-symbols-outlined">arrow_forward</span></button></div>
       </section>
-  `,O=()=>p("04","The Casualties","Psychological Archetypes")+`
+  `,O=()=>d("04","The Casualties","Psychological Archetypes")+`
           <section class="py-16 px-6 max-w-6xl mx-auto">
               <div class="mb-16 max-w-3xl mx-auto">
                   <p class="font-body text-xl leading-relaxed text-surveillance/70">
@@ -552,7 +547,7 @@
        </div>
     </div>
 `,_=()=>`
-      ${p("05","The Exits","Strategies for defensive detachment.")}
+      ${d("05","The Exits","Strategies for defensive detachment.")}
       
       <section class="max-w-6xl mx-auto px-6 py-12">
           
@@ -644,7 +639,7 @@
           </div>
       </section>
   `,N=()=>`
-      ${p("06","Resources","Tools for resistance.")}
+      ${d("06","Resources","Tools for resistance.")}
       <section class="max-w-4xl mx-auto px-6 py-12 space-y-12">
           <div>
               <h3 class="font-display font-bold text-2xl border-b border-surveillance mb-6 pb-2">Essential Reading</h3>
@@ -706,4 +701,4 @@
               </ul>
           </div>
       </section>
-  `,n={currentView:"home",cityData:M,currentCity:"toronto"},C=new Set(["home","system","cities","machines","casualties","exits","resources"]);function z(e){n.currentCity=e,b()}function b(){const e=document.getElementById("app"),a={home:V,system:D,cities:()=>H(n),machines:R,casualties:O,exits:_,resources:N};e.style.opacity="0",setTimeout(()=>{e.innerHTML=a[n.currentView](),n.currentView==="cities"&&B(n),e.style.opacity="1";const i={home:"0%",system:"16%",cities:"32%",machines:"48%",casualties:"64%",exits:"80%",resources:"100%"};document.getElementById("progress-bar").style.width=i[n.currentView]},300)}function W(e){C.has(e)&&(n.currentView=e,e==="home"?history.replaceState(null,"",window.location.pathname+window.location.search):window.location.hash=e,b(),window.scrollTo(0,0))}function q(){const e=document.getElementById("mobile-menu");e.classList.toggle("hidden"),e.classList.toggle("flex")}function U(e,a=!1){const i=document.querySelector(`[data-trap="${e}"]`);if(!i)return;const s=i.querySelector("[data-trap-detail]"),t=i.querySelector("[data-trap-icon]"),r=s&&!s.classList.contains("hidden");r&&a||(document.querySelectorAll("[data-trap]").forEach(l=>{l.classList.remove("trap-active","bg-rust/5");const c=l.querySelector("[data-trap-detail]"),u=l.querySelector("[data-trap-icon]");c&&c.classList.add("hidden"),u&&u.classList.remove("rotate-180")}),r)||(i.classList.add("trap-active"),s&&s.classList.remove("hidden"),t&&t.classList.add("rotate-180"),window.innerWidth<768&&setTimeout(()=>{i.scrollIntoView({behavior:"smooth",block:"nearest"})},100))}Object.assign(window,{navigateTo:W,toggleMobileMenu:q,openTrap:U,selectCity:z});document.addEventListener("DOMContentLoaded",()=>{I(),b(),window.addEventListener("hashchange",()=>{I(),b()}),window.addEventListener("scroll",()=>{const e=document.getElementById("navbar");window.scrollY>50?(e.classList.add("shadow-md","py-2"),e.classList.remove("py-4")):(e.classList.remove("shadow-md","py-2"),e.classList.add("py-4"))})});function I(){const e=window.location.hash.replace("#","");e&&C.has(e)&&(n.currentView=e)}
+  `,n={currentView:"home",cityData:M,currentCity:"toronto"},E=new Set(["home","system","cities","machines","casualties","exits","resources"]);function z(e){n.currentCity=e,b()}function b(){const e=document.getElementById("app"),a={home:V,system:D,cities:()=>H(n),machines:R,casualties:O,exits:_,resources:N};e.style.opacity="0",setTimeout(()=>{e.innerHTML=a[n.currentView](),n.currentView==="cities"&&B(n),e.style.opacity="1";const i={home:"0%",system:"16%",cities:"32%",machines:"48%",casualties:"64%",exits:"80%",resources:"100%"};document.getElementById("progress-bar").style.width=i[n.currentView]},300)}function W(e){E.has(e)&&(n.currentView=e,e==="home"?history.replaceState(null,"",window.location.pathname+window.location.search):window.location.hash=e,b(),window.scrollTo(0,0))}function q(){const e=document.getElementById("mobile-menu");e.classList.toggle("hidden"),e.classList.toggle("flex")}function U(e,a=!1){const i=document.querySelector(`[data-trap="${e}"]`);if(!i)return;const s=i.querySelector("[data-trap-detail]"),t=i.querySelector("[data-trap-icon]"),r=s&&!s.classList.contains("hidden");r&&a||(document.querySelectorAll("[data-trap]").forEach(l=>{l.classList.remove("trap-active","bg-rust/5");const p=l.querySelector("[data-trap-detail]"),u=l.querySelector("[data-trap-icon]");p&&p.classList.add("hidden"),u&&u.classList.remove("rotate-180")}),r)||(i.classList.add("trap-active"),s&&s.classList.remove("hidden"),t&&t.classList.add("rotate-180"),window.innerWidth<768&&setTimeout(()=>{i.scrollIntoView({behavior:"smooth",block:"nearest"})},100))}Object.assign(window,{navigateTo:W,toggleMobileMenu:q,openTrap:U,selectCity:z});document.addEventListener("DOMContentLoaded",()=>{S(),b(),window.addEventListener("hashchange",()=>{S(),b()}),window.addEventListener("scroll",()=>{const e=document.getElementById("navbar");window.scrollY>50?(e.classList.add("shadow-md","py-2"),e.classList.remove("py-4")):(e.classList.remove("shadow-md","py-2"),e.classList.add("py-4"))})});function S(){const e=window.location.hash.replace("#","");e&&E.has(e)&&(n.currentView=e)}

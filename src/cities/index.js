@@ -164,13 +164,8 @@ export const CitiesLayout = (state) => {
               <span class="font-display font-bold text-xl text-surveillance uppercase" id="city-title">${formatCityName(currentCity)}</span>
               <span class="font-mono text-xs text-rust uppercase tracking-widest block mt-1" id="city-desc"></span>
             </div>
-            <div class="space-y-2">
-              <div class="bg-rust text-cream px-3 py-1 font-mono text-xs uppercase tracking-widest shadow-md">
-                <span id="stat-ratio">${selected.ratio.toFixed(1)}x Price-to-Income</span>
-              </div>
-              <div class="bg-surveillance text-cream px-3 py-1 font-mono text-xs uppercase tracking-widest shadow-md">
-                <span id="stat-burden">${selected.burdenLabel}: ${selected.burdenValue}</span>
-              </div>
+            <div class="bg-surveillance text-cream px-3 py-1 font-mono text-xs uppercase tracking-widest shadow-md">
+              <span id="stat-burden">${selected.burdenLabel}: ${selected.burdenValue}</span>
             </div>
           </div>
 
@@ -256,7 +251,6 @@ export const updateCityPanel = (state) => {
   setText('city-narrative', data.narrative)
   setText('city-title', cityLabel)
   setText('city-desc', data.desc)
-  setText('stat-ratio', `${ratioLabel}x Price-to-Income`)
   setText('stat-burden', `${data.burdenLabel}: ${data.burdenValue}`)
   setText('ratio-value', ratioLabel)
   setText('income-value', incomeLabel)
