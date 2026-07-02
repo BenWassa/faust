@@ -1,0 +1,14 @@
+---
+// The signature dark "Diagnostic" panel.
+interface Props {
+  label?: string
+}
+const { label = 'Diagnostic' } = Astro.props
+---
+<div class="bg-surveillance text-cream p-8 md:p-10 my-12 relative not-prose">
+  <div class="absolute top-0 left-0 w-1 h-full bg-rust"></div>
+  <h4 class="font-mono text-rust uppercase tracking-widest mb-5 text-sm">{label}</h4>
+  <div class="font-body text-lg leading-relaxed [&_ul]:space-y-3 [&_li]:pl-5 [&_li]:relative">
+    <slot />
+  </div>
+</div>

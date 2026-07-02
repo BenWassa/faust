@@ -1,0 +1,219 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import ChapterHeader from '../components/ChapterHeader.astro'
+import { questions } from '../data/quiz'
+import { archetypes } from '../data/archetypes'
+import { url } from '../lib/url'
+
+const resultPayload = Object.fromEntries(
+  archetypes.map((a) => [
+    a.slug,
+    { title: a.title, num: a.num, icon: a.icon, coreLogic: a.coreLogic, medicine: a.medicine, href: url(`archetypes/${a.slug}`) },
+  ])
+)
+---
+<BaseLayout
+  title="The Diagnostic"
+  description="A forced-choice self-assessment. Ten questions, no neutral answers. Find your archetype — and the medicine it won’t take voluntarily."
+  active="casualties"
+>
+  <ChapterHeader
+    num="00"
+    title="The Diagnostic"
+    sub="Ten questions. No neutral answers. Find the shape your survival has taken."
+  />
+
+  <section class="max-w-2xl mx-auto px-6 py-12" data-quiz>
+    <!-- Intro -->
+    <div data-quiz-intro>
+      <p class="prose-faust text-lg text-surveillance/80 dark:text-cream/80">
+        This is not a personality test. There are no good answers, and the result is not a
+        compliment. Each question forces a choice — the design principle of this whole project is
+        <em>no hedging</em>. Answer for who you actually are on a Tuesday, not who you’d like to be.
+      </p>
+      <button data-quiz-start class="mt-8 px-8 py-4 bg-surveillance text-cream dark:bg-rust font-mono uppercase tracking-widest hover:bg-rust dark:hover:bg-surveillance transition-colors">
+        Begin
+      </button>
+    </div>
+
+    <!-- Quiz -->
+    <div data-quiz-body class="hidden">
+      <div class="flex items-center justify-between mb-6 font-mono text-xs uppercase tracking-widest text-surveillance/50 dark:text-cream/50">
+        <span data-quiz-counter>Question 1 / {questions.length}</span>
+        <div class="flex-1 mx-4 h-1 bg-surveillance/10 dark:bg-cream/10">
+          <div data-quiz-progress class="h-full bg-rust transition-all duration-300" style="width:0%"></div>
+        </div>
+      </div>
+
+      {
+        questions.map((q, qi) => (
+          <fieldset data-question={qi} class:list={['space-y-3', qi !== 0 && 'hidden']}>
+            <legend class="font-display font-bold text-2xl md:text-3xl mb-6 leading-snug">{q.prompt}</legend>
+            {q.options.map((opt, oi) => (
+              <button
+                data-option
+                data-q={qi}
+                data-o={oi}
+                data-weights={JSON.stringify(opt.weights)}
+                class="w-full text-left surface p-5 hover:border-rust hover:bg-rust/5 transition-colors font-body text-lg flex gap-3 items-start"
+              >
+                <span class="font-mono text-xs text-rust mt-1.5">{String.fromCharCode(65 + oi)}</span>
+                <span>{opt.text}</span>
+              </button>
+            ))}
+          </fieldset>
+        ))
+      }
+      <button data-quiz-back class="mt-8 font-mono text-xs uppercase tracking-widest text-surveillance/50 dark:text-cream/50 hover:text-rust hidden items-center gap-1">
+        <span class="material-symbols-outlined text-sm">arrow_back</span> Back
+      </button>
+    </div>
+
+    <!-- Result -->
+    <div data-quiz-result class="hidden">
+      <p class="font-mono text-xs uppercase tracking-widest text-rust mb-2">Diagnosis</p>
+      <div class="flex items-center gap-4 mb-6">
+        <span data-result-icon class="material-symbols-outlined text-5xl text-rust"></span>
+        <h2 data-result-title class="font-display font-extrabold text-4xl md:text-5xl"></h2>
+      </div>
+      <div class="surface p-6 mb-4">
+        <span class="font-mono text-[10px] uppercase tracking-widest text-surveillance/50 dark:text-cream/50 block mb-2">Core logic</span>
+        <p data-result-logic class="font-display font-bold text-xl leading-snug"></p>
+      </div>
+      <div class="bg-surveillance text-cream p-6 mb-8 relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-1 h-full bg-rust"></div>
+        <span class="font-mono text-[10px] uppercase tracking-widest text-rust block mb-2">The medicine you won’t take</span>
+        <p data-result-medicine class="font-display font-bold text-xl leading-snug"></p>
+      </div>
+
+      <p data-result-secondary class="font-body text-surveillance/60 dark:text-cream/60 mb-8"></p>
+
+      <div class="flex flex-wrap gap-4">
+        <a data-result-link class="px-6 py-3 bg-surveillance text-cream dark:bg-rust font-mono uppercase tracking-widest text-sm hover:bg-rust dark:hover:bg-surveillance transition-colors" href="#">
+          Read the full diagnosis
+        </a>
+        <button data-result-share class="px-6 py-3 border border-surveillance/30 dark:border-cream/30 font-mono uppercase tracking-widest text-sm hover:border-rust hover:text-rust transition-colors flex items-center gap-2">
+          <span class="material-symbols-outlined text-sm">share</span> <span data-share-label>Share result</span>
+        </button>
+        <button data-quiz-restart class="px-6 py-3 font-mono uppercase tracking-widest text-sm text-surveillance/50 dark:text-cream/50 hover:text-rust transition-colors">
+          Retake
+        </button>
+      </div>
+    </div>
+
+    <script type="application/json" data-result-data set:html={JSON.stringify(resultPayload)}></script>
+  </section>
+</BaseLayout>
+
+<script>
+  const root = document.querySelector('[data-quiz]')
+  if (root) {
+    const results = JSON.parse(root.querySelector('[data-result-data]')?.textContent || '{}')
+    const total = root.querySelectorAll('[data-question]').length
+    const scores = {}
+    const answered = {}
+    let current = 0
+
+    const intro = root.querySelector('[data-quiz-intro]')
+    const body = root.querySelector('[data-quiz-body]')
+    const result = root.querySelector('[data-quiz-result]')
+    const counter = root.querySelector('[data-quiz-counter]')
+    const progress = root.querySelector('[data-quiz-progress]')
+    const backBtn = root.querySelector('[data-quiz-back]')
+
+    const show = (i) => {
+      root.querySelectorAll('[data-question]').forEach((f, idx) => f.classList.toggle('hidden', idx !== i))
+      counter.textContent = `Question ${i + 1} / ${total}`
+      progress.style.width = `${(i / total) * 100}%`
+      backBtn.classList.toggle('hidden', i === 0)
+      backBtn.classList.toggle('flex', i !== 0)
+      current = i
+    }
+
+    const finish = () => {
+      // Highest total wins; ties broken by question order of first lead.
+      let best = null
+      let bestScore = -1
+      for (const slug of Object.keys(results)) {
+        const s = scores[slug] || 0
+        if (s > bestScore) {
+          bestScore = s
+          best = slug
+        }
+      }
+      const sorted = Object.keys(results)
+        .map((slug) => ({ slug, s: scores[slug] || 0 }))
+        .sort((a, b) => b.s - a.s)
+      const r = results[best]
+      root.querySelector('[data-result-icon]').textContent = r.icon
+      root.querySelector('[data-result-title]').textContent = r.title
+      root.querySelector('[data-result-logic]').textContent = r.coreLogic
+      root.querySelector('[data-result-medicine]').textContent = r.medicine
+      root.querySelector('[data-result-link]').setAttribute('href', r.href)
+      const second = sorted[1] && sorted[1].s > 0 ? results[sorted[1].slug].title : null
+      root.querySelector('[data-result-secondary]').textContent = second
+        ? `Your secondary pattern leans toward ${second}. Most people are a blend — but the dominant shape is where the medicine lands hardest.`
+        : ''
+      body.classList.add('hidden')
+      result.classList.remove('hidden')
+      window.scrollTo({ top: 0, behavior: 'smooth' })
+      try {
+        history.replaceState(null, '', `#${best}`)
+      } catch {}
+    }
+
+    root.querySelector('[data-quiz-start]')?.addEventListener('click', () => {
+      intro.classList.add('hidden')
+      body.classList.remove('hidden')
+      show(0)
+    })
+
+    root.querySelectorAll('[data-option]').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const qi = Number(btn.getAttribute('data-q'))
+        const weights = JSON.parse(btn.getAttribute('data-weights') || '{}')
+        // Undo previous answer for this question if any.
+        if (answered[qi]) {
+          for (const k in answered[qi]) scores[k] = (scores[k] || 0) - answered[qi][k]
+        }
+        for (const k in weights) scores[k] = (scores[k] || 0) + weights[k]
+        answered[qi] = weights
+        // visual selection
+        root
+          .querySelectorAll(`[data-option][data-q="${qi}"]`)
+          .forEach((b) => b.classList.remove('border-rust', 'bg-rust/5'))
+        btn.classList.add('border-rust', 'bg-rust/5')
+        if (qi + 1 < total) setTimeout(() => show(qi + 1), 180)
+        else setTimeout(finish, 200)
+      })
+    })
+
+    backBtn?.addEventListener('click', () => show(Math.max(0, current - 1)))
+
+    root.querySelector('[data-quiz-restart]')?.addEventListener('click', () => {
+      for (const k in scores) delete scores[k]
+      for (const k in answered) delete answered[k]
+      root.querySelectorAll('[data-option]').forEach((b) => b.classList.remove('border-rust', 'bg-rust/5'))
+      result.classList.add('hidden')
+      body.classList.remove('hidden')
+      show(0)
+    })
+
+    root.querySelector('[data-result-share]')?.addEventListener('click', async () => {
+      const title = root.querySelector('[data-result-title]')?.textContent || ''
+      const shareData = {
+        title: 'The Architecture of Ambition',
+        text: `My diagnosis: ${title}. Find yours.`,
+        url: window.location.href,
+      }
+      const label = root.querySelector('[data-share-label]')
+      try {
+        if (navigator.share) await navigator.share(shareData)
+        else {
+          await navigator.clipboard.writeText(window.location.href)
+          if (label) label.textContent = 'Link copied'
+        }
+      } catch {}
+    })
+  }
+</script>

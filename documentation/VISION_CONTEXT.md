@@ -1,7 +1,15 @@
 # Project Faust: Vision & Context Document
-**Version:** 2.0  
-**Last Updated:** January 29, 2026  
+**Version:** 3.0  
+**Last Updated:** July 2, 2026  
 **Purpose:** Complete context transfer for AI assistance across sessions
+
+> **v3.0 overhaul (July 2026):** Migrated from the vanilla Vite SPA to **Astro** (static output).
+> Added **The Practice** chapter (Ch.06), an interactive **Diagnostic** self-assessment,
+> **Instagram** analysis in The Machines, a **citations** system, data-viz (price-to-income
+> comparison, envy-loop, self-complexity), a realized **panopticon hero**, and a **Surveillance
+> Mode** dark theme. Archetypes are now a Markdown content collection. Repo hygiene: removed
+> committed `docs/`, `backup/`, `archive/`; deploy via GitHub Actions. The "Critical Gap" below
+> (confrontational archetype content) is now the shipped default.
 
 ---
 

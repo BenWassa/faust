@@ -1,4 +1,15 @@
+# dependencies
 node_modules/
+
+# Astro build output
+dist/
+.astro/
+
+# generated content collection (produced from /archetypes by scripts/gen-archetypes.mjs)
+# kept in tree for build reproducibility — comment the next line out to regenerate
+# src/content/archetypes/
+
+# misc
 .vite/
 .env
 .DS_Store

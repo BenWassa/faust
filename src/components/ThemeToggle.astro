@@ -1,0 +1,25 @@
+---
+// Surveillance Mode toggle. State persists in localStorage; the no-flash
+// init runs in BaseLayout <head> before paint.
+---
+<button
+  id="theme-toggle"
+  type="button"
+  class="p-2 rounded -m-2 text-surveillance/70 hover:text-rust dark:text-cream/70 dark:hover:text-rust transition-colors"
+  aria-label="Toggle Surveillance Mode (dark theme)"
+  title="Surveillance Mode"
+>
+  <span class="material-symbols-outlined text-xl block dark:hidden" aria-hidden="true">dark_mode</span>
+  <span class="material-symbols-outlined text-xl hidden dark:block" aria-hidden="true">light_mode</span>
+</button>
+
+<script>
+  const btn = document.getElementById('theme-toggle')
+  btn?.addEventListener('click', () => {
+    const root = document.documentElement
+    const isDark = root.classList.toggle('dark')
+    try {
+      localStorage.setItem('faust-theme', isDark ? 'dark' : 'light')
+    } catch {}
+  })
+</script>

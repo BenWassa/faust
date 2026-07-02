@@ -1,0 +1,44 @@
+---
+import { chapters } from '../data/chapters'
+import { url } from '../lib/url'
+---
+<footer class="bg-surveillance text-cream py-16 border-t border-rust/30 mt-24">
+  <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-4 gap-12">
+    <div class="md:col-span-2">
+      <h4 class="font-display font-bold text-2xl mb-4">Architecture of Ambition</h4>
+      <p class="font-body text-lg text-cream/70 max-w-md">
+        A digital research project examining extreme career ambition as a
+        <em>rational maladaptation</em> — economically logical in expensive cities, psychologically
+        destructive. Diagnosis, not prescription.
+      </p>
+      <p class="font-mono text-xs text-cream/40 mt-6 uppercase tracking-widest">
+        Research Document · v3.0 · 2026
+      </p>
+    </div>
+    <div>
+      <h5 class="font-mono uppercase text-rust mb-4 text-xs tracking-widest">Chapters</h5>
+      <ul class="space-y-2 font-mono text-sm text-cream/60">
+        {
+          chapters.map((c) => (
+            <li>
+              <a class="hover:text-white transition-colors" href={url(c.slug)}>
+                {c.num} · {c.title}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+    <div>
+      <h5 class="font-mono uppercase text-rust mb-4 text-xs tracking-widest">Tools</h5>
+      <ul class="space-y-2 font-mono text-sm text-cream/60">
+        <li><a class="hover:text-white transition-colors" href={url('diagnostic')}>The Diagnostic</a></li>
+        <li><a class="hover:text-white transition-colors" href={url('casualties')}>The Archetypes</a></li>
+        <li><a class="hover:text-white transition-colors" href={url('resources')}>Resources</a></li>
+      </ul>
+      <p class="font-mono text-[10px] text-cream/40 mt-6 leading-relaxed">
+        Content CC BY-NC-SA 4.0<br />Code MIT
+      </p>
+    </div>
+  </div>
+</footer>

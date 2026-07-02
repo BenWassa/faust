@@ -3,15 +3,13 @@
   "version": "1.1.0",
   "private": true,
   "scripts": {
-    "dev": "vite --host",
-    "build": "vite build",
-    "preview": "vite preview",
-    "lint": "eslint \"src/**/*.js\"",
-    "format": "prettier --write \"src/**/*.{html,js,css}\"",
-    "format:check": "prettier --check \"src/**/*.{html,js,css}\"",
-    "release:major": "bash scripts/release.sh major",
-    "release:minor": "bash scripts/release.sh minor",
-    "release:patch": "bash scripts/release.sh patch"
+    "dev": "astro dev --host",
+    "start": "astro dev --host",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "format": "prettier --write \"src/**/*.{astro,ts,js,css,md}\"",
+    "format:check": "prettier --check \"src/**/*.{astro,ts,js,css,md}\""
   },
   "devDependencies": {
     "@vitest/coverage-v8": "^4.0.18",
@@ -25,5 +23,9 @@
     "tailwindcss": "^3.4.19",
     "vite": "^7.3.1",
     "vitest": "^4.0.18"
+  },
+  "dependencies": {
+    "@astrojs/tailwind": "^6.0.2",
+    "astro": "^7.0.5"
   }
 }

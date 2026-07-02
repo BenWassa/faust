@@ -1,0 +1,29 @@
+---
+import { source } from '../data/citations'
+interface Props {
+  ids: string[]
+}
+const { ids } = Astro.props
+const list = ids.map((id) => source(id)).filter(Boolean)
+---
+{
+  list.length > 0 && (
+    <section class="max-w-5xl mx-auto px-6 mt-16">
+      <h3 class="font-mono text-xs uppercase tracking-widest text-surveillance/50 dark:text-cream/50 border-b border-surveillance/10 dark:border-cream/10 pb-2 mb-4">
+        Sources
+      </h3>
+      <ol class="space-y-2 font-mono text-xs text-surveillance/60 dark:text-cream/60">
+        {list.map((s) => (
+          <li class="leading-relaxed">
+            <span class="text-surveillance dark:text-cream">{s!.author}</span>, <em>{s!.title}</em>. {s!.publisher}, {s!.year}.
+            {s!.url && (
+              <a href={s!.url} target="_blank" rel="noopener noreferrer" class="text-rust hover:underline ml-1">
+                ↗
+              </a>
+            )}
+          </li>
+        ))}
+      </ol>
+    </section>
+  )
+}

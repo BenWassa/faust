@@ -1,0 +1,48 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro'
+import PanopticonHero from '../components/PanopticonHero.astro'
+import Card from '../components/Card.astro'
+import { chapters } from '../data/chapters'
+---
+<BaseLayout title="The Architecture of Ambition">
+  <PanopticonHero />
+
+  <section class="py-16 md:py-24 px-6 max-w-4xl mx-auto text-center">
+    <p class="font-mono text-xs uppercase tracking-widest text-rust mb-6">The Thesis</p>
+    <p class="font-body text-2xl md:text-3xl leading-relaxed text-surveillance/90 dark:text-cream/90">
+      Extreme career ambition is a <strong class="text-rust">rational maladaptation</strong> —
+      economically logical in cities with 10&#8209;to&#8209;1 price&#8209;to&#8209;income ratios, but
+      psychologically destructive.
+    </p>
+    <p class="font-body text-xl leading-relaxed text-surveillance/60 dark:text-cream/60 mt-6">
+      This is a diagnosis of the machine, the cities that power it, the casualties it produces — and
+      the exits that actually exist.
+    </p>
+  </section>
+
+  <section id="chapters" class="py-12 md:py-16 px-6 max-w-6xl mx-auto scroll-mt-24">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {
+        chapters.map((c) => (
+          <Card num={c.num} title={c.title} desc={c.sub} href={c.slug} icon={c.icon} />
+        ))
+      }
+    </div>
+  </section>
+
+  <section class="py-16 px-6 max-w-4xl mx-auto">
+    <div class="surface p-10 md:p-14 text-center relative overflow-hidden bg-blueprint">
+      <span class="material-symbols-outlined text-rust text-5xl mb-4 block" aria-hidden="true">quiz</span>
+      <h2 class="font-display font-bold text-3xl md:text-4xl mb-4">Which one are you?</h2>
+      <p class="font-body text-lg text-surveillance/70 dark:text-cream/70 max-w-xl mx-auto mb-8">
+        Five archetypes. Not personality types — defense mechanisms. Take the diagnostic and find the
+        one that fits, along with the medicine you won’t want to take.
+      </p>
+      <a
+        href="./diagnostic"
+        class="inline-block px-8 py-4 bg-surveillance text-cream dark:bg-rust font-mono uppercase tracking-widest hover:bg-rust dark:hover:bg-surveillance transition-colors"
+        >Begin the Diagnostic</a
+      >
+    </div>
+  </section>
+</BaseLayout>

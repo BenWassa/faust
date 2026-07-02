@@ -1,5 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /node_modules/
-
-Sitemap: https://benwassa.github.io/faust/sitemap.xml

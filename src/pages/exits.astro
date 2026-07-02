@@ -1,0 +1,120 @@
+---
+import ChapterLayout from '../layouts/ChapterLayout.astro'
+import Cite from '../components/Cite.astro'
+
+const strategies = [
+  {
+    id: 'vocation',
+    icon: 'church',
+    title: 'Identity Containment',
+    sub: 'The Theological Exit',
+    who: 'The New Monastic',
+    core: 'Work is stripped of its ultimate status. A “rule of life” trades mobility and upside for geographic and relational stability. Value is conferred by origin, not utility.',
+    tension: 'The Protestant ghost never leaves. Faithfulness easily mutates into “sanctified overwork,” where the calling becomes indistinguishable from the hustle.',
+    failure: 'Burnout reframed as sacrifice. This exit fails when obedience becomes indistinguishable from productivity.',
+  },
+  {
+    id: 'craft',
+    icon: 'handyman',
+    title: 'Craft Loyalty',
+    sub: 'The Aristotelian Exit',
+    who: 'The Virtuous Practitioner',
+    core: 'A refusal of promotions that sever the worker from the work. This prioritizes the internal goods of a practice over the external goods (status, scale) of the institution.',
+    tension: 'Institutions require external goods to survive. The practitioner is constantly at war with the management layer that employs them.',
+    failure: 'Moral injury. To survive, the practitioner often learns to speak the language of the institution they distrust.',
+  },
+  {
+    id: 'ego',
+    icon: 'psychology',
+    title: 'Ego Load Reduction',
+    sub: 'The Humanistic Exit',
+    who: 'The Strategic Deprioritizer',
+    core: 'Manages the ego depletion caused by the digital panopticon. The self is not a project to be optimized but a vessel to be protected. Often misread by management as “quiet quitting.”',
+    tension: 'Without communal anchors, defensive detachment easily slides into narcissism or apathy.',
+    failure: 'Optimization loops. Without transcendence, self-actualization simply becomes another metric.',
+  },
+]
+---
+<ChapterLayout
+  num="05"
+  slug="exits"
+  title="The Exits"
+  sub="Not ideals — containment strategies."
+  description="Alternative frameworks for surviving the machine: theological, Aristotelian, humanistic, and the radical refusals."
+  readingTime="~6 min read"
+  sources={['han_burnout', 'berlant_optimism']}
+>
+  <section class="max-w-5xl mx-auto px-6 py-12">
+    <div class="max-w-3xl mx-auto text-center mb-14">
+      <p class="font-body text-xl text-surveillance/80 dark:text-cream/80 leading-relaxed mb-4">
+        These are not ideals. They are <strong class="text-rust">containment strategies</strong>.
+      </p>
+      <p class="font-body text-lg text-surveillance/70 dark:text-cream/70">
+        In an economy where “failure” is often a rational maladaptation to a sick system, we do not
+        seek pure freedom. We seek to manage ego depletion.<Cite id="han_burnout" /> Each exit is a
+        calculated trade-off designed to protect the self from total institutional absorption — and
+        each one can fail in its own characteristic way.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6 mb-20">
+      {
+        strategies.map((s) => (
+          <div class="surface p-8 flex flex-col h-full">
+            <div class="flex items-start justify-between mb-6">
+              <div>
+                <span class="font-mono text-xs text-rust uppercase tracking-widest mb-2 block border-l-2 border-rust pl-2">{s.sub}</span>
+                <h3 class="font-display font-bold text-2xl leading-none">{s.title}</h3>
+              </div>
+              <span class="material-symbols-outlined text-surveillance/10 dark:text-cream/10 text-4xl" aria-hidden="true">{s.icon}</span>
+            </div>
+            <div class="mb-4">
+              <span class="font-mono text-[10px] uppercase text-surveillance/50 dark:text-cream/50 tracking-widest">Archetype</span>
+              <div class="font-body font-bold text-lg">{s.who}</div>
+            </div>
+            <p class="font-body text-surveillance/80 dark:text-cream/80 mb-6 flex-grow">{s.core}</p>
+            <div class="mt-auto pt-6 border-t border-surveillance/10 dark:border-cream/10 space-y-4">
+              <div>
+                <span class="font-mono text-[10px] uppercase text-rust tracking-widest block mb-1">Hidden tension</span>
+                <p class="text-sm text-surveillance/70 dark:text-cream/70">{s.tension}</p>
+              </div>
+              <div>
+                <span class="font-mono text-[10px] uppercase text-rust tracking-widest block mb-1">Failure mode</span>
+                <p class="text-sm text-surveillance/70 dark:text-cream/70">{s.failure}</p>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+
+    <div class="border-t border-surveillance/20 dark:border-cream/10 pt-16">
+      <h3 class="font-display font-bold text-3xl mb-8 text-center">The Radical Refusals</h3>
+      <div class="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+        <div class="bg-surveillance text-cream p-8 relative overflow-hidden">
+          <div class="absolute top-0 right-0 p-4 opacity-10 font-mono text-6xl font-bold">FIRE</div>
+          <h4 class="font-mono text-rust uppercase tracking-widest mb-2 text-sm">Weaponized Ambition</h4>
+          <p class="font-body opacity-90 mb-4">
+            Financial Independence, Retire Early is not an exit from ambition. It is ambition turned
+            against the system that created it.
+          </p>
+          <p class="font-mono text-xs opacity-60 border-t border-cream/20 pt-4">Result: freedom purchased, not discovered.</p>
+        </div>
+        <div class="bg-rust/10 border border-rust p-8 relative overflow-hidden">
+          <div class="absolute top-0 right-0 p-4 opacity-10 font-mono text-6xl font-bold">躺平</div>
+          <h4 class="font-mono text-rust uppercase tracking-widest mb-2 text-sm">Tang Ping (Lying Flat)</h4>
+          <p class="font-body text-surveillance dark:text-cream opacity-90 mb-4">
+            Not a lifestyle choice but a political refusal — what happens when hope itself is
+            withdrawn from the labour market.
+          </p>
+          <p class="font-mono text-xs text-surveillance dark:text-cream opacity-60 border-t border-surveillance/20 dark:border-cream/20 pt-4">Result: refusal of the game itself.</p>
+        </div>
+      </div>
+    </div>
+
+    <p class="mt-16 text-center font-body text-lg text-surveillance/70 dark:text-cream/70 max-w-2xl mx-auto">
+      Every one of these is an <em>individual</em> answer. The next chapter asks the harder question:
+      what happens when the architect has to become an organizer?
+    </p>
+  </section>
+</ChapterLayout>

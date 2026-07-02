@@ -1,0 +1,31 @@
+---
+// Self-complexity as a resilience diagram: consolidated (brittle) vs diversified.
+const consolidated = ['Work']
+const diversified = ['Work', 'Family', 'Craft', 'Friends', 'Community', 'Practice']
+---
+<div class="surface p-8 md:p-10 my-12 not-prose">
+  <div class="flex items-baseline justify-between mb-8">
+    <h3 class="font-display font-bold text-2xl">Where identity is stored</h3>
+    <span class="font-mono text-[10px] uppercase tracking-widest text-surveillance/40 dark:text-cream/40">Fig 06.1</span>
+  </div>
+  <div class="grid md:grid-cols-2 gap-8">
+    <div>
+      <span class="font-mono text-[10px] uppercase tracking-widest text-surveillance/50 dark:text-cream/50 block mb-3">Consolidated — brittle</span>
+      <div class="flex flex-wrap gap-2 mb-3">
+        {consolidated.map((r) => (
+          <span class="px-4 py-3 bg-rust text-white font-mono text-xs uppercase tracking-widest w-full text-center">{r}</span>
+        ))}
+      </div>
+      <p class="font-body text-sm text-surveillance/60 dark:text-cream/60">One room holds everything. A single flood takes the house — a layoff becomes an identity collapse.</p>
+    </div>
+    <div>
+      <span class="font-mono text-[10px] uppercase tracking-widest text-soft-green block mb-3">Diversified — resilient</span>
+      <div class="grid grid-cols-2 gap-2 mb-3">
+        {diversified.map((r) => (
+          <span class="px-3 py-2 border border-surveillance/20 dark:border-cream/20 font-mono text-[10px] uppercase tracking-widest text-center">{r}</span>
+        ))}
+      </div>
+      <p class="font-body text-sm text-surveillance/60 dark:text-cream/60">Load spread across many domains. Any one can fail without the self going with it.</p>
+    </div>
+  </div>
+</div>

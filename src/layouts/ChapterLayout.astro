@@ -1,0 +1,29 @@
+---
+import BaseLayout from './BaseLayout.astro'
+import ChapterHeader from '../components/ChapterHeader.astro'
+import ChapterNav from '../components/ChapterNav.astro'
+import SourceList from '../components/SourceList.astro'
+import { chapterProgress } from '../data/chapters'
+
+interface Props {
+  num: string
+  slug: string
+  title: string
+  sub: string
+  description?: string
+  readingTime?: string
+  sources?: string[]
+}
+const { num, slug, title, sub, description, readingTime, sources = [] } = Astro.props
+---
+<BaseLayout
+  title={title}
+  description={description ?? sub}
+  active={slug}
+  progress={chapterProgress(slug)}
+>
+  <ChapterHeader num={num} title={title} sub={sub} readingTime={readingTime} />
+  <slot />
+  {sources.length > 0 && <SourceList ids={sources} />}
+  <ChapterNav slug={slug} />
+</BaseLayout>

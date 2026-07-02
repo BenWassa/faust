@@ -5,14 +5,15 @@
 **Thesis:** Extreme career ambition is a "rational maladaptation"—economically logical in expensive cities but psychologically destructive.
 **Vibe/Aesthetic:** "The Panopticon Revealed." Editorial magazine meets architectural blueprint. Clean, generous spacing, "clinical but empathetic."
 
-## 2. Technical Stack (Strict Constraints)
-* **Build Tool:** Vite (Vanilla JS template).
-* **Framework:** NONE. Pure HTML5, CSS3, Vanilla JavaScript.
-* **Styling:** Tailwind CSS (Local installation, NOT CDN).
-* **Logic:**
-    * `index.html` acts as the "Lobby" (SPA-like visibility toggling for high-level concepts).
-    * `/archetypes/*.html` are physical, standalone files (The "Files").
-    * No React, Vue, or heavy frameworks.
+## 2. Technical Stack (v3.0)
+* **Framework:** Astro (static output). Migrated from the vanilla Vite SPA in v3.0.
+* **Styling:** Tailwind CSS v3 via PostCSS (local, NOT CDN).
+* **Content:** Astro Content Collections — archetypes are Markdown in `src/content/archetypes/`.
+* **Interactivity:** vanilla-JS islands only (no React/Vue). City explorer, machine traps,
+  the diagnostic quiz, and the theme toggle are `<script>` blocks scoped to their `.astro` files.
+* **Routing:** one page per chapter under `src/pages/` (deep-linkable, per-page SEO/OG),
+  plus `pages/archetypes/[slug].astro` generated from the collection.
+* **Deploy:** GitHub Actions → GitHub Pages (Pages source must be set to "GitHub Actions").
 
 ## 3. Design System (Do Not Hallucinate New Values)
 **Typography:**
@@ -29,17 +30,20 @@
 
 ## 4. Architecture & Navigation
 **Directory Structure:**
-* `/src/index.html`: The entry point. Contains chapters: System, Cities, Machines.
-* `/src/archetypes/`: Contains `watchman.html`, `visible.html`, `faithful.html`, `departed.html`, `architect.html`.
-* `/public/img/`: All static images.
+* `/src/pages/`: one route per chapter (`system`, `cities`, `machines`, `casualties`, `exits`,
+  `practice`, `resources`, `diagnostic`) + `index.astro` + `archetypes/[slug].astro`.
+* `/src/content/archetypes/`: Markdown for the five archetypes (content collection).
+* `/src/data/`: `chapters`, `cities`, `citations`, `archetypes`, `quiz` (typed source data).
+* `/src/components/`, `/src/layouts/`, `/src/lib/`, `/src/styles/global.css`.
+* `/public/`: static images, manifest, sitemap, robots.
 
 **Linking Logic:**
-* **Lobby -> Archetype:** Links in `index.html` must point to `./archetypes/[name].html`.
-* **Archetype -> Lobby:** "Return" links in archetypes must point to `../index.html`.
-* **Archetype -> Archetype:** Footer links must point to `./[next_name].html`.
+* Always build hrefs via the `url()` helper in `src/lib/url.ts` so the `/faust` base path is applied.
+* Chapter order + prev/next come from `src/data/chapters.ts` (single source of truth).
+* Archetype cross-links resolve to `url('archetypes/[slug]')`.
 
 ## 5. Coding Rules for AI
-1.  **Maintain the Voice:** Copy must be "authoritative but not academic." Avoid "corporate tech" speak.
-2.  **No Component Libraries:** Do not suggest Shadcn, MUI, or Bootstrap. Build UI with raw Tailwind classes.
-3.  **Preserve Structure:** If editing an Archetype file, do not remove the `<head>` metadata or the `tailwind.config` script/link.
-4.  **Mobile First:** Always ensure the `<nav>` works on mobile (hamburger menu logic is in `main.js`).
+1.  **Maintain the Voice:** "Confrontational architecture" — authoritative, unsparing, no hedging.
+2.  **No Component Libraries:** No Shadcn/MUI/Bootstrap and no React/Vue. Astro + raw Tailwind + vanilla-JS islands.
+3.  **Design tokens are fixed:** cream / surveillance / rust / soft-green; DM Sans / Crimson Pro / JetBrains Mono. Support dark (`html.dark`).
+4.  **Mobile First & accessible:** keep the nav hamburger, skip link, focus states, and reduced-motion support working.

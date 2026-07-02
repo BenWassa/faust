@@ -1,0 +1,157 @@
+---
+import ChapterLayout from '../layouts/ChapterLayout.astro'
+import Diagnostic from '../components/Diagnostic.astro'
+import PullQuote from '../components/PullQuote.astro'
+import Cite from '../components/Cite.astro'
+import SelfComplexity from '../components/SelfComplexity.astro'
+import { url } from '../lib/url'
+
+const scripts = [
+  {
+    situation: 'When you decline the promotion',
+    dont: '“I’m just not that ambitious.”',
+    do: '“I’m optimizing for a different variable than the one this role rewards.”',
+    why: 'The first invites pity or contempt. The second refuses the frame without apologizing for it.',
+  },
+  {
+    situation: 'When you leave at five',
+    dont: '“Sorry, I have to run.”',
+    do: '“I’m done for today — I’ll pick this up first thing.”',
+    why: 'Apology concedes that presence equals virtue. Boundaries stated as facts don’t negotiate.',
+  },
+  {
+    situation: 'When someone calls you lazy',
+    dont: 'Defend how hard you actually work.',
+    do: '“I give what the work is worth. I keep the rest.”',
+    why: 'Defending the accusation accepts its premise: that more effort is always better.',
+  },
+]
+---
+<ChapterLayout
+  num="06"
+  slug="practice"
+  title="The Practice"
+  sub="Living differently — and the price of saying so out loud."
+  description="Do-gooder derogation, the communication of refusal, identity diversification for resilience, and why the architect must eventually become an organizer."
+  readingTime="~7 min read"
+  sources={['sandel_merit', 'fisher_realism', 'linville_complexity']}
+>
+  <article class="prose-faust max-w-3xl mx-auto px-6 py-12">
+    <p>
+      Diagnosis is the easy part. You can understand every mechanism in this document and still wake
+      up on Monday inside the same machine. The Practice is about what changes when the understanding
+      has to survive contact with other people — your manager, your parents, your peers, and the
+      version of yourself that still flinches at the word <em>underachiever</em>.
+    </p>
+
+    <h2>The Penalty for Opting Out</h2>
+    <p>
+      There is a social tax on living differently, and it has a name: <strong>do-gooder
+      derogation</strong>. When you visibly decline a status game, the people still playing it don’t
+      experience your choice as neutral. They experience it as an accusation. Your leaving at five
+      implies their staying late was optional. Your “enough” implies their striving is excess.
+    </p>
+    <p>
+      So they reach for the cheapest defense: they decide you’re judging them, and they get there
+      first. You become “not a team player,” “coasting,” “checked out.” None of it is really about
+      you. It is the immune response of a group whose shared sacrifice you just declined to make.
+    </p>
+
+    <PullQuote cite="Recurring theme">
+      You can’t personal-development your way out of a structural problem. But you can stop
+      apologizing for noticing one.
+    </PullQuote>
+
+    <h2>The Communication of Refusal</h2>
+    <p>
+      Most people who try to live differently sabotage themselves at the level of language. They
+      apologize. They over-explain. They frame a considered choice as a personal deficiency — “I’m
+      just not that driven” — and hand their critics the verdict for free.
+    </p>
+    <p>
+      The skill is not confrontation. It is <strong>declining the frame without accepting the
+      shame</strong>. You are not less-than for opting out; you are optimizing for something the
+      scoreboard doesn’t count. Say that plainly, once, and stop defending it.
+    </p>
+
+    <div class="not-prose my-12 space-y-4">
+      {
+        scripts.map((s) => (
+          <div class="surface p-6">
+            <span class="font-mono text-[10px] uppercase tracking-widest text-rust block mb-3">{s.situation}</span>
+            <div class="grid md:grid-cols-2 gap-4">
+              <div class="border-l-2 border-surveillance/20 dark:border-cream/20 pl-4">
+                <span class="font-mono text-[10px] uppercase tracking-widest text-surveillance/40 dark:text-cream/40 block mb-1">Don’t</span>
+                <p class="font-body italic text-surveillance/60 dark:text-cream/60">{s.dont}</p>
+              </div>
+              <div class="border-l-2 border-rust pl-4">
+                <span class="font-mono text-[10px] uppercase tracking-widest text-rust block mb-1">Do</span>
+                <p class="font-body">{s.do}</p>
+              </div>
+            </div>
+            <p class="font-body text-sm text-surveillance/60 dark:text-cream/60 mt-4">{s.why}</p>
+          </div>
+        ))
+      }
+    </div>
+
+    <h2>Diversify the Self, Not the Portfolio</h2>
+    <p>
+      The single most protective move against the whole apparatus is boring and unmarketable:
+      <strong>identity diversification</strong>. Patricia Linville’s research on self-complexity<Cite
+        id="linville_complexity"
+      /> found that people whose sense of self is distributed across many roles — parent, friend,
+      practitioner, neighbour, hobbyist — absorb setbacks in any one domain far better than people
+      whose identity is consolidated into a single role.
+    </p>
+
+    <SelfComplexity />
+
+    <p>
+      Low self-complexity is efficient right up until it isn’t. Put all your furniture in one room
+      and a single flood takes the house. This is not “work-life balance,” a phrase that already
+      concedes work is the load-bearing wall. It is refusing to let any one domain become the wall at
+      all.
+    </p>
+
+    <Diagnostic label="The Practice — a real inventory">
+      <ul>
+        <li>Name three sources of meaning that would survive losing your job tomorrow.</li>
+        <li>Name one relationship that has nothing to do with your industry — and when you last invested in it.</li>
+        <li>Name one thing you do that produces nothing measurable and that you’d never post.</li>
+      </ul>
+      <p class="mt-6 font-mono text-sm text-cream/70">
+        Blanks are not failures. They are the map of where the architecture is thinnest.
+      </p>
+    </Diagnostic>
+
+    <h2>The Architect Must Become an Organizer</h2>
+    <p>
+      Here is the deepest cut, the one the fifth archetype spends its whole life avoiding: individual
+      solutions cannot solve structural problems. You can build the most elegant personal
+      architecture imaginable — the boundaries, the diversified identity, the philosophical framework
+      — and the housing market still inflates, the platforms still extract, the precarity still
+      spreads.<Cite id="fisher_realism" />
+    </p>
+    <p>
+      A lifeboat is wise. But it only has room for you, maybe your family, and the ship is still
+      sinking. At some point personal integrity, however hard-won, meets its limit. The private
+      exit becomes a collective question: mutual aid instead of self-optimization, organizing instead
+      of coping, changing the terms instead of enduring them.
+    </p>
+    <p>
+      This is not a call to abandon the personal work. It is the recognition that the personal work
+      was never going to be enough — and that admitting so, out loud, is the most radical practice of
+      all.
+    </p>
+
+    <div class="not-prose mt-12 flex flex-wrap gap-4">
+      <a href={url('casualties')} class="font-mono text-sm text-surveillance/60 dark:text-cream/60 hover:text-rust flex items-center gap-2">
+        <span class="material-symbols-outlined" aria-hidden="true">psychology</span> Revisit the archetypes
+      </a>
+      <a href={url('diagnostic')} class="font-mono text-sm text-rust font-bold hover:text-surveillance dark:hover:text-cream flex items-center gap-2">
+        Find your archetype <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+      </a>
+    </div>
+  </article>
+</ChapterLayout>

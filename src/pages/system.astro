@@ -1,0 +1,83 @@
+---
+import ChapterLayout from '../layouts/ChapterLayout.astro'
+import Diagnostic from '../components/Diagnostic.astro'
+import PullQuote from '../components/PullQuote.astro'
+import Cite from '../components/Cite.astro'
+---
+<ChapterLayout
+  num="01"
+  slug="system"
+  title="The System"
+  sub="The theological intensity of modern work."
+  description="Workism as secular religion, the tyranny of merit, and how self-exploitation replaced domination."
+  readingTime="~6 min read"
+  sources={['thompson_workism', 'han_burnout', 'sandel_merit', 'graeber_bs']}
+>
+  <article class="prose-faust max-w-3xl mx-auto px-6 py-12">
+    <p>
+      We replaced the worship of gods with the worship of potential. Derek Thompson calls it
+      <strong>workism</strong><Cite id="thompson_workism" /> — the belief that work is not merely
+      necessary to economic production, but the centerpiece of one’s identity and the primary vehicle
+      for meaning, community, and transcendence. For a certain class of educated professional, the
+      office is the last cathedral standing.
+    </p>
+    <p>
+      This did not happen by accident. As the older containers of meaning — religion, civic
+      institutions, extended family, stable geography — thinned out, something had to absorb the
+      existential load. Work volunteered. It offers a scoreboard, a congregation, a moral vocabulary
+      (“impact,” “mission,” “hustle”), and the promise that if you are good enough, you will be saved.
+    </p>
+
+    <PullQuote cite="Byung-Chul Han, The Burnout Society">
+      The achievement-subject exploits itself. Exploitation is now possible even without domination.
+    </PullQuote>
+
+    <p>
+      Byung-Chul Han’s insight<Cite id="han_burnout" /> is the hinge of this entire project. The
+      factory needed an overseer. The achievement society needs none. We have internalized the
+      manager. We volunteer for the overtime, optimize our own sleep to produce more, and experience
+      burnout not as something done <em>to</em> us but as a personal failure of will. The prison
+      guard has been dissolved into the prisoner.
+    </p>
+
+    <h2>The Tyranny of Merit</h2>
+    <p>
+      Michael Sandel argues<Cite id="sandel_merit" /> that the rhetoric of “rising” — that talent
+      plus effort earns you your place — produces a hubris among winners and a humiliation among
+      everyone else. If success is purely your own doing, then failure must be your own fault. The
+      meritocratic promise quietly rewrites bad luck and structural disadvantage as moral deficiency.
+    </p>
+    <p>
+      This is why a missed promotion doesn’t feel like a bad quarter; it feels like a verdict.
+      Meritocracy doesn’t just distribute jobs. It distributes <strong>self-worth</strong>, and it
+      does so on terms the market sets.
+    </p>
+
+    <h2>The Substitution</h2>
+    <p>
+      David Graeber went further<Cite id="graeber_bs" />: a startling share of jobs are, by the
+      admission of the people doing them, pointless — and yet we cling to them as identity anyway.
+      The devotion is not always to the <em>work</em>. It is to what the work protects us from: the
+      unstructured question of what a life is for when no one is measuring.
+    </p>
+
+    <Diagnostic label="Diagnostic — Do you recognize the symptoms?">
+      <ul>
+        <li>Do you introduce yourself by your job title before your name has settled?</li>
+        <li>Does unstructured time produce guilt rather than rest?</li>
+        <li>Is your primary community the people you work with?</li>
+        <li>Would a layoff feel less like a financial event and more like an identity collapse?</li>
+      </ul>
+      <p class="mt-6 font-mono text-sm text-cream/70">
+        The more you answered yes, the more work has become your church. That is not a personal
+        flaw. It is the system working as designed.
+      </p>
+    </Diagnostic>
+
+    <p>
+      None of this makes ambition irrational. In the cities where this story unfolds, extreme effort
+      is often the mathematically correct response to a hostile structure. That is the trap we turn
+      to next: a strategy that is economically sound and psychologically ruinous at the same time.
+    </p>
+  </article>
+</ChapterLayout>

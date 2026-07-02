@@ -1,0 +1,201 @@
+---
+import ChapterLayout from '../layouts/ChapterLayout.astro'
+import Diagnostic from '../components/Diagnostic.astro'
+import EnvyLoop from '../components/EnvyLoop.astro'
+import Cite from '../components/Cite.astro'
+
+const traps = [
+  { id: 'future-audience', num: '01', cat: 'Identity & Structural', title: 'The Future Audience', detail: 'Every action is treated as future recruiter content; the present becomes performance and authenticity gets deferred to an imagined viewer.' },
+  { id: 'success-theater', num: '02', cat: 'Performative', title: 'Success Theater', detail: 'Career platforms become highlight reels; curated wins signal perfection and make ordinary life look inadequate.' },
+  { id: 'performative-vulnerability', num: '03', cat: 'Performative', title: 'Performative Vulnerability', detail: 'Failures and layoffs are repackaged as brand assets to signal resilience — excluding losses that cannot be monetized.' },
+  { id: 'infinite-comparison', num: '04', cat: 'Comparison & Envy', title: 'Infinite Comparison', detail: 'Your peers become an algorithmic feed of global outliers; ordinary progress starts to feel like failure.' },
+  { id: 'extremity-bias', num: '05', cat: 'Comparison & Envy', title: 'Extremity Bias', detail: 'Platforms disproportionately surface unicorn founders, skewing the reference point and hiding average success.' },
+  { id: 'work-esteem', num: '06', cat: 'Psychological Cost', title: 'Work-Conditional Esteem', detail: 'Self-worth becomes directly coupled to career validation; identity is outsourced to engagement metrics.' },
+  { id: 'veblen-inversion', num: '07', cat: 'Psychological Cost', title: 'Veblen Inversion', detail: 'Exhaustion becomes status signaling; burnout is reframed as proof of dedication.' },
+  { id: 'defensive-ambition', num: '08', cat: 'Psychological Cost', title: 'Defensive Ambition', detail: 'Effort is driven by fear of dropping into precarity rather than desire to ascend.' },
+]
+
+const feed = [
+  { init: 'AT', name: 'Alex Thompson', role: 'Software Engineer @ DataCorp', color: 'from-pink-400 to-pink-600', body: 'Quick wins this week: led standup, mentored a junior, fixed a critical bug.', phrase: 'Always documenting the journey — you never know who’s watching. 👀', trap: 'future-audience' },
+  { init: 'JM', name: 'Jessica Martinez', role: 'Product Manager @ TechCorp', color: 'from-blue-400 to-blue-600', body: 'Excited to share our team just shipped v2.0! 🚀 Six months, countless late nights.', phrase: 'Grateful for this amazing journey.', trap: 'success-theater' },
+  { init: 'SC', name: 'Sarah Chen', role: 'Marketing Director @ FinTech', color: 'from-emerald-400 to-emerald-600', body: 'Today I was laid off. Here’s what I learned 🧵', phrase: 'Every ending is a new beginning.', trap: 'performative-vulnerability' },
+  { init: 'LP', name: 'Lisa Park', role: 'UX Designer @ DesignStudio', color: 'from-indigo-400 to-indigo-600', body: 'Seeing all these amazing career updates today.', phrase: 'Everyone’s crushing it while I’m still on the same project.', trap: 'infinite-comparison' },
+  { init: 'RK', name: 'Ryan Kumar', role: 'CEO @ StartupAI · Forbes 30U30', color: 'from-purple-400 to-purple-600', body: 'Thrilled to announce we closed our $40M Series B! 🎉 Dorm room to 200+ in 18 months.', phrase: 'The journey is just beginning.', trap: 'extremity-bias' },
+  { init: 'DW', name: 'David Wang', role: 'Sales Manager @ Enterprise', color: 'from-teal-400 to-teal-600', body: 'Hit 150% of quota this month 📈. Rough week, but numbers don’t lie.', phrase: 'Finally feeling like I’m adding value.', trap: 'work-esteem' },
+  { init: 'MB', name: 'Michael Brooks', role: 'VP Engineering @ CloudScale', color: 'from-orange-400 to-orange-600', body: 'Sunday grind hits different ☕💻 Pushed 3 PRs before breakfast.', phrase: 'No rest for those building the future.', trap: 'veblen-inversion' },
+  { init: 'NK', name: 'Nina Kapoor', role: 'Business Analyst @ Consulting', color: 'from-rose-400 to-rose-600', body: 'Completed my 5th certification this year 🎓 AWS ✓ Scrum ✓ Six Sigma ✓ PMP ✓', phrase: 'In this market, you can never be too prepared.', trap: 'defensive-ambition' },
+]
+
+const compare = [
+  { row: 'Primary trigger', linkedin: 'Professional milestones', instagram: 'Lifestyle & appearance' },
+  { row: 'Envy type', linkedin: 'Malicious (status)', instagram: 'Depressive (self-image)' },
+  { row: 'Self-concept', linkedin: 'Market value', instagram: 'Desirability' },
+  { row: 'Anxiety', linkedin: '“I’m falling behind”', instagram: '“My life is inadequate”' },
+]
+---
+<ChapterLayout
+  num="03"
+  slug="machines"
+  title="The Machines"
+  sub="Engines of envy."
+  description="LinkedIn as professional panopticon, Instagram as the milestone-anxiety engine, and the algorithmic loop that amplifies both."
+  readingTime="~7 min + interactive"
+  sources={['linkedin_depression', 'han_burnout']}
+>
+  <section class="max-w-5xl mx-auto px-6 py-12" data-machines>
+    <div class="grid lg:grid-cols-5 gap-10">
+      <div class="lg:col-span-2">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="material-symbols-outlined text-rust" aria-hidden="true">visibility</span>
+          <h2 class="font-display font-bold text-3xl">The Panopticon</h2>
+        </div>
+        <p class="font-body text-lg text-surveillance/80 dark:text-cream/80 mb-6">
+          LinkedIn is a surveillance mechanism in which we police each other’s success. Frequent
+          users show meaningfully higher odds of depressive symptoms<Cite id="linkedin_depression" />
+          — not because they are weak, but because the feed is engineered to make comparison
+          continuous and inescapable.
+        </p>
+        <div class="flex items-center justify-between text-[10px] font-mono uppercase tracking-widest text-surveillance/50 dark:text-cream/50 border-y border-surveillance/10 dark:border-cream/10 py-3 mb-4">
+          <span>Trap index</span><span>Tap to expand</span>
+        </div>
+        <ol class="space-y-3">
+          {
+            traps.map((t) => (
+              <li data-trap={t.id} class="surface border-l-4 border-l-transparent transition-all hover:border-rust/40">
+                <button class="w-full flex items-center gap-3 p-4 text-left" data-trap-toggle={t.id}>
+                  <span class="font-mono text-xs text-rust">{t.num}</span>
+                  <span class="font-display font-bold flex-1">{t.title}</span>
+                  <span class="material-symbols-outlined text-surveillance/40 dark:text-cream/40 transition-transform" data-trap-icon>expand_more</span>
+                </button>
+                <div class="hidden px-4 pb-4 text-sm text-surveillance/70 dark:text-cream/70 leading-relaxed" data-trap-detail>
+                  <span class="font-mono text-[10px] uppercase tracking-widest text-rust/70 block mb-1">{t.cat}</span>
+                  {t.detail}
+                </div>
+              </li>
+            ))
+          }
+        </ol>
+      </div>
+
+      <!-- Mock feed -->
+      <div class="lg:col-span-3">
+        <p class="text-[10px] uppercase tracking-[0.3em] text-surveillance/60 dark:text-cream/60 mb-4">Surveillance feed</p>
+        <div class="grid sm:grid-cols-2 gap-4">
+          {
+            feed.map((p) => (
+              <div class="bg-white dark:bg-ink-800 rounded-lg border border-gray-200 dark:border-cream/10 p-4">
+                <div class="flex items-start gap-3 mb-3">
+                  <div class={`w-11 h-11 rounded-full bg-gradient-to-br ${p.color} flex items-center justify-center text-white font-bold text-sm shrink-0`}>{p.init}</div>
+                  <div class="min-w-0">
+                    <h4 class="font-semibold text-gray-900 dark:text-cream text-sm">{p.name}</h4>
+                    <p class="text-xs text-gray-500 dark:text-cream/50">{p.role}</p>
+                  </div>
+                </div>
+                <div class="text-sm text-gray-800 dark:text-cream/80 leading-relaxed">
+                  <p>{p.body}</p>
+                  <p class="mt-2">
+                    <button data-feed-trap={p.trap} class="text-left text-rust border-b-2 border-rust/30 hover:border-rust hover:bg-rust/10 transition-colors px-0.5 rounded-sm">
+                      {p.phrase}
+                    </button>
+                  </p>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+        <p class="mt-6 text-xs text-center text-surveillance/50 dark:text-cream/50 font-mono uppercase tracking-wide">
+          Click a highlighted phrase to surface its trap
+        </p>
+      </div>
+    </div>
+
+    <EnvyLoop />
+
+    <!-- Instagram -->
+    <div class="mt-16">
+      <div class="flex items-center gap-3 mb-4">
+        <span class="material-symbols-outlined text-rust" aria-hidden="true">photo_camera</span>
+        <h2 class="font-display font-bold text-3xl">The Second Machine</h2>
+      </div>
+      <p class="font-body text-lg text-surveillance/80 dark:text-cream/80 max-w-3xl">
+        If LinkedIn polices your <em>market value</em>, Instagram polices your <em>life</em>. It runs
+        the same loop on different fuel: the milestone. Engagements, homes, promotions, and
+        curated leisure become a rolling referendum on whether you are keeping pace. The comparison
+        is no longer against your neighbours — it is against a globally optimized highlight reel,
+        available every waking minute.
+      </p>
+
+      <div class="overflow-x-auto mt-8">
+        <table class="w-full text-left border-collapse font-body">
+          <thead>
+            <tr class="font-mono text-[10px] uppercase tracking-widest text-surveillance/60 dark:text-cream/60">
+              <th class="p-3 border-b border-surveillance/20 dark:border-cream/10"></th>
+              <th class="p-3 border-b border-surveillance/20 dark:border-cream/10">LinkedIn</th>
+              <th class="p-3 border-b border-surveillance/20 dark:border-cream/10">Instagram</th>
+            </tr>
+          </thead>
+          <tbody>
+            {
+              compare.map((c) => (
+                <tr class="border-b border-surveillance/10 dark:border-cream/10">
+                  <td class="p-3 font-mono text-xs uppercase tracking-widest text-surveillance/50 dark:text-cream/50">{c.row}</td>
+                  <td class="p-3">{c.linkedin}</td>
+                  <td class="p-3">{c.instagram}</td>
+                </tr>
+              ))
+            }
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <Diagnostic label="Diagnostic — The tell">
+      <ul>
+        <li>Do you draft the caption before the experience is over?</li>
+        <li>Does a low-performing post genuinely alter your mood?</li>
+        <li>Have you felt behind while reading objectively good news about a peer?</li>
+      </ul>
+      <p class="mt-6 font-mono text-sm text-cream/70">
+        The machines don’t create the anxiety. They meter it, amplify it, and sell it back to you as
+        motivation.
+      </p>
+    </Diagnostic>
+  </section>
+</ChapterLayout>
+
+<script>
+  const root = document.querySelector('[data-machines]')
+  if (root) {
+    function openTrap(id, scroll = false) {
+      root.querySelectorAll('[data-trap]').forEach((el) => {
+        const match = el.getAttribute('data-trap') === id
+        const detail = el.querySelector('[data-trap-detail]')
+        const icon = el.querySelector('[data-trap-icon]')
+        el.classList.toggle('trap-active', match)
+        if (detail) detail.classList.toggle('hidden', !match)
+        if (icon) icon.classList.toggle('rotate-180', match)
+      })
+      if (scroll) {
+        const target = root.querySelector(`[data-trap="${id}"]`)
+        target?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+      }
+    }
+    root.querySelectorAll('[data-trap-toggle]').forEach((btn) => {
+      const id = btn.getAttribute('data-trap-toggle')
+      btn.addEventListener('click', () => {
+        const el = root.querySelector(`[data-trap="${id}"]`)
+        const isOpen = el && !el.querySelector('[data-trap-detail]')?.classList.contains('hidden')
+        if (isOpen) {
+          el.classList.remove('trap-active')
+          el.querySelector('[data-trap-detail]')?.classList.add('hidden')
+          el.querySelector('[data-trap-icon]')?.classList.remove('rotate-180')
+        } else {
+          openTrap(id)
+        }
+      })
+    })
+    root.querySelectorAll('[data-feed-trap]').forEach((btn) => {
+      btn.addEventListener('click', () => openTrap(btn.getAttribute('data-feed-trap'), true))
+    })
+  }
+</script>
