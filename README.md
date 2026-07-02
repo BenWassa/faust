@@ -1,93 +1,87 @@
 # Project Faust
 ## The Architecture of Ambition
 
-A digital essay exploring how career became identity in modern cities, why extreme ambition is rational yet destructive, and what alternative frameworks offer. Research-driven analysis of workism, platform dynamics, and paths toward flourishing beyond performance.
+A digital essay + diagnostic tool exploring how career became identity in modern cities, why extreme ambition is rational yet destructive, and what alternative frameworks offer. Research-driven analysis of workism, platform dynamics, and paths toward flourishing beyond performance.
 
-## Project Overview
+**Live:** https://benwassa.github.io/faust/
 
-This website synthesizes extensive research into career-centric identity, housing precarity, and platform-amplified status anxiety among young professionals in global cities (Toronto, NYC, Vancouver, London). It offers both diagnostic analysis and alternative ethical frameworks (Christian vocation, Aristotelian virtue, humanistic psychology).
+## Core Thesis
 
-### Core Thesis
-Extreme career ambition is a "rational maladaptation"—economically logical in cities with 10.4 price-to-income ratios, but psychologically destructive. Alternative architectures exist.
+Extreme career ambition is a **"rational maladaptation"** — economically logical in cities with 10-to-1 price-to-income ratios, but psychologically destructive. Alternative architectures exist.
 
 ## Structure
 
-- **The System**: Workism, tyranny of merit, status anxiety
-- **The Cities**: Economic data from Toronto, Vancouver, NYC, London
-- **The Machines**: LinkedIn and Instagram as engines of envy
-- **The Casualties**: Millennial burnout, Gen Z algorithmic nihilism
-- **The Exits**: Alternative frameworks (vocation, eudaimonia, self-transcendence)
-- **The Practice**: Communication strategies for living differently
+Seven chapters plus an interactive diagnostic:
+
+1. **The System** — workism, the tyranny of merit, self-exploitation
+2. **The Cities** — source-backed housing data (Toronto, Vancouver, London, NYC)
+3. **The Machines** — LinkedIn & Instagram as engines of envy
+4. **The Casualties** — five archetypes (Watchman, Visible, Faithful, Departed, Architect)
+5. **The Exits** — theological, Aristotelian, humanistic frameworks + radical refusals
+6. **The Practice** — do-gooder derogation, the communication of refusal, organizing
+7. **Resources** — reading list + crisis lines
+- **The Diagnostic** — a forced-choice self-assessment that routes you to your archetype
 
 ## Tech Stack
 
-- **Build Tool**: Vite (fast development and optimized production builds)
-- **Styling**: Tailwind CSS (utility-first CSS framework with custom theme)
-- **Architecture**: Multi-page static site with HTML entry points
-- **Deployment**: Static files ready for any hosting service
+- **Framework:** [Astro](https://astro.build) (static output, near-zero client JS)
+- **Styling:** Tailwind CSS v3 (via PostCSS) with a custom design system
+- **Content:** Astro Content Collections (archetypes authored as Markdown)
+- **Interactivity:** vanilla JS islands (city explorer, machine traps, diagnostic, theme)
+- **Deploy:** GitHub Actions → GitHub Pages
+
+### Design system — "The Panopticon Revealed"
+
+| Token | Value | Use |
+|---|---|---|
+| `cream` | `#FDFBF7` | light background |
+| `surveillance` | `#1A202C` | primary ink / dark surfaces |
+| `rust` | `#C05640` | accent, warnings, data |
+| `soft-green` | `#7A9A84` | exits, alternatives |
+
+Fonts: **DM Sans** (display), **Crimson Pro** (body), **JetBrains Mono** (data/labels).
+A **Surveillance Mode** dark theme is available via the nav toggle.
 
 ## Development
 
-### Prerequisites
-- Node.js (v16 or higher)
-- npm or yarn
-
-### Installation
 ```bash
 npm install
+npm run dev      # dev server at http://localhost:4321/faust/
+npm run build    # static build to ./dist
+npm run preview  # preview the production build
 ```
 
-### Development Server
-```bash
-npm run dev
-```
-Starts the Vite development server with hot reload at `http://localhost:5173`.
+Archetype content lives in `src/content/archetypes/*.md`. Those files are generated
+from the authoring sources in `/archetypes/*.md` via:
 
-### Build for Production
 ```bash
-npm run build
+node scripts/gen-archetypes.mjs
 ```
-Generates optimized static files in the `dist/` directory.
 
-### Preview Production Build
-```bash
-npm run preview
-```
-Serves the built files locally for testing.
+## Deployment
+
+Deployment is automated via `.github/workflows/deploy.yml` on push to `main`.
+
+> **One-time setup:** In the repository **Settings → Pages**, set **Source: GitHub Actions**.
+> (Previously the site was served from a committed `/docs` folder; that folder has been
+> removed in favour of the Actions build.)
 
 ## Project Structure
 
 ```
-faust/
-├── src/
-│   ├── index.html              # Main homepage
-│   ├── archetypes/
-│   │   ├── architect.html      # Architect archetype page
-│   │   ├── departed.html       # Departed archetype page
-│   │   ├── faithful.html       # Faithful archetype page
-│   │   ├── visible.html        # Visible archetype page
-│   │   └── watchman.html       # Watchman archetype page
-│   ├── style.css               # Tailwind CSS entry point
-│   └── main.js                 # JavaScript entry (currently empty)
-├── vite.config.js              # Vite configuration
-├── tailwind.config.js          # Tailwind CSS configuration
-├── postcss.config.js           # PostCSS configuration
-└── package.json                # Project dependencies and scripts
+src/
+├── components/     # Nav, Footer, hero, charts, diagnostic pieces
+├── content/        # archetypes collection (Markdown) + content.config.ts
+├── data/           # chapters, cities, citations, archetypes, quiz
+├── layouts/        # BaseLayout, ChapterLayout
+├── lib/            # base-path URL helpers
+├── pages/          # one route per chapter + diagnostic + archetypes/[slug]
+└── styles/         # global.css (design system)
+public/             # images, manifest, sitemap, robots
+documentation/      # vision, architecture, style, sprints
+archetypes/         # authoring source for archetype markdown
 ```
-
-## Design Direction
-
-**Aesthetic**: "The Panopticon Revealed" - Editorial magazine meets data visualization meets architectural blueprint. Clean, intentional, generous spacing that respects reader attention.
-
-## Contributing
-
-This is a research-driven public resource. Feedback, corrections, and additional perspectives welcome.
 
 ## License
 
-Content: CC BY-NC-SA 4.0 (research, writing)  
-Code: MIT (website implementation)
-
----
-
-**Research Sources**: 8 deep research runs synthesizing economics, psychology, sociology, philosophy, and digital media studies.
+Content: CC BY-NC-SA 4.0 · Code: MIT

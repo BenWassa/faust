@@ -1,0 +1,89 @@
+---
+import Nav from '../components/Nav.astro'
+import Footer from '../components/Footer.astro'
+import { url, asset } from '../lib/url'
+import '../styles/global.css'
+
+interface Props {
+  title: string
+  description?: string
+  active?: string
+  progress?: number
+  ogImage?: string
+}
+
+const {
+  title,
+  description = 'How career became identity in modern cities, why extreme ambition is rational yet destructive, and what alternative frameworks offer.',
+  active = '',
+  progress = 0,
+  ogImage,
+} = Astro.props
+
+const fullTitle =
+  title === 'The Architecture of Ambition'
+    ? title
+    : `${title} | Architecture of Ambition`
+const canonical = new URL(Astro.url.pathname, Astro.site).href
+const ogImageUrl = ogImage ?? asset('AMBITION_Vector.png')
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{fullTitle}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={fullTitle} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImageUrl} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={fullTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImageUrl} />
+
+    <link rel="icon" type="image/png" href={asset('icon_round.png')} />
+    <link rel="apple-touch-icon" href={asset('AMBITION_ICON.png')} />
+    <link rel="manifest" href={asset('manifest.json')} />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,400&family=JetBrains+Mono:wght@300;400;500&family=DM+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0"
+    />
+
+    <!-- No-flash theme init: run before first paint. -->
+    <script is:inline>
+      ;(function () {
+        try {
+          var t = localStorage.getItem('faust-theme')
+          if (t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+            document.documentElement.classList.add('dark')
+          }
+        } catch (e) {}
+      })()
+    </script>
+  </head>
+  <body class="font-body">
+    <a
+      href="#main-content"
+      class="sr-only focus:not-sr-only absolute top-2 left-2 z-[60] bg-rust text-cream px-3 py-2"
+      >Skip to main content</a
+    >
+    <Nav active={active} progress={progress} />
+    <main id="main-content" class="pt-16 min-h-screen">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

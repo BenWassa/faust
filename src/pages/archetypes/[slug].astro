@@ -1,0 +1,75 @@
+---
+import { getCollection, render } from 'astro:content'
+import BaseLayout from '../../layouts/BaseLayout.astro'
+import ChapterHeader from '../../components/ChapterHeader.astro'
+import { archetypes } from '../../data/archetypes'
+import { url } from '../../lib/url'
+
+export async function getStaticPaths() {
+  const entries = await getCollection('archetypes')
+  return entries.map((entry) => ({
+    params: { slug: entry.id },
+    props: { entry },
+  }))
+}
+
+const { entry } = Astro.props
+const { Content } = await render(entry)
+const data = entry.data
+
+// Cross-links: the other four archetypes.
+const others = archetypes.filter((a) => a.slug !== entry.id)
+---
+<BaseLayout
+  title={data.title}
+  description={`${data.coreLogic} — a defense mechanism, not a personality type.`}
+  active="casualties"
+>
+  <ChapterHeader num={data.num} title={data.title} sub={data.tagline} readingTime="~8 min read" />
+
+  <!-- Core logic + medicine banner -->
+  <section class="max-w-5xl mx-auto px-6 mt-10">
+    <div class="grid md:grid-cols-2 gap-6">
+      <div class="surface p-8">
+        <span class="font-mono text-[10px] uppercase tracking-widest text-surveillance/50 dark:text-cream/50 block mb-2"
+          >Core Logic</span
+        >
+        <p class="font-display font-bold text-xl leading-snug">{data.coreLogic}</p>
+      </div>
+      <div class="bg-surveillance text-cream p-8 relative overflow-hidden">
+        <div class="absolute top-0 left-0 w-1 h-full bg-rust"></div>
+        <span class="font-mono text-[10px] uppercase tracking-widest text-rust block mb-2">The Medicine</span>
+        <p class="font-display font-bold text-xl leading-snug">{data.medicine}</p>
+      </div>
+    </div>
+  </section>
+
+  <article class="prose-faust max-w-3xl mx-auto px-6 py-12">
+    <Content />
+  </article>
+
+  <!-- Cross-references -->
+  <section class="max-w-5xl mx-auto px-6 mt-8">
+    <h3 class="font-mono text-xs uppercase tracking-widest text-surveillance/50 dark:text-cream/50 border-b border-surveillance/10 dark:border-cream/10 pb-2 mb-6">
+      The Other Casualties
+    </h3>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+      {
+        others.map((a) => (
+          <a href={url(`archetypes/${a.slug}`)} class="surface p-5 hover:border-rust transition-colors group">
+            <span class="material-symbols-outlined text-rust text-2xl mb-2 block" aria-hidden="true">{a.icon}</span>
+            <span class="font-display font-bold group-hover:text-rust transition-colors">{a.title}</span>
+          </a>
+        ))
+      }
+    </div>
+    <div class="mt-10 flex flex-wrap gap-4">
+      <a href={url('casualties')} class="font-mono text-sm text-surveillance/60 dark:text-cream/60 hover:text-rust flex items-center gap-2">
+        <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span> All archetypes
+      </a>
+      <a href={url('diagnostic')} class="font-mono text-sm text-rust font-bold hover:text-surveillance dark:hover:text-cream flex items-center gap-2">
+        Take the Diagnostic <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+      </a>
+    </div>
+  </section>
+</BaseLayout>

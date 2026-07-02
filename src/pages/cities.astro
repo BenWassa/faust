@@ -1,0 +1,69 @@
+---
+import ChapterLayout from '../layouts/ChapterLayout.astro'
+import CityExplorer from '../components/CityExplorer.astro'
+import { cities, cityOrder, ratio } from '../data/cities'
+
+const AFFORDABLE = 3.0
+const rows = cityOrder.map((k) => ({ name: cities[k].name, ratio: Number(ratio(cities[k]).toFixed(1)) }))
+const maxRatio = Math.max(...rows.map((r) => r.ratio))
+---
+<ChapterLayout
+  num="02"
+  slug="cities"
+  title="The Cities"
+  sub="Where ambition goes to pay rent."
+  description="Source-backed housing data from Toronto, Vancouver, London and New York — and the rational maladaptation it produces."
+  readingTime="~5 min + interactive"
+  sources={['demographia_2025', 'nbc_q3_2025', 'nyc_comptroller_2023', 'gla_2024']}
+>
+  <section class="max-w-3xl mx-auto px-6 py-12">
+    <p class="prose-faust text-xl leading-relaxed text-surveillance/80 dark:text-cream/80">
+      Ambition does not float free. It is priced. In the cities where this story concentrates, the
+      cost of a stable life has decoupled from the wages that are supposed to buy it. When a home
+      costs ten times what a household earns — against a historical “affordable” benchmark near
+      <strong>three</strong> — extreme effort stops looking like greed and starts looking like
+      arithmetic.
+    </p>
+  </section>
+
+  <CityExplorer />
+
+  <!-- Cross-city comparison chart -->
+  <section class="max-w-4xl mx-auto px-6 py-16">
+    <div class="flex items-baseline justify-between mb-8">
+      <h2 class="font-display font-bold text-2xl md:text-3xl">Price-to-Income, compared</h2>
+      <span class="font-mono text-[10px] uppercase tracking-widest text-surveillance/40 dark:text-cream/40">Fig 02.1</span>
+    </div>
+    <div class="surface p-6 md:p-10 relative">
+      <div class="space-y-6">
+        {
+          rows.map((r) => (
+            <div>
+              <div class="flex justify-between font-mono text-xs uppercase tracking-widest mb-1">
+                <span>{r.name}</span>
+                <span class="text-rust font-bold">{r.ratio}x</span>
+              </div>
+              <div class="h-6 bg-surveillance/5 dark:bg-cream/5 relative">
+                <div class="h-full bg-rust" style={`width:${(r.ratio / maxRatio) * 100}%`}></div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+      <!-- affordable threshold marker -->
+      <div
+        class="absolute top-[4.5rem] bottom-16 border-l-2 border-dashed border-soft-green"
+        style={`left:calc(${(AFFORDABLE / maxRatio) * 100}% + 2.5rem)`}
+        aria-hidden="true"
+      >
+      </div>
+      <p class="font-mono text-[10px] uppercase tracking-widest text-soft-green mt-6">
+        — dashed line: affordable benchmark (≈ 3.0x)
+      </p>
+    </div>
+    <p class="font-mono text-[10px] text-surveillance/40 dark:text-cream/40 mt-3">
+      Every market on this chart sits at 2–4× the affordability threshold. This is the structural
+      floor on which “rational maladaptation” is built.
+    </p>
+  </section>
+</ChapterLayout>

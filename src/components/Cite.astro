@@ -1,0 +1,24 @@
+---
+import { source } from '../data/citations'
+interface Props {
+  id: string
+}
+const { id } = Astro.props
+const s = source(id)
+const label = s ? (s.short ?? s.author.split(' ').slice(-1)[0]) : ''
+---
+{
+  s && (
+    <sup class="font-mono text-[10px] text-rust align-super whitespace-nowrap">
+      {s.url ? (
+        <a href={s.url} target="_blank" rel="noopener noreferrer" title={`${s.author}, ${s.title} (${s.year})`}>
+          [{label} {s.year}]
+        </a>
+      ) : (
+        <span title={`${s.author}, ${s.title} (${s.year})`}>
+          [{label} {s.year}]
+        </span>
+      )}
+    </sup>
+  )
+}

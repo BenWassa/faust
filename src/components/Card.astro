@@ -1,0 +1,32 @@
+---
+import { url } from '../lib/url'
+
+interface Props {
+  num: string
+  title: string
+  desc: string
+  href: string
+  icon: string
+  external?: boolean
+}
+const { num, title, desc, href, icon, external = false } = Astro.props
+const target = external ? href : url(href)
+---
+<a
+  href={target}
+  class="group surface p-8 hover:bg-surveillance hover:text-cream dark:hover:bg-rust transition-all duration-300 h-full flex flex-col justify-between relative overflow-hidden"
+>
+  <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20">
+    <span class="material-symbols-outlined text-6xl" aria-hidden="true">{icon}</span>
+  </div>
+  <div>
+    <span class="font-mono text-rust text-sm mb-2 block group-hover:text-soft-green">{num}</span>
+    <h3 class="font-display font-bold text-2xl mb-3">{title}</h3>
+    <p class="font-body text-lg opacity-70">{desc}</p>
+  </div>
+  <div
+    class="mt-8 flex items-center gap-2 font-mono text-xs uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity"
+  >
+    Explore <span class="material-symbols-outlined text-sm" aria-hidden="true">arrow_forward</span>
+  </div>
+</a>

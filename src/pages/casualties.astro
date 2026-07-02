@@ -1,0 +1,47 @@
+---
+import ChapterLayout from '../layouts/ChapterLayout.astro'
+import { archetypes } from '../data/archetypes'
+import { url } from '../lib/url'
+---
+<ChapterLayout
+  num="04"
+  slug="casualties"
+  title="The Casualties"
+  sub="Five defense mechanisms, not five personality types."
+  description="The economic pressure of the cities forces the self into specific shapes for survival. Five archetypes: Watchman, Visible, Faithful, Departed, Architect."
+  readingTime="~4 min + archetype deep-dives"
+>
+  <section class="max-w-3xl mx-auto px-6 py-12">
+    <p class="prose-faust text-xl leading-relaxed text-surveillance/80 dark:text-cream/80">
+      The economic pressure of the city forces the self into specific shapes for survival. These are
+      not personality types. They are <strong>defense mechanisms</strong> — rational adaptations to
+      the same systemic demand: be perpetually useful, perpetually productive, perpetually visible.
+    </p>
+    <p class="font-body text-lg text-surveillance/70 dark:text-cream/70 mt-4">
+      Each archetype solves a real problem. Each carries a hidden cost. Each has a medicine it won’t
+      take voluntarily. Find yourself below — or
+      <a href={url('diagnostic')} class="text-rust underline underline-offset-2">take the diagnostic</a>.
+    </p>
+  </section>
+
+  <section class="max-w-6xl mx-auto px-6 pb-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {
+        archetypes.map((a) => (
+          <a
+            href={url(`archetypes/${a.slug}`)}
+            class="group surface p-8 hover:bg-surveillance hover:text-cream dark:hover:bg-rust transition-all duration-300 h-full flex flex-col relative overflow-hidden"
+          >
+            <div class="absolute top-0 right-0 p-4 opacity-10 group-hover:opacity-20">
+              <span class="material-symbols-outlined text-6xl" aria-hidden="true">{a.icon}</span>
+            </div>
+            <span class="font-mono text-rust text-sm mb-2 block group-hover:text-soft-green">{a.num}</span>
+            <h3 class="font-display font-bold text-2xl mb-3">{a.title}</h3>
+            <p class="font-body text-lg opacity-70 mb-4">{a.tagline}</p>
+            <p class="font-body italic opacity-60 mt-auto pt-4 border-t border-current/10">“{a.coreLogic}”</p>
+          </a>
+        ))
+      }
+    </div>
+  </section>
+</ChapterLayout>

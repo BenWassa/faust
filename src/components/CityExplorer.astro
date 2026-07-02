@@ -1,0 +1,170 @@
+---
+import { cities, cityOrder, ratio } from '../data/cities'
+import { asset } from '../lib/url'
+
+// Precompute client payload with base-aware image paths + ratio.
+const payload = cityOrder.map((k) => {
+  const c = cities[k]
+  return {
+    key: c.key,
+    name: c.name,
+    desc: c.desc,
+    narrative: c.narrative,
+    medianIncome: c.medianIncome,
+    medianHomePrice: c.medianHomePrice,
+    currency: c.currency,
+    ratio: Number(ratio(c).toFixed(1)),
+    burdenLabel: c.burdenLabel,
+    burdenValue: c.burdenValue,
+    incomeType: c.incomeType,
+    taxBasis: c.taxBasis,
+    ownershipSource: c.ownershipSource,
+    ownershipYear: c.ownershipYear,
+    rentSource: c.rentSource,
+    rentYear: c.rentYear,
+    image: { src: asset(c.image.src), alt: c.image.alt },
+  }
+})
+const first = payload[0]
+---
+<section class="max-w-7xl mx-auto px-6 py-10" data-city-explorer>
+  <div class="grid grid-cols-1 lg:grid-cols-12 border border-surveillance/20 dark:border-cream/10 surface shadow-sm">
+    <!-- Selector -->
+    <div class="lg:col-span-4 border-b lg:border-b-0 lg:border-r border-surveillance/20 dark:border-cream/10 flex flex-col">
+      <div class="p-6 border-b border-surveillance/20 dark:border-cream/10 bg-blueprint">
+        <span class="font-mono text-[10px] uppercase text-surveillance/60 dark:text-cream/50 mb-1 block">Select jurisdiction</span>
+        <h3 class="font-display font-bold text-2xl">The Markets</h3>
+      </div>
+      <div class="flex-grow flex flex-col" role="tablist" aria-label="Cities">
+        {
+          payload.map((c) => (
+            <button
+              data-city-btn={c.key}
+              role="tab"
+              class="w-full text-left px-4 py-4 border-b border-surveillance/10 dark:border-cream/10 flex justify-between items-center hover:bg-surveillance/5 dark:hover:bg-cream/5 transition-all pl-4"
+            >
+              <span class="font-mono text-sm uppercase tracking-widest text-surveillance/70 dark:text-cream/70" data-city-label>
+                {c.name}
+              </span>
+              <span class="material-symbols-outlined text-sm text-rust hidden" data-city-arrow>arrow_right</span>
+            </button>
+          ))
+        }
+      </div>
+      <div class="p-8 mt-auto surface-muted">
+        <div class="font-mono text-[10px] uppercase text-rust mb-2 tracking-widest">System note</div>
+        <p class="font-body text-lg italic leading-relaxed text-surveillance/80 dark:text-cream/80" data-city-narrative>{first.narrative}</p>
+      </div>
+    </div>
+
+    <!-- Panel -->
+    <div class="lg:col-span-8 relative flex flex-col">
+      <div class="flex justify-between items-start p-6 gap-4 flex-wrap">
+        <div>
+          <span class="font-mono text-[10px] uppercase text-surveillance/50 dark:text-cream/50 block mb-1">Status</span>
+          <span class="font-display font-bold text-2xl uppercase" data-city-title>{first.name}</span>
+          <span class="font-mono text-xs text-rust uppercase tracking-widest block mt-1" data-city-desc>{first.desc}</span>
+        </div>
+        <div class="bg-surveillance text-cream px-3 py-2 font-mono text-xs uppercase tracking-widest">
+          <span data-city-burden>{first.burdenLabel}: {first.burdenValue}</span>
+        </div>
+      </div>
+
+      <div class="relative h-48 bg-surveillance overflow-hidden mx-6">
+        <div class="absolute inset-0 bg-blueprint opacity-20 z-10 mix-blend-overlay"></div>
+        <img data-city-img src={first.image.src} alt={first.image.alt} class="absolute inset-0 w-full h-full object-cover opacity-60 grayscale contrast-125 mix-blend-luminosity transition-all duration-700" />
+      </div>
+
+      <div class="p-6 md:p-8 grid grid-cols-2 md:grid-cols-3 gap-8 items-end">
+        <div class="col-span-2 md:col-span-1">
+          <span class="font-mono text-[10px] uppercase text-surveillance/60 dark:text-cream/50 block mb-2">Price-to-income ratio</span>
+          <div class="flex items-baseline gap-2">
+            <span class="font-display font-bold text-6xl text-rust" data-city-ratio>{first.ratio}</span>
+            <span class="font-mono text-sm text-surveillance/50 dark:text-cream/50">x</span>
+          </div>
+          <span class="font-mono text-[10px] text-surveillance/40 dark:text-cream/40">affordable ≈ 3.0x</span>
+        </div>
+
+        <figure class="col-span-2 flex items-end gap-10 h-32" aria-label="Income versus home price">
+          <div class="flex flex-col items-center gap-2 w-1/2">
+            <div class="w-full relative h-[120px] flex items-end">
+              <div class="w-full bg-surveillance/25 dark:bg-cream/20 transition-all duration-500 relative" data-bar-income style="height:24px">
+                <div class="absolute -top-6 left-1/2 -translate-x-1/2 font-mono text-xs font-bold whitespace-nowrap" data-income-value></div>
+              </div>
+            </div>
+            <span class="font-mono text-[10px] uppercase tracking-widest text-surveillance/60 dark:text-cream/60">Income</span>
+          </div>
+          <div class="flex flex-col items-center gap-2 w-1/2">
+            <div class="w-full relative h-[120px] flex items-end">
+              <div class="w-full bg-rust transition-all duration-500 relative" data-bar-cost style="height:24px">
+                <div class="absolute -top-6 left-1/2 -translate-x-1/2 font-mono text-xs font-bold text-rust whitespace-nowrap" data-cost-value></div>
+              </div>
+            </div>
+            <span class="font-mono text-[10px] uppercase tracking-widest text-surveillance/60 dark:text-cream/60">Home price</span>
+          </div>
+        </figure>
+
+        <p class="col-span-2 md:col-span-3 font-mono text-[10px] uppercase text-surveillance/50 dark:text-cream/50" data-city-metadata></p>
+      </div>
+    </div>
+  </div>
+  <p class="mt-3 font-mono text-[10px] text-surveillance/40 dark:text-cream/40 tracking-wide" data-city-sources></p>
+
+  <script type="application/json" data-city-data set:html={JSON.stringify(payload)}></script>
+</section>
+
+<script>
+  const root = document.querySelector('[data-city-explorer]')
+  if (root) {
+    const data = JSON.parse(root.querySelector('[data-city-data]')?.textContent || '[]')
+    const maxPrice = Math.max(...data.map((d) => d.medianHomePrice))
+    const MIN = 24
+    const MAX = 118
+    const fmt = (v, cur) =>
+      new Intl.NumberFormat('en', { notation: 'compact', maximumFractionDigits: 1 }).format(v) +
+      ' ' +
+      cur
+    const q = (sel) => root.querySelector(sel)
+    const scale = (v) => Math.round(MIN + (v / maxPrice) * (MAX - MIN)) + 'px'
+
+    function select(key) {
+      const c = data.find((d) => d.key === key)
+      if (!c) return
+      q('[data-city-narrative]').textContent = c.narrative
+      q('[data-city-title]').textContent = c.name
+      q('[data-city-desc]').textContent = c.desc
+      q('[data-city-burden]').textContent = `${c.burdenLabel}: ${c.burdenValue}`
+      q('[data-city-ratio]').textContent = c.ratio
+      q('[data-income-value]').textContent = fmt(c.medianIncome, c.currency)
+      q('[data-cost-value]').textContent = fmt(c.medianHomePrice, c.currency)
+      q('[data-city-metadata]').textContent =
+        `Inputs: ${c.incomeType} (${c.taxBasis}). Home price median, ${c.ownershipYear}.`
+      q('[data-city-sources]').textContent =
+        `sources: ownership — ${c.ownershipSource}; rent/burden — ${c.rentSource} (${c.rentYear}).`.toLowerCase()
+      const img = q('[data-city-img]')
+      img.src = c.image.src
+      img.alt = c.image.alt
+      requestAnimationFrame(() => {
+        q('[data-bar-income]').style.height = scale(c.medianIncome)
+        q('[data-bar-cost]').style.height = scale(c.medianHomePrice)
+      })
+      root.querySelectorAll('[data-city-btn]').forEach((btn) => {
+        const active = btn.getAttribute('data-city-btn') === key
+        btn.classList.toggle('bg-surveillance/5', active)
+        btn.classList.toggle('dark:bg-cream/5', active)
+        btn.classList.toggle('border-l-4', active)
+        btn.classList.toggle('border-l-rust', active)
+        btn.setAttribute('aria-selected', String(active))
+        const label = btn.querySelector('[data-city-label]')
+        label?.classList.toggle('text-rust', active)
+        label?.classList.toggle('font-bold', active)
+        btn.querySelector('[data-city-arrow]')?.classList.toggle('hidden', !active)
+      })
+    }
+
+    root.querySelectorAll('[data-city-btn]').forEach((btn) => {
+      btn.addEventListener('click', () => select(btn.getAttribute('data-city-btn')))
+    })
+    select(data[0].key)
+  }
+</script>

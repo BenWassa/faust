@@ -1,0 +1,43 @@
+---
+import { nextChapter, prevChapter } from '../data/chapters'
+import { url } from '../lib/url'
+
+interface Props {
+  slug: string
+}
+const { slug } = Astro.props
+const prev = prevChapter(slug)
+const next = nextChapter(slug)
+---
+<nav
+  class="max-w-5xl mx-auto px-6 mt-20 pt-8 border-t border-surveillance/10 dark:border-cream/10 flex justify-between items-center gap-6"
+  aria-label="Chapter navigation"
+>
+  {
+    prev ? (
+      <a href={url(prev.slug)} class="group flex items-center gap-2 text-surveillance/60 dark:text-cream/60 hover:text-rust transition-colors">
+        <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
+        <span class="text-left">
+          <span class="block font-mono text-[10px] uppercase tracking-widest opacity-60">Previous</span>
+          <span class="font-display font-bold">{prev.title}</span>
+        </span>
+      </a>
+    ) : (
+      <a href={url()} class="group flex items-center gap-2 text-surveillance/60 dark:text-cream/60 hover:text-rust transition-colors">
+        <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
+        <span class="font-display font-bold">Home</span>
+      </a>
+    )
+  }
+  {
+    next && (
+      <a href={url(next.slug)} class="group flex items-center gap-2 text-rust font-bold hover:text-surveillance dark:hover:text-cream transition-colors text-right">
+        <span>
+          <span class="block font-mono text-[10px] uppercase tracking-widest opacity-60">Next</span>
+          <span class="font-display font-bold">{next.title}</span>
+        </span>
+        <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
+      </a>
+    )
+  }
+</nav>

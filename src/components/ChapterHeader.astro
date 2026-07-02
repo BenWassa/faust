@@ -1,0 +1,33 @@
+---
+interface Props {
+  num: string
+  title: string
+  sub: string
+  readingTime?: string
+}
+const { num, title, sub, readingTime } = Astro.props
+---
+<header
+  class="bg-cream dark:bg-ink-900 pt-14 pb-12 px-6 border-b border-surveillance/10 dark:border-cream/10 relative overflow-hidden bg-blueprint"
+>
+  <div class="max-w-5xl mx-auto relative z-10">
+    <div class="flex items-center gap-4 mb-3 animate-fade-in">
+      <span class="font-mono text-rust text-sm uppercase tracking-widest">Chapter {num}</span>
+      {
+        readingTime && (
+          <span class="font-mono text-[10px] uppercase tracking-widest text-surveillance/40 dark:text-cream/40 border-l border-surveillance/20 dark:border-cream/20 pl-4">
+            {readingTime}
+          </span>
+        )
+      }
+    </div>
+    <h1
+      class="font-display font-bold text-5xl md:text-6xl lg:text-7xl tracking-tighter mb-4 animate-slide-up"
+    >
+      {title}
+    </h1>
+    <p class="font-body text-xl md:text-2xl text-surveillance/60 dark:text-cream/60 max-w-2xl animate-slide-up">
+      {sub}
+    </p>
+  </div>
+</header>

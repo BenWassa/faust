@@ -10,9 +10,9 @@
   "categories": ["education", "reference"],
   "icons": [
     {
-      "src": "/faust/favicon.svg",
-      "sizes": "any",
-      "type": "image/svg+xml",
+      "src": "/faust/icon_round.png",
+      "sizes": "512x512",
+      "type": "image/png",
       "purpose": "any"
     }
   ]

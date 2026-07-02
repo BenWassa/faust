@@ -1,0 +1,112 @@
+---
+import { navChapters } from '../data/chapters'
+import { url } from '../lib/url'
+import ThemeToggle from './ThemeToggle.astro'
+
+interface Props {
+  active?: string
+  progress?: number
+}
+const { active = '', progress = 0 } = Astro.props
+---
+
+<nav
+  id="navbar"
+  class="fixed top-0 left-0 w-full z-50 bg-cream/95 dark:bg-ink-900/95 backdrop-blur-sm border-b border-surveillance/10 dark:border-cream/10 transition-all duration-300 py-3"
+>
+  <div
+    id="progress-bar"
+    class="h-1 bg-rust absolute top-0 left-0 transition-all duration-500"
+    style={`width: ${progress}%`}
+  >
+  </div>
+  <div class="max-w-7xl mx-auto px-6 flex justify-between items-center gap-4">
+    <a
+      href={url()}
+      class="flex items-center gap-3 shrink-0"
+      aria-label="Project Faust — home"
+    >
+      <span class="material-symbols-outlined text-rust" aria-hidden="true">grid_4x4</span>
+      <span class="font-display font-bold text-base md:text-lg tracking-tight uppercase hidden sm:block"
+        >Architecture of Ambition</span
+      >
+    </a>
+
+    <div
+      class="hidden lg:flex items-center gap-6 font-mono text-xs uppercase tracking-widest text-surveillance/70 dark:text-cream/70"
+    >
+      {
+        navChapters.map((c) => (
+          <a
+            href={url(c.slug)}
+            class:list={[
+              'hover:text-rust transition-colors',
+              active === c.slug && 'text-rust font-bold',
+            ]}
+          >
+            {c.title}
+          </a>
+        ))
+      }
+    </div>
+
+    <div class="flex items-center gap-2">
+      <a
+        href={url('diagnostic')}
+        class="hidden sm:inline-block font-mono text-xs uppercase tracking-widest bg-surveillance text-cream dark:bg-rust px-3 py-2 hover:bg-rust transition-colors"
+        >Diagnose</a
+      >
+      <ThemeToggle />
+      <button
+        class="lg:hidden text-surveillance dark:text-cream p-2 -m-2"
+        id="mobile-menu-btn"
+        aria-label="Toggle menu"
+        aria-expanded="false"
+      >
+        <span class="material-symbols-outlined" aria-hidden="true">menu</span>
+      </button>
+    </div>
+  </div>
+
+  <div
+    id="mobile-menu"
+    class="hidden lg:hidden border-t border-surveillance/10 dark:border-cream/10 bg-cream dark:bg-ink-900 px-6 py-4 flex-col gap-3"
+  >
+    {
+      navChapters.map((c) => (
+        <a
+          href={url(c.slug)}
+          class="font-display text-lg hover:text-rust flex items-center gap-3"
+        >
+          <span class="font-mono text-xs text-rust">{c.num}</span>
+          {c.title}
+        </a>
+      ))
+    }
+    <a
+      href={url('diagnostic')}
+      class="font-mono text-sm uppercase tracking-widest bg-surveillance text-cream dark:bg-rust px-4 py-3 text-center mt-2"
+      >Take the Diagnostic</a
+    >
+  </div>
+</nav>
+
+<script>
+  const btn = document.getElementById('mobile-menu-btn')
+  const menu = document.getElementById('mobile-menu')
+  btn?.addEventListener('click', () => {
+    const open = menu?.classList.toggle('hidden')
+    menu?.classList.toggle('flex')
+    btn.setAttribute('aria-expanded', String(!open))
+  })
+
+  // Nav shrinks slightly once you start reading.
+  const nav = document.getElementById('navbar')
+  const onScroll = () => {
+    if (!nav) return
+    if (window.scrollY > 40) nav.classList.add('shadow-md')
+    else nav.classList.remove('shadow-md')
+  }
+  window.addEventListener('scroll', onScroll, { passive: true })
+  onScroll()
+</script>

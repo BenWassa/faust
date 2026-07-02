@@ -1,0 +1,70 @@
+---
+import ChapterLayout from '../layouts/ChapterLayout.astro'
+
+const essential = [
+  { title: 'The Burnout Society', author: 'Byung-Chul Han', note: 'Stanford University Press. On the self-exploitation of the achievement society — burnout as structural, not pathological.' },
+  { title: 'The Tyranny of Merit', author: 'Michael J. Sandel', note: 'Farrar, Straus and Giroux. How meritocratic rhetoric masks structural inequality and manufactures moral shame.' },
+  { title: 'Cruel Optimism', author: 'Lauren Berlant', note: 'Duke University Press. On attachment to “the good life” that is structurally impossible to reach.' },
+  { title: 'Capitalist Realism', author: 'Mark Fisher', note: 'Zero Books. Why it feels easier to imagine the end of the world than the end of the system.' },
+]
+const resistance = [
+  { title: 'Bullshit Jobs', author: 'David Graeber', note: 'Simon & Schuster. Questions whether the work we’re devoted to matters at all.' },
+  { title: 'How to Do Nothing', author: 'Jenny Odell', note: 'Melville House. Refusal as resistance; building value outside the attention economy.' },
+  { title: 'The Craftsman', author: 'Richard Sennett', note: 'Yale University Press. Skill, autonomy, and meaning as an alternative to optimization.' },
+  { title: 'Mutual Aid', author: 'Dean Spade', note: 'Verso. Building infrastructure that doesn’t depend on individual heroism.' },
+]
+---
+<ChapterLayout
+  num="07"
+  slug="resources"
+  title="Resources"
+  sub="Tools for resistance."
+  description="Essential reading, work-and-resistance texts, and crisis lines."
+  readingTime="~3 min"
+>
+  <section class="max-w-4xl mx-auto px-6 py-12 space-y-16">
+    <div>
+      <h2 class="font-display font-bold text-2xl border-b border-surveillance/20 dark:border-cream/10 mb-6 pb-2">Essential Reading</h2>
+      <ul class="space-y-6">
+        {
+          essential.map((b) => (
+            <li>
+              <h3 class="font-display font-bold text-lg">{b.title}</h3>
+              <p class="text-sm font-mono text-rust mb-1">{b.author}</p>
+              <p class="font-body text-surveillance/70 dark:text-cream/70">{b.note}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div>
+      <h2 class="font-display font-bold text-2xl border-b border-surveillance/20 dark:border-cream/10 mb-6 pb-2">Work &amp; Resistance</h2>
+      <ul class="space-y-6">
+        {
+          resistance.map((b) => (
+            <li>
+              <h3 class="font-display font-bold text-lg">{b.title}</h3>
+              <p class="text-sm font-mono text-rust mb-1">{b.author}</p>
+              <p class="font-body text-surveillance/70 dark:text-cream/70">{b.note}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+
+    <div class="bg-surveillance text-cream p-8 relative overflow-hidden">
+      <div class="absolute top-0 left-0 w-1 h-full bg-rust"></div>
+      <h2 class="font-display font-bold text-lg mb-4">In Crisis</h2>
+      <p class="font-body text-cream/80 mb-4">
+        If you are in acute distress or having thoughts of self-harm, please reach out. This project
+        is a critique of a system — not a substitute for care.
+      </p>
+      <ul class="space-y-2 font-mono text-sm font-bold text-rust">
+        <li>🇺🇸 / 🇨🇦 &nbsp; Suicide &amp; Crisis Lifeline: <span class="text-cream">988</span></li>
+        <li>🇬🇧 &nbsp; Samaritans: <span class="text-cream">116 123</span></li>
+        <li>🇪🇺 &nbsp; Telefonseelsorge (DE): <span class="text-cream">0800 1110111</span></li>
+      </ul>
+    </div>
+  </section>
+</ChapterLayout>
