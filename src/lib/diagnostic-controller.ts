@@ -214,7 +214,12 @@ export function initDiagnostic(root: Element | null): void {
 
   // A shared #archetype link restores only the result, never a fabricated
   // response history or secondary score. Answers are never persisted or sent.
-  const shared = decodeURIComponent(location.hash.slice(1))
+  let shared = ''
+  try {
+    shared = decodeURIComponent(location.hash.slice(1))
+  } catch {
+    // Invalid URL escapes are not a result link.
+  }
   if (archetypeOrder.includes(shared as ArchetypeSlug) && results[shared as ArchetypeSlug]) {
     renderResult(shared as ArchetypeSlug, null, false)
   }
