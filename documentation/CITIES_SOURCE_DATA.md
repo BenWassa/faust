@@ -1,36 +1,36 @@
-# Cities Canonical Source Data
+# Cities source data — audited 24 October 2026
 
-This file is the canonical data contract for figures displayed on the Cities page.
-Use one row per metric so ownership and rent measures remain explicitly separated.
+This document is the source contract for the **existing 2025-edition snapshot** of housing indicators. This audit verifies existing citations; it does not settle the evidence-refresh decision in issue #4.
 
-## Ownership Affordability Metrics
+## Ownership affordability: published median multiples
 
-| city | metric_type | metric_name | value | denominator_or_population | year | currency | primary_source_title | publisher_or_author | link | notes |
-|---|---|---|---:|---|---:|---|---|---|---|---|
-| Toronto | ownership | price_to_income_ratio | 10.4 | median home price / median annual household income | 2025 | CAD | Demographia International Housing Affordability, 2025 Edition | Demographia | https://www.chapman.edu/communication/_files/Demographia-International-Housing-Affordability-2025-Edition.pdf | Canonical ratio used on page |
-| Vancouver | ownership | price_to_income_ratio | 13.5 | median home price / median annual household income | 2025 | CAD | Demographia International Housing Affordability, 2025 Edition | Demographia | https://www.chapman.edu/communication/_files/Demographia-International-Housing-Affordability-2025-Edition.pdf | Canonical ratio used on page |
-| New York City | ownership | price_to_income_ratio | 7.7 | median home price / median annual household income | 2025 | USD | Demographia International Housing Affordability, 2025 Edition | Demographia | https://www.chapman.edu/communication/_files/Demographia-International-Housing-Affordability-2025-Edition.pdf | Canonical ratio used on page |
-| London | ownership | price_to_income_ratio | 8.8 | median home price / median annual household income | 2025 | GBP | Demographia International Housing Affordability, 2025 Edition | Demographia | https://www.chapman.edu/communication/_files/Demographia-International-Housing-Affordability-2025-Edition.pdf | R2 summary cites London as ~8-9; 8.8 retained as selected canonical point within cited range |
+Primary: Wendell Cox, [*Demographia International Housing Affordability, 2025 Edition*](https://www.chapman.edu/communication/_files/Demographia-International-Housing-Affordability-2025-Edition.pdf), Tables 3–4 (printed pp. 22–25; PDF pages 28–31), **Q3 2024 observations**. Definition: metropolitan-market **median home price divided by gross/pre-tax median household income**, yielding a unitless rounded ratio. Markets are labor-market/metropolitan geographies, not municipal boundaries. Source Table 4 does **not** expose the underlying median home-price and median-income pairs.
 
-## Burden / Stress Metrics
+| Display | Demographia market label | Ratio (published, 1 dp) | Local currency of underlying figures | Data period | Report location | Underlying monetary pairs |
+|---|---|---:|---|---|---|---|
+| Toronto | Toronto, ON | **8.4×** | CAD | 2024 Q3 | Table 4, printed p. 23; PDF p. 29 | Not published; do not derive |
+| Vancouver | Vancouver, BC | **11.8×** | CAD | 2024 Q3 | Table 4, printed p. 23; PDF p. 29 | Not published; do not derive |
+| London | Greater London | **9.1×** | GBP | 2024 Q3 | Table 4, printed p. 23; PDF p. 29 | Not published; do not derive |
+| New York | New York, NY–NJ–PA | **7.4×** | USD | 2024 Q3 | Table 4 continued, printed p. 25; PDF p. 31 | Not published; do not derive |
 
-| city | metric_type | metric_name | value | denominator_or_population | year | currency | primary_source_title | publisher_or_author | link | notes |
-|---|---|---|---:|---|---:|---|---|---|---|---|
-| Toronto | burden | mortgage_payment_share | 81 | mortgage payment share of household income (representative non-condo home) | 2025 | CAD | Housing Affordability Monitor Q3 2025 | National Bank of Canada | https://www.nbc.ca/content/dam/bnc/taux-analyses/analyse-eco/logement/housing-affordability.pdf | Replaces prior 77% figure |
-| Vancouver | burden | affordability_pressure_ratio | 13.5 | same denominator as ownership ratio | 2025 | CAD | Demographia International Housing Affordability, 2025 Edition | Demographia | https://www.chapman.edu/communication/_files/Demographia-International-Housing-Affordability-2025-Edition.pdf | Displayed as ratio burden proxy |
-| London | burden | housing_cost_share_low_income_young | 77 | share of earnings spent on housing by lower-income young Londoners (up to) | 2024 | GBP | City Hall Investigation (as cited by Enfield Dispatch) | Greater London Authority / City Hall | https://enfielddispatch.co.uk/young-londoners-spending-up-to-77-of-income-on-housing-costs/ | Subgroup-specific; label explicitly in UI |
-| New York City | burden | rent_burdened_tenants_share | 53 | NYC tenant households rent-burdened (>30% income to rent) | 2023 | USD | Spotlight: New York City's Rental Housing Market | NYC Comptroller (Mark Levine) | https://comptroller.nyc.gov/reports/spotlight-new-york-citys-rental-housing-market/ | Matches current burden chip concept |
+The ratio is taken **directly** from the published one-decimal source table. Previous pair values (Toronto CAD 99,000 / 1,029,600; Vancouver CAD 92,000 / 1,242,000; London GBP 45,000 / 396,000; New York USD 80,000 / 616,000) reproduce **different** multiples but could not be traced to the cited table. They were removed rather than presented as Demographia observations. Exact unrounded ratios are unavailable.
 
-## Supplemental Context Metrics (not all currently displayed)
+**Benchmark:** the report's Table ES-1 (printed p. 1; PDF p. 7) defines its *affordable* category as 3.0× or lower. It is a **source-defined category cutoff**, not a measured historical mean, regulatory standard or causal threshold. The comparison chart scales both widths and markers to the maximum ratio (11.8), in **unitless ratios**; do not compare monetary values across CAD, GBP and USD.
 
-| city_or_region | metric_name | value | denominator_or_population | year | primary_source_title | publisher_or_author | link | notes |
-|---|---|---:|---|---:|---|---|---|---|
-| Ontario | youth_unemployment_rate | 17.8 | youth labor force | 2025 | Generation in Limbo: Canada's Youth Employment Crisis | Magnet Network | https://magnetnetwork.ca/generation-in-limbo-canadas-youth-employment-crisis/ | Candidate contextual chip if added later |
-| Toronto | adults_20_34_living_with_parents_share | 47 | adults aged 20-34 | 2025 | Canada's housing crisis has reached a breaking point for younger generations | UBC News / Paul Kershaw context | https://news.ubc.ca/2025/03/canada-housing-crisis-household-impact/ | Source references this figure contextually; verify primary dataset table if needed for publication-grade citation |
-| New York City | low_income_renters_over_50pct_rent_share | 30 | low-income renters | 2023 | Spotlight: New York City's Rental Housing Market | NYC Comptroller (Mark Levine) | https://comptroller.nyc.gov/reports/spotlight-new-york-citys-rental-housing-market/ | Context metric for deep drilldown |
+## Separate burden / cost-stress measures
 
-## Implementation Notes
+| Display | Verified statistic | Numerator / denominator / scope | Data year | Original report location | Verification |
+|---|---|---|---|---|---|
+| London | **Up to 77% of wages** | Housing costs divided by wages for **low-income Londoners aged 25–29**; not all London tenants | Published 2024; report does not establish the exact observation quarter here | [London Assembly Housing Committee, *Young Londoners’ Access to Home Ownership*, 7 March 2024](https://www.london.gov.uk/who-we-are/what-london-assembly-does/london-assembly-work/london-assembly-publications/young-londoners-access-home-ownership), opening overview, paragraph 2 | Verified |
+| New York City (municipal renter households) | **52.1%** | Renter households with **gross rent incl. utilities >30% of household income** divided by all relevant NYC renter households | **2022 ACS** (Comptroller spotlight issued Jan 17 **2024**) | [NYC Comptroller, *Spotlight: New York City’s Rental Housing Market*](https://comptroller.nyc.gov/reports/spotlight-new-york-citys-rental-housing-market/), “Housing Affordability”, Chart 6 and accompanying paragraph | Verified |
+| Toronto | **Not displayed** | The former “81% of household income” was labeled as a non-condo payment share, but a Q3 2025 indexed National Bank release reports **72.2% non-condo** and **70.3% composite**; the [National Bank's live PDF URL](https://www.nbc.ca/content/dam/bnc/taux-analyses/analyse-eco/logement/housing-affordability.pdf) now serves Q2 **2026**, not Q3 2025 | Q3 2025 sought | Indexed Q3 2025 copy vs rolling live PDF; *immutable edition URL outstanding* | Suppressed pending stable archival source |
+| Vancouver | **Not displayed separately** | Prior “13.5× affordability pressure” duplicated ownership ratio, incorrectly and under another label | 2024 Q3 | Demographia Table 4, which reports **11.8×** | Duplicate metric removed |
 
-1. `src/cities/index.js` should be kept in sync with this file for all displayed figures.
-2. If a metric is subgroup-specific (for example, lower-income young Londoners), the UI label must include that subgroup.
-3. If a downstream publication requires stricter citation standards, add section/table identifiers from each primary report.
+**Methodological boundary:** the NYC burden metric is **city-proper rental** stock from ACS 2022; its ownership ratio describes a **larger NY–NJ–PA metropolitan housing market**. London's low-income 25–29 housing-cost share is a **wage-share subgroup**. They cannot be compared as if they were population-wide rent-burden rates or mortgage-payment-to-income ratios.
+
+## Implementation and status
+
+- Production data: `src/data/cities.ts`; presentation: `src/components/CityExplorer.astro` and `src/pages/cities.astro`.
+- Citation registry: `src/data/citations.ts`. No data are live-fetched.
+- Unpublished monetary pairs have been removed from the UI. The chart now displays **only** the directly evidenced source ratios; fixed income/price bars and derived currency amounts must not return without original paired data.
+- This is an evidence correction, **not** a decision on whether future editions replace this snapshot. That choice remains open under #4.
