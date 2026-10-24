@@ -1,0 +1,33 @@
+name: CI — tests and static build
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    name: Diagnostic, Cities contracts and build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install locked dependencies
+        run: npm ci
+      - name: Run deterministic tests
+        run: npm test
+      - name: Build Astro static site
+        run: npm run build
+      - name: Verify expected routes and assets
+        run: npm run check:build

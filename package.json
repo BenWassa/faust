@@ -10,6 +10,9 @@
     "astro": "astro",
     "format": "prettier --write \"src/**/*.{astro,ts,js,css,md}\"",
     "format:check": "prettier --check \"src/**/*.{astro,ts,js,css,md}\"",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "check:build": "node scripts/check-build.mjs",
     "smoke": "node scripts/smoke-pages.mjs"
   },
   "devDependencies": {
