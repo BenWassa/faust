@@ -210,4 +210,4 @@ const md = [
 ]
 await fs.writeFile(path.join(output, 'summary.md'), md.join('\n') + '\n')
 process.stdout.write(md.join('\n') + '\n')
-if (newOverflow.length || smoke.some((x) => !x.pass && !x.name.includes('Diagnostic') && !x.name.includes('200%'))) process.exitCode = 1
+if (newOverflow.length || smoke.some((x) => !x.pass && !x.name.includes('Diagnostic'))) process.exitCode = 1
