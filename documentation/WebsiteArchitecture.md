@@ -1,4 +1,12 @@
-# Project Faust: The Architecture of Ambition - Website Architecture Document
+# Project Faust: The Architecture of Ambition — historical website architecture proposal
+
+> **ARCHIVED DESIGN PROPOSAL, NOT CURRENT IMPLEMENTATION (reviewed 2026-10-24).** This document records initial information architecture, contemplated React components, six-chapter mockups and development phases. The shipped project is **Astro 7 static output**, **seven** chapters (including Resources), a **separate ten-question Diagnostic**, five archetype pages and eight live Machines traps. For authoritative implementation routes, the GitHub Pages `/faust/` base, design tokens, build/deploy and ownership see [CURRENT_IMPLEMENTATION.md](CURRENT_IMPLEMENTATION.md), [SiteStyle.md](SiteStyle.md), [README](../README.md) and the [editorial audit](EDITORIAL_AUDIT_2026-10-24.md).
+>
+> **Never create React `.jsx` pages or revive a SPA from the file tree below.** The original section map and phase checklist were exploratory. Actual navigable chapters and content follow `src/data/chapters.ts`, `src/pages/`, `src/content/archetypes/` and the verified site code. Do not infer that proposed subpages, community links, local section jump links or six-card screens exist merely because they appear below. Thesis/voice/Diagnostic positioning changes require owner approval (#3); publication scope is #2.
+
+---
+
+## Original design brief — preserved for provenance
 
 ## Project Overview
 
@@ -347,9 +355,9 @@ Homepage (The Diagnosis)
 
 ## Technical Specifications
 
-### Technology Stack
+### Historical technology options (superseded by Astro)
 
-**Recommended**: Single-page React application with scroll-based navigation
+**Originally recommended, not implemented**: Single-page React application with scroll-based navigation
 
 **Why**:
 - Smooth transitions between sections
@@ -359,7 +367,7 @@ Homepage (The Diagnosis)
 
 **Alternative**: Static HTML/CSS/JS if simpler deployment preferred
 
-### File Structure
+### Historical proposed file structure (nonexistent in current repo)
 
 ```
 /src
@@ -466,7 +474,7 @@ Homepage (The Diagnosis)
 
 ---
 
-## Development Phases
+## Proposed development phases (historical, not the current backlog)
 
 ### Phase 1: Foundation (Week 1)
 - Finalize design direction and color palette
