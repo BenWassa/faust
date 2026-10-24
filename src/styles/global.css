@@ -18,6 +18,14 @@
     --grid-line: #2a3342;
   }
 
+  [class~="text-rust"] {
+    color: #a7422f !important;
+  }
+  html.dark [class~="text-rust"],
+  .bg-surveillance [class~="text-rust"] {
+    color: #ea917b !important;
+  }
+
   body {
     @apply bg-cream text-surveillance antialiased;
     transition:
