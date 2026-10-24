@@ -5,7 +5,7 @@
 ## Verification tiers (do not conflate)
 
 1. **Completed static/source review:** markup, event handlers, existing motion styles, asset inventory and computed token contrast. Fixes committed to this branch.
-2. **Automated Chromium run on PR:** `.github/workflows/accessibility-audit.yml` builds main and this PR, serves both at `/faust/`, and executes `scripts/browser-audit.mjs`. Its `accessibility-before-after` artifact provides JSON, summary and paired **before/after** viewport screenshots. First successful baseline/candidate browser run: [workflow 40141208021](https://github.com/BenWassa/faust/actions/runs/40141208021) and [64 screenshot + JSON artifact](https://github.com/BenWassa/faust/actions/runs/40141208021/artifacts/12579341139). Subsequent contrast and zoom-target changes require another run against the final head.
+2. **Automated Chromium run on PR:** `.github/workflows/accessibility-audit.yml` builds main and this PR, serves both at `/faust/`, and executes `scripts/browser-audit.mjs`. Its `accessibility-before-after` artifact provides JSON, summary and paired **before/after** viewport screenshots. First successful baseline/candidate browser run: [workflow 40141208021](https://github.com/BenWassa/faust/actions/runs/40141208021) and [64 screenshot + JSON artifact](https://github.com/BenWassa/faust/actions/runs/40141208021/artifacts/12579341139). A second [successful workflow run 40141958905](https://github.com/BenWassa/faust/actions/runs/40141958905) tested the expanded 14-route axe matrix (27 contrast reports); subsequent large-text heading fix requires final-head verification.
 3. **Manual acceptance pending:** NVDA/Firefox, VoiceOver/Safari, TalkBack/Chrome, genuine 200% browser zoom, landscape on physical mobile, forced-colors mode, keyboard order on every page, and real-world midrange Android Core Web Vitals. An automated axe scan is not a screen-reader test.
 
 ## Test matrix built into the collector
@@ -27,11 +27,11 @@
 - Browser build **passed** for both `main` and commit `c6cf0f2`; the workflow then completed successfully.
 - **336 measured states**: 14 routes × 6 widths × light/dark × before/after. **0 cases of horizontal document overflow** and **0 new overflow regressions** at normal root font size.
 - Keyboard smoke: skip link, menu Enter/Escape/focus restoration, theme state and persistence, Machines expansion/collapse/focus, and observational Diagnostic ten-question completion **passed**.
-- At **200% root-font simulation**, home/Cities/Diagnostic had zero horizontal overflow. Machines showed **40px overflow**. Subsequent EnvyLoop change from two columns to one below `sm` is intended to address this; verify in final browser output.
-- Axe reported **8 route/theme colour-contrast violations**, across Home, Cities, Machines and Diagnostic in light/dark. The JSON artifact records node-by-node targets and ratios. This is a violation *report count*, not eight individual failing elements.
+- At **200% root-font simulation**, home/Cities/Diagnostic had zero horizontal overflow. Machines showed **40px overflow** in the first and second runs. The later instrumented run isolated the cause: the flex header containing **“The Panopticon”** expanded to right edge **430px** inside a **390px** viewport when root font size was doubled. The heading is now smaller below `sm` and the row permits wrapping; the new script fails CI if any of the four text-size proxy routes still overflows.
+- The initial four-route sample had **8 route/theme colour-contrast reports**. The expanded **14-route scan had 27 route/theme colour-contrast reports** (all colour contrast, some routes/themes without reported violations). The JSON artifact records node-by-node targets and ratios. This is a violation *report count*, not eight individual failing elements.
 - Representative simulated mobile DCL on local preview ranged **386–489 ms**, with 4× CPU and synthetic 1.6Mbps/150ms network. Transfer measures were cache-affected (0 KiB on multiple routes) and must not be interpreted as real-device Lighthouse or field performance.
 - **64 before/after screenshots** and `results.json` are in the [GitHub Actions artifact](https://github.com/BenWassa/faust/actions/runs/40141208021/artifacts/12579341139). 320px light/dark Home and Machines screenshots were visually inspected; the rest remain reviewable there.
-- Attempting whole-site selector overrides for `text-rust` repeatedly failed the Astro 7 LightningCSS minifier (pseudo-element selector parse error); source rules were reverted to restore a successful production build. Contrast adjustments were instead applied to owned component utility classes. The pre-existing Astro/@astrojs-tailwind `npm ci` peer-conflict is worked around **inside this audit workflow only** with `--legacy-peer-deps`; issue #13 owns the production-wide dependency correction.
+- Attempting whole-site selector overrides for `text-rust` repeatedly failed the Astro 7 LightningCSS minifier (pseudo-element selector parse error); source rules were reverted to restore a successful production build. Contrast adjustments were instead applied to owned component utility classes. The shared Cite link now uses high-contrast important foreground classes to supersede article link styling, and SourceList links have ≥24px targets. Footer targets are ≥44px, measured down from 11 to 1 undersized controls on the 320px home sample (the remaining item is the visually hidden skip link). The pre-existing Astro/@astrojs-tailwind `npm ci` peer-conflict is worked around **inside this audit workflow only** with `--legacy-peer-deps`; issue #13 owns the production-wide dependency correction.
 
 ## Verified source-level defects and remediation
 
@@ -81,7 +81,8 @@ WCAG contrast uses linear sRGB channel transformation (channel/12.92 for values 
 - [x] Priority shared keyboard, semantic and responsive fixes committed; contrast improvements limited to owned components
 - [x] Repeatable baseline/candidate Chromium workflow with artifacts committed
 - [x] Initial workflow run and representative 320px screenshots reviewed
-- [ ] Review **final-head** screenshots, all-route axe and 200% machine overflow result; fix attributable regressions
+- [x] Full 14-route axe scan reviewed: 27 route/theme contrast reports across 28 combinations; residual issues documented
+- [ ] Review **final-head** screenshots and the 200% Machines heading overflow fix
 - [ ] NVDA, VoiceOver, TalkBack, physical phone/landscape and true zoom
 - [ ] Obtain #9 and #10 feedback on feature-owned findings
 - [ ] Verify all checks green; then decide separately whether #11/#12 can close
