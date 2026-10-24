@@ -98,7 +98,7 @@ export const cities: Record<string, City> = {
       value: '52.1%',
       definition: 'New York City renter households whose gross rent (including utilities) exceeds 30% of household income; city-proper ACS sample, not the metropolitan market.',
       year: 2022,
-      sourceId: 'nyc_comptroller_2023',
+      sourceId: 'nyc_comptroller_2024',
       sourceLocation: '2024 Comptroller Spotlight, Housing Affordability, Chart 6 / ACS 2022',
     },
     narrative:
