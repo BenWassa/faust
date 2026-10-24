@@ -18,8 +18,12 @@
     --grid-line: #2a3342;
   }
 
+  html {
+    scroll-padding-top: 5.5rem;
+  }
+
   body {
-    @apply bg-cream text-surveillance overflow-x-hidden antialiased;
+    @apply bg-cream text-surveillance antialiased;
     transition:
       background-color 0.4s ease,
       color 0.4s ease;
@@ -55,8 +59,11 @@
   }
 
   :focus-visible {
-    outline: 2px solid #c05640;
-    outline-offset: 2px;
+    outline: 3px solid #a7422f;
+    outline-offset: 3px;
+  }
+  html.dark :focus-visible {
+    outline-color: #ea917b;
   }
 }
 
@@ -103,6 +110,7 @@
   /* Long-form reading */
   .prose-faust {
     @apply font-body text-lg leading-relaxed;
+    overflow-wrap: break-word;
   }
   .prose-faust > p {
     @apply mb-6 text-surveillance/90;
@@ -158,6 +166,19 @@
 }
 
 @layer utilities {
+  /* Text-only variants maintain WCAG AA normal-text contrast without
+     changing the established rust fills, chart encodings, or borders. */
+  .text-rust,
+  .hover\\:text-rust:hover {
+    color: #a7422f;
+  }
+  html.dark .text-rust,
+  html.dark .hover\\:text-rust:hover,
+  .bg-surveillance .text-rust,
+  .bg-ink-800 .text-rust {
+    color: #ea917b;
+  }
+
   .trap-active {
     @apply !border-rust !border-l-8 !bg-rust/10 !shadow-md;
   }
