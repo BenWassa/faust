@@ -169,14 +169,44 @@
   /* Text-only variants maintain WCAG AA normal-text contrast without
      changing the established rust fills, chart encodings, or borders. */
   .text-rust,
-  .hover\\:text-rust:hover {
+  .hover\:text-rust:hover {
     color: #a7422f;
   }
   html.dark .text-rust,
-  html.dark .hover\\:text-rust:hover,
+  html.dark .hover\:text-rust:hover,
   .bg-surveillance .text-rust,
   .bg-ink-800 .text-rust {
     color: #ea917b;
+  }
+
+  /* Previously 40–60% ink labels fell between 2.4:1 and 4.3:1.
+     Keep secondary text quieter than body copy, but legible. */
+  .text-surveillance\/40,
+  .text-surveillance\/50,
+  .text-surveillance\/60 {
+    color: rgba(26, 32, 44, 0.7);
+  }
+  html.dark .dark\:text-cream\/40,
+  html.dark .dark\:text-cream\/50,
+  html.dark .dark\:text-cream\/60,
+  .bg-surveillance .text-cream\/40,
+  .bg-surveillance .text-cream\/50,
+  .bg-surveillance .text-cream\/60 {
+    color: rgba(253, 251, 247, 0.7);
+  }
+  .text-rust\/70 {
+    color: #a7422f;
+  }
+  html.dark .text-rust\/70,
+  .bg-surveillance .text-rust\/70 {
+    color: #ea917b;
+  }
+  .text-soft-green {
+    color: #526e5a;
+  }
+  html.dark .text-soft-green,
+  .bg-surveillance .text-soft-green {
+    color: #a7c5b0;
   }
 
   .trap-active {
