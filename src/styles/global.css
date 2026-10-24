@@ -18,11 +18,6 @@
     --grid-line: #2a3342;
   }
 
-  /* Override only the text token. Keep the original rust fills and charts. */
-  .text-rust { color: #a7422f; }
-  html.dark .text-rust,
-  .bg-surveillance .text-rust { color: #ea917b; }
-
   body {
     @apply bg-cream text-surveillance antialiased;
     transition:
