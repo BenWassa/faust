@@ -21,7 +21,7 @@ import { url } from '../lib/url'
         {
           chapters.map((c) => (
             <li>
-              <a class="hover:text-white transition-colors" href={url(c.slug)}>
+              <a class="hover:text-white transition-colors inline-flex items-center min-h-11 py-2" href={url(c.slug)}>
                 {c.num} · {c.title}
               </a>
             </li>
@@ -32,9 +32,9 @@ import { url } from '../lib/url'
     <div>
       <h5 class="font-mono uppercase text-rust mb-4 text-xs tracking-widest">Tools</h5>
       <ul class="space-y-2 font-mono text-sm text-cream/60">
-        <li><a class="hover:text-white transition-colors" href={url('diagnostic')}>The Diagnostic</a></li>
-        <li><a class="hover:text-white transition-colors" href={url('casualties')}>The Archetypes</a></li>
-        <li><a class="hover:text-white transition-colors" href={url('resources')}>Resources</a></li>
+        <li><a class="hover:text-white transition-colors inline-flex items-center min-h-11 py-2" href={url('diagnostic')}>The Diagnostic</a></li>
+        <li><a class="hover:text-white transition-colors inline-flex items-center min-h-11 py-2" href={url('casualties')}>The Archetypes</a></li>
+        <li><a class="hover:text-white transition-colors inline-flex items-center min-h-11 py-2" href={url('resources')}>Resources</a></li>
       </ul>
       <p class="font-mono text-[10px] text-cream/40 mt-6 leading-relaxed">
         Content CC BY-NC-SA 4.0<br />Code MIT
