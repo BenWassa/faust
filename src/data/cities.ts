@@ -8,6 +8,7 @@ export interface Burden {
   value: string
   definition: string
   year: number
+  periodLabel: string
   sourceId: string
   sourceLocation: string
 }
@@ -74,9 +75,10 @@ export const cities: Record<string, City> = {
     ownershipSourceLocation: 'Table 4, printed p. 23 (PDF p. 29)',
     burden: {
       label: 'Housing cost share: low-income Londoners aged 25–29',
-      value: '77% of wages',
+      value: 'Up to 77% of wages',
       definition: 'Low-income 25–29-year-old Londoners; proportion of wages spent on housing costs. Not all London renters.',
       year: 2024,
+      periodLabel: '2024 report; observation period not specified',
       sourceId: 'gla_2024',
       sourceLocation: 'London Assembly Housing Committee report overview, 7 March 2024, paragraph 2',
     },
@@ -98,6 +100,7 @@ export const cities: Record<string, City> = {
       value: '52.1%',
       definition: 'New York City renter households whose gross rent (including utilities) exceeds 30% of household income; city-proper ACS sample, not the metropolitan market.',
       year: 2022,
+      periodLabel: '2022 ACS; published 2024',
       sourceId: 'nyc_comptroller_2024',
       sourceLocation: '2024 Comptroller Spotlight, Housing Affordability, Chart 6 / ACS 2022',
     },
