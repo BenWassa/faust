@@ -6,6 +6,7 @@ export default defineConfig({
   test: {
     include: ['tests/**/*.test.ts'],
     environment: 'node',
+    environmentOptions: { jsdom: { url: 'https://example.test/faust/diagnostic' } },
     clearMocks: true,
     restoreMocks: true,
   },
