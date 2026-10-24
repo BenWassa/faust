@@ -83,7 +83,7 @@ for (const [stage, site] of [['before', baseline], ['after', candidate]]) {
           await fs.mkdir(path.dirname(dest), { recursive: true })
           await page.screenshot({ path: dest, animations: 'disabled' })
         }
-        if (stage === 'after' && width === 390 && screenshotRoutes.has(route)) {
+        if (stage === 'after' && width === 390) {
           const axe = await new AxeBuilder({ page }).withTags(['wcag2a','wcag2aa','wcag21aa','wcag22aa']).analyze()
           for (const v of axe.violations) {
             violations.push({ route: route || 'home', theme, id: v.id, impact: v.impact, description: v.help, nodes: v.nodes.map((n) => ({ target: n.target, summary: n.failureSummary })).slice(0, 12) })
