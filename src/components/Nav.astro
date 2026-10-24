@@ -27,7 +27,7 @@ const { active = '', progress = 0 } = Astro.props
       <span class="font-display font-bold text-base md:text-lg tracking-tight uppercase hidden sm:block">Architecture of Ambition</span>
     </a>
 
-    <div class="hidden lg:flex items-center gap-4 xl:gap-6 font-mono text-xs uppercase tracking-widest text-surveillance/70 dark:text-cream/70">
+    <div class="hidden xl:flex items-center gap-4 xl:gap-6 font-mono text-xs uppercase tracking-widest text-surveillance/70 dark:text-cream/70">
       {
         navChapters.map((c) => (
           <a
@@ -53,7 +53,7 @@ const { active = '', progress = 0 } = Astro.props
       <ThemeToggle />
       <button
         type="button"
-        class="lg:hidden text-surveillance dark:text-cream min-w-11 min-h-11 inline-flex items-center justify-center"
+        class="xl:hidden text-surveillance dark:text-cream min-w-11 min-h-11 inline-flex items-center justify-center"
         id="mobile-menu-btn"
         aria-label="Open navigation menu"
         aria-controls="mobile-menu"
@@ -66,7 +66,7 @@ const { active = '', progress = 0 } = Astro.props
 
   <div
     id="mobile-menu"
-    class="hidden lg:hidden border-t border-surveillance/10 dark:border-cream/10 bg-cream dark:bg-ink-900 px-6 py-4 flex-col gap-1 max-h-[calc(100dvh-4rem)] overflow-y-auto"
+    class="hidden xl:hidden border-t border-surveillance/10 dark:border-cream/10 bg-cream dark:bg-ink-900 px-6 py-4 flex-col gap-1 max-h-[calc(100dvh-4rem)] overflow-y-auto"
   >
     {
       navChapters.map((c) => (
@@ -115,7 +115,7 @@ const { active = '', progress = 0 } = Astro.props
       setMenuOpen(false)
     }
   })
-  const desktop = window.matchMedia('(min-width: 1024px)')
+  const desktop = window.matchMedia('(min-width: 1280px)')
   desktop.addEventListener('change', (event) => {
     if (event.matches) setMenuOpen(false)
   })
