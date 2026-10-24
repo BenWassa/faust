@@ -38,7 +38,7 @@ import { url } from '../lib/url'
       >
     </div>
     <h1
-      class="font-display font-extrabold text-5xl md:text-7xl lg:text-8xl mb-6 tracking-tighter leading-[0.9] animate-slide-up"
+      class="font-display font-extrabold text-[clamp(2rem,7.5vw,6rem)] mb-6 tracking-tighter leading-[0.9] animate-slide-up"
     >
       THE ARCHITECTURE<br />OF AMBITION
     </h1>
@@ -63,9 +63,9 @@ import { url } from '../lib/url'
     </div>
     <div class="mt-12 animate-slide-up" style="animation-delay: 0.6s">
       <button
-        onclick="document.getElementById('chapters').scrollIntoView({behavior:'smooth'})"
+        onclick="document.getElementById('chapters')?.scrollIntoView({behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'})"
         aria-label="Scroll to chapters"
-        class="flex flex-col items-center gap-1 text-surveillance/60 dark:text-cream/60 hover:text-rust transition-colors mx-auto"
+        class="flex flex-col items-center justify-center min-h-11 min-w-11 gap-1 text-surveillance/60 dark:text-cream/60 hover:text-rust transition-colors mx-auto"
       >
         <span class="font-mono text-xs uppercase tracking-widest">The Seven Chapters</span>
         <span class="material-symbols-outlined text-3xl" aria-hidden="true">expand_more</span>
