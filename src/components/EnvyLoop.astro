@@ -12,10 +12,10 @@ const steps = [
     <h3 class="font-display font-bold text-2xl">The Engine of Envy</h3>
     <span class="font-mono text-[10px] uppercase tracking-widest text-surveillance/40 dark:text-cream/40">Fig 03.1</span>
   </div>
-  <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+  <ol class="grid grid-cols-2 md:grid-cols-4 gap-4" aria-label="Stages in the repeated envy cycle">
     {
       steps.map((s, i) => (
-        <div class="relative flex flex-col items-center text-center">
+        <li class="relative flex flex-col items-center text-center">
           <div class="h-14 w-14 rounded-full bg-rust/10 text-rust flex items-center justify-center mb-3">
             <span class="material-symbols-outlined" aria-hidden="true">{s.icon}</span>
           </div>
@@ -26,10 +26,10 @@ const steps = [
               arrow_forward
             </span>
           )}
-        </div>
+        </li>
       ))
     }
-  </div>
+  </ol>
   <div class="mt-8 pt-6 border-t border-surveillance/10 dark:border-cream/10 flex items-center gap-3 justify-center text-rust font-mono text-xs uppercase tracking-widest">
     <span class="material-symbols-outlined" aria-hidden="true">loop</span>
     The output (anxiety) becomes the input (more posting). The loop has no exit condition.
