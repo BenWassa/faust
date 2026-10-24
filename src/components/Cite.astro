@@ -9,7 +9,7 @@ const label = s ? (s.short ?? s.author.split(' ').slice(-1)[0]) : ''
 ---
 {
   s && (
-    <sup class="font-mono text-[10px] text-rust align-super whitespace-nowrap">
+    <sup class="font-mono text-[10px] text-[#a7422f] dark:text-[#ea917b] align-super whitespace-nowrap">
       {s.url ? (
         <a href={s.url} target="_blank" rel="noopener noreferrer" title={`${s.author}, ${s.title} (${s.year})`}>
           [{label} {s.year}]
