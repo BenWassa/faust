@@ -12,35 +12,29 @@ const { active = '', progress = 0 } = Astro.props
 
 <nav
   id="navbar"
+  aria-label="Primary navigation"
   class="fixed top-0 left-0 w-full z-50 bg-cream/95 dark:bg-ink-900/95 backdrop-blur-sm border-b border-surveillance/10 dark:border-cream/10 transition-all duration-300 py-3"
 >
   <div
     id="progress-bar"
+    aria-hidden="true"
     class="h-1 bg-rust absolute top-0 left-0 transition-all duration-500"
     style={`width: ${progress}%`}
-  >
-  </div>
-  <div class="max-w-7xl mx-auto px-6 flex justify-between items-center gap-4">
-    <a
-      href={url()}
-      class="flex items-center gap-3 shrink-0"
-      aria-label="Project Faust — home"
-    >
+  ></div>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 flex justify-between items-center gap-3">
+    <a href={url()} class="flex items-center gap-3 shrink-0 min-h-11" aria-label="Project Faust — home">
       <span class="material-symbols-outlined text-rust" aria-hidden="true">grid_4x4</span>
-      <span class="font-display font-bold text-base md:text-lg tracking-tight uppercase hidden sm:block"
-        >Architecture of Ambition</span
-      >
+      <span class="font-display font-bold text-base md:text-lg tracking-tight uppercase hidden sm:block">Architecture of Ambition</span>
     </a>
 
-    <div
-      class="hidden lg:flex items-center gap-6 font-mono text-xs uppercase tracking-widest text-surveillance/70 dark:text-cream/70"
-    >
+    <div class="hidden lg:flex items-center gap-4 xl:gap-6 font-mono text-xs uppercase tracking-widest text-surveillance/70 dark:text-cream/70">
       {
         navChapters.map((c) => (
           <a
             href={url(c.slug)}
+            aria-current={active === c.slug ? 'page' : undefined}
             class:list={[
-              'hover:text-rust transition-colors',
+              'hover:text-rust transition-colors py-3',
               active === c.slug && 'text-rust font-bold',
             ]}
           >
@@ -50,33 +44,36 @@ const { active = '', progress = 0 } = Astro.props
       }
     </div>
 
-    <div class="flex items-center gap-2">
+    <div class="flex items-center gap-3 shrink-0">
       <a
         href={url('diagnostic')}
-        class="hidden sm:inline-block font-mono text-xs uppercase tracking-widest bg-surveillance text-cream dark:bg-rust px-3 py-2 hover:bg-rust transition-colors"
+        class="hidden sm:inline-flex items-center min-h-11 font-mono text-xs uppercase tracking-widest bg-surveillance text-cream dark:bg-rust px-3 py-2 hover:bg-rust transition-colors"
         >Diagnose</a
       >
       <ThemeToggle />
       <button
-        class="lg:hidden text-surveillance dark:text-cream p-2 -m-2"
+        type="button"
+        class="lg:hidden text-surveillance dark:text-cream min-w-11 min-h-11 inline-flex items-center justify-center"
         id="mobile-menu-btn"
-        aria-label="Toggle menu"
+        aria-label="Open navigation menu"
+        aria-controls="mobile-menu"
         aria-expanded="false"
       >
-        <span class="material-symbols-outlined" aria-hidden="true">menu</span>
+        <span class="material-symbols-outlined" data-mobile-menu-icon aria-hidden="true">menu</span>
       </button>
     </div>
   </div>
 
   <div
     id="mobile-menu"
-    class="hidden lg:hidden border-t border-surveillance/10 dark:border-cream/10 bg-cream dark:bg-ink-900 px-6 py-4 flex-col gap-3"
+    class="hidden lg:hidden border-t border-surveillance/10 dark:border-cream/10 bg-cream dark:bg-ink-900 px-6 py-4 flex-col gap-1 max-h-[calc(100dvh-4rem)] overflow-y-auto"
   >
     {
       navChapters.map((c) => (
         <a
           href={url(c.slug)}
-          class="font-display text-lg hover:text-rust flex items-center gap-3"
+          aria-current={active === c.slug ? 'page' : undefined}
+          class="font-display text-lg hover:text-rust flex items-center gap-3 min-h-11 py-2"
         >
           <span class="font-mono text-xs text-rust">{c.num}</span>
           {c.title}
@@ -85,7 +82,7 @@ const { active = '', progress = 0 } = Astro.props
     }
     <a
       href={url('diagnostic')}
-      class="font-mono text-sm uppercase tracking-widest bg-surveillance text-cream dark:bg-rust px-4 py-3 text-center mt-2"
+      class="font-mono text-sm uppercase tracking-widest bg-surveillance text-cream dark:bg-rust px-4 py-3 text-center mt-2 min-h-11"
       >Take the Diagnostic</a
     >
   </div>
@@ -94,18 +91,40 @@ const { active = '', progress = 0 } = Astro.props
 <script>
   const btn = document.getElementById('mobile-menu-btn')
   const menu = document.getElementById('mobile-menu')
+  const icon = btn?.querySelector('[data-mobile-menu-icon]')
+  const setMenuOpen = (open: boolean) => {
+    if (!btn || !menu) return
+    menu.classList.toggle('hidden', !open)
+    menu.classList.toggle('flex', open)
+    btn.setAttribute('aria-expanded', String(open))
+    btn.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu')
+    if (icon) icon.textContent = open ? 'close' : 'menu'
+  }
   btn?.addEventListener('click', () => {
-    const open = menu?.classList.toggle('hidden')
-    menu?.classList.toggle('flex')
-    btn.setAttribute('aria-expanded', String(!open))
+    setMenuOpen(btn.getAttribute('aria-expanded') !== 'true')
+  })
+  menu?.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => setMenuOpen(false)))
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && btn?.getAttribute('aria-expanded') === 'true') {
+      setMenuOpen(false)
+      btn.focus()
+    }
+  })
+  document.addEventListener('pointerdown', (event) => {
+    if (btn?.getAttribute('aria-expanded') === 'true' && !document.getElementById('navbar')?.contains(event.target as Node)) {
+      setMenuOpen(false)
+    }
+  })
+  const desktop = window.matchMedia('(min-width: 1024px)')
+  desktop.addEventListener('change', (event) => {
+    if (event.matches) setMenuOpen(false)
   })
 
-  // Nav shrinks slightly once you start reading.
+  // A subtle reading affordance without layout changes.
   const nav = document.getElementById('navbar')
   const onScroll = () => {
     if (!nav) return
-    if (window.scrollY > 40) nav.classList.add('shadow-md')
-    else nav.classList.remove('shadow-md')
+    nav.classList.toggle('shadow-md', window.scrollY > 40)
   }
   window.addEventListener('scroll', onScroll, { passive: true })
   onScroll()
