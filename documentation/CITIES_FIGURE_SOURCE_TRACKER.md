@@ -17,7 +17,7 @@ Original [Demographia 2025 PDF](https://www.chapman.edu/communication/_files/Dem
 |---|---|---|---|---|---|
 | Toronto | 81% ownership burden | None | Indexed National Bank Q3 2025 PDF said 72.2% non-condo, but the linked PDF has rolled to 2026Q2 and no stable version is linked | National Bank Q3 2025 Toronto section; rolling URL not archival | Withheld; archival citation unresolved |
 | Vancouver | 13.5× affordability pressure | None | Duplicate/wrong ratio, not a burden measure | Demographia Table 4 | Removed |
-| London | Up to 77% for “low-income young” | 77% wages for **low-income Londoners aged 25–29** | Housing costs / wages for that subgroup | [London Assembly, 7 Mar 2024](https://www.london.gov.uk/who-we-are/what-london-assembly-does/london-assembly-work/london-assembly-publications/young-londoners-access-home-ownership), paragraph 2 | Corrected denominator |
+| London | Up to 77% for “low-income young” | up to 77% wages for **low-income Londoners aged 25–29** | Housing costs / wages for that subgroup | [London Assembly, 7 Mar 2024](https://www.london.gov.uk/who-we-are/what-london-assembly-does/london-assembly-work/london-assembly-publications/young-londoners-access-home-ownership), paragraph 2 | Corrected denominator |
 | New York City | 53% / 2023 | **52.1% / 2022** | Rent-burdened NYC renter households, ACS 2022; gross rent incl. utilities >30% of income | [NYC Comptroller Spotlight, Jan 17 2024](https://comptroller.nyc.gov/reports/spotlight-new-york-citys-rental-housing-market/), Housing Affordability, Chart 6 | Corrected scope/year |
 
 ### Chart and methodology validation
