@@ -126,7 +126,7 @@ const chartMax = Math.max(...payload.map((c) => c.ratio))
         `${c.market} · 2024 Q3 data (published in ${c.ownershipEditionYear}) · ${c.incomeType}; prices and incomes in ${c.currency}, ratio is unitless. Underlying monetary pairs are not published in the cited source table.`
       const burden = q('[data-city-burden]')
       burden.hidden = !c.burden
-      if (c.burden) burden.textContent = `${c.burden.label}: ${c.burden.value} (${c.burden.year}). ${c.burden.definition}`
+      if (c.burden) burden.textContent = `${c.burden.label}: ${c.burden.value} (${c.burden.periodLabel}). ${c.burden.definition}`
       q('[data-city-ownership-source]').href = c.ownershipSourceUrl
       q('[data-city-source-location]').textContent = ` · ${c.ownershipSourceLocation}`
       const burdenSource = q('[data-city-burden-source]')
