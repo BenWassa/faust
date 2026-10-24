@@ -1,0 +1,68 @@
+name: Accessibility and responsive evidence
+
+on:
+  pull_request:
+    paths:
+      - 'src/components/Nav.astro'
+      - 'src/components/ThemeToggle.astro'
+      - 'src/components/ChapterNav.astro'
+      - 'src/components/Card.astro'
+      - 'src/components/PanopticonHero.astro'
+      - 'src/components/EnvyLoop.astro'
+      - 'src/components/SelfComplexity.astro'
+      - 'src/components/SourceList.astro'
+      - 'src/pages/machines.astro'
+      - 'src/styles/global.css'
+      - 'scripts/browser-audit.mjs'
+      - '.github/workflows/accessibility-audit.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - name: Install app and browser-audit dependencies
+        run: |
+          npm ci
+          npm install --no-save --package-lock=false playwright @axe-core/playwright
+          npx playwright install --with-deps chromium
+      - name: Build current and baseline
+        run: |
+          git worktree add "$RUNNER_TEMP/faust-baseline" origin/main
+          npm run build
+          (
+            cd "$RUNNER_TEMP/faust-baseline"
+            npm ci
+            npm run build
+          )
+      - name: Compare baseline and candidate in Chromium
+        run: |
+          (
+            cd "$RUNNER_TEMP/faust-baseline"
+            npm run preview -- --host 127.0.0.1 --port 4301 > "$RUNNER_TEMP/faust-base.log" 2>&1 &
+          )
+          npm run preview -- --host 127.0.0.1 --port 4302 > "$RUNNER_TEMP/faust-head.log" 2>&1 &
+          for i in $(seq 1 45); do
+            if curl -fsS http://127.0.0.1:4301/faust/ >/dev/null && curl -fsS http://127.0.0.1:4302/faust/ >/dev/null; then break; fi
+            sleep 2
+          done
+          node scripts/browser-audit.mjs http://127.0.0.1:4301/faust/ http://127.0.0.1:4302/faust/ audit-output
+      - name: Publish screenshots and measurements
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: accessibility-before-after
+          path: |
+            audit-output/
+          if-no-files-found: warn
+          retention-days: 14
