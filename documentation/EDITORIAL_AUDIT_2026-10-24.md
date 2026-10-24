@@ -93,6 +93,7 @@ Verified **2026-10-24** by checking official provider web pages, not aggregator 
 ### Checks
 
 - **Source inventory:** seven canonical `chapters`, seven `src/pages/{slug}.astro` pages, five archetype registry entries and content files, ten quiz questions, eight Machines traps.
+- **Remote static contract checks actually executed against the PR branch on 2026-10-24:** **24/24 passed**: 11 inventory, documentation, support-link and design-token assertions; 13 route/frontmatter/Diagnostic-presence checks (seven chapter pages, five archetype Markdown entries and the separate Diagnostic page). These do **not** compile Astro, inspect runtime behavior, or replace a local build.
 - **Cross-reference audit:** checked chapter order/next-prev logic, five archetype metadata/frontmatter, archived-vs-live naming, available links and resource numbers.
 - **Run locally after checkout:** `npm ci && npm run build && npm run format:check`. The baseline `package.json` has no `test` script; do not report `npm test` as passing. GitHub PR checks, if configured, should be recorded separately. This remote connector environment does not provide a local checkout or Node build runner.
 - **Open checks:** full browser/link crawl, regenerated archetype content snapshot tests, citation fact checks (#8/#9) and functional Diagnostic testing (#10/#13). CI may change concurrently while #13 builds it.
