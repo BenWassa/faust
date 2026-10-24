@@ -1,8 +1,7 @@
 import { defineConfig } from 'vitest/config'
 
 export default defineConfig({
-  // Match the Astro GitHub Pages project base when testing URL helpers.
-  base: '/faust/',
+  // Vitest uses '/' for BASE_URL; the built /faust/ prefix is checked after Astro build.
   test: {
     include: ['tests/**/*.test.ts'],
     environment: 'node',
