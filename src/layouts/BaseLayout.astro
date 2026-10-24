@@ -24,8 +24,23 @@ const fullTitle =
   title === 'The Architecture of Ambition'
     ? title
     : `${title} | Architecture of Ambition`
-const canonical = new URL(Astro.url.pathname, Astro.site).href
-const ogImageUrl = ogImage ?? asset('AMBITION_Vector.png')
+
+// Normalize Astro's routed pathname against the project base once, so the
+// canonical URL exactly matches the directory routes emitted by Astro.
+const base = import.meta.env.BASE_URL.replace(/\/+$/, '')
+const pathname = Astro.url.pathname
+const route = pathname === base ? '' : pathname.startsWith(`${base}/`) ? pathname.slice(base.length) : pathname
+const canonical = new URL(url(route), Astro.site).href
+
+// Social cards require absolute image URLs; /faust/... is not sufficient.
+const shareImage = ogImage
+  ? /^https?:\/\//.test(ogImage)
+    ? ogImage
+    : ogImage.startsWith(asset(''))
+      ? ogImage
+      : asset(ogImage)
+  : asset('AMBITION_Vector.png')
+const ogImageUrl = new URL(shareImage, Astro.site).href
 ---
 
 <!doctype html>
@@ -38,14 +53,17 @@ const ogImageUrl = ogImage ?? asset('AMBITION_Vector.png')
     <link rel="canonical" href={canonical} />
 
     <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="The Architecture of Ambition" />
     <meta property="og:title" content={fullTitle} />
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:image" content={ogImageUrl} />
+    <meta property="og:image:alt" content="The Architecture of Ambition project artwork" />
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={fullTitle} />
     <meta name="twitter:description" content={description} />
     <meta name="twitter:image" content={ogImageUrl} />
+    <meta name="twitter:image:alt" content="The Architecture of Ambition project artwork" />
 
     <link rel="icon" type="image/png" href={asset('icon_round.png')} />
     <link rel="apple-touch-icon" href={asset('AMBITION_ICON.png')} />
