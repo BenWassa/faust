@@ -151,7 +151,18 @@ for (const route of ['', 'machines/', 'cities/', 'diagnostic/']) {
   const p = await openPage(resize, candidate, route)
   await p.evaluate(() => { document.documentElement.style.fontSize = '200%' })
   const measurement = await pageData(p)
-  smoke.push({ name: `200% root-font simulation: ${route || 'home'}`, pass: measurement.overflowPx === 0, details: `${measurement.overflowPx}px horizontal overflow` })
+  const protrusions = measurement.overflowPx > 0 ? await p.evaluate(() => {
+    const width = document.documentElement.clientWidth
+    return [...document.querySelectorAll('body *')]
+      .filter((el) => !el.closest('.overflow-x-auto'))
+      .map((el) => {
+        const r = el.getBoundingClientRect()
+        return { tag: el.tagName.toLowerCase(), className: typeof el.className === 'string' ? el.className.slice(0, 140) : '', text: (el.textContent || '').trim().slice(0, 35), right: Math.round(r.right), left: Math.round(r.left) }
+      })
+      .filter((r) => r.right > width + 2 || r.left < -2)
+      .sort((a,b) => b.right-a.right).slice(0, 12)
+  }) : []
+  smoke.push({ name: `200% root-font simulation: ${route || 'home'}`, pass: measurement.overflowPx === 0, details: `${measurement.overflowPx}px horizontal overflow` + (protrusions.length ? '; offending bounds: ' + JSON.stringify(protrusions) : '') })
   await p.close()
 }
 await resize.close()
@@ -183,7 +194,7 @@ const md = [
   '',
   `Viewports: ${widths.join(', ')}px; 14 routes; light/dark; reduced motion. Screenshots in \`screenshots/before\` and \`screenshots/after\`.`,
   `Measured states: ${records.length}. Remaining horizontal overflow states: ${overflow.length}; regressions: ${newOverflow.length}.`,
-  `Sampled axe violations: ${violations.length} across 4 routes and 2 themes (may repeat across pages).`,
+  `Sampled axe violations: ${violations.length} across 14 routes and 2 themes (may repeat across pages).`,
   '',
   '## Keyboard smoke',
   ...smoke.map((x) => `- ${x.pass ? 'PASS' : 'FAIL'} — ${x.name}${x.details ? ': ' + x.details : ''}`),
