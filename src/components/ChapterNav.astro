@@ -15,7 +15,7 @@ const next = nextChapter(slug)
 >
   {
     prev ? (
-      <a href={url(prev.slug)} class="group flex items-center gap-2 min-w-0 flex-1 py-2 text-surveillance/60 dark:text-cream/60 hover:text-rust transition-colors">
+      <a href={url(prev.slug)} class="group flex items-center gap-2 min-w-0 flex-1 py-2 text-surveillance/70 dark:text-cream/70 hover:text-[#a7422f] dark:hover:text-[#ea917b] transition-colors">
         <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
         <span class="text-left">
           <span class="block font-mono text-[10px] uppercase tracking-widest opacity-60">Previous</span>
@@ -23,7 +23,7 @@ const next = nextChapter(slug)
         </span>
       </a>
     ) : (
-      <a href={url()} class="group flex items-center gap-2 min-w-0 flex-1 py-2 text-surveillance/60 dark:text-cream/60 hover:text-rust transition-colors">
+      <a href={url()} class="group flex items-center gap-2 min-w-0 flex-1 py-2 text-surveillance/70 dark:text-cream/70 hover:text-[#a7422f] dark:hover:text-[#ea917b] transition-colors">
         <span class="material-symbols-outlined" aria-hidden="true">arrow_back</span>
         <span class="font-display font-bold">Home</span>
       </a>
@@ -31,7 +31,7 @@ const next = nextChapter(slug)
   }
   {
     next && (
-      <a href={url(next.slug)} class="group flex items-center gap-2 min-w-0 flex-1 py-2 text-rust font-bold hover:text-surveillance dark:hover:text-cream transition-colors text-right justify-end">
+      <a href={url(next.slug)} class="group flex items-center gap-2 min-w-0 flex-1 py-2 text-[#a7422f] dark:text-[#ea917b] font-bold hover:text-surveillance dark:hover:text-cream transition-colors text-right justify-end">
         <span>
           <span class="block font-mono text-[10px] uppercase tracking-widest opacity-60">Next</span>
           <span class="font-display font-bold break-words">{next.title}</span>
