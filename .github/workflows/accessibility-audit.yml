@@ -17,7 +17,7 @@ on:
       - '.github/workflows/accessibility-audit.yml'
 
 concurrency:
-  group: accessibility-\${{ github.event.pull_request.number }}
+  group: accessibility-${{ github.event.pull_request.number }}
   cancel-in-progress: true
 
 permissions:
