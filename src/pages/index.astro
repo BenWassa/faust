@@ -3,6 +3,7 @@ import BaseLayout from '../layouts/BaseLayout.astro'
 import PanopticonHero from '../components/PanopticonHero.astro'
 import Card from '../components/Card.astro'
 import { chapters } from '../data/chapters'
+import { url } from '../lib/url'
 ---
 <BaseLayout title="The Architecture of Ambition">
   <PanopticonHero />
@@ -11,7 +12,7 @@ import { chapters } from '../data/chapters'
     <p class="font-mono text-xs uppercase tracking-widest text-rust mb-6">The Thesis</p>
     <p class="font-body text-2xl md:text-3xl leading-relaxed text-surveillance/90 dark:text-cream/90">
       Extreme career ambition is a <strong class="text-rust">rational maladaptation</strong> —
-      economically logical in cities with 10&#8209;to&#8209;1 price&#8209;to&#8209;income ratios, but
+      economically understandable in metropolitan markets with 2024 price-to-income multiples of 7–12, but
       psychologically destructive.
     </p>
     <p class="font-body text-xl leading-relaxed text-surveillance/60 dark:text-cream/60 mt-6">
@@ -39,7 +40,7 @@ import { chapters } from '../data/chapters'
         one that fits, along with the medicine you won’t want to take.
       </p>
       <a
-        href="./diagnostic"
+        href={url('diagnostic')}
         class="inline-block px-8 py-4 bg-surveillance text-cream dark:bg-rust font-mono uppercase tracking-widest hover:bg-rust dark:hover:bg-surveillance transition-colors"
         >Begin the Diagnostic</a
       >
