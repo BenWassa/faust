@@ -1,3 +1,9 @@
+# Historical sprint record (January–February 2026)
+
+> **Archive / retrospective only — reviewed 2026-10-24.** These completed sprints describe the **pre-Astro** implementation. References such as `src/cities/index.js` and `src/views` are retired; the current Cities data are in `src/data/cities.ts` and `src/components/CityExplorer.astro`. The Machines live page currently has **eight traps**; Sprint 1 inconsistently called them both "nine traps" and "1–8". Preserve that discrepancy as an original record rather than changing history. Earlier "completed" labels are **not evidence** that today's source figures pass issue #8/#9 verification. For actionable work use the GitHub issues, [CURRENT_IMPLEMENTATION](CURRENT_IMPLEMENTATION.md), and [EDITORIAL_AUDIT_2026-10-24.md](EDITORIAL_AUDIT_2026-10-24.md). Do not act on this page's old follow-ups without fresh scoping.
+
+---
+
 # Sprint 1
 Status: Completed on February 7, 2026.
 
