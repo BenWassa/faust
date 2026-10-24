@@ -35,16 +35,17 @@ jobs:
         run: |
           npm ci --legacy-peer-deps
           npm install --legacy-peer-deps --no-save --package-lock=false playwright @axe-core/playwright
-          npx playwright install --with-deps chromium
       - name: Build current and baseline
         run: |
           git worktree add "$RUNNER_TEMP/faust-baseline" origin/main
-          npm run build
           (
             cd "$RUNNER_TEMP/faust-baseline"
             npm ci --legacy-peer-deps
             npm run build
           )
+          npm run build
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
       - name: Compare baseline and candidate in Chromium
         run: |
           (
@@ -57,6 +58,11 @@ jobs:
             sleep 2
           done
           node scripts/browser-audit.mjs http://127.0.0.1:4301/faust/ http://127.0.0.1:4302/faust/ audit-output
+      - name: Inspect compiled CSS on build failure
+        if: failure()
+        run: |
+          npx tailwindcss -i src/styles/global.css -o /tmp/faust-compiled.css || true
+          sed -n '550,580p' /tmp/faust-compiled.css || true
       - name: Publish screenshots and measurements
         if: always()
         uses: actions/upload-artifact@v4
