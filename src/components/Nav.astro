@@ -23,7 +23,7 @@ const { active = '', progress = 0 } = Astro.props
   ></div>
   <div class="max-w-7xl mx-auto px-4 sm:px-6 flex justify-between items-center gap-3">
     <a href={url()} class="flex items-center gap-3 shrink-0 min-h-11" aria-label="Project Faust — home">
-      <span class="material-symbols-outlined text-rust" aria-hidden="true">grid_4x4</span>
+      <span class="material-symbols-outlined text-[#a7422f] dark:text-[#ea917b]" aria-hidden="true">grid_4x4</span>
       <span class="font-display font-bold text-base md:text-lg tracking-tight uppercase hidden sm:block">Architecture of Ambition</span>
     </a>
 
@@ -34,8 +34,8 @@ const { active = '', progress = 0 } = Astro.props
             href={url(c.slug)}
             aria-current={active === c.slug ? 'page' : undefined}
             class:list={[
-              'hover:text-rust transition-colors py-3',
-              active === c.slug && 'text-rust font-bold',
+              'hover:text-[#a7422f] dark:hover:text-[#ea917b] transition-colors py-3',
+              active === c.slug && 'text-[#a7422f] dark:text-[#ea917b] font-bold',
             ]}
           >
             {c.title}
@@ -47,7 +47,7 @@ const { active = '', progress = 0 } = Astro.props
     <div class="flex items-center gap-3 shrink-0">
       <a
         href={url('diagnostic')}
-        class="hidden sm:inline-flex items-center min-h-11 font-mono text-xs uppercase tracking-widest bg-surveillance text-cream dark:bg-rust px-3 py-2 hover:bg-rust transition-colors"
+        class="hidden sm:inline-flex items-center min-h-11 font-mono text-xs uppercase tracking-widest bg-surveillance text-cream dark:bg-[#a7422f] px-3 py-2 hover:bg-rust transition-colors"
         >Diagnose</a
       >
       <ThemeToggle />
@@ -73,16 +73,16 @@ const { active = '', progress = 0 } = Astro.props
         <a
           href={url(c.slug)}
           aria-current={active === c.slug ? 'page' : undefined}
-          class="font-display text-lg hover:text-rust flex items-center gap-3 min-h-11 py-2"
+          class="font-display text-lg hover:text-[#a7422f] dark:hover:text-[#ea917b] flex items-center gap-3 min-h-11 py-2"
         >
-          <span class="font-mono text-xs text-rust">{c.num}</span>
+          <span class="font-mono text-xs text-[#a7422f] dark:text-[#ea917b]">{c.num}</span>
           {c.title}
         </a>
       ))
     }
     <a
       href={url('diagnostic')}
-      class="font-mono text-sm uppercase tracking-widest bg-surveillance text-cream dark:bg-rust px-4 py-3 text-center mt-2 min-h-11"
+      class="font-mono text-sm uppercase tracking-widest bg-surveillance text-cream dark:bg-[#a7422f] px-4 py-3 text-center mt-2 min-h-11"
       >Take the Diagnostic</a
     >
   </div>
