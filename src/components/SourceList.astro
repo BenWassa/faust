@@ -17,7 +17,7 @@ const list = ids.map((id) => source(id)).filter(Boolean)
           <li class="leading-relaxed">
             <span class="text-surveillance dark:text-cream">{s!.author}</span>, <em>{s!.title}</em>. {s!.publisher}, {s!.year}.
             {s!.url && (
-              <a href={s!.url} target="_blank" rel="noopener noreferrer" class="text-rust hover:underline ml-1">
+              <a href={s!.url} target="_blank" rel="noopener noreferrer" class="text-rust hover:underline ml-1 inline-block p-1" aria-label={`Read source: ${s!.title}`}>
                 ↗
               </a>
             )}
