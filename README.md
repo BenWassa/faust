@@ -5,13 +5,15 @@ A digital essay + diagnostic tool exploring how career became identity in modern
 
 **Live:** https://benwassa.github.io/faust/
 
+**Current implementation reference:** [documentation/CURRENT_IMPLEMENTATION.md](documentation/CURRENT_IMPLEMENTATION.md) (reviewed 2026-10-24). See the [editorial audit](documentation/EDITORIAL_AUDIT_2026-10-24.md) for confirmed consistency issues and owner-approval proposals. Historical plans are not authoritative for current code.
+
 ## Core Thesis
 
 Extreme career ambition is a **"rational maladaptation"** — economically logical in cities with 10-to-1 price-to-income ratios, but psychologically destructive. Alternative architectures exist.
 
 ## Structure
 
-Seven chapters plus an interactive diagnostic:
+Seven chapters plus a separate interactive diagnostic:
 
 1. **The System** — workism, the tyranny of merit, self-exploitation
 2. **The Cities** — source-backed housing data (Toronto, Vancouver, London, NYC)
@@ -20,7 +22,7 @@ Seven chapters plus an interactive diagnostic:
 5. **The Exits** — theological, Aristotelian, humanistic frameworks + radical refusals
 6. **The Practice** — do-gooder derogation, the communication of refusal, organizing
 7. **Resources** — reading list + crisis lines
-- **The Diagnostic** — a forced-choice self-assessment that routes you to your archetype
+- **The Diagnostic** — a ten-question, forced-choice literary self-assessment that routes to an archetype; not a validated clinical instrument
 
 ## Tech Stack
 
@@ -45,14 +47,15 @@ A **Surveillance Mode** dark theme is available via the nav toggle.
 ## Development
 
 ```bash
-npm install
+npm ci
 npm run dev      # dev server at http://localhost:4321/faust/
 npm run build    # static build to ./dist
 npm run preview  # preview the production build
+npm run format:check  # check formatting of src/ files
 ```
 
 Archetype content lives in `src/content/archetypes/*.md`. Those files are generated
-from the authoring sources in `/archetypes/*.md` via:
+from the authoring sources in `/archetypes/*.md` via (review generated changes before committing):
 
 ```bash
 node scripts/gen-archetypes.mjs
@@ -81,6 +84,13 @@ public/             # images, manifest, sitemap, robots
 documentation/      # vision, architecture, style, sprints
 archetypes/         # authoring source for archetype markdown
 ```
+
+## Documentation, release status and ownership
+
+- Astro source files, `src/data/chapters.ts`, `tailwind.config.js`, and `src/layouts/BaseLayout.astro` are authoritative for current routes, design and behavior. `documentation/VISION_CONTEXT.md`, `documentation/WebsiteArchitecture.md`, and old sprints retain historical decisions and may describe removed files.
+- Essay/design **v3.0** describes the July 2026 overhaul; npm **`1.1.0`** is the current package metadata. These are distinct until the owner approves a shared versioning convention. Do not retag or change `package.json` merely to make the labels match.
+- Cities data/provenance belong to issues #8/#9 (policy #4); Diagnostic implementation to #10/#13; deployment and URL metadata to #7/#14/#17. Substantive editorial stance and Diagnostic positioning remain subject to owner approval (#3).
+- Available baseline verification: `npm run build` and `npm run format:check`. Test/PR CI infrastructure is being established separately under #13; do not assume `npm test` is available on all branches.
 
 ## License
 
