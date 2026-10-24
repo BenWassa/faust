@@ -41,5 +41,16 @@ module.exports = {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    // Foreground text needs a higher-contrast version of brand rust. Preserve
+    // all rust backgrounds, borders, and chart encodings unchanged.
+    function ({ addUtilities }) {
+      addUtilities({
+        '.text-rust': { color: '#a7422f !important' },
+        '.dark .text-rust': { color: '#ea917b !important' },
+        '.bg-surveillance .text-rust': { color: '#ea917b !important' },
+        '.bg-ink-800 .text-rust': { color: '#ea917b !important' },
+      })
+    },
+  ],
 }
