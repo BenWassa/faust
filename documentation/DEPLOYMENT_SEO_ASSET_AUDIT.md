@@ -76,3 +76,9 @@ Pending owner decision **#5**, do **not** commission, generate, recolour or recr
 - [ ] Confirm asset rights and any on-image city numbers before publishing unreviewed infographic files; await #5 to commission new campaign graphics.
 
 **Outstanding**: no browser-based live verification, actual image dimensions, independent social unfurl validation, or new successful Actions run at the time of initial source audit. Record results here when available; do not mark #7 or #14 fully resolved on PR creation alone.
+
+## PR verification — 2026-10-24
+
+Draft [PR #18](https://github.com/BenWassa/faust/pull/18) first verification run: [GitHub Actions 40140281366](https://github.com/BenWassa/faust/actions/runs/40140281366), **success** at commit `9183ad01db456bfb4361cffdb339d62e5a9aea95`. Individual steps **Install (`npm ci`), Build (`npm run build`) and Smoke-check (`npm run smoke`) all succeeded**. The PR-only run correctly **skipped Configure Pages and Upload artifact**, and its deployment job did not execute. This validates build output, not a production deployment or browser behavior.
+
+The initial deployment failure is now mitigated in this PR but is still present on `main` until an approved merge and redeploy. Remaining gates are live HTTP checks, Pages source setting, social preview inspectors, dark-mode navigation/refresh and image provenance/dimensions.
