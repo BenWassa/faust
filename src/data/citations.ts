@@ -25,7 +25,7 @@ export const sources: Record<string, Source> = {
     title: 'The Tyranny of Merit: What’s Become of the Common Good?',
     publisher: 'Farrar, Straus and Giroux',
     year: '2020',
-    url: 'https://us.macmillan.com/books/9780374289980/thetyrannyofmerit/',
+    url: 'https://www.harvard.com/book/9780374289980',
   },
   han_burnout: {
     id: 'han_burnout',
@@ -33,6 +33,7 @@ export const sources: Record<string, Source> = {
     title: 'The Burnout Society',
     publisher: 'Stanford University Press',
     year: '2015',
+    url: 'https://doi.org/10.1515/9780804797504',
   },
   berlant_optimism: {
     id: 'berlant_optimism',
