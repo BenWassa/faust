@@ -166,7 +166,12 @@
 }
 
 @layer utilities {
-  /* Text-only variants maintain WCAG AA normal-text contrast without
+  .trap-active {
+    @apply !border-rust !border-l-8 !bg-rust/10 !shadow-md;
+  }
+}
+
+/* Text-only variants maintain WCAG AA normal-text contrast without
      changing the established rust fills, chart encodings, or borders. */
   .text-rust,
   [class~="hover:text-rust"]:hover {
@@ -208,11 +213,6 @@
   .bg-surveillance .text-soft-green {
     color: #a7c5b0;
   }
-
-  .trap-active {
-    @apply !border-rust !border-l-8 !bg-rust/10 !shadow-md;
-  }
-}
 
 /* Respect reduced-motion preferences */
 @media (prefers-reduced-motion: reduce) {
