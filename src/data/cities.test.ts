@@ -48,16 +48,18 @@ describe('Cities source fidelity (#9)', () => {
     expect(cities.vancouver.burden).toBeUndefined()
     expect(cities.london.burden).toMatchObject({
       year: 2024,
-      value: '77% of wages',
+      value: 'Up to 77% of wages',
       sourceId: 'gla_2024',
     })
     expect(cities.london.burden?.definition).toContain('25–29')
+    expect(cities.london.burden?.periodLabel).toMatch(/observation period not specified/)
     expect(cities.nyc.burden).toMatchObject({
       year: 2022,
       value: '52.1%',
       sourceId: 'nyc_comptroller_2024',
     })
     expect(cities.nyc.burden?.definition).toContain('renter households')
+    expect(cities.nyc.burden?.periodLabel).toContain('2022 ACS')
   })
 
   it('provides a verifiable link for every displayed statistic', () => {
