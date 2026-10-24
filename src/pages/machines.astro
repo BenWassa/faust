@@ -61,13 +61,13 @@ const compare = [
         <ol class="space-y-3">
           {
             traps.map((t) => (
-              <li data-trap={t.id} class="surface border-l-4 border-l-transparent transition-all hover:border-rust/40">
-                <button class="w-full flex items-center gap-3 p-4 text-left" data-trap-toggle={t.id}>
+              <li data-trap={t.id} class="surface border-l-4 border-l-transparent transition-all hover:border-rust/40 scroll-mt-24">
+                <button type="button" class="w-full flex items-center gap-3 p-4 text-left min-h-11" data-trap-toggle={t.id} aria-expanded="false" aria-controls={`trap-detail-${t.id}`}>
                   <span class="font-mono text-xs text-rust">{t.num}</span>
                   <span class="font-display font-bold flex-1">{t.title}</span>
                   <span class="material-symbols-outlined text-surveillance/40 dark:text-cream/40 transition-transform" data-trap-icon>expand_more</span>
                 </button>
-                <div class="hidden px-4 pb-4 text-sm text-surveillance/70 dark:text-cream/70 leading-relaxed" data-trap-detail>
+                <div id={`trap-detail-${t.id}`} class="hidden px-4 pb-4 text-sm text-surveillance/70 dark:text-cream/70 leading-relaxed" data-trap-detail>
                   <span class="font-mono text-[10px] uppercase tracking-widest text-rust/70 block mb-1">{t.cat}</span>
                   {t.detail}
                 </div>
@@ -94,7 +94,7 @@ const compare = [
                 <div class="text-sm text-gray-800 dark:text-cream/80 leading-relaxed">
                   <p>{p.body}</p>
                   <p class="mt-2">
-                    <button data-feed-trap={p.trap} class="text-left text-rust border-b-2 border-rust/30 hover:border-rust hover:bg-rust/10 transition-colors px-0.5 rounded-sm">
+                    <button type="button" data-feed-trap={p.trap} class="text-left text-rust border-b-2 border-rust/30 hover:border-rust hover:bg-rust/10 transition-colors px-0.5 rounded-sm">
                       {p.phrase}
                     </button>
                   </p>
@@ -125,20 +125,20 @@ const compare = [
         available every waking minute.
       </p>
 
-      <div class="overflow-x-auto mt-8">
+      <div class="overflow-x-auto mt-8" tabindex="0" role="region" aria-label="LinkedIn and Instagram comparison table">
         <table class="w-full text-left border-collapse font-body">
           <thead>
             <tr class="font-mono text-[10px] uppercase tracking-widest text-surveillance/60 dark:text-cream/60">
-              <th class="p-3 border-b border-surveillance/20 dark:border-cream/10"></th>
-              <th class="p-3 border-b border-surveillance/20 dark:border-cream/10">LinkedIn</th>
-              <th class="p-3 border-b border-surveillance/20 dark:border-cream/10">Instagram</th>
+              <th scope="col" class="p-3 border-b border-surveillance/20 dark:border-cream/10"><span class="sr-only">Dimension</span></th>
+              <th scope="col" class="p-3 border-b border-surveillance/20 dark:border-cream/10">LinkedIn</th>
+              <th scope="col" class="p-3 border-b border-surveillance/20 dark:border-cream/10">Instagram</th>
             </tr>
           </thead>
           <tbody>
             {
               compare.map((c) => (
                 <tr class="border-b border-surveillance/10 dark:border-cream/10">
-                  <td class="p-3 font-mono text-xs uppercase tracking-widest text-surveillance/50 dark:text-cream/50">{c.row}</td>
+                  <th scope="row" class="p-3 font-mono text-xs uppercase tracking-widest text-surveillance/70 dark:text-cream/70">{c.row}</th>
                   <td class="p-3">{c.linkedin}</td>
                   <td class="p-3">{c.instagram}</td>
                 </tr>
@@ -171,13 +171,15 @@ const compare = [
         const match = el.getAttribute('data-trap') === id
         const detail = el.querySelector('[data-trap-detail]')
         const icon = el.querySelector('[data-trap-icon]')
+        el.querySelector('[data-trap-toggle]')?.setAttribute('aria-expanded', String(match))
         el.classList.toggle('trap-active', match)
         if (detail) detail.classList.toggle('hidden', !match)
         if (icon) icon.classList.toggle('rotate-180', match)
       })
       if (scroll) {
         const target = root.querySelector(`[data-trap="${id}"]`)
-        target?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+        target?.querySelector('[data-trap-toggle]')?.focus({ preventScroll: true })
+        target?.scrollIntoView({ behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'center' })
       }
     }
     root.querySelectorAll('[data-trap-toggle]').forEach((btn) => {
@@ -188,6 +190,7 @@ const compare = [
         if (isOpen) {
           el.classList.remove('trap-active')
           el.querySelector('[data-trap-detail]')?.classList.add('hidden')
+          el.querySelector('[data-trap-toggle]')?.setAttribute('aria-expanded', 'false')
           el.querySelector('[data-trap-icon]')?.classList.remove('rotate-180')
         } else {
           openTrap(id)
