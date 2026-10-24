@@ -45,9 +45,11 @@ A **Surveillance Mode** dark theme is available via the nav toggle.
 ## Development
 
 ```bash
-npm install
+npm ci
+npm test         # deterministic scoring, interaction, Cities contract and URL tests
 npm run dev      # dev server at http://localhost:4321/faust/
 npm run build    # static build to ./dist
+npm run check:build # smoke-check routes, assets and result links
 npm run preview  # preview the production build
 ```
 
@@ -61,6 +63,8 @@ node scripts/gen-archetypes.mjs
 ## Deployment
 
 Deployment is automated via `.github/workflows/deploy.yml` on push to `main`.
+
+`.github/workflows/ci.yml` separately runs `npm ci`, `npm test`, `npm run build` and `npm run check:build` on pull requests and pushes to `main`. Configure branch protection to require **CI — tests and static build / Diagnostic, Cities contracts and build** before merging; the independent Pages workflow is not automatically gated by this check. See [Diagnostic test findings](documentation/DIAGNOSTIC_TESTING.md) for scope and limitations.
 
 > **One-time setup:** In the repository **Settings → Pages**, set **Source: GitHub Actions**.
 > (Previously the site was served from a committed `/docs` folder; that folder has been
