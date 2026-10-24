@@ -13,6 +13,20 @@
 
 ---
 
+## Current guidance and historical scope — reviewed 2026-10-24
+
+> **Source-of-truth warning:** This document preserves the project's original editorial vision and a **pre-Astro implementation snapshot**. The sections below describe decisions and drafts as they were recorded; their past-tense "Current" headings are **not** instructions for contributors in 2026. Consult [CURRENT_IMPLEMENTATION.md](CURRENT_IMPLEMENTATION.md), [README](../README.md), and [AI_CONTEXT](../AI_CONTEXT.md) for the live stack, routes, typography, data ownership, build and deployment. Consult [EDITORIAL_AUDIT_2026-10-24.md](EDITORIAL_AUDIT_2026-10-24.md) for open factual/interpretive risks.
+>
+> **What actually ships:** Astro 7 static site at `/faust/`; seven chapters including Resources; five Markdown-collection archetypes; ten-question Diagnostic as a separate route; eight interactive Machines traps; Tailwind 3 with **DM Sans / Crimson Pro / JetBrains Mono** and soft green **#7A9A84**. The older Vite/HTML files, Syne font, old green token, and incomplete-archetype "Critical Gap" are retired history.
+>
+> **Decision gates:** Retain the current thesis and authorial voice. Changes to thesis, tone, Diagnostic framing or claims of psychological/clinical validity require owner approval (#3); publication scope #2; Cities evidence policy #4. Data verification (#8/#9) may alter numerical wording. No edition/package version alignment has been approved: historical essay "v3.0" and npm `1.1.0` describe different things.
+
+### Historical editorial brief and implementation record (archived; follows below)
+
+The original 2026 vision text is deliberately retained for provenance, including claims/estimates awaiting source audit and superseded technical instructions. **Do not use its old code paths, status tables or proposed targets as current work items.**
+
+---
+
 ## Project Identity
 
 **Name:** Project Faust (The Architecture of Ambition)  
@@ -376,9 +390,9 @@ transition: filter 0.5s ease;
 
 ---
 
-## Technical Stack
+## Historical technical stack (pre-Astro; superseded)
 
-### Current Implementation
+### Implementation recorded before the July 2026 migration — do not follow
 
 **Build:** Vite 7.3.1  
 **Styling:** Tailwind CSS 3.4.19  
@@ -424,9 +438,9 @@ transition: filter 0.5s ease;
 
 ---
 
-## Current Status
+## Historical project status (pre-Astro; superseded)
 
-### ✅ Complete
+### Completed at the time
 
 **Technical Foundation:**
 - Responsive design (mobile-first)
@@ -447,7 +461,7 @@ transition: filter 0.5s ease;
 - The Cities section (economic data)
 - Resources section (curated books)
 
-### ❌ Critical Gap
+### Old critical gap — resolved by July 2026 Astro migration
 
 **Archetype Content Mismatch:**
 
@@ -457,7 +471,7 @@ Drafted pages (ready to deploy): Confrontational architecture, structural critiq
 
 **The drafted archetype pages exist and are superior. They need to replace current placeholder content.**
 
-### 🔄 In Progress
+### Historical work queue (no longer actionable)
 
 **Phase 1 (Urgent):** Replace archetype page content
 **Phase 2 (High Priority):** Add research citations
@@ -621,7 +635,7 @@ Reader feels compelled to send to someone struggling
 ### When Starting New Session
 
 1. Read this entire document first
-2. Understand the confrontational architecture principle
+2. Understand the approved confrontational architecture principle, but check #3 before changing positioning
 3. Maintain the tone: compassionate but unsparing
 4. Never soften the critique for comfort
 5. Always link individual symptoms to structural causes
@@ -651,7 +665,7 @@ Reader feels compelled to send to someone struggling
 - Use appropriate font for content type (display/body/mono)
 
 **DON'T:**
-- Add frameworks (keep vanilla JS)
+- Add frontend frameworks without a documented reason (current implementation: Astro + vanilla-JS islands, not the older vanilla HTML site)
 - Introduce unnecessary complexity
 - Break responsive design
 - Ignore mobile-first approach
@@ -696,7 +710,7 @@ Reader feels compelled to send to someone struggling
 **Owner:** BenWassa  
 **License:** Content CC BY-NC-SA 4.0, Code MIT  
 
-**For AI Assistants:** This is a living document. If you identify gaps or inconsistencies, note them for update.
+**For AI Assistants:** This is a historical vision record with a current-status preface. Follow [CURRENT_IMPLEMENTATION.md](CURRENT_IMPLEMENTATION.md) for implementation and raise changes to thesis/tone through owner decision #3.
 
 ---
 
