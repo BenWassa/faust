@@ -5,8 +5,9 @@
 <button
   id="theme-toggle"
   type="button"
-  class="p-2 rounded -m-2 text-surveillance/70 hover:text-rust dark:text-cream/70 dark:hover:text-rust transition-colors"
-  aria-label="Toggle Surveillance Mode (dark theme)"
+  class="min-w-11 min-h-11 inline-flex items-center justify-center rounded text-surveillance hover:text-rust dark:text-cream dark:hover:text-rust transition-colors"
+  aria-label="Surveillance Mode (dark theme)"
+  aria-pressed="false"
   title="Surveillance Mode"
 >
   <span class="material-symbols-outlined text-xl block dark:hidden" aria-hidden="true">dark_mode</span>
@@ -15,9 +16,14 @@
 
 <script>
   const btn = document.getElementById('theme-toggle')
+  const updateState = () => {
+    btn?.setAttribute('aria-pressed', String(document.documentElement.classList.contains('dark')))
+  }
+  updateState()
   btn?.addEventListener('click', () => {
     const root = document.documentElement
     const isDark = root.classList.toggle('dark')
+    updateState()
     try {
       localStorage.setItem('faust-theme', isDark ? 'dark' : 'light')
     } catch {}
