@@ -1,3 +1,7 @@
+> **HISTORICAL PROSPECTIVE LIST (reviewed 2026-10-24).** This inventory records *candidate* concepts, not the live trap registry or an approved expansion. The current `src/pages/machines.astro` renders **eight** traps, including the label **Work-Conditional Esteem** for #06; older text below uses **Work-Contingent Self-Esteem**. Content taxonomy changes remain an editorial decision (#3). See [CURRENT_IMPLEMENTATION.md](CURRENT_IMPLEMENTATION.md) and [EDITORIAL_AUDIT_2026-10-24.md](EDITORIAL_AUDIT_2026-10-24.md).
+
+---
+
 # Machines Page: Prospective Trap List
 
 Source: distilled from the NotebookLM mapping you shared (surveillance-driven / career-centric work cultures).
