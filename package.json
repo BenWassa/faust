@@ -9,7 +9,11 @@
     "preview": "astro preview",
     "astro": "astro",
     "format": "prettier --write \"src/**/*.{astro,ts,js,css,md}\"",
-    "format:check": "prettier --check \"src/**/*.{astro,ts,js,css,md}\""
+    "format:check": "prettier --check \"src/**/*.{astro,ts,js,css,md}\"",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "check:build": "node scripts/check-build.mjs",
+    "smoke": "node scripts/smoke-pages.mjs"
   },
   "devDependencies": {
     "@vitest/coverage-v8": "^4.0.18",
@@ -25,7 +29,6 @@
     "vitest": "^4.0.18"
   },
   "dependencies": {
-    "@astrojs/tailwind": "^6.0.2",
     "astro": "^7.0.5"
   }
 }
