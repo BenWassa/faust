@@ -14,7 +14,7 @@ const samples = [
 ]
 
 function mount(hash = '') {
-  history.replaceState(null, '', `/faust/diagnostic${hash}`)
+  history.replaceState(null, '', `/faust/diagnostic/${hash}`)
   const fields = questions.map((q, qi) => `
     <fieldset data-question="${qi}" class="${qi ? 'hidden' : ''}">
       <legend>${q.prompt}</legend>
@@ -40,7 +40,7 @@ function mount(hash = '') {
     </section>
   `
   document.querySelector('[data-result-data]')!.textContent = JSON.stringify(Object.fromEntries(
-    archetypes.map((a) => [a.slug, { ...a, href: `/faust/archetypes/${a.slug}` }])
+    archetypes.map((a) => [a.slug, { ...a, href: `/faust/archetypes/${a.slug}/` }])
   ))
   initDiagnostic(document.querySelector('[data-quiz]'))
 }
@@ -85,7 +85,7 @@ describe('Diagnostic browser interactions', () => {
     mount()
     complete(answers)
     expect(title()).toBe(archetypes.find((a) => a.slug === slug)?.title)
-    expect(document.querySelector<HTMLAnchorElement>('[data-result-link]')?.pathname).toBe(`/faust/archetypes/${slug}`)
+    expect(document.querySelector<HTMLAnchorElement>('[data-result-link]')?.pathname).toBe(`/faust/archetypes/${slug}/`)
     expect(document.activeElement).toBe(document.querySelector('[data-result-title]'))
     expect(location.hash).toBe(`#${slug}`)
     expect(document.querySelector('[data-quiz-body]')?.classList.contains('hidden')).toBe(true)
@@ -212,7 +212,7 @@ describe('Diagnostic browser interactions', () => {
     expect(share).toHaveBeenCalledWith({
       title: 'The Architecture of Ambition',
       text: 'My diagnosis: The Architect. Find yours.',
-      url: 'https://example.test/faust/diagnostic#architect',
+      url: 'https://example.test/faust/diagnostic/#architect',
     })
   })
 
@@ -226,7 +226,7 @@ describe('Diagnostic browser interactions', () => {
     click('[data-result-share]')
     await Promise.resolve()
     await Promise.resolve()
-    expect(writeText).toHaveBeenCalledWith('https://example.test/faust/diagnostic#watchman')
+    expect(writeText).toHaveBeenCalledWith('https://example.test/faust/diagnostic/#watchman')
     expect(document.querySelector('[data-share-label]')?.textContent).toBe('Link copied')
     expect(fetchSpy).not.toHaveBeenCalled()
   })
