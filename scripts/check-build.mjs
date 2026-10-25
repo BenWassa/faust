@@ -39,7 +39,7 @@ assert(payloadTag, 'Diagnostic result payload is missing')
 const results = JSON.parse(payloadTag[2])
 assert.equal(Object.keys(results).length, slugs.length)
 for (const slug of slugs) {
-  assert.equal(results[slug]?.href, `/faust/archetypes/${slug}`,
+  assert.equal(results[slug]?.href, `/faust/archetypes/${slug}/`,
     `Invalid result URL for ${slug}`)
 }
 
